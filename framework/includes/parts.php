@@ -142,6 +142,12 @@ function of_post_grid_thumbnails( $thumbnail_size ) {
 	return $output;
 }
 
+/**
+ * Display default social media profiles.
+ *
+ * @return html output
+ */
+
 function of_social_media( $buttons = array(), $style = null ) {
 
 	// Set up buttons
