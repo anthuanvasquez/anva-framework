@@ -1,0 +1,262 @@
+/* ==========================================================================
+	 Navigation
+	 ========================================================================== */
+
+/*
+ * Off Canvas Nav
+ */
+$off-canvas: 21em;
+
+#off-canvas-button {
+	display: none;
+	position: absolute;
+	left: 15px;
+	top: 20px;
+	z-index: 2;
+}
+
+.off-canvas-navigation {
+	display: none;
+	background-color: $color-0;
+	height: 100%;
+	left: -21em;
+	position: absolute;
+	top: 0;
+	width: $off-canvas;
+	transition: left .2s ease;
+	&.is-active {
+		left: 0;
+	}
+}
+
+// Is admin bar is present
+.admin-bar {
+	.off-canvas-navigation {
+		top: 46px;
+	}
+}
+
+// When JS is loaded
+.js-ready {
+	#container {
+		left: 0;
+		transition: left .2s ease;
+		&.is-active {
+			left: $off-canvas;
+		}
+	}
+}
+
+nav.main-navigation {
+	background-color: $color-2;
+	border-radius: $border-radius;
+	position: relative;
+}
+
+div.navigation-inner {
+	display: block;
+	position: relative;
+	width: 100%;
+}
+
+ul.navigation-menu {
+	@include reset-list();
+	width: 100%;
+
+	ul.sub-menu {
+		min-width: 200px;
+	}
+	
+	> li {
+		float: left;
+		border-right: 1px solid darken($color-0, 10%); 
+		position: relative;
+		
+		> a {
+			color: #fff;
+			display: block;
+			font-size: $menu-font-size;
+			font-weight: $menu-font-weight;
+			line-height: 48px;
+			padding: 0 15px;
+			text-align: center;
+			text-shadow: $menu-text-shadow;
+			text-transform: $menu-text-transform;
+		}		
+
+		&:first-child {
+			> a {
+				border-radius: $border-radius 0 0 $border-radius;
+			}
+		}
+
+		&:hover,
+		&.current-menu-item,
+		&.current_page_item {
+			> a {
+				background-color: $color-0;				
+				color: #fff;
+			}
+		}
+		
+		ul.sub-menu {
+			background: #f9f9f9;
+			border: 1px solid #ddd;
+			border-top: 0;
+			margin: 0;
+			padding: 0;
+
+			> li {
+				border-bottom: 1px solid rgba(#ccc, .4);
+				display: block;
+				position: relative;
+				
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				&:hover,
+				&.current-menu-item,
+				&.current_page_item {
+					> a {
+						background: $color-0;
+						color: #fff;
+					}					
+				}
+
+				a {
+					display: block;
+					font-size: $sub-menu-font-size;
+					padding: 8px 10px;
+					text-align: left;
+				}
+				
+				ul.sub-menu {
+					left: 100%;
+					margin: 0;
+				}
+
+			}
+		}
+	}
+}
+
+/*
+ * Superfish Menu
+ */
+.sf-menu,
+.sf-menu * {
+	@include reset-list();
+
+	li {
+		position: relative;
+	}
+
+	ul {
+		position: absolute;
+		display: none;
+		top: 100%;
+		left: 0;
+		z-index: 99;
+	}
+
+	li:hover > ul,
+	li.sfHover > ul {
+		display: block;
+	}
+
+	a {
+		display: block;
+		position: relative;
+	}
+
+	ul ul {
+		top: 0;
+		left: 100%;
+	}
+
+}
+
+.sf-arrows {
+
+	.sf-with-ul {
+		padding-right: 2.5em;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: 1em;
+			margin-top: -3px;
+			height: 0;
+			width: 0;
+			border: 5px solid transparent;
+			border-top-color: #fff;
+		}
+
+	}
+
+	ul {
+		.sf-with-ul {
+			&:after {
+				margin-top: -5px;
+				margin-right: -3px;
+				border-color: transparent;
+				border-left-color: #fff;
+			}
+		}
+	}
+
+	> li > .sf-with-ul:focus,
+	> li:hover > .sf-with-ul,
+	> .sfHover > .sf-with-ul {
+		&:after {
+			border-top-color: #fff;
+		}
+	}
+
+	ul li > .sf-with-ul:focus:after,
+	ul li:hover > .sf-with-ul:after,
+	ul .sfHover > .sf-with-ul:after {
+		border-left-color: white;
+	}
+
+}
+
+/*
+ * Mobile Navigation
+ */
+div.mobile-navigation {
+	display: none;
+}
+
+a.toggle-button {
+	background-color: $color-0;
+	border-radius: $border-radius $border-radius 0 0;
+	color: #fff;
+	font-size: 18px;
+	margin-left: 10px;
+	padding: 10px;
+	@include inline-block();
+	&:hover {
+		color: #fff;
+	}
+}
+
+/*
+ * Breadcrumbs
+ * Support WordPress SEO Plugin
+ */
+#breadcrumbs {
+	color: $base-font-color;
+	margin: 15px 0;
+	padding: 0;
+
+	p {
+		margin: 0;
+	}
+
+	.breadcrumb_last {
+		color: #999;
+	}
+}

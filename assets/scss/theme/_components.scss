@@ -1,0 +1,115 @@
+/*
+ * Typography
+ */
+
+.size-2x {
+	font-size: 120%;
+}
+
+.size-3x {
+	font-size: 150;
+}
+
+.size-4x {
+	font-size: 180%;
+}
+
+.fixed {
+	font-family: $fixed-font-family;
+	font-size: $fixed-font-size;
+	line-height: $fixed-line-height;
+}
+
+.quiet {
+	font-color: $quiet-color;
+}
+
+.loud {
+	font-color: $loud-color;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.block-margins {
+	margin: 1em 0;
+}
+
+.unordered-list {
+	list-style-type: disc;
+}
+
+.ordered-list {
+	list-style: decimal;
+}
+
+.reset-list {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.float-left  {
+	float: left;
+	margin-right: 1em;
+}
+
+.float-right {
+	float: right;
+	margin-left: 1em;
+}
+
+.text-left {
+	text-align: left !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+/*
+ * Notifications
+ */
+ 
+.alert {
+	background-color: #F7F3D5;
+	border: 1px solid #D7CD82;
+	border-radius: $border-radius;
+	color: #95712F;
+	padding: 8px 15px;
+	@include leader(0);
+	@include trailer(1);
+}
+
+.alert-block {
+	color: #95712F;
+	background: #F7F3D5;
+	border-color: #D7CD82;
+}
+
+.alert-error {
+	color: #B3302A;
+	background: #ECC7C4;
+	border-color: #BD8080;
+}
+
+.alert-success {
+	color: #587051;
+	background: #DCF2D5;
+	border-color: #AECCA4;
+}
+
+.alert-info {
+	color: #447EAE;
+	background: #CCE7F5;
+	border-color: #7DBBDF;
+}

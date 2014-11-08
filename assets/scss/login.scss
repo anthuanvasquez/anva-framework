@@ -1,0 +1,141 @@
+@import "theme/functions";
+@import "theme/variables";
+@import "theme/mixins";
+
+// Login variables
+$logo-width: 267px;
+$logo-height: 99px;
+$login-font-color: #2d2e2f;
+$login-border-radius: 4px;
+$login-form-background: #fff;
+$login-form-border: 1px solid #BABABA;
+$login-nav-link-color: #333;
+$login-nav-background: #f6f6f6;
+$login-nav-border: 1px solid #bababa;
+
+body {
+	
+	&.login {
+		background: #eee;
+
+		div#login {
+			width: 380px;
+			
+			// Logo
+			h1 {
+				a {
+					background-image: url('../images/logo.png');
+					background-size: $logo-width $logo-height;
+					background-position: center top;
+					background-repeat: no-repeat;
+					color: #333;
+					height: $logo-height;
+					font-size: $padding;
+					font-weight: normal;
+					line-height: 1.3em;
+					margin: 0 auto 15px;
+					padding: 0;
+					text-decoration: none;
+					width: $logo-width;
+					text-indent: -9999px;
+					outline: none;
+					overflow: hidden;
+					display: block;
+				}
+			}
+
+			form#loginform {
+				background: $login-form-background;
+				border: $login-form-border;
+				border-radius: 6px 6px 0 0;
+				p {
+
+					label {
+						color: #333;
+					}
+
+					&.forgetmenot {
+						font-weight: 700;
+						float: left;
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			p#nav {
+				background: $login-nav-background;
+				border: $login-nav-border;
+				border-top: 0;
+				border-radius: 0 0 6px 6px;
+				margin: 0;
+				padding: 10px 0;
+				a {
+					color: $login-nav-link-color;
+					font-weight: bold;
+				}
+			}
+
+			p#backtoblog,
+			p#nav {
+				text-align: center;
+				a {
+					color: $color-0;
+					&:hover {
+						color: saturate($color-0, 5%);
+					}
+				}
+			}
+		}
+	}
+}
+
+.login {
+	input[type="text"],
+	input[type="password"] {
+		border-radius: $login-border-radius;
+	}
+}
+
+#credit {
+	color: $login-font-color;
+	font-weight: bold;
+	text-align: center;
+	a {
+		color: $color-0;
+		text-decoration: none;
+		&:hover {
+			color: saturate($color-0, 5%);
+		}
+	}
+}
+
+// Buttons
+// ------------------------------
+.wp-core-ui {
+	.button-primary {
+		background: $color-0;
+		border-color: $color-0;
+		box-shadow: 0px 1px 0px rgba($color-0, 0.5) inset, 0px 1px 0px rgba(0, 0, 0, 0.15);
+		color: #fff;
+		text-decoration: none;
+		text-shadow: none;
+		&.focus,
+		&.hover,
+		&:focus,
+		&:hover {
+			background: $color-0;
+			border-color: $color-0;
+			box-shadow: 0px 1px 0px rgba($color-0, 0.6) inset;
+			color: #fff;
+			text-shadow: none;
+		}
+	}
+
+	.button-group.button-large .button,
+	.button.button-large {
+		height: auto;
+		font-weight: bold;
+		line-height: normal;
+		padding: 10px 15px;
+	}
+}

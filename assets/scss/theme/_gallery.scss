@@ -1,0 +1,20 @@
+/*
+ * Gallery
+ */
+.gallery {
+	dl {
+		img {
+			border: 0 !important; /* Remove border from gallery inline style */
+			border-radius: $border-radius;
+			opacity: 1;
+			transition: opacity .2s linear;
+			&:hover {
+				opacity: .6;
+			}
+		}
+	}
+}
+
+/*
+ * I need grid for gallery with html5 support
+ */

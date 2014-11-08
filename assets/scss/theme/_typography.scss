@@ -1,0 +1,108 @@
+/* ==========================================================================
+	 Typography
+	 ========================================================================== */
+
+/*
+ * Links
+ */
+a,
+.link {
+	color: $link-color;
+	&:hover {
+		color: lighten($link-color, 10%);
+	}
+}
+
+/*
+ * Lists
+ */
+ul, ol {
+	@include leader(0);
+	@include trailer(1);
+	padding-left: rhythm(1.5);
+}
+
+/*
+ * Fix font headings size
+ */
+h1, .h1 {
+	font-size: $h1;
+	@include leader(0);
+	@include trailer(1, $h1);
+}
+
+h2, .h2 {
+	font-size: $h2;
+	@include leader(0);
+	@include trailer(1, $h2);
+}
+
+h3, .h3 {
+	font-size: $h3;
+	@include leader(0);
+	@include trailer(1, $h3);
+}
+
+h4, .h4 {
+	font-size: $h4;
+	@include leader(0);
+	@include trailer(1, $h4);
+}
+
+h5, .h5 {
+	font-size: $h5;
+	@include leader(0);
+	@include trailer(1, $h5);
+}
+
+h6, .h6 {
+	font-size: $h6;
+	@include leader(0);
+	@include trailer(1, $h6);
+}
+
+/*
+ * Headings
+ */
+#{headings()} {
+	color: $heading-font-color;
+	line-height: $heading-font-line-height;
+	@include font-stack-headers();
+	a {
+		color: $heading-font-color;
+		&:hover {
+			color: $heading-font-color;
+			text-decoration: underline;
+		}
+	}
+}
+
+/*
+ * Paragraphs
+ */
+blockquote,
+pre {
+	@include leader(0);
+	@include trailer(1);
+}
+
+p {
+	@include leader(0);
+	@include trailer(1);
+}
+
+/*
+ * Code
+ */
+code,
+kbd,
+pre,
+samp {
+	@include font-stack-code();
+	font-size: $base-font-size;
+}
+
+code {
+	display: inline-block;
+	padding: 0 3px;
+}

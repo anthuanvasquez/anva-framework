@@ -1,0 +1,38 @@
+/*
+ * Default Button Styles
+ */
+@include group-buttons() {
+	background: $button-background-color;
+	border: $button-border;
+	border-radius: $button-border-radius;
+	
+	@if not $button-box-shadow {
+		box-shadow: $button-box-shadow;
+	}
+
+	color: $button-font-color;
+	cursor: pointer;
+	@include inline-block();
+	font-size: $button-font-size;
+	font-weight: $button-font-weight;
+	padding: $button-padding-box;
+	position: relative;
+	text-align: center;
+	text-shadow: $button-text-shadow; 
+	text-decoration: none;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	transition: background .1s linear;
+	-webkit-font-smoothing: antialiased;
+
+	&:hover {
+		background-color: darken($button-background-color, 10%);
+		color: $button-font-color;
+	}
+
+	&:active {
+		top: 1px;
+	}
+
+}

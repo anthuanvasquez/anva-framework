@@ -1,0 +1,139 @@
+/*
+ * Blog Columns
+ */
+
+ .blog-2-cols {
+	.post {
+		@include span(6);
+
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+		
+		&:nth-child(2n+1) {
+			clear: left;
+		}
+
+	}
+}
+
+.blog-3-cols {
+	.post {
+		@include span(4);
+
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+
+		&:nth-child(3n+1) {
+			clear: left;
+		}
+		
+	}
+}
+
+.blog-4-cols {
+	.post {
+		@include span(3);
+
+		&:nth-child(4n) {
+			margin-right: 0;
+		}
+
+		&:nth-child(4n+1) {
+			clear: left;
+		}
+		
+	}
+}
+
+/*
+ * Grid Columns Container
+ */
+.grid-columns {
+	width: 100%;
+	@if browser('ie') == '8' {
+		*zoom: 1;
+	}
+
+	&:before,
+	&:after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	[class*="column-"] {
+		display: block;
+		min-height: 30px;
+		width: 100%;
+		&:last-child {
+			@include last;
+		}
+	}
+
+}
+
+/*
+ * Grid Columns
+ */
+.grid-columns,
+.entry-content {
+
+	.column-12 {
+		@include span(12);
+	}
+
+	.column-11 {
+		@include span(11);
+	}
+
+	.column-10 {
+		@include span(10);
+	}
+
+	.column-9 {
+		@include span(9);
+	}
+
+	.column-8 {
+		@include span(8);
+	}
+
+	.column-7 {
+		@include span(7);
+	}
+
+	.column-6 {
+		@include span(6);
+	}
+
+	.column-5 {
+		@include span(5);
+	}
+
+	.column-4 {
+		@include span(4);
+	}
+
+	.column-3 {
+		@include span(3);
+	}
+
+	.column-2 {
+		@include span(2);
+	}
+
+	.column-1 {
+		@include span(1);
+	}	
+
+	.column-last {
+		@include last;
+	}
+
+}

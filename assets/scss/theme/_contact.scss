@@ -1,0 +1,97 @@
+/* =Contact Form
+----------------------------------------------- */
+
+#contact_form {
+
+	div {
+		margin-bottom: 10px;
+	}
+
+	@include group-inputs {
+		border: 2px solid #ddd;
+		border-radius: 3px;
+		font-size: $base-font-size;
+		margin: 0 0 2px 0;
+		padding: 8px;
+		&:focus {
+			border-color: $color-0;
+		}
+	}
+
+	textarea {
+		min-height: 120px;
+		resize: vertical;
+	}
+
+	input,
+	textarea {
+		&.error {
+			border-color: #ff0000;
+		}
+	}
+	
+	.control-label {
+		display: block;
+		font-weight: bold;
+		margin: 10px 0 2px 0;
+	}
+	
+	label.error {
+		color: #ff0000;
+		margin: 0 0 2px;
+	}
+	
+	.form-submit {
+		text-align: right;
+	}
+
+}
+
+/* Contact Form 7 Support */
+.wpcf7-form {
+	
+	.wpcf7-form-control-wrap {
+		width: 100%;
+	}
+
+	@include group-inputs {
+		&.wpcf7-form-control {
+			border: 2px solid #ddd;
+			padding: 8px;
+			width: 100%;
+			border-radius: 3px;
+			&:focus {
+				border-color: $color-0;
+			}
+		}
+	}
+
+	.wpcf7-radio {
+		border: 0;
+		padding: 8px 0 0;
+		@include inline-block();
+	}
+
+	.wpcf7-submit {
+		border: 0;
+		padding: 8px 15px;
+		width: auto;
+		@include inline-block();
+	}
+}
+
+label.wpc7-label {
+	font-weight: bold;
+}
+
+span.wpcf7-not-valid-tip {
+	margin-top: 5px;
+	@include inline-block();
+}
+
+div.wpcf7-validation-errors {
+	border: 1px solid #ff0000;
+	color: #ff0000;
+	margin: $padding 0 5px;
+	padding: 10px 15px;
+}
