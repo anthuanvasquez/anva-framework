@@ -5,6 +5,7 @@ function of_page_menu_args( $args ) {
 	return $args;
 }
 
+// Debug data
 function of_dd( $array ) {
 	echo '<pre>';
 		var_dump( $array );
@@ -21,26 +22,6 @@ function of_body_classes( $classes ) {
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
-	if ( is_page() ) {
-		$sidebar_column = of_get_post_meta('_sidebar_column');
-		switch($sidebar_column) {
-			case 'left':
-				$classes[] = 'sidebar-layout-left';
-			case 'right':
-				$classes[] = 'sidebar-layout-right';
-				break;
-			case 'double':
-				$classes[] = 'sidebar-layout-double';
-				break;
-			case 'double_left':
-				$classes[] = 'sidebar-layout-double-left';
-				break;
-			case 'double_right':
-				$classes[] = 'sidebar-layout-double-right';
-				break;
-		}
-	}
-	$classes[] = of_get_option( 'navigation' );
 	return apply_filters( 'of_body_classes', $classes );
 }
 
@@ -185,23 +166,12 @@ function of_get_post_custom() {
 }
 
 function of_get_widget_args( $id, $name, $description ) {
-	
-	$columns = '';
-
-	if ( 'home-sidebar' == $id ) {
-		$columns = 'column-4';
-	}
-
-	if ( 'footer-sidebar' == $id ) {
-		$columns = 'column-4';
-	}
-	
 	$args = array(
 		'id'            => $id,
 		'name'          => of_get_local( $name ),
 		'description'		=> of_get_local( $description ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s '.$columns.'">',
-		'after_widget'  => '</aside>',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
+		'after_widget'  => '</div></aside>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	);
@@ -272,13 +242,4 @@ function of_get_widget_posts( $number = 3, $orderby = 'date', $order = 'date', $
 	echo $output;
 
 	echo '</ul>';
-}
-
-function of_posts_columns_content($column_name, $post_ID) {
-	if ( $column_name == 'featured_image' ) {
-		$post_featured_image = of_get_featured_image( $post_ID, array(90, 90) );
-		if ( $post_featured_image ) {
-			echo '<img src="' . $post_featured_image . '" />';
-		}
-	}
 }

@@ -1,47 +1,82 @@
-<!doctype html>
+<?php
+/**
+ * The Header for our theme.
+ *
+ * WARNING: It is advised
+ * that any edits to the way this file displays its
+ * content be done with via hooks, filters, and
+ * template parts.
+ *
+ * @author		Anthuan Vasquez
+ * @copyright	Copyright (c) Anthuan Vasquez
+ * @link			http://anthuanvasquez.net
+ * @package  	WordPress Framework
+ */
+?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-
-	<?php
-	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) !== false ) )
-		header( 'X-UA-Compatible: IE=edge,chrome=1' );
-	?>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	
+	<!--[if lt IE 9]>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
 	<?php wp_head(); ?>
-
 </head>
+
 <body <?php body_class(); ?>>
 
-<?php of_layout_before(); ?>
+<?php
+	// Before layout
+	of_layout_before();
+?>
 				
-<div id="container">
+<div id="wrapper">
+	<div id="container">
+
+	<?php
+		// Before header
+		of_header_before();
+	?>
+
+	<div id="top">
+		<header id="header" role="banner">
+			<div class="header-inner">
+
+				<div class="header-content">
+					<div class="header-content-inner group">
+						<?php
+							/**
+					 		 * Header elements.
+					 		 */
+							of_header_top();
+							of_header_content();
+							of_header_menu();
+						?>
+					</div><!-- .header-content-inner (end) -->
+				</div><!-- .header-content (end) -->
+
+			</div><!-- .header-inner (end) -->
+		</header><!-- #header (end) -->
+	</div><!-- #top (end) -->
 	
-	<header id="header">
-		<div class="header-inner inner">
-			
-			<div class="header-top group">				
-				<div id="brand" class="brand">
-					<?php of_header_logo(); ?>
-				</div>
+	<?php
+		// After header
+		of_header_after();
 
-				<div id="addon" class="addon">
-					<?php of_header_addon(); ?>
-				</div>
-			</div><!-- .header-top (end) -->
-			
-			<div class="header-bottom">
-				<?php of_menu(); ?>
-			</div><!-- .header-bottom (end) -->
+		/*
+		 * Display featured elements.
+		 */
+		of_featured_before();
+		of_featured();
+		of_featured_after();
+	?>
 
-		</div><!-- .header-inner (end) -->
-	</header><!-- #header (end) -->
-	
-	<?php of_featured(); ?>
+	<?php
+		// After main
+		of_main_before();
 
-	<?php of_content_before(); ?>
+		// Breadcrumbs
+		of_breadcrumbs();
+	?>

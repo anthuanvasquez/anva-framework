@@ -1,5 +1,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+		<?php of_post_thumbnails( of_get_option( 'posts_thumb' ) ); ?>
 		<h2 class="entry-title">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>
@@ -14,9 +15,6 @@
 	</header>
 
 	<div class="entry-container group">
-
-		<?php of_post_thumbnails( of_get_option( 'posts_thumb' ) ); ?>
-
 		<div class="entry-summary">
 			<?php of_excerpt_limit(); ?>
 			<a class="button" href="<?php the_permalink(); ?>">

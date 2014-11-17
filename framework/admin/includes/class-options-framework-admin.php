@@ -30,20 +30,20 @@ class Options_Framework_Admin {
 		// Checks if options are available
 		if ( $options ) {
 
-		// Add the options page and menu item.
-		add_action( 'admin_menu', array( $this, 'add_custom_options_page' ) );
+			// Add the options page and menu item.
+			add_action( 'admin_menu', array( $this, 'add_custom_options_page' ) );
 
-		// Add the required scripts and styles
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+			// Add the required scripts and styles
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
-		// Settings need to be registered after admin_init
-		add_action( 'admin_init', array( $this, 'settings_init' ) );
+			// Settings need to be registered after admin_init
+			add_action( 'admin_init', array( $this, 'settings_init' ) );
 
-		// Adds options menu to the admin bar
-		add_action( 'wp_before_admin_bar_render', array( $this, 'optionsframework_admin_bar' ) );
+			// Adds options menu to the admin bar
+			add_action( 'wp_before_admin_bar_render', array( $this, 'optionsframework_admin_bar' ) );
 
-	}
+		}
 
 	}
 
@@ -88,8 +88,8 @@ class Options_Framework_Admin {
 			'mode' => 'submenu',
 
 			// Submenu default settings
-			'page_title' => __( 'Theme Options', 'textdomain' ),
-			'menu_title' => __( 'Theme Options', 'textdomain' ),
+			'page_title' => __( 'Theme Options', OF_DOMAIN ),
+			'menu_title' => __( 'Theme Options', OF_DOMAIN ),
 			'capability' => 'edit_theme_options',
 			'menu_slug' => 'options-framework',
 			'parent_slug' => 'themes.php',
@@ -138,7 +138,7 @@ class Options_Framework_Admin {
 		if ( $this->options_screen != $hook )
 			return;
 
-		wp_enqueue_style( 'optionsframework', OPTIONS_FRAMEWORK_DIRECTORY . 'css/optionsframework.css', array(),  Options_Framework::VERSION );
+		wp_enqueue_style( 'optionsframework', OF_ADMIN . 'css/optionsframework.css', array(),  Options_Framework::VERSION );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -153,7 +153,7 @@ class Options_Framework_Admin {
 			return;
 
 		// Enqueue custom option panel JS
-		wp_enqueue_script( 'options-custom', OPTIONS_FRAMEWORK_DIRECTORY . 'js/options-custom.js', array( 'jquery','wp-color-picker' ), Options_Framework::VERSION );
+		wp_enqueue_script( 'options-custom', OF_ADMIN . 'js/options-custom.js', array( 'jquery','wp-color-picker' ), Options_Framework::VERSION );
 
 		// Inline scripts from options-interface.php
 		add_action( 'admin_head', array( $this, 'of_admin_head' ) );
@@ -190,18 +190,18 @@ class Options_Framework_Admin {
 			<?php settings_errors( 'options-framework' ); ?>
 
 			<div id="optionsframework-metabox" class="metabox-holder">
-				<div id="optionsframework" class="postbox">
+				<div id="optionsframework">
 				<form action="options.php" method="post">
 				<?php settings_fields( 'optionsframework' ); ?>
 				<?php Options_Framework_Interface::optionsframework_fields(); /* Settings */ ?>
-				<div id="optionsframework-submit">
+				<div id="optionsframework-submit" class="postbox">
 					<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'textdomain' ); ?>" />
 					<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'textdomain' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'textdomain' ) ); ?>' );" />
 					<div class="clear"></div>
 				</div>
 				</form>
-			</div> <!-- / #container -->
-		</div>
+			</div> <!-- / #optionsframework (end) -->
+		</div><!-- #optionsframework-metabox (end) -->
 		<?php do_action( 'optionsframework_after' ); ?>
 		</div> <!-- / .wrap -->
 

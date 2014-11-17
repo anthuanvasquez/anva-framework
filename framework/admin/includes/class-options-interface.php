@@ -46,37 +46,67 @@ class Options_Framework_Interface {
 		$counter = 0;
 		$menu = '';
 
-		foreach ( $options as $value ) {
+		foreach ( $options as $value ) :
 
 			$val = '';
 			$select_value = '';
 			$output = '';
 
-			// Wrap all options
-			if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
+			if ( $value['type'] == 'group_start' ) {
 
-				// Keep all ids lowercase with no spaces
-				$value['id'] = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($value['id']) );
+				$name = ! empty( $value['name'] ) ? esc_html( $value['name'] ) : '';
 
-				$id = 'section-' . $value['id'];
-
-				$class = 'section';
-				if ( isset( $value['type'] ) ) {
-					$class .= ' section-' . $value['type'];
-				}
 				if ( isset( $value['class'] ) ) {
-					$class .= ' ' . $value['class'];
+					$class = ' '.$value['class'];
 				}
 
-				$output .= '<div id="' . esc_attr( $id ) .'" class="' . esc_attr( $class ) . '">'."\n";
-				if ( isset( $value['name'] ) ) {
-					$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
+				if ( ! $name ) {
+					$class .= ' no-name';
 				}
-				if ( $value['type'] != 'editor' ) {
-					$output .= '<div class="option">' . "\n" . '<div class="controls">' . "\n";
+
+				$output .= '<div class="postbox inner-group '.$class.'">';
+
+				if ( $name ) {
+					$output .= '<h3>'.$name.'</h3>';
 				}
-				else {
-					$output .= '<div class="option">' . "\n" . '<div>' . "\n";
+
+				if ( ! empty($value['desc']) ) {
+					$output .= '<div class="section-description">'.$value['desc'].'</div>';
+				}
+
+			}
+
+			if ( $value['type'] == 'group_end' ) {
+				$output .= '</div><!-- .inner-group (end) -->';
+			}
+
+			// Wrap all options
+			if ( ( $value['type'] != "group_start" ) && ( $value['type'] != "group_end" ) ) {
+				if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
+
+					// Keep all ids lowercase with no spaces
+					$value['id'] = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($value['id']) );
+
+					$id = 'section-' . $value['id'];
+
+					$class = 'section';
+					if ( isset( $value['type'] ) ) {
+						$class .= ' section-' . $value['type'];
+					}
+					if ( isset( $value['class'] ) ) {
+						$class .= ' ' . $value['class'];
+					}
+
+					$output .= '<div id="' . esc_attr( $id ) .'" class="' . esc_attr( $class ) . '">'."\n";
+					if ( isset( $value['name'] ) ) {
+						$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
+					}
+					if ( $value['type'] != 'editor' ) {
+						$output .= '<div class="option">' . "\n" . '<div class="controls">' . "\n";
+					}
+					else {
+						$output .= '<div class="option">' . "\n" . '<div>' . "\n";
+					}
 				}
 			}
 
@@ -86,12 +116,14 @@ class Options_Framework_Interface {
 			}
 
 			// If the option is already saved, override $val
-			if ( ( $value['type'] != 'heading' ) && ( $value['type'] != 'info') ) {
-				if ( isset( $settings[($value['id'])]) ) {
-					$val = $settings[($value['id'])];
-					// Striping slashes of non-array options
-					if ( !is_array($val) ) {
-						$val = stripslashes( $val );
+			if ( ( $value['type'] != "group_start" ) && ( $value['type'] != "group_end" ) ) {
+				if ( ( $value['type'] != 'heading' ) && ( $value['type'] != 'info') ) {
+					if ( isset( $settings[($value['id'])]) ) {
+						$val = $settings[($value['id'])];
+						// Striping slashes of non-array options
+						if ( !is_array($val) ) {
+							$val = stripslashes( $val );
+						}
 					}
 				}
 			}
@@ -113,7 +145,7 @@ class Options_Framework_Interface {
 			}
 
 
-			switch ( $value['type'] ) {
+			switch ( $value['type'] ) :
 
 			// Basic text input
 			case 'text':
@@ -303,8 +335,11 @@ class Options_Framework_Interface {
 				$output .= '<div id="'.$value['id'].'_google" class="google-font">';
 				$output .= '<h5>'.__( 'Enter the name of a font from the <a href="'.esc_url('http://www.google.com/webfonts').'" target="_blank">Google Font Directory</a>.', 'tm' ).'</h5>';
 				$output .= '<input type="text" id="' . esc_attr( $value['id'] . '_google' ) . '" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr( $typography_stored['google'] ).'" />';
-				$output .= '<p class="note">'. esc_html( 'Example Font Name', 'tm' ) . ': ' .'"Open Sans"</p>';
+				$output .= '<p class="note">'. esc_html__( 'Example Font Name', OF_DOMAIN ) . ': ' .'"Open Sans"</p>';
 				$output .= '</div>';
+
+				$sample_text = apply_filters( 'of_typography_sample_text', 'Lorem Ipsum' );
+				$output .= '<div id="' . esc_attr( $value['id'] . '_sample_text' ) . '" class="sample-text-font" style="font-family: Arial;">' . esc_html( $sample_text ) . '</div>';
 
 				break;
 
@@ -402,7 +437,7 @@ class Options_Framework_Interface {
 					$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
 				}
 				if ( isset( $value['desc'] ) ) {
-					$output .= $value['desc'] . "\n";
+					$output .= '<p>' . $value['desc'] . "</p>\n";
 				}
 				$output .= '</div>' . "\n";
 				break;
@@ -417,24 +452,32 @@ class Options_Framework_Interface {
 				$class = ! empty( $value['id'] ) ? $value['id'] : $value['name'];
 				$class = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($class) );
 				$output .= '<div id="options-group-' . $counter . '" class="group ' . $class . '">';
-				$output .= '<h3>' . esc_html( $value['name'] ) . '</h3>' . "\n";
+				// $output .= '<h3>' . esc_html( $value['name'] ) . '</h3>' . "\n";
 				break;
-			}
 
-			if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
-				$output .= '</div>';
-				if ( ( $value['type'] != "checkbox" ) && ( $value['type'] != "editor" ) ) {
-					$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
+			endswitch;
+
+			if ( ( $value['type'] != "group_start" ) && ( $value['type'] != "group_end" ) ) {
+				if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
+					
+					$output .= '</div><!-- .controls (end) -->';
+
+					if ( ( $value['type'] != "checkbox" ) && ( $value['type'] != "editor" ) ) {
+						$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
+					}
+					$output .= '</div><!-- .option (end) -->';
+					$output .= '</div><!-- .section (end) -->'."\n";
 				}
-				$output .= '</div></div>'."\n";
 			}
 
 			echo $output;
-		}
+		
+		endforeach;
 
 		// Outputs closing div if there tabs
 		if ( Options_Framework_Interface::optionsframework_tabs() != '' ) {
-			echo '</div>';
+			echo '</div><!-- .tab (end) -->';
+
 		}
 	}
 

@@ -240,3 +240,8 @@ function of_social_media_fields( $id, $name, $val ) {
 
 	return $output;
 }
+
+function of_get_background_pattern( $option ) {
+	$output = esc_url( get_template_directory_uri() . '/assets/images/patterns/' . $option . '.png' );
+	return $output;
+}

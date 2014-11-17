@@ -21,7 +21,7 @@ function of_slideshows() {
 
 	// Main Slider
 	$args['homepage'] = array(
-		'size' 		=> 'thumb_featured',
+		'size' 		=> 'featured',
 		'options' => "
 			animation: 'fade',
 			animationSpeed: 1000,

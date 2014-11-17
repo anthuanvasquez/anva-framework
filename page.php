@@ -1,54 +1,37 @@
 <?php get_header(); ?>
 
-<?php
-	$classes = '';
-	$sidebar = of_get_post_meta('_sidebar_column');
+<div id="sidebar-layout">
+	<div class="sidebar-layout-inner">
+		<div class="row grid-columns">
+			<div class="content-area col-sm-8">
+				<div class="inner">
 
-	if ( 'left' == $sidebar || 'double_left' == $sidebar ) {
-		$classes = 'content-area right';
+					<?php of_post_before(); ?>
 
-	} elseif ( 'right' == $sidebar || 'double_right' == $sidebar  ) {
-		$classes = 'content-area left';
+					<?php while ( have_posts() ) : the_post(); ?>
 
-	} elseif ( 'double' == $sidebar ) {
-		$classes = 'content-area center';
+						<?php get_template_part( 'content', 'page' ); ?>
 
-	} elseif ( 'fullwidth' ) {
-		$classes = 'full-width';
-	}
-?>
+						<?php
+							$single_comment = of_get_option( 'single_comment' );
+							if ( 1 == $single_comment ) :
+								if ( comments_open() || '0' != get_comments_number() ) :
+									comments_template();
+								endif;
+							endif;
+						?>
 
-<div class="grid-columns">
+					<?php endwhile; ?>
 
-	<?php of_sidebar_layout_before(); ?>
+					<?php of_post_after(); ?>
 
-	<div class="<?php echo esc_html( $classes ); ?>">
-		<div class="main" role="main">
+				</div><!-- .inner (end) -->
+			</div><!-- .content-area (end) -->
 
-			<?php of_post_before(); ?>
-
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php get_template_part( 'content', 'page' ); ?>
-			
-			<?php of_post_after(); ?>
-
-				<?php
-					$single_comment = of_get_option( 'single_comment' );
-					if ( 1 == $single_comment ) :
-						if ( comments_open() || '0' != get_comments_number() ) :
-							comments_template();
-						endif;
-					endif;
-				?>
-
-			<?php endwhile; ?>
-
-		</div><!-- .main (end) -->
-	</div><!-- .content-area (end) -->
+			<?php of_sidebar_layout_after(); ?>
 	
-	<?php of_sidebar_layout_after(); ?>
-	
-</div><!-- .grid-columns (end) -->
+		</div><!-- .grid-columns (end) -->
+	</div><!-- .sidebar-layout-inner (end) -->
+</div><!-- #sidebar-layout (end) -->
 
 <?php get_footer(); ?>

@@ -21,57 +21,39 @@ function optionsframework_options() {
 	// Theme domain
 	$domain = OF_DOMAIN;
 
-	// Test data
-	$test_array = array(
-		'one' => __('One', $domain),
-		'two' => __('Two', $domain),
-		'three' => __('Three', $domain),
-		'four' => __('Four', $domain),
-		'five' => __('Five', $domain)
-	);
-
-	// Multicheck Array
-	$multicheck_array = array(
-		'one' => __('French Toast', $domain),
-		'two' => __('Pancake', $domain),
-		'three' => __('Omelette', $domain),
-		'four' => __('Crepe', $domain),
-		'five' => __('Waffle', $domain)
-	);
-
-	// Multicheck Defaults
-	$multicheck_defaults = array(
-		'one' => '1',
-		'five' => '1'
-	);
-
 	// Background Defaults
 	$background_defaults = array(
 		'color' => '',
 		'image' => '',
 		'repeat' => 'repeat',
 		'position' => 'top center',
-		'attachment'=>'scroll' );
+		'attachment' => 'scroll' );
 
-		// Social buttons defautls
+	// Template Defaults
+	$template_defaults = array(
+		'blog' => __('Classic Blog', $domain),
+		'search' => __('Classic Search', $domain),
+		'2col' => __('2 Columns', $domain),
+		'3col' => __('3 Columns', $domain));
+
+	// Social media buttons defautls
 	$social_media_defaults = array(
 		'google'		=> 'https://plus.google.com/+AnthuanVasquez',
-		'twitter' 	=> 'http://twitter.com/oidoperfecto', // fallow me
+		'twitter' 	=> 'http://twitter.com/oidoperfecto', // Follow me :)
 		'rss'				=> get_feed_link()
 	);
+
+	// WordPress default credits
+	$wordpress = '<a href="'.esc_url('http://wordpress.org').'" title="WordPress" target="_blank">WordPress</a>';
+
+	// Author default credtis
+	$author = '<a href="'.esc_url('http://anthuanvasquez.net').'" title="Anthuan Vasquez" target="_blank">Anthuan Vasquez</a>';
 
 	// Pull all the categories into an array
 	$options_categories = array();
 	$options_categories_obj = get_categories();
 	foreach ($options_categories_obj as $category) {
 		$options_categories[$category->cat_ID] = $category->cat_name;
-	}
-
-	// Pull all tags into an array
-	$options_tags = array();
-	$options_tags_obj = get_tags();
-	foreach ( $options_tags_obj as $tag ) {
-		$options_tags[$tag->term_id] = $tag->name;
 	}
 
 	// Pull all the pages into an array
@@ -89,13 +71,21 @@ function optionsframework_options() {
 
 	$options = array();
 
-	// ----------------------------------------------
-	// Layout Settings
-	// ----------------------------------------------
+	/*
+	|--------------------------------------------------------------------------
+	| Styles
+	|--------------------------------------------------------------------------
+	*/
 
 	$options[] = array(
 		'name' => __('Styles', $domain),
 		'type' => 'heading');
+
+	$options[] = array(
+		'name' => __( 'Layout', $domain ),
+		'desc' => __( 'This is the section of layout inputs.', $domain ),
+		'class' => 'group-layout',
+		'type' 	=> 'group_start');
 
 	$options[] = array(
 		'name' => __('Layout Style', $domain),
@@ -112,14 +102,36 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => "Schema Color",
 		'desc' => "Choose schema color for the theme.",
-		'id' => "schema",
+		'id' => "skin",
 		'std' => "blue",
 		'type' => "images",
 		'options' => array(
 			'blue' => $skin_path . 'blue.png',
 			'green' => $skin_path . 'green.png',
-			'orange' => $skin_path . 'orange.png')
-	);
+			'orange' => $skin_path . 'orange.png',
+			'red' => $skin_path . 'red.png',
+			'teal' => $skin_path . 'teal.png',
+		));
+
+	$options[] = array(
+		'name' => __('Social Media Button Style', $domain),
+		'desc' => __('Select the style for your social media buttons.', $domain),
+		'id' => 'social_media_style',
+		'std' => 'normal',
+		'type' => 'select',
+		'options' => array(
+			'normal' => __('Normal', $domain),
+			'grey' => __('Grey', $domain),
+			'dark' => __('Dark', $domain),
+		));
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
+		'name' => __( 'Background', $domain ),
+		'class' => 'group-background',
+		'type' 	=> 'group_start');
 
 	$options[] = array(
 		'name' => __('Background Color', $domain),
@@ -131,7 +143,7 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => __('Background Image', $domain),
 		'desc' => __('Select the background color.', $domain),
-		'id' => 'backround_image',
+		'id' => 'background_image',
 		'std' => array(
 			'color' => '#dddddd',
 			'image' => '',
@@ -144,7 +156,7 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => __('Background Pattern', $domain),
 		'desc' => __('Select the background pattern.', $domain),
-		'id' => 'backround_pattern',
+		'id' => 'background_pattern',
 		'std' => '',
 		'type' => 'select',
 		'options' => array(
@@ -158,6 +170,14 @@ function optionsframework_options() {
 			'struckaxiom' => 'Struckaxiom',
 			'subtle_stripes' => 'Subtle Stripes',
 		));
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
+		'name' => __( 'Typography', $domain ),
+		'class' => 'group-typography',
+		'type' 	=> 'group_start');
 
 	$options[] = array(
 		'name' => __('Body Font', $domain),
@@ -194,39 +214,60 @@ function optionsframework_options() {
 		));
 
 	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
+		'name' => __('Custom', $domain),
+		'class' => 'group-custom',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Warning', $domain),
+		'desc' => __('If you have some minor CSS changes, you can put them here to override the theme default styles. However, if you plan to make a lot of CSS changes, it would be best to create a child theme.', $domain),
+		'id' => 'css_warning',
+		'type' => 'info');
+
+	$options[] = array(
 		'name' => __('Custom CSS', $domain),
 		'desc' => __('If you have some minor CSS changes, you can put them here to override the theme default styles. However, if you plan to make a lot of CSS changes, it would be best to create a child theme.', $domain),
 		'id' => 'custom_css',
 		'std' => '',
 		'type' => 'textarea');
 
-	// ----------------------------------------
-	// Layout
-	// ----------------------------------------
+	$options[] = array(
+		'type' 	=> 'group_end'
+	);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Layout
+	|--------------------------------------------------------------------------
+	*/
 
 	$options[] = array(
 		'name' => __('Layout', $domain),
 		'type' => 'heading');
 
 	$options[] = array(
+		'name' => __( 'Header', $domain ),
+		'class' => 'group-header',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
 		'name' => __('Logo Image', $domain),
 		'desc' => __('Configure the primary branding logo for the header of your site.', $domain),
 		'id' => 'logo',
-		'std' => $image_path . 'logo.png', // use the efault logo
-		'class' => 'input-text',
+		'std' => $image_path . 'logo.png', // Get the efault logo from the theme
+		'class' => 'logo-input-text',
 		'type' => 'upload');
 
 	$options[] = array(
-		'name' => __('Social Media Button Style', $domain),
-		'desc' => __('Select the style for your social media buttons.', $domain),
-		'id' => 'social_media_style',
-		'std' => 'color',
-		'type' => 'select',
-		'options' => array(
-			'normal' => __('Normal', $domain),
-			'grey' => __('Grey', $domain),
-			'dark' => __('Dark', $domain),
-		));
+		'name' => __('Favicon', $domain),
+		'desc' => __('Configure your won favicon.', $domain),
+		'id' => 'favicon',
+		'std' => '',
+		'class' => 'input-text',
+		'type' => 'upload');
 
 	$options[] = array(
 		"name" => __('Social Media', $domain),  
@@ -234,6 +275,14 @@ function optionsframework_options() {
 		"id" => "social_media",
 		"type" => "social_media",
 		"std" => $social_media_defaults);
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
+		'name' => __( 'Slider', $domain ),
+		'class' => 'group-slider',
+		'type' 	=> 'group_start');
 
 	$options[] = array(
 		'name' => __('Slider Speed', $domain),
@@ -275,116 +324,228 @@ function optionsframework_options() {
 			'hide' => __('Hide the slider play/pause', $domain)
 		));
 
-	// if ( $options_categories ) {
-	// 	$options[] = array(
-	// 		'name' => __('Select a Category', $domain),
-	// 		'desc' => __('Passed an array of categories with cat_ID and cat_name', $domain),
-	// 		'id' => 'example_select_categories',
-	// 		'type' => 'select',
-	// 		'options' => $options_categories);
-	// }
+	$options[] = array(
+		'type' 	=> 'group_end');
 
-	// if ( $options_tags ) {
-	// 	$options[] = array(
-	// 		'name' => __('Select a Tag', 'options_check'),
-	// 		'desc' => __('Passed an array of tags with term_id and term_name', 'options_check'),
-	// 		'id' => 'example_select_tags',
-	// 		'type' => 'select',
-	// 		'options' => $options_tags);
-	// }
+	$options[] = array(
+		'name' => __( 'Templates', $domain ),
+		'class' => 'group-templates',
+		'type' 	=> 'group_start');
 
-	// $options[] = array(
-	// 	'name' => __('Select a Page', $domain),
-	// 	'desc' => __('Passed an pages with ID and post_title', $domain),
-	// 	'id' => 'example_select_pages',
-	// 	'type' => 'select',
-	// 	'options' => $options_pages);
+	$options[] = array(
+		'type' 	=> 'group_end');
 
-	// $options[] = array(
-	// 	'name' => __('Example Info', $domain),
-	// 	'desc' => __('This is just some example information you can put in the panel.', $domain),
-	// 	'type' => 'info');
+	$options[] = array(
+		'name' => __( 'Footer', $domain ),
+		'class' => 'group-header',
+		'type' 	=> 'group_start');
 
-	// ---------------------------------------
-	// Content Settings
-	// ---------------------------------------
+	$options[] = array(
+		'name' => "Columns",
+		'desc' => "Choose the number of columns along.",
+		'id' => "footer_columns",
+		'std' => "4",
+		'type' => "select",
+		'options' => array(
+			'hide' => __( 'Hide Columns', $domain ),
+			'1' => __( ' 1 Column', $domain ),
+			'2' => __( ' 2 Columns', $domain ),
+			'3' => __( ' 3 Columns', $domain ),
+			'4' => __( ' 4 Columns', $domain ),
+		));
+
+	$options[] = array(
+		'name' => "Copyright Text",
+		'desc' => "Enter the copyright text you'd like to show in the footer of your site.",
+		'id' => "footer_copyright",
+		'std' => sprintf( __( 'Copyright %s %s - Powered by %s, Designed by %s.', $domain ), date('Y'), get_bloginfo('name'), $wordpress, $author ),
+		'type' => "textarea");
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Content
+	|--------------------------------------------------------------------------
+	*/
 
 	$options[] = array(
 		'name' => __('Content', $domain),
 		'type' => 'heading');
 
 	$options[] = array(
-		'name' => __('Show meta info on single posts', $domain),
-		'desc' => __('Show the meta info on single psts. Defaults is true.', $domain),
+		'name' => __( 'Single Posts', $domain ),
+		'desc' => __( 'These settings will only apply to vewing single posts.', $domain ),
+		'class' => 'group-single-posts',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Show meta info', $domain),
+		'desc' => __('Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post.', $domain),
 		'id' => 'single_meta',
 		'std' => 'show',
 		'type' => 'radio',
 		'options' => array(
-			'show' => __('Show meta', $domain),
-			'hide' => __('Hide meta', $domain),
+			'show' => __('Show meta info', $domain),
+			'hide' => __('Hide meta info', $domain),
 		));
 
 	$options[] = array(
-		'name' => __('Show thumbnails on single posts', $domain),
-		'desc' => __('Show the thumbnails on single psts. Defaults is true.', $domain),
+		'name' => __('Show featured images', $domain),
+		'desc' => __('Choose how you want your featured images to show at the top of the posts.', $domain),
 		'id' => 'single_thumb',
-		'std' => 'full',
+		'std' => 'hide',
 		'type' => 'radio',
 		'options' => array(
-			'mini' => __('Show thumbnails', $domain),
-			'full' => __('Show thumbnails with full width', $domain),
+			'small' => __('Show small thumbnails', $domain),
+			'fullwidth' => __('Show full width thumbnails', $domain),
 			'hide' => __('Hide thumbnails', $domain),
 		));
 
 	$options[] = array(
-		'name' => __('Check to Show a Hidden Text Input', $domain),
-		'desc' => __('Click here and see what happens.', $domain),
-		'id' => 'example_showhidden',
-		'type' => 'checkbox');
+		'name' => __('Show comments', $domain),
+		'desc' => __('Select if you\'d like to completely hide comments or not below the post.', $domain),
+		'id' => 'single_comments',
+		'std' => 'show',
+		'type' => 'radio',
+		'options' => array(
+			'show' => __('Show comments', $domain),
+			'hide' => __('Hide comments', $domain),
+		));
 
 	$options[] = array(
-		'name' => __('Hidden Text Input', $domain),
-		'desc' => __('This option is hidden unless activated by a checkbox click.', $domain),
-		'id' => 'example_text_hidden',
-		'std' => 'Hello',
-		'class' => 'hidden',
-		'type' => 'text');
+		'name' => __('Show share buttons', $domain),
+		'desc' => __('Select to display socials sharing in single posts.', $domain),
+		'id' => 'single_share',
+		'std' => 'show',
+		'type' => 'radio',
+		'options' => array(
+			'show' => __('Show share buttons', $domain),
+			'hide' => __('Hide share buttons', $domain),
+		));
 
 	$options[] = array(
-		'name' => __('Uploader Test', $domain),
-		'desc' => __('This creates a full size uploader that previews the image.', $domain),
-		'id' => 'example_uploader',
-		'type' => 'upload');
+		'name' => __('Show about author', $domain),
+		'desc' => __('Select to display about the author in single posts.', $domain),
+		'id' => 'single_author',
+		'std' => 'show',
+		'type' => 'radio',
+		'options' => array(
+			'show' => __('Show about author', $domain),
+			'hide' => __('Hide about author', $domain),
+		));
 
 	$options[] = array(
-		'name' =>  __('Example Background', $domain),
-		'desc' => __('Change the background CSS.', $domain),
-		'id' => 'example_background',
-		'std' => $background_defaults,
-		'type' => 'background' );
+		'name' => __('Show related posts', $domain),
+		'desc' => __('Select to display related posts in single posts.', $domain),
+		'id' => 'single_related',
+		'std' => 'show',
+		'type' => 'radio',
+		'options' => array(
+			'show' => __('Show related posts', $domain),
+			'hide' => __('Hide related posts', $domain),
+		));
 
 	$options[] = array(
-		'name' => __('Multicheck', $domain),
-		'desc' => __('Multicheck description.', $domain),
-		'id' => 'example_multicheck',
-		'std' => $multicheck_defaults, // These items get checked by default
-		'type' => 'multicheck',
-		'options' => $multicheck_array);
+		'name' => __('Show navigation posts', $domain),
+		'desc' => __('Select to display next and previous posts in single posts.', $domain),
+		'id' => 'single_navigation',
+		'std' => 'show',
+		'type' => 'radio',
+		'options' => array(
+			'show' => __('Show navigation posts', $domain),
+			'hide' => __('Hide navigation posts', $domain),
+		));
 
 	$options[] = array(
-		'name' => __('Colorpicker', $domain),
-		'desc' => __('No color selected by default.', $domain),
-		'id' => 'example_colorpicker',
-		'std' => '',
-		'type' => 'color' );
+		'type' 	=> 'group_end');
 
-	// --------------------------------------------
-	// Configuration
-	// --------------------------------------------
-	
+	$options[] = array(
+		'name' => __( 'Primary Posts', $domain ),
+		'desc' => __( 'These settings apply to your primary posts page', $domain ),
+		'class' => 'group-primary-posts',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Show featured images', $domain),
+		'desc' => __('Choose how you want your featured images to show in primary posts.', $domain),
+		'id' => 'primary_thumb',
+		'std' => 'fullwidth',
+		'type' => 'radio',
+		'options' => array(
+			'small' => __('Show small thumbnails', $domain),
+			'fullwidth' => __('Show full width thumbnails', $domain),
+			'hide' => __('Hide thumbnails', $domain),
+		));
+
+	$options[] = array(
+		'name' => __('Show excerpt or full content', $domain),
+		'desc' => __('Choose whether you want to show full content or post excerpts only.', $domain),
+		'id' => 'primary_content',
+		'std' => 'excerpt',
+		'type' => 'radio',
+		'options' => array(
+			'content' => __('Show full content', $domain),
+			'excerpt' => __('Show excerpt', $domain),
+		));
+
+	// Check if exists categories in database
+	if ( $options_categories ) {
+		$options[] = array(
+			'name' => __('Exclude Categories', $domain),
+			'desc' => __('Select any categories you\'d like to be excluded from your blog.', $domain),
+			'id' => 'exclude_categories',
+			'std' => array(),
+			'type' => 'multicheck',
+			'options' => $options_categories);
+	}
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
+		'name' => __( 'Archives', $domain ),
+		'desc' => __( 'These settings apply any time you\'re viewing search results or posts specific to a category, tag, date, author, format, etc.', $domain ),
+		'class' => 'group-archives',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Show titles', $domain),
+		'desc' => __('Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages.', $domain),
+		'id' => 'archive_title',
+		'std' => 'show',
+		'type' => 'radio',
+		'options' => array(
+			'show' => __('Show the title', $domain),
+			'hide' => __('Hide title', $domain),
+		));
+
+	$options[] = array(
+		'name' => __('Page Layout', $domain),
+		'desc' => __('Select default layout for archive page.', $domain),
+		'id' => 'archive_page',
+		'std' => 'blog',
+		'type' => 'select',
+		'options' => $template_defaults);
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Configuration
+	|--------------------------------------------------------------------------
+	*/
+
 	$options[] = array(
 		'name' => __('Configuration', $domain),
-		'type' => 'heading' );
+		'type' => 'heading');
+
+	$options[] = array(
+		'name' => __( 'Responsive', $domain ),
+		'class' => 'group-responsive',
+		'type' 	=> 'group_start');
 
 	$options[] = array(
 		'name' => __('Responsive', $domain),
@@ -396,6 +557,31 @@ function optionsframework_options() {
 			'1' => __('Yes, apply special styles to tablets and mobile devices', $domain),
 			'0' => __('No, allow website to show normally on tablets and mobile devices', $domain),
 		));
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
+		'name' => __( 'Minify', $domain ),
+		'class' => 'group-minify',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Combine and Compress CSS files', $domain),
+		'desc' => __('Combine and compress all CSS files to one. Help reduce page load time.', $domain),
+		'id' => "compress_css",
+		'std' => '0',
+		'type' => 'checkbox');
+
+	$options[] = array(
+		'name' => __('Combine and Compress Javascript files', $domain),
+		'desc' => __('Combine and compress all Javascript files to one. Help reduce page load time.', $domain),
+		'id' => "compress_js",
+		'std' => '0',
+		'type' => 'checkbox');
+
+	$options[] = array(
+		'type' 	=> 'group_end');
 
 	return $options;
 }

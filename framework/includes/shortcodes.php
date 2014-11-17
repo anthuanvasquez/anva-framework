@@ -1,6 +1,8 @@
 <?php
 
 // Hook Shortcodes
+add_filter( 'after_setup_theme', 'of_shortcodes_setup'  );
+
 function of_shortcodes_setup() {
 	
 	add_shortcode( 'dropcap', 'dropcap_func' );
@@ -26,7 +28,6 @@ function of_shortcodes_setup() {
 	add_shortcode( 'column_one_last', 'column_one_last_func' );
 	
 }
-add_filter( 'after_setup_theme', 'of_shortcodes_setup'  );
 
 // [dropcap foo="foo-value"]
 function dropcap_func($atts, $content) {
