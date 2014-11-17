@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Widgets
+   ========================================================================== */
+
+/*
+ * Main widgets
+ */
+.widget {
+	margin-bottom: $padding+10;
+	
+	ul {
+		@include reset-list();
+	}
+
+	p:last-child {
+		margin: 0;
+	}
+}
+
+
+/*
+ * Custom Posts
+ */
+.widget_custom_posts {
+	.posts {
+		@include reset-list();
+		li {
+			margin-bottom: 12px;
+
+			h4 {
+				margin: 0 0 5px;
+			}
+
+			img {
+				border: 4px solid #fff;
+				border-radius: 4px;
+				box-shadow: 0 0 0 1px #ddd;
+				float: left;
+				margin: 0 15px 0 0;
+				max-width: 90px;
+			}
+
+			.post-date {
+				display: block;
+			}
+		}
+	}
+}
+
+/*
+ * Social Media
+ */
+.widget_social_media {
+	.social-media {
+		ul {
+			margin-top: 10px;
+		}
+	}
+}

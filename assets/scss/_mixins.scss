@@ -1,0 +1,233 @@
+// Custom mixins
+// ========================================================================== //
+
+// Font Family for HTML Doc and Body
+@mixin font-stack-body {
+	font-family: $base-font-family;
+	font-weight: $base-font-weight;
+}
+
+// Font for Headings
+@mixin font-stack-headers {
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+}
+
+// Font for Code ex. pre, code
+@mixin font-stack-code {
+	font-family: $code-font-family;
+}
+
+// Font Icons
+@mixin font-stack-icon {
+	font-family: $icon-font-family;
+	font-style: normal;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Base Containers Width
+@mixin container-width( $width, $pad ) {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: $pad;
+	padding-right: $pad;
+	width: $width;
+}
+
+// Reset list ex. ul, ol
+@mixin reset-list() {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+// Reset float elements 
+@mixin reset-float( $margin: right, $width: true ) {
+	float: none;
+	
+	@if $margin == 'right' {
+		margin-right: 0;
+	} @else if $margin  == 'left' {
+		margin-left: 0;
+	}
+	
+	@if $width {
+		width: 100%;
+	}
+}
+
+// Display elements to inline-block
+@mixin inline-block() {
+	display: inline-block;
+	@if browser('ie') == '8' {
+		/* IE7/8 Hack */
+		*display: inline;
+		*zoom: 1;
+	}
+}
+
+// Layout Boxed
+@mixin container-class() {
+	#top #header,
+	#main,
+	#bottom #footer {
+		@content;
+	}
+}
+
+// Group inputs
+@mixin group-inputs() {
+	input[type="text"],
+	input[type="datetime"],
+	input[type="date"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="url"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	select,
+	textarea {
+		@content;
+	}
+}
+
+// Group buttons
+@mixin group-buttons() {
+	.button,
+	a.button,
+	button,
+	button.button,
+	input.button,
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"]	{
+		@content;
+	}
+}
+
+// Woocommerce products box
+@mixin woocommerce-product(
+	$border: 1px solid #ccc,
+	$padding: 0 0 25px,
+	$margin-bottom: 20px,
+	$min-height: 360px,
+	$trans: true ) {
+	border: $border;
+	box-sizing: border-box;
+	margin-bottom: $margin-bottom;
+	min-height: $min-height;
+	padding: $padding;
+	position: relative;
+	@if $trans {
+		transition: all .2s ease;
+	}
+}
+
+// Animation
+@mixin animation($animation) {
+	animation-name: $animation;
+}
+
+// Keyframes Animations
+@mixin animation-keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@-o-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+// Animation Delay
+@mixin animation-delay($duration, $delay, $count) {
+	animation-duration: #{$duration}s;
+	animation-delay: #{$delay}s;
+	animation-iteration-count: $count;
+}
+
+@mixin spritesheet-position($x: 0, $y: 0, $width: 0, $height: 0) {
+	background-position: $x $y;
+	width: $width;
+	height: $height;
+}
+
+// Include 32x32 icons by default
+@mixin spritesheet-icon($dimensions: 32px) {
+	.social-digg {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 0;
+	}
+
+	.social-dribbble {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions);
+	}
+
+	.social-facebook {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*2;
+	}
+
+	.social-gplus {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*3;
+	}
+
+	.social-instagram {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*4;
+	}
+
+	.social-linkedin {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*5;
+	}
+
+	.social-pinterest {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*6;
+	}
+
+	.social-rss {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*7;
+	}
+
+	.social-twitter {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*8;
+	}
+
+	.social-vimeo {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*9;
+	}
+
+	.social-youtube {
+		width: $dimensions;
+		height: $dimensions;
+		background-position: 0 (-$dimensions)*10;
+	}
+}

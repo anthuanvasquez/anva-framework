@@ -1,0 +1,98 @@
+html, body {
+	color: #666666;
+	@include font-stack-body();
+	font-size: 13px;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+body {
+	background: color(body);
+}
+
+html,
+button,
+input,
+select,
+textarea {
+  color: $base-font-color;
+}
+
+/*
+ * Remove underline on links
+ */
+a {
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	text-decoration: none;
+}
+
+/*
+ * Fix ul and ol list in article tags
+ */
+article {
+	
+	ul, ol ul, ul ul {
+		list-style: disc;
+	}
+	
+	ol, ul ol, ol ol {
+		list-style: decimal;
+	}
+
+}
+
+/*
+ * Fluid Images
+ */
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,
+canvas,
+img,
+video {
+	vertical-align: middle;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ * Selection.
+ */
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}

@@ -1,0 +1,35 @@
+/*
+ * Default Button Styles
+ */
+@include group-buttons() {
+	background: transparent;
+	border: 2px solid #000;
+	border-radius: 0;
+	color: #000;
+	cursor: pointer;
+	@include inline-block();
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 12px;
+	position: relative;
+	text-align: center;
+	text-shadow: none; 
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all .2s ease;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	-webkit-font-smoothing: antialiased;
+
+	&:hover {
+		background: #ff0000;
+		border-color: #ff0000;
+		color: #fff;
+	}
+
+	&:active {
+		top: 1px;
+	}
+
+}

@@ -1,0 +1,40 @@
+// Convert PX to EM units
+@function em($target, $context: $base-font-size) {
+	@if $target == 0 {
+		@return 0;
+	}
+	@return $target / $context + em;
+}
+
+// Convert PX to REM units
+@function rem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+// Return browser version
+@function browser($key) {
+	@if map-has-key($browser-minimum-versions, $key) {
+		@return map-get($browser-minimum-versions, $key);
+	}
+	@warn "Unknown `#{$key}` in $browser-minimum-versions.";
+	@return null;
+}
+
+// Return value from $breakpoints map
+@function break($key) {
+	@if map-has-key($breakpoints, $key) {
+		@return map-get($breakpoints, $key);
+	}
+	@warn "Unknown `#{$key}` in $breakpoints.";
+	@return null;
+}
+
+// Return the color from $palette map
+@function color($key) {
+	@if map-has-key($palette, $key) {
+		@return map-get($palette, $key);
+	}
+	@warn "Unknown `#{$key}` in $palette.";
+	@return null;
+}
