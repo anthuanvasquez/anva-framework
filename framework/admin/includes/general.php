@@ -80,7 +80,7 @@ function of_get_font_face( $option ) {
  */
 function of_get_font_size( $option ) {
 
-	$size = '12px'; // defuault font size
+	$size = '13px'; // defuault font size
 
 	if ( isset( $option['size'] ) ) {
 		$size = $option['size'];

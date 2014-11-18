@@ -416,6 +416,19 @@ time.updated {
     background: #2ACBF5;
     color: #fff; }
 
+/* Author info */
+.entry-about-author {
+  background: #f2f2f2;
+  margin-bottom: 20px;
+  padding: 20px; }
+
+.author-description h3 {
+  margin-top: 0; }
+
+.author-link {
+  display: block;
+  margin-top: 10px; }
+
 #bottom {
   background: #222;
   color: #fff;

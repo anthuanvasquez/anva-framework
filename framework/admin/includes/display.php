@@ -18,15 +18,23 @@ function of_admin_head_scripts() {
 	?>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
+
+		jQuery('#logo_retina_check').click(function() {
+			jQuery('#section-logo_retina').fadeToggle(400);
+		});
+
+		if (jQuery('#logo_retina_check:checked').val() !== undefined) {
+			jQuery('#section-logo_retina').show();
+		}
+				
 		jQuery('#body_font_face').change(function() {
+			jQuery('#body_font_sample_text').css('font-family', jQuery(this).val());
 
-				jQuery('#body_font_sample_text').css('font-family', jQuery(this).val());
-
-				if ( jQuery(this).val() == 'google' ) {
-	  			jQuery('#body_font_google').show();
-	  		} else {
-	  			jQuery('#body_font_google').hide();
-	  		}
+			if ( jQuery(this).val() == 'google' ) {
+				jQuery('#body_font_google').show();
+			} else {
+				jQuery('#body_font_google').hide();
+			}
 		});
 	});
 	</script>

@@ -7,9 +7,13 @@ function of_get_string_locals() {
 	
 	$domain = OF_DOMAIN;
 	$localize = array(
-		'menu'										=> __( 'Menú', $domain ),
-		'menu_primary' 						=> __( 'Menú Primario', $domain ),
-		'menu_secondary' 					=> __( 'Menú Secundario', $domain ),
+		'menu'										=> __( 'Menu', $domain ),
+		'menu_primary' 						=> __( 'Primary Menu', $domain ),
+		'menu_secondary' 					=> __( 'Secondary Menu', $domain ),
+		'pages' 									=> __( 'Pages', $domain ),
+		'edit_post' 							=> __( 'Edit', $domain ),
+		'tags'										=> __( 'Tags', $domain ),
+		'posts_by_author'					=> __( 'View all posts by', $domain ),
 		'menu_message'						=> __( 'Por favor configura el menú en Administración _> Apariencia _> Menús', $domain ),
 		'404_title'								=> __( 'Whoops! página no encontrada', $domain ),
 		'404_description'					=> __( 'Disculpa, pero la página solicitada no se pudo encontrar. Prueba haciendo una búsqueda en el sitio o regresa a la página principal.', $domain ),

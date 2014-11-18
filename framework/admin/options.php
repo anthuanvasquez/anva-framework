@@ -129,6 +129,28 @@ function optionsframework_options() {
 		'type' 	=> 'group_end');
 
 	$options[] = array(
+		'name' => __( 'Links', $domain ),
+		'class' => 'group-links',
+		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Link Color', $domain),
+		'desc' => __('Set the link color.', $domain),
+		'id' => 'link_color',
+		'std' => '#ff0000',
+		'type' => 'color');
+
+	$options[] = array(
+		'name' => __('Link Color (:Hover)', $domain),
+		'desc' => __('Set the link color.', $domain),
+		'id' => 'link_color_hover',
+		'std' => '#ff0000',
+		'type' => 'color');
+
+	$options[] = array(
+		'type' 	=> 'group_end');
+
+	$options[] = array(
 		'name' => __( 'Background', $domain ),
 		'class' => 'group-background',
 		'type' 	=> 'group_start');
@@ -214,6 +236,14 @@ function optionsframework_options() {
 		));
 
 	$options[] = array(
+		'name' => __('H1', $domain),
+		'desc' => __('Select the size for H1 tag in px.', $domain),
+		'id' => 'heading_h1',
+		'std' => '27',
+		'type' => 'select',
+		'options' => of_recognized_font_sizes());
+
+	$options[] = array(
 		'type' 	=> 'group_end');
 
 	$options[] = array(
@@ -258,7 +288,21 @@ function optionsframework_options() {
 		'desc' => __('Configure the primary branding logo for the header of your site.', $domain),
 		'id' => 'logo',
 		'std' => $image_path . 'logo.png', // Get the efault logo from the theme
-		'class' => 'logo-input-text',
+		'class' => 'logo-input',
+		'type' => 'upload');
+
+	$options[] = array(
+		'name' => __('Add Retina Logo', $domain),
+		'desc' => __('Add retina display logo.', $domain),
+		'id' => 'logo_retina_check',
+		'type' => 'checkbox');
+
+	$options[] = array(
+		'name' => __('Retina Logo', $domain),
+		'desc' => __('Configure the primary branding logo for the header of your site.', $domain),
+		'id' => 'logo_retina',
+		'std' => '', // Get the efault logo from the theme
+		'class' => 'logo-retina-input hidden',
 		'type' => 'upload');
 
 	$options[] = array(
@@ -559,12 +603,32 @@ function optionsframework_options() {
 		));
 
 	$options[] = array(
+		'name' => __('Add styles to tablet devices only', $domain),
+		'desc' => __('This CSS styles apply to breakpoint @media screen and (max-width: 992px).', $domain),
+		'id' => 'responsive_css_992',
+		'std' => '',
+		'type' => 'textarea');
+
+	$options[] = array(
+		'name' => __('Add styles to mobile devices only', $domain),
+		'desc' => __('This CSS styles apply to breakpoint @media screen and (max-width: 768px).', $domain),
+		'id' => 'responsive_css_992',
+		'std' => '',
+		'type' => 'textarea');
+
+	$options[] = array(
 		'type' 	=> 'group_end');
 
 	$options[] = array(
 		'name' => __( 'Minify', $domain ),
 		'class' => 'group-minify',
 		'type' 	=> 'group_start');
+
+	$options[] = array(
+		'name' => __('Warning', $domain),
+		'desc' => __('If you have a cache plugin installed in your site desactive this options.', $domain),
+		'id' => 'css_warning',
+		'type' => 'info');
 
 	$options[] = array(
 		'name' => __('Combine and Compress CSS files', $domain),
