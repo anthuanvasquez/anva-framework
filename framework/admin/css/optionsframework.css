@@ -231,12 +231,16 @@
 	margin-bottom:10px;
 }
 
+#optionsframework .controls .of-radio-img-box {
+	margin: 0 5px 10px 0;
+	float: left;
+}
+
 #optionsframework .controls .of-radio-img-img {
 	border:3px solid #f9f9f9;
-	margin:0 5px 10px 0;
 	display:none;
 	cursor:pointer;
-	float:left;
+	
 }
 
 #optionsframework .controls .of-radio-img-selected {
