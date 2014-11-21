@@ -205,10 +205,13 @@ class Options_Framework_Interface {
 					if ( $val != '' && ($val == $key) ) {
 						$selected = ' of-radio-img-selected';
 					}
+					$output .= '<div class="of-radio-img-box">';
 					$output .= '<input type="radio" id="' . esc_attr( $value['id'] .'_'. $key) . '" class="of-radio-img-radio" value="' . esc_attr( $key ) . '" name="' . esc_attr( $name ) . '" '. checked( $val, $key, false ) .' />';
 					$output .= '<div class="of-radio-img-label">' . esc_html( $key ) . '</div>';
-					$output .= '<img src="' . esc_url( $option ) . '" alt="' . $option .'" class="of-radio-img-img' . $selected .'" onclick="document.getElementById(\''. esc_attr($value['id'] .'_'. $key) .'\').checked=true;" />';
+					$output .= '<img src="' . esc_url( $option ) . '" alt="' . $key .'" class="of-radio-img-img' . $selected .'" onclick="document.getElementById(\''. esc_attr($value['id'] .'_'. $key) .'\').checked=true;" />';
+					$output .= '</div>';
 				}
+				$output .= '<div class="clear"></div>';
 				break;
 
 			// Checkbox
@@ -332,7 +335,7 @@ class Options_Framework_Interface {
 				$output .= implode( '', $typography_fields );
 
 				// Google Font support
-				$output .= '<div id="'.$value['id'].'_google" class="google-font">';
+				$output .= '<div id="'.$value['id'].'_google" class="google-font hidden">';
 				$output .= '<h5>'.__( 'Enter the name of a font from the <a href="'.esc_url('http://www.google.com/webfonts').'" target="_blank">Google Font Directory</a>.', 'tm' ).'</h5>';
 				$output .= '<input type="text" id="' . esc_attr( $value['id'] . '_google' ) . '" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr( $typography_stored['google'] ).'" />';
 				$output .= '<p class="note">'. esc_html__( 'Example Font Name', OF_DOMAIN ) . ': ' .'"Open Sans"</p>';
