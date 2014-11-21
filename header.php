@@ -10,7 +10,7 @@
  * @author		Anthuan Vasquez
  * @copyright	Copyright (c) Anthuan Vasquez
  * @link			http://anthuanvasquez.net
- * @package  	WordPress Framework
+ * @package  	CodeTheme WordPress Framework
  */
 ?><!doctype html>
 <html <?php language_attributes(); ?>>

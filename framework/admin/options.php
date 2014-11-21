@@ -239,7 +239,7 @@ function optionsframework_options() {
 		'name' => __('H1', $domain),
 		'desc' => __('Select the size for H1 tag in px.', $domain),
 		'id' => 'heading_h1',
-		'std' => '27',
+		'std' => '27px',
 		'type' => 'select',
 		'options' => of_recognized_font_sizes());
 

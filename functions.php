@@ -11,11 +11,13 @@ define( 'THEME_ID', 'theme' );
 define( 'THEME_VERSION', '1.0.0');
 define( 'OF_ADMIN', get_template_directory_uri() . '/framework/admin/' );
 
+// Admin
 include_once ( get_template_directory() . '/framework/admin/options-framework.php' );
 include_once ( get_template_directory() . '/framework/admin/options.php' );
 include_once ( get_template_directory() . '/framework/admin/includes/general.php' );
 include_once ( get_template_directory() . '/framework/admin/includes/display.php' );
 
+// Framework
 include_once ( get_template_directory() . '/framework/init.php' );
 
 /* 
