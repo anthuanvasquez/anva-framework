@@ -54,7 +54,10 @@ function of_archive_title() {
 
 }
 
-function of_post_nav() {
+/**
+ * Post navigation
+ */
+function of_post_navigation() {
 	// Don't print empty markup if there's nowhere to navigate.
 	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
 	$next = get_adjacent_post( false, '', false );
@@ -64,13 +67,60 @@ function of_post_nav() {
 	}
 	?>
 	<nav class="post-navigation" role="navigation">
-		<div class="navigation-links">
+		<div class="post-navigation-inner">
+			<div class="row post-navigation-content">
+
 			<?php
-				previous_post_link( '<div class="nav-previous">%link</div>', of_get_local( 'prev' ) );
-				next_post_link( '<div class="nav-next">%link</div>', of_get_local( 'next' ) );
+				previous_post_link( '<div class="navigation-previous col-sm-6 text-center">'.of_get_local( 'prev' ).' <h3>%link</h3></div>' );
+				next_post_link( '<div class="navigation-previous col-sm-6 text-center">'.of_get_local( 'next' ).' <h3>%link</h3></div>' );
 			?>
-		</div><!-- .nav-links (end) -->
+		</div><!-- .post-navigation-inner (end) -->
 	</nav><!-- .post-navigation (end) -->
+	<?php
+}
+
+function of_related_posts() {
+	?>
+	<div class="related-posts">
+		<h2 class="text-center"><?php _e( 'YOU MIGHT ALSO LIKE', OF_DOMAIN ); ?></h2>
+		<div class="row related-posts-content">
+		<?php
+			global $post;
+			$categories = get_the_category( $post->ID );
+			
+			if ( $categories ) :
+				
+				$category_ids = array();
+
+				foreach( $categories as $category ) {
+					$category_ids[] = $category->term_id;
+				}
+
+				$args = array(
+					'category__in' => $category_ids,
+					'post__not_in' => array( $post->ID ),
+					'posts_per_page' => 3
+				);
+					
+				$the_query = new WP_Query( $args );
+				
+				while ( $the_query->have_posts() ) :
+					$the_query->the_post();
+				?>
+				<div class="related-post-items col-sm-4">
+					<div class="related-post-thumbnail">
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail( 'blog_medium', ['class' => ' thumbnail'] ); ?>
+						</a>
+					</div>
+					<h3 class="related-post-title h4 text-center"><?php the_title(); ?></h3>
+				</div>
+				<?php
+				endwhile;
+			endif;
+			wp_reset_query();
+		?>
+	</div><!-- .related-posts (end) -->
 	<?php
 }
 

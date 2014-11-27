@@ -179,6 +179,35 @@
 	width: 48%;
 }
 
+#optionsframework .ui-slider-horizontal {
+	height: 5px;;
+}
+
+#optionsframework  .ui-slider .ui-slider-handle {
+	width: 15px;
+	height: 15px;
+	border-radius: 8px;
+	outline: none;
+	top: -7px;
+}
+
+#optionsframework .ui-slider-horizontal.ui-slider-pips {
+	margin-bottom: 1.6em;
+}
+
+#optionsframework .ui-slider-pips .ui-slider-label {
+	top: -2px;
+}
+
+#optionsframework .ui-slider-pips .ui-slider-line {
+	visibility: hidden;
+	display: none;
+}
+
+#optionsframework .ui-slider-float .ui-slider-pip .ui-slider-tip-label {
+	display: none;
+}
+
 /*#optionsframework .controls .of-typography-size {
 	width:80px;
 	float:left
@@ -328,6 +357,31 @@
 	left:-4px;
 	text-indent:-9999px;
 	width:16px;
+}
+
+#optionsframework .of-input-file {
+	margin-bottom: 10px;
+	background: #fff;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	box-sizing: border-box;
+	font-size: 13px;
+	line-height: 13px;
+	margin-bottom: 10px;
+	padding: 5px 8px 6px 8px;
+	width: 100%;
+}
+
+#optionsframework .import-export-settings .section-info p {
+	margin-top: 0;
+}
+
+#optionsframework .section-info a {
+	text-decoration: none;
+}
+
+#optionsframework .import-export-settings .section-info {
+	margin-bottom: 20px;
 }
 
 #optionsframework .screenshot .no_image .file_link {

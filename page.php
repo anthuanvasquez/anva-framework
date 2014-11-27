@@ -32,6 +32,16 @@
 	
 		</div><!-- .grid-columns (end) -->
 	</div><!-- .sidebar-layout-inner (end) -->
+
+	<?php
+	$page = get_page($post->ID);
+	$current_page_id = $page->ID;
+	$ppb_form_data_order = '';
+	$ppb_form_item_arr = array();
+	$ppb_enable = get_post_meta($current_page_id, 'ppb_enable', true);
+	pp_apply_builder($current_page_id);
+	?>
+
 </div><!-- #sidebar-layout (end) -->
 
 <?php get_footer(); ?>

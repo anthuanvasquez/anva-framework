@@ -54,15 +54,22 @@ class Options_Framework_Admin {
 	 */
 	function settings_init() {
 
+		global $pagenow;
+
 		// Get the option name
 		$options_framework = new Options_Framework;
 		$name = $options_framework->get_option_name();
 
 		// Registers the settings fields and callback
 		register_setting( 'optionsframework', $name, array ( $this, 'validate_options' ) );
-
+		
 		// Displays notice after options save
 		add_action( 'optionsframework_after_validate', array( $this, 'save_options_notice' ) );
+
+		// Redirect to options panel
+		if ( is_admin() && isset( $_GET['activated']) && 'themes.php' == $pagenow ) :
+			wp_redirect( admin_url( 'themes.php?page=' . $name ) );
+		endif;
 
 	}
 
@@ -138,8 +145,11 @@ class Options_Framework_Admin {
 		if ( $this->options_screen != $hook )
 			return;
 
-		wp_enqueue_style( 'optionsframework', OF_ADMIN . 'css/optionsframework.css', array(),  Options_Framework::VERSION );
 		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_style( 'optionsframework', OF_ADMIN . 'css/optionsframework.css', array(), Options_Framework::VERSION );
+		wp_enqueue_style( 'jquery-slider-pips', OF_ADMIN . 'css/jquery-ui-slider-pips.css', array(),  '' );
+		wp_enqueue_style( 'jquery-ui-custom', OF_ADMIN . 'css/jquery-ui-custom.min.css', array(), '' );
+		
 	}
 
 	/**
@@ -153,6 +163,7 @@ class Options_Framework_Admin {
 			return;
 
 		// Enqueue custom option panel JS
+		wp_enqueue_script( 'jquery-slider-pips', OF_ADMIN . 'js/jquery-ui-slider-pips.min.js', array( 'jquery' ), '' );
 		wp_enqueue_script( 'options-custom', OF_ADMIN . 'js/options-custom.js', array( 'jquery','wp-color-picker' ), Options_Framework::VERSION );
 
 		// Inline scripts from options-interface.php
@@ -177,11 +188,17 @@ class Options_Framework_Admin {
 	 * @since 1.7.0
 	 */
 	 function options_page() { ?>
-
+		
 		<div id="optionsframework-wrap" class="wrap">
 
-		<?php $menu = $this->menu_settings(); ?>
-		<h2><?php echo esc_html( $menu['page_title'] ); ?></h2>
+			<?php $menu = $this->menu_settings(); ?>
+			<h2><?php echo esc_html( $menu['page_title'] ); ?></h2>
+
+			<?php if ( isset( $_GET['activated']) && true == $_GET['activated'] ) : ?>
+				<div class="section-info updated">
+					The theme is activated.
+				</div>
+			<?php endif; ?>
 
 			<h2 class="nav-tab-wrapper">
 					<?php echo Options_Framework_Interface::optionsframework_tabs(); ?>
@@ -191,18 +208,18 @@ class Options_Framework_Admin {
 
 			<div id="optionsframework-metabox" class="metabox-holder">
 				<div id="optionsframework">
-				<form action="options.php" method="post">
-				<?php settings_fields( 'optionsframework' ); ?>
-				<?php Options_Framework_Interface::optionsframework_fields(); /* Settings */ ?>
-				<div id="optionsframework-submit" class="postbox">
-					<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'textdomain' ); ?>" />
-					<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'textdomain' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'textdomain' ) ); ?>' );" />
-					<div class="clear"></div>
-				</div>
-				</form>
-			</div> <!-- / #optionsframework (end) -->
-		</div><!-- #optionsframework-metabox (end) -->
-		<?php do_action( 'optionsframework_after' ); ?>
+					<form action="options.php" method="post">
+						<?php settings_fields( 'optionsframework' ); ?>
+						<?php Options_Framework_Interface::optionsframework_fields(); /* Settings */ ?>
+						<div id="optionsframework-submit" class="postbox">
+							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'textdomain' ); ?>" />
+							<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'textdomain' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'textdomain' ) ); ?>' );" />
+							<div class="clear"></div>
+						</div>
+					</form>
+				</div> <!-- / #optionsframework (end) -->
+			</div><!-- #optionsframework-metabox (end) -->
+			<?php do_action( 'optionsframework_after' ); ?>
 		</div> <!-- / .wrap -->
 
 	<?php

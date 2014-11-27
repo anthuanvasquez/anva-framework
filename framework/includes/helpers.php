@@ -22,6 +22,8 @@ function of_body_classes( $classes ) {
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
+	// Add language name class to body
+	$classes[] = 'lang_' . get_bloginfo( 'language' );
 	return apply_filters( 'of_body_classes', $classes );
 }
 
@@ -115,15 +117,6 @@ function of_setup_author() {
 }
 
 /*
- * Get the current offset
- */
-function of_get_offset() {
-	$number = 10;
-	$page = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-	return 1 == $page ? ( $page - 1 ) : ( ( $page - 1 ) * $number );
-}
-
-/*
  * Get post query by arguments
  */
 function of_get_post_query( $query_args = '' ) {
@@ -179,13 +172,12 @@ function of_get_widget_args( $id, $name, $description ) {
 	return apply_filters( 'of_widget_args', $args );
 }
 
-/*
+/**
  * Limit chars in string
- * @since 1.5.0
+ *
  * @return $string
  */
 function of_truncate( $string, $length = 100 ) {
-
 	$string = trim( $string );
 
 	if ( strlen( $string ) <= $length) {
@@ -195,7 +187,6 @@ function of_truncate( $string, $length = 100 ) {
 		$string = substr( $string, 0, $length ) . '...';
 		return $string;
 	}
-
 }
 
 function of_excerpt_limit( $length = '' ) {

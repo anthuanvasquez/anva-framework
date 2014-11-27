@@ -46,6 +46,7 @@ class Options_Framework_Interface {
 		$counter = 0;
 		$menu = '';
 
+		// Read options array
 		foreach ( $options as $value ) :
 
 			$val = '';
@@ -144,12 +145,14 @@ class Options_Framework_Interface {
 				$output .= apply_filters( 'optionsframework_' . $value['type'], $option_name, $value, $val );
 			}
 
-
+			/*
+			 * Generate options type
+			 */
 			switch ( $value['type'] ) :
 
 			// Basic text input
 			case 'text':
-				$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '"' . $placeholder . ' />';
+				$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input of-input-text" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '"' . $placeholder . ' />';
 				break;
 
 			// Basic number input
@@ -250,7 +253,7 @@ class Options_Framework_Interface {
 					if ( $val !=  $value['std'] )
 						$default_color = ' data-default-color="' .$value['std'] . '" ';
 				}
-				$output .= '<input name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" id="' . esc_attr( $value['id'] ) . '" class="of-color"  type="text" value="' . esc_attr( $val ) . '"' . $default_color .' />';
+				$output .= '<input name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" id="' . esc_attr( $value['id'] ) . '" class="of-color" type="text" value="' . esc_attr( $val ) . '"' . $default_color .' />';
 
 				break;
 
@@ -258,6 +261,14 @@ class Options_Framework_Interface {
 			case "upload":
 				$output .= Options_Framework_Media_Uploader::optionsframework_uploader( $value['id'], $val, null );
 
+				break;
+
+			// Range Slider
+			case "range":
+				// $output .= of_range_slider_fields( $value['id'], $option_name, $val );
+				$output .= '<div id="' . esc_attr( $value['id'] ) . '_range"></div>';
+				$output .= '<input id="' . esc_attr( $value['id'] ) .'" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" class="of-input-range hidden" type="text" value="' . esc_attr( $val ) . '" />';
+				
 				break;
 
 			// Typography
@@ -341,6 +352,7 @@ class Options_Framework_Interface {
 				$output .= '<p class="note">'. esc_html__( 'Example Font Name', OF_DOMAIN ) . ': ' .'"Open Sans"</p>';
 				$output .= '</div>';
 
+				// Font preview box
 				$sample_text = apply_filters( 'of_typography_sample_text', 'Lorem Ipsum' );
 				$output .= '<div id="' . esc_attr( $value['id'] . '_sample_text' ) . '" class="sample-text-font" style="font-family: Arial;">' . esc_html( $sample_text ) . '</div>';
 
@@ -460,6 +472,7 @@ class Options_Framework_Interface {
 
 			endswitch;
 
+			// Close div and add descriptions
 			if ( ( $value['type'] != "group_start" ) && ( $value['type'] != "group_end" ) ) {
 				if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
 					
@@ -473,6 +486,7 @@ class Options_Framework_Interface {
 				}
 			}
 
+			// Print html output
 			echo $output;
 		
 		endforeach;

@@ -22,6 +22,13 @@ add_filter( 'of_sanitize_text', 'sanitize_text_field' );
 add_filter( 'of_sanitize_password', 'sanitize_text_field' );
 
 /**
+ * Sanitization for range slider input
+ *
+ * @link http://developer.wordpress.org/reference/functions/sanitize_text_field/
+ */
+add_filter( 'of_sanitize_range', 'sanitize_text_field' );
+
+/**
  * Sanitization for select input
  *
  * Validates that the selected option is a valid option.
@@ -479,7 +486,7 @@ function of_sanitize_social_media( $input ) {
 		// Theme Options page and so it hasn't been
 		// formatted yet.
 		$output = array();
-		foreach ( $input['profiles'] as $key => $source ) {
+		foreach ( $input['profiles'] as $key => $profile ) {
 			$output[$key] = $input['profiles'][$key];
 		}
 

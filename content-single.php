@@ -26,6 +26,16 @@
 			if ( 'hide' != of_get_option( 'single_author' ) ) :
 				get_template_part( 'templates/content', 'about_author' );
 			endif;
+
+			// Navigation
+			if ( 'hide' != of_get_option( 'single_nav' ) ) :
+				of_post_navigation();
+			endif;
+
+			// Related Posts
+			if ( 'hide' != of_get_option( 'single_related' ) ) :
+				of_related_posts();
+			endif;
 		?>
 	</div>
 </article>

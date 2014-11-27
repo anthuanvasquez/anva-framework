@@ -39,6 +39,7 @@ function optionsframework_init() {
 	// Loads the required Options Framework classes.
 	require plugin_dir_path( __FILE__ ) . 'includes/class-options-framework.php';
 	require plugin_dir_path( __FILE__ ) . 'includes/class-options-framework-admin.php';
+	require plugin_dir_path( __FILE__ ) . 'includes/class-options-framework-importer.php';
 	require plugin_dir_path( __FILE__ ) . 'includes/class-options-interface.php';
 	require plugin_dir_path( __FILE__ ) . 'includes/class-options-media-uploader.php';
 	require plugin_dir_path( __FILE__ ) . 'includes/class-options-sanitization.php';

@@ -239,9 +239,79 @@ function optionsframework_options() {
 		'name' => __('H1', $domain),
 		'desc' => __('Select the size for H1 tag in px.', $domain),
 		'id' => 'heading_h1',
-		'std' => '27px',
-		'type' => 'select',
-		'options' => of_recognized_font_sizes());
+		'std' => '27',
+		'type' => 'range',
+		'options' => array(
+			'min' => 9,
+			'max' => 72,
+			'step' => 1,
+			'format' => 'px',
+		));
+
+	$options[] = array(
+		'name' => __('H2', $domain),
+		'desc' => __('Select the size for H2 tag in px.', $domain),
+		'id' => 'heading_h2',
+		'std' => '24',
+		'type' => 'range',
+		'options' => array(
+			'min' => 9,
+			'max' => 72,
+			'step' => 1,
+			'format' => 'px',
+		));
+
+	$options[] = array(
+		'name' => __('H3', $domain),
+		'desc' => __('Select the size for H3 tag in px.', $domain),
+		'id' => 'heading_h3',
+		'std' => '18',
+		'type' => 'range',
+		'options' => array(
+			'min' => 9,
+			'max' => 72,
+			'step' => 1,
+			'format' => 'px',
+		));
+
+	$options[] = array(
+		'name' => __('H4', $domain),
+		'desc' => __('Select the size for H4 tag in px.', $domain),
+		'id' => 'heading_h4',
+		'std' => '14',
+		'type' => 'range',
+		'options' => array(
+			'min' => 9,
+			'max' => 72,
+			'step' => 1,
+			'format' => 'px',
+		));
+
+	$options[] = array(
+		'name' => __('H5', $domain),
+		'desc' => __('Select the size for H5 tag in px.', $domain),
+		'id' => 'heading_h5',
+		'std' => '13',
+		'type' => 'range',
+		'options' => array(
+			'min' => 9,
+			'max' => 72,
+			'step' => 1,
+			'format' => 'px',
+		));
+
+	$options[] = array(
+		'name' => __('H6', $domain),
+		'desc' => __('Select the size for H6 tag in px.', $domain),
+		'id' => 'heading_h6',
+		'std' => '11',
+		'type' => 'range',
+		'options' => array(
+			'min' => 9,
+			'max' => 72,
+			'step' => 1,
+			'format' => 'px',
+		));
 
 	$options[] = array(
 		'type' 	=> 'group_end');

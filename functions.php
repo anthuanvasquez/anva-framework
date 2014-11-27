@@ -16,9 +16,10 @@ include_once ( get_template_directory() . '/framework/admin/options-framework.ph
 include_once ( get_template_directory() . '/framework/admin/options.php' );
 include_once ( get_template_directory() . '/framework/admin/includes/general.php' );
 include_once ( get_template_directory() . '/framework/admin/includes/display.php' );
-
-// Framework
 include_once ( get_template_directory() . '/framework/init.php' );
+
+// Tests
+include_once ( get_template_directory() . '/framework/includes/content-builder.php' );
 
 /* 
  * Change the options.php directory.
@@ -122,6 +123,12 @@ function theme_styles() {
 	$custom_css = of_get_option( 'custom_css' );
 	$body_font = of_get_option( 'body_font' );
 	$heading_font = of_get_option( 'heading_font' );
+	$heading_h1 = of_get_option( 'heading_h1', '27' );
+	$heading_h2 = of_get_option( 'heading_h2', '24' );
+	$heading_h3 = of_get_option( 'heading_h3', '18' );
+	$heading_h4 = of_get_option( 'heading_h4', '14' );
+	$heading_h5 = of_get_option( 'heading_h5', '13' );
+	$heading_h6 = of_get_option( 'heading_h6', '11' );
 	$background_color = of_get_option( 'background_color' );
 	$background_pattern = of_get_option( 'background_pattern' );
 
@@ -139,6 +146,24 @@ function theme_styles() {
 		font-family: <?php echo of_get_font_face( $heading_font ); ?>;
 		font-style: <?php echo of_get_font_style( $heading_font ); ?>;
 		font-weight: <?php echo of_get_font_weight( $heading_font ); ?>;
+	}
+	h1 {
+		font-size: <?php echo $heading_h1; ?>;
+	}
+	h2 {
+		font-size: <?php echo $heading_h2; ?>;
+	}
+	h3 {
+		font-size: <?php echo $heading_h3; ?>;
+	}
+	h4 {
+		font-size: <?php echo $heading_h4; ?>;
+	}
+	h5 {
+		font-size: <?php echo $heading_h5; ?>;
+	}
+	h6 {
+		font-size: <?php echo $heading_h6; ?>;
 	}
 	/* Background */
 	body {

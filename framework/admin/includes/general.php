@@ -122,6 +122,16 @@ function of_get_font_weight( $option ) {
 }
 
 /**
+ * Get background patterns.
+ *
+ * @return image url
+ */
+function of_get_background_pattern( $option ) {
+	$output = esc_url( get_template_directory_uri() . '/assets/images/patterns/' . $option . '.png' );
+	return $output;
+}
+
+/**
  * Include font from google. Accepts unlimited
  * amount of font arguments.
  *
@@ -238,10 +248,5 @@ function of_social_media_fields( $id, $name, $val ) {
 	}
 	$output .= '</div><!-- .column-2 (end) -->';
 
-	return $output;
-}
-
-function of_get_background_pattern( $option ) {
-	$output = esc_url( get_template_directory_uri() . '/assets/images/patterns/' . $option . '.png' );
 	return $output;
 }
