@@ -1,0 +1,37 @@
+#content_builder_sort {
+	
+}
+
+#content_builder_sort li {
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	padding: 10px;
+	position: relative;
+}
+
+#content_builder_sort li .title {
+	padding-left: 40px;
+}
+
+#content_builder_sort li .icon {
+	position: absolute;
+	left: 0;
+	background: #ed1f69;
+	height: 40px;
+	top: -1px;
+	width: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+#content_builder_sort li .remove {
+	position: absolute;
+	right: 0;
+	color: red;
+	text-decoration: none;
+	height: 40px;
+	top: -1px;
+	width: 40px;
+	text-align: center;
+	line-height: 40px;
+}
