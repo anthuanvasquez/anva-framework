@@ -11,15 +11,15 @@
 }
 
 #optionsframework-wrap .styles-tab:before {
-	content: "\f309";
+	content: "\f100";
 }
 
 #optionsframework-wrap .layout-tab:before {
-	content: "\f489";
+	content: "\f180";
 }
 
 #optionsframework-wrap .content-tab:before {
-	content: "\f464";
+	content: "\f473";
 }
 
 #optionsframework-wrap .configuration-tab:before {

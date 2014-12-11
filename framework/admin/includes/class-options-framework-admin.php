@@ -192,8 +192,9 @@ class Options_Framework_Admin {
 		<div id="optionsframework-wrap" class="wrap">
 
 			<?php $menu = $this->menu_settings(); ?>
-			<h2><?php echo esc_html( $menu['page_title'] ); ?></h2>
 
+			<h2><?php echo $menu['page_title']; ?></h2>
+			
 			<?php if ( isset( $_GET['activated']) && true == $_GET['activated'] ) : ?>
 				<div class="section-info updated">
 					The theme is activated.

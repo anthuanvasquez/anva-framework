@@ -18,9 +18,6 @@ include_once ( get_template_directory() . '/framework/admin/includes/general.php
 include_once ( get_template_directory() . '/framework/admin/includes/display.php' );
 include_once ( get_template_directory() . '/framework/init.php' );
 
-// Tests
-include_once ( get_template_directory() . '/framework/includes/content-builder.php' );
-
 /* 
  * Change the options.php directory.
  */

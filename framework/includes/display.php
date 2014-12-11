@@ -6,14 +6,14 @@
 function of_header_logo_default() {
 	?>
 	<div id="brand" class="brand">
-		<a id="logo" class="logo" href="<?php echo home_url(); ?>">
+		<a id="logo" class="logo" href="<?php echo esc_url( home_url() ); ?>" title="<?php bloginfo( 'name' ); ?>">
 			<?php
-				$string = '<img src="%s" alt="%s" />';
-				$logo = of_get_option( 'logo' );
-				$name = get_bloginfo( 'name' );
-				echo sprintf( $string, $logo, $name );
+				printf(
+					'<img src="%1$s" alt="%2$s" /><span class="sr-only">%2$s</span>',
+					esc_url( of_get_option( 'logo' ) ),
+					get_bloginfo( 'name' )
+				);
 			?>
-			<span class="sr-only"><?php echo $name; ?></span>
 		</a><!-- #logo (end) -->
 	</div><!-- brand (end) -->
 	<?php
