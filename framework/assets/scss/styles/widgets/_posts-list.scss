@@ -1,0 +1,63 @@
+/* -----------------------------------------------------------------*/
+/* Posts List
+/* -----------------------------------------------------------------*/
+
+.widget_anva_posts_list {
+
+}
+
+.widget-posts-list {
+	@include reset-list();
+	margin-top: 20px;
+	
+	li {
+		margin-top: 20px;
+		padding-top: 20px;
+		border-top: 1px dashed #e5e5e5;
+
+		&:first-child {
+			margin-top: 0;
+			padding-top: 0;
+			border-top: 0;
+		}
+
+		.post-content {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.post-title {
+			h4 {
+				margin: 0;
+				font-size: 14px;
+				font-weight: 600;
+			}
+			a {
+				&:hover {
+					color: $theme-color;
+				}
+			}
+		}
+
+		.post-image {
+			float: left;
+			margin: 0 15px 0 0;
+			text-align: center;
+			> a {
+				display: block;
+			}
+			img {
+				max-width: 64px;
+				border-radius: 2px;
+			}
+		}
+
+		.post-date {
+			display: block;
+			color: #999;
+			margin: 8px 0 0;
+			font-size: 13px;
+			text-transform: capitalize;
+		}
+	}
+}

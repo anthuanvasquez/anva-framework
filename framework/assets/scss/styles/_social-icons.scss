@@ -1,0 +1,135 @@
+$icon-class: ".social-";
+$icon-size:  40px;
+
+#{$icon-class}icons {
+	@include reset-list();
+	@include clearfix();
+	
+	li {
+		float: left;
+	}
+}
+
+#{$icon-class}icon {
+	display: block;
+	margin: 0 5px 5px 0;
+	width: $icon-size;
+	height: $icon-size;
+	font-size: 20px;
+	font-style: normal;
+	line-height: 38px;
+	color: #555;
+	text-shadow: none;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	overflow: hidden;
+	text-align: center;
+
+	i {
+		display: block;
+		position: relative;
+		line-height: inherit;
+		
+		body:not(.device-touch) {
+ 			transition: all .3s ease;
+ 		}
+	}
+	
+	&#{$icon-class}mini {
+		margin: 0 3px 3px 0;
+	  width: 24px;
+	  height: 24px;
+	  font-size: 11px;
+	  line-height: 24px;
+	}
+
+	&#{$icon-class}small {
+	  width: 32px;
+	  height: 32px;
+	  font-size: 14px;
+	  line-height: 30px;
+	}
+
+	&#{$icon-class}large {
+	  margin: 0 10px 10px 0;
+	  width: 56px;
+	  height: 56px;
+	  font-size: 30px;
+	  line-height: 54px;
+	}
+
+	&#{$icon-class}rounded {
+		border-radius: 50%;
+	}
+
+	&#{$icon-class}noborder {
+		border-color: transparent;
+	}
+
+	&#{$icon-class}dark {
+		background-color: #444;
+		color: #fff;
+		border-color: transparent;
+	}
+
+	 &#{$icon-class}light {
+		background-color: rgba(black, .05);
+		color: #444;
+		border-color: transparent;
+	}
+
+	&#{$icon-class}colored {
+		color: #fff;
+		border-color: transparent;
+	}
+}
+
+#{$icon-class}colored {
+	i {
+		color: #fff;
+	}
+
+	&#{$icon-class}digg {
+		background-color: #444;
+	}
+
+	&#{$icon-class}dribbble {
+		background-color: #EA4C89;
+	}
+
+	&#{$icon-class}facebook {
+		background-color: #3B5998;
+	}
+
+	&#{$icon-class}google-plus {
+		background-color: #DD4B39;
+	}
+
+	&#{$icon-class}instagram {
+		background-color: #3F729B;
+	}
+
+	&#{$icon-class}linkedin {
+		background-color: #0E76A8;
+	}
+
+	&#{$icon-class}pinterest {
+		background-color: #C8232C;
+	}
+
+	&#{$icon-class}rss {
+		background-color: #EE802F;
+	}
+
+	&#{$icon-class}twitter {
+		background-color: #00ACEE;
+	}
+
+	&#{$icon-class}vimeo-square {
+		background-color: #86C9EF;
+	}
+
+	&#{$icon-class}youtube {
+		background-color: #C4302B;
+	}
+}

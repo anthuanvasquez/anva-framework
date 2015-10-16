@@ -1,0 +1,121 @@
+.grid-columns {
+	@include clearfix();
+}
+
+[class*="grid_"] {
+	display: block;
+	float: left;
+	margin-bottom: 30px;
+	position: relative;
+}
+
+.grid_column {
+	margin-right: 4%;
+}
+
+.grid_12 {
+	clear: both;
+	@include span-columns(12);
+	margin-right: 0;
+}
+
+.grid_11 {
+	@include span-columns(11);
+}
+
+.grid_10 {
+	@include span-columns(10);
+}
+
+.grid_9 {
+	@include span-columns(9);
+}
+
+.grid_8 {
+	@include span-columns(8);
+}
+
+.grid_7 {
+	@include span-columns(7);
+}
+
+.grid_6 {
+	@include span-columns(6);
+}
+
+.grid_5 {
+	@include span-columns(5);
+}
+
+.grid_4 {
+	@include span-columns(4);
+}
+
+.grid_3 {
+	@include span-columns(3);
+}
+
+.grid_fourth_2 {
+	@include span-columns(2.4);
+}
+
+.grid_2 {
+	@include span-columns(2);
+}
+
+.grid_1 {
+	@include span-columns(1);
+}	
+
+/* Standard Fifths */
+.grid_fifth_1 {width: 16.8%;}
+.grid_fifth_2 {width: 37.6%;}
+.grid_fifth_3 {width: 57.6%;}
+.grid_fifth_4 {width: 79.2%;}
+
+/* Tenths */
+.grid_tenth_3 {width: 26%;}
+.grid_tenth_7 {width: 66%;}
+
+.grid_last {
+	margin-right: 0;
+	clear: right;
+}
+
+// Extend Boostrap Columns
+.col-xs-5th,
+.col-sm-5th,
+.col-md-5th,
+.col-lg-5th {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.col-xs-5th {
+	width: 20%;
+	float: left;
+}
+
+@media (min-width: 768px) {
+	.col-sm-5th {
+		width: 20%;
+		float: left;
+	}
+}
+
+@media (min-width: 992px) {
+	.col-md-5th {
+		width: 20%;
+		float: left;
+	}
+}
+
+@media (min-width: 1200px) {
+	.col-lg-5th {
+		width: 20%;
+		float: left;
+	}
+}
+

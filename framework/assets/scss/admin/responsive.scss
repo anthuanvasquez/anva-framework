@@ -1,0 +1,70 @@
+@media screen and (min-width: 1384px) {
+	.builder-elements {
+		li {
+			width: 16.66%;
+		}
+	}
+}
+
+@media screen and (min-width: 1595px) {
+	.builder-elements {
+		li {
+			width: 14.28%;
+		}
+	}
+}
+
+@media screen and (min-width: 1715px) {
+	.builder-elements {
+		li {
+			width: 12.5%;
+		}
+	}
+}
+
+@media screen and (min-width: 1895px) {
+	.builder-elements {
+		li {
+			width: 11.11%;
+		}
+	}
+}
+
+@media screen and (max-width: 1225px) {
+	#normal-sortables {
+		.controls,
+		.explain {
+			float: none;
+			padding-right: 0;
+			max-width: 100%;
+			width: 100%;
+		}
+		.explain {
+			margin-top: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.builder-elements {
+		li {
+			width: 25%;
+		}
+	}
+}
+
+@media screen and (max-width: 565px) {
+	.builder-elements {
+		li {
+			width: 33.33%;
+		}
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.builder-elements {
+		li {
+			width: 50%;
+		}
+	}
+}

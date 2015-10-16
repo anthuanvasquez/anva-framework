@@ -1,0 +1,133 @@
+// Font Family for HTML Doc and Body
+@mixin font-stack-body {
+	font-family: $base-font-family;
+	font-weight: $base-font-weight;
+}
+
+// Font for Headings
+@mixin font-stack-headers {
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+}
+
+// Font Icons
+@mixin font-stack-icon {
+	font-family: $font-awesome;
+	font-style: normal;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Base Containers Width
+@mixin container-width( $width, $pad ) {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: $pad;
+	padding-right: $pad;
+	width: $width;
+}
+
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Reset list ex. ul, ol
+@mixin reset-list() {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+// Reset float elements 
+@mixin reset-float( $margin: right, $width: true ) {
+	float: none;
+	
+	@if $margin == 'right' {
+		margin-right: 0;
+	} @else if $margin  == 'left' {
+		margin-left: 0;
+	}
+	
+	@if $width {
+		width: 100%;
+	}
+}
+
+// Display elements to inline-block
+@mixin inline-block() {
+	display: inline-block;
+	@if browser('ie') == '8' {
+		/* IE7/8 Hack */
+		*display: inline;
+		*zoom: 1;
+	}
+}
+
+// Group inputs
+@mixin group-inputs() {
+	input[type="text"],
+	input[type="datetime"],
+	input[type="date"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="url"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	select,
+	textarea {
+		@content;
+	}
+}
+
+// Group buttons
+@mixin group-buttons() {
+	.button,
+	a.button,
+	button.button,
+	input.button,
+	input[type="submit"].button,
+	input[type="reset"].button,
+	input[type="button"].button {
+		@content;
+	}
+}
+
+// Animation
+@mixin animation($animation) {
+	animation-name: $animation;
+}
+
+// Keyframes Animations
+@mixin animation-keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@-o-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+// Animation Delay
+@mixin animation-time($duration, $delay, $count) {
+	animation-duration: #{$duration}s;
+	animation-delay: #{$delay}s;
+	animation-iteration-count: $count;
+}

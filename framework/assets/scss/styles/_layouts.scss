@@ -1,0 +1,69 @@
+
+#wrapper {
+	min-width: $theme-minwidth;
+}
+
+#container {
+	position: relative;
+	float: none;
+	width: $theme-maxwidth;
+	margin: 0 auto;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(black, .1);
+
+	body.stretched & {
+  	box-shadow: none;
+		margin: 0;
+		width: 100%;
+	}
+}
+
+/* Main Content */
+.main-content {
+	padding: 40px 0;
+}
+
+.ad-widget {
+	display: none; // Test
+	margin: 20px 0;
+	.alert {
+		margin-bottom: 0;
+	}
+}
+
+.password-form {
+	text-align: center;
+
+	span {
+		background: $theme-color;
+		width: 144px;
+		height: 144px;
+		font-size: 108px;
+		line-height: 140px;
+		display: block;
+		font-weight: 500;
+		margin: 20px auto 30px;
+		color: #fff;
+		text-align: center;
+		cursor: default;
+		border: 1px solid #cdbfe3;
+		border-radius: 15%;
+		&:before {
+			margin-left: 8px;
+		}
+	}
+
+	label {
+		margin-right: 3px;
+	}
+
+	.form-group + p {
+		display: inline;
+	}
+
+	.password-error {
+		max-width: 480px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
