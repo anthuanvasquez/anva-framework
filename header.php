@@ -1,82 +1,69 @@
 <?php
 /**
- * The Header for our theme.
+ * The template for displaying the header.
  *
- * WARNING: It is advised
- * that any edits to the way this file displays its
- * content be done with via hooks, filters, and
- * template parts.
- *
- * @author		Anthuan Vasquez
- * @copyright	Copyright (c) Anthuan Vasquez
- * @link			http://anthuanvasquez.net
- * @package  	CodeTheme WordPress Framework
+ * @version 1.0.0
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/html5shiv.js" type="text/javascript"></script>
-	<![endif]-->
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-loader="3">
 
-<?php
-	// Before layout
-	of_layout_before();
-?>
-				
-<div id="wrapper">
-	<div id="container">
+<?php anva_before(); ?>
 
-	<?php
-		// Before header
-		of_header_before();
-	?>
+<!-- WRAPPER (start) -->
+<div id="wrapper" class="clearfix">
 
-	<div id="top">
-		<header id="header" role="banner">
-			<div class="header-inner">
-
-				<div class="header-content">
-					<div class="header-content-inner group">
-						<?php
-							/**
-					 		 * Header elements.
-					 		 */
-							of_header_top();
-							of_header_content();
-							of_header_menu();
-						?>
-					</div><!-- .header-content-inner (end) -->
-				</div><!-- .header-content (end) -->
-
-			</div><!-- .header-inner (end) -->
-		</header><!-- #header (end) -->
-	</div><!-- #top (end) -->
+<!-- CONTAINER (start) -->
+<div id="container">
 	
+	<?php anva_top_before(); ?>
+
+	<!-- TOP (start) -->
+	<header id="top">
+
+		<?php anva_header_above(); ?>
+
+		<div id="header">
+			<div class="header-content">	
+				<div class="container clearfix">
+					<?php anva_header_logo(); ?>
+					<?php anva_header_extras(); ?>
+				</div><!-- .header-content (end) -->
+			</div><!-- .container (end) -->
+			
+			<?php anva_header_primary_menu(); ?>
+
+		</div><!-- #header (end) -->
+
+		<?php anva_header_below(); ?>
+
+	</header><!-- TOP (end) -->
+
 	<?php
-		// After header
-		of_header_after();
+		// After Top
+		anva_top_after();
 
-		/*
-		 * Display featured elements.
-		 */
-		of_featured_before();
-		of_featured();
-		of_featured_after();
+		// Featured
+		anva_featured_before();
+		anva_featured();
+		anva_featured_after();
 	?>
+	
+	<?php anva_content_before(); ?>
 
-	<?php
-		// After main
-		of_main_before();
-
-		// Breadcrumbs
-		of_breadcrumbs();
-	?>
+	<!-- CONTENT (start) -->
+	<section id="content">
+		<div class="main-content">
+			<div class="container clearfix">
+				<?php anva_breadcrumbs(); ?>
+				<?php anva_above_layout(); ?>

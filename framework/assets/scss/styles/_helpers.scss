@@ -1,0 +1,131 @@
+/* ---------------------------------------------------------------- */
+/* Helpers
+/* ---------------------------------------------------------------- */
+
+/*
+ * Modern Clearfix
+ */
+.clear,
+.group {
+	@include clearfix();
+}
+
+@if browser('ie') == '7' {
+	/*
+	 * For IE 6/7 only
+	 * Include this rule to trigger hasLayout and contain floats.
+	 */
+	.clear,
+	.group {
+		*zoom: 1;
+	}
+}
+
+.resetlist {
+	@include reset-list();
+}
+
+/*
+ * Full Width Elements
+ */
+.full-width {
+	width: 100%;
+}
+
+.not-animated {
+	opacity: 0;
+}
+
+.fright {
+  float: right;
+}
+
+.fleft {
+  float: left;
+}
+
+/*
+ * Margin
+ */
+.nomargin {
+	margin: 0;
+}
+
+.nobottommargin {
+	margin-bottom: 0;
+}
+
+.notopmargin {
+	margin-top: 0;
+}
+
+.bottommargin {
+	margin-bottom: 20px;
+}
+
+.bottommargin-lg {
+	margin-bottom: 50px;
+}
+
+.topmargin {
+	margin-top: 20px;
+}
+
+.topmargin-lg {
+	margin-top: 50px;
+}
+
+.automargin {
+	margin: auto;
+}
+
+
+/*
+ * Border
+ */
+.noborder {
+	border: none;
+}
+
+/*
+ * Padding
+ */
+.nopadding {
+	padding: 0;
+}
+
+.nobottompadding {
+	padding-bottom: 0;
+}
+
+.notoppadding {
+	padding-top: 0;
+}
+
+.bottompadding {
+	padding-bottom: 20px;
+}
+
+.bottompadding-lg {
+	padding-bottom: 50px;
+}
+
+.toppadding {
+	padding-top: 20px;
+}
+
+.toppadding-lg {
+	padding-top: 50px;
+}
+
+/*
+ * Lines
+ */
+.line,
+.double-line {
+  clear: both;
+  position: relative;
+  width: 100%;
+  margin: 60px 0;
+  border-top: 1px solid #eee;
+}

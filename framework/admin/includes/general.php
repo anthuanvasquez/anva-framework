@@ -1,11 +1,15 @@
 <?php
+/*-----------------------------------------------------------------------------------*/
+/* Admin General Functions
+/*-----------------------------------------------------------------------------------*/
 
 /**
- * Remove trailing char.
+ * Remove trailing char
  *
+ * @since  1.0.0
  * @return string
  */
-function of_remove_trailing_char( $string, $char = ' ' ) {
+function anva_remove_trailing_char( $string, $char = ' ' ) {
 
 	if ( ! $string ) {
 		return null;
@@ -22,11 +26,12 @@ function of_remove_trailing_char( $string, $char = ' ' ) {
 }
 
 /**
- * Get font stacks.
- *
+ * Get font stacks
+ * 
+ * @since  1.0.0
  * @return array
  */
-function of_get_font_stacks() {
+function anva_get_font_stacks() {
 	$stacks = array(
 		'default'			=> 'Arial, sans-serif', // Used to chain onto end of google font
 		'arial'     	=> 'Arial, "Helvetica Neue", Helvetica, sans-serif',
@@ -41,18 +46,20 @@ function of_get_font_stacks() {
 		'verdana'   	=> 'Verdana, Geneva, sans-serif',
 		'google'			=> 'Google Font'
 	);
-	return apply_filters( 'of_get_font_stacks', $stacks );
+	return apply_filters( 'anva_font_stacks', $stacks );
 }
 
 /**
- * Get font face.
+ * Get font face
  *
+ * @since  1.0.0
  * @return font face name
  */
-function of_get_font_face( $option ) {
+function anva_get_font_face( $option ) {
 
 	$stack = '';
-	$stacks = of_get_font_stacks();
+	$stacks = anva_get_font_stacks();
+	$face = 'helvetica'; // Default font face
 
 	if ( isset( $option['face'] ) && $option['face'] == 'google'  ) {
 
@@ -61,56 +68,62 @@ function of_get_font_face( $option ) {
 		$name = explode( ':', $option['google'] );
 
 		// Check for accidental space at end
-		$name = of_remove_trailing_char( $name[0] );
+		$name = anva_remove_trailing_char( $name[0] );
 
 		// Add the deafult font stack to the end of the google font.
 		$stack = $name .', ' . $stacks['default'];
 
-	} else {
+	} elseif ( isset( $option['face'] ) && isset( $stacks[$option['face']] ) ) {
 		$stack = $stacks[$option['face']];
+	
+	} else {
+		$stack = $stacks[$face];
 	}
 
-	return apply_filters( 'of_get_font_face', $stack, $option, $stacks );
+	return apply_filters( 'anva_font_face', $stack, $option, $stacks );
 }
 
 /**
- * Get font size and set the default value.
+ * Get font size and set the default value
  *
+ * @since  1.0.0
  * @return string
  */
-function of_get_font_size( $option ) {
+function anva_get_font_size( $option ) {
 
-	$size = '13px'; // defuault font size
+	$size = '14px'; // Default font size
 
 	if ( isset( $option['size'] ) ) {
 		$size = $option['size'];
 	}
 
-	return apply_filters( 'of_get_font_size', $size, $option );
+	return apply_filters( 'anva_font_size', $size, $option );
 }
 
 /**
  * Get font style and set the default value.
  *
+ * @since  1.0.0
  * @return string font style
  */
-function of_get_font_style( $option ) {
+function anva_get_font_style( $option ) {
 
-	$style = 'normal';
+	$style = 'normal'; // Default font style
 
 	if ( isset( $option['style'] ) && ( $option['style'] == 'italic' || $option['style'] == 'bold-italic' ) ) {
 		$style = 'italic';
 	}
 
-	return apply_filters( 'of_get_font_style', $style, $option );
+	return apply_filters( 'anva_get_font_style', $style, $option );
 }
 
 /**
  * Get font weight and set the default value.
  *
+ * @since  1.0.0
  * @return string font weight
  */
-function of_get_font_weight( $option ) {
+function anva_get_font_weight( $option ) {
 
 	$weight = 'normal';
 
@@ -118,15 +131,16 @@ function of_get_font_weight( $option ) {
 		$weight = 'bold';
 	}
 
-	return apply_filters( 'of_get_font_weight', $weight, $option );
+	return apply_filters( 'anva_get_font_weight', $weight, $option );
 }
 
 /**
- * Get background patterns.
+ * Get background patterns
  *
+ * @since  1.0.0
  * @return image url
  */
-function of_get_background_pattern( $option ) {
+function anva_get_background_pattern( $option ) {
 	$output = esc_url( get_template_directory_uri() . '/assets/images/patterns/' . $option . '.png' );
 	return $output;
 }
@@ -135,9 +149,10 @@ function of_get_background_pattern( $option ) {
  * Include font from google. Accepts unlimited
  * amount of font arguments.
  *
+ * @since  1.0.0
  * @return stylesheet link
  */
-function of_enqueue_google_fonts() {
+function anva_enqueue_google_fonts() {
 
 	$fonts = func_get_args();
 	$used = array();
@@ -158,7 +173,7 @@ function of_enqueue_google_fonts() {
 				}
 
 				$used[] = $font['google'];
-				$name = of_remove_trailing_char( $font['google'] );
+				$name = anva_remove_trailing_char( $font['google'] );
 				$name = str_replace( ' ', '+', $name );
 
 				$handle = strtolower( $name );
@@ -173,80 +188,40 @@ function of_enqueue_google_fonts() {
 /**
  * Get social media sources and their respective names.
  *
+ * @since  1.0.0
  * @return array $profiles
  */
-function of_get_social_media_profiles() {
+function anva_get_social_media_profiles() {
 	$profiles = array(
+		'bitbucket'		=> 'Bitbucket',
+		'codepen'			=> 'Codepen',
+		'delicious' 	=> 'Delicious',
+		'deviantart' 	=> 'DeviantArt',
 		'digg' 				=> 'Digg',
 		'dribbble' 		=> 'Dribbble',
+		'email' 			=> 'Email',
 		'facebook' 		=> 'Facebook',
 		'flickr' 			=> 'Flickr',
+		'foursquare' 	=> 'Foursquare',
 		'github' 			=> 'Github',
-		'google' 			=> 'Google+',
+		'google-plus' => 'Google+',
 		'instagram' 	=> 'Instagram',
 		'linkedin' 		=> 'Linkedin',
+		'paypal' 			=> 'Paypal',
 		'pinterest' 	=> 'Pinterest',
+		'reddit' 			=> 'Reddit',
+		'skype'				=> 'Skype',
+		'soundcloud' 	=> 'Soundcloud',
 		'tumblr' 			=> 'Tumblr',
 		'twitter' 		=> 'Twitter',
-		'vimeo' 			=> 'Vimeo',
+		'vimeo-square'=> 'Vimeo',
+		'yahoo' 			=> 'Yahoo',
 		'youtube' 		=> 'YouTube',
-		'rss' 				=> 'RSS'
+		'whatsapp'		=> 'Whatsapp',
+		'rss' 				=> 'RSS',
 	);
 
 	// Backwards compat filter
-	$profiles = apply_filters( 'of_get_social_media_profiles', $profiles );
+	$profiles = apply_filters( 'anva_get_social_media_profiles', $profiles );
 	return $profiles;
-}
-
-/**
- * Generates option to edit social media buttons.
- *
- * This has been moved to a separate function
- * because it's a custom addition to the optionframework
- * module and it's pretty lengthy.
- */
-function of_social_media_fields( $id, $name, $val ) {
-
-	$profiles = of_get_social_media_profiles();
-
-	$counter = 1;
-	$divider = round( count( $profiles ) / 2 );
-
-	$output = '<div class="social-media column-1">';
-
-	foreach ( $profiles as $key => $profile ) {
-
-		// Setup
-		$checked = false;
-		if ( is_array( $val ) && array_key_exists( $key, $val ) ) {
-			$checked = true;
-		}
-
-		if ( ! empty( $val ) && ! empty( $val[$key] ) ) {
-			$value = $val[$key];
-		} else {
-
-			$value = '#';
-			if ( $key == 'email' ) {
-				$value = 'mailto:';
-			}
-		}
-
-		// Add to output
-		$output .= '<div class="social-media-item">';
-		$output .= '<span>'. $profile .'</span>';
-		$output .= sprintf( '<input class="of-input social_media-input" value="%s" type="text" name="%s" />', esc_attr( $value ), esc_attr( $name.'['.$id.'][profiles]['.$key.']' ) );
-		$output .= '</div><!-- .social-media-item (end) -->';
-
-		if ( $counter == $divider ) {
-			// Separate options into two columns
-			$output .= '</div><!-- .column-1 (end) -->';
-			$output .= '<div class="social-media column-2">';
-		}
-
-		$counter++;
-	}
-	$output .= '</div><!-- .column-2 (end) -->';
-
-	return $output;
 }

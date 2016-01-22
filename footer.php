@@ -1,48 +1,54 @@
-	<?php
+<?php
 /**
- * The Footer for our theme.
+ * The template for displaying the footer.
  *
- * WARNING: It is advised
- * that any edits to the way this file displays its
- * content be done with via hooks, filters, and
- * template parts.
- *
- * @author		Anthuan Vasquez
- * @copyright	Copyright (c) Anthuan Vasquez
- * @link			http://anthuanvasquez.net
- * @package  	WordPress Framework
+ * @version 1.0.0
  */
+				anva_below_layout();
+				?>
+				
+			</div><!-- .container (end) -->
+		</div><!-- .main-content (end) -->
+	</section><!-- CONTENT (end) -->
 
-// After main
-of_main_after();
-
-$footer_columns = of_get_option( 'footer_columns', '4' );
-
-?>
+	<?php anva_content_after(); ?>
 	
-	<div id="bottom">
-		<footer id="footer">
-			<div class="footer-inner">
-				<div class="footer-content">
-					<div class="footer-widget widget-columns-<?php echo $footer_columns; ?>">
-						<div class="grid-columns">
-							<?php if ( ! dynamic_sidebar( 'footer_sidebar' ) ) : endif; ?>
-						</div>
-					</div>
+	<!--BOTTOM (start) -->
+	<footer id="bottom">
+
+		<?php anva_footer_above(); ?>
+		<?php
+			$class = '';
+			$footer_color = anva_get_option( 'footer_color' );
+			if ( $footer_color ) {
+				$class = 'class="' . esc_attr( $footer_color ) . '"';
+			}
+		?>
+		
+		<div id="footer" <?php echo $class; ?>>
+			<div class="footer-content">
+				<div class="container clearfix">
+					<?php anva_footer_content(); ?>
+				</div><!-- .footer-content (end) -->
+			</div>
+
+			<div id="copyrights">
+				<div class="container clearfix">
+					<?php anva_footer_copyrights(); ?>
 				</div>
+			</div><!-- #copyrights (end) -->
+		</div><!-- #footer (end) -->
 
-				<div class="footer-copyright">
-					<?php do_action( 'of_footer_copyright' ); ?>
-				</div>
+		<?php anva_footer_below(); ?>
 
-			</div><!-- .footer-inner -->
-		</footer><!-- #footer (end) -->
-	</div><!-- #bottom (end) -->
+	</footer><!-- BOTTOM (end) -->
+	
+	<?php anva_bottom_after(); ?>
 
-	</div><!-- #container (end) -->
-</div><!-- #wrapper (end) -->
+	</div><!-- CONTAINER (end) -->
+</div><!-- WRAPPER (end) -->
 
-<?php of_layout_after(); ?>
+<?php anva_after(); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

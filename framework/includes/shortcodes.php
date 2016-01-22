@@ -1,261 +1,271 @@
 <?php
 
-// Hook Shortcodes
-add_filter( 'after_setup_theme', 'of_shortcodes_setup'  );
-
-function of_shortcodes_setup() {
+/*
+ * Shortcodes
+ */
+function anva_shortcodes_init() {
 	
-	add_shortcode( 'dropcap', 'dropcap_func' );
-	add_shortcode( 'button', 'button_func' );
-	add_shortcode( 'toggle', 'toggle_func' );
-	
-	add_shortcode( 'column_six', 'column_six_func' );
-	add_shortcode( 'column_six_last', 'column_six_last_func' );
-	
-	add_shortcode( 'column_five', 'column_five_func' );
-	add_shortcode( 'column_five_last', 'column_five_last_func' );
-	
-	add_shortcode( 'column_four', 'column_four_func' );
-	add_shortcode( 'column_four_last', 'column_four_last_func' );
-	
-	add_shortcode( 'column_three', 'column_three_func' );
-	add_shortcode( 'column_three_last', 'column_three_last_func' );
-	
-	add_shortcode( 'column_two', 'column_two_func' );
-	add_shortcode( 'column_two_last', 'column_two_last_func' );
-
-	add_shortcode( 'column_one', 'column_one_func' );
-	add_shortcode( 'column_one_last', 'column_one_last_func' );
+	add_shortcode( 'dropcap', 'anva_dropcap' );
+	add_shortcode( 'button', 	'anva_button' );
+	add_shortcode( 'toggle', 	'anva_toggle' );
+	add_shortcode( 'counter', 'anva_counter' );	
+	add_shortcode( 'column', 	'anva_column' );
+	add_shortcode( 'slides', 	'anva_slides' );
 	
 }
 
-// [dropcap foo="foo-value"]
-function dropcap_func($atts, $content) {
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'style' => 1
-	), $atts));
-
-	// Get first char
-	$first_char = substr($content, 0, 1);
-	$text_len = strlen($content);
-	$rest_text = substr($content, 1, $text_len);
-
-	$html = '<span class="dropcap">'. $first_char .'</span>';
-	$html.= do_shortcode($rest_text);
-	$html.= '';
-	return $html;
+function anva_clearfix() {
+	echo '<div class="clearfix"></div>';
 }
 
-// [button foo="foo-value"]
-function button_func($atts, $content) {
-	// Eextract short code attr
-	extract(shortcode_atts(array(
-		'href' => '',
-		'align' => '',
-		'bg_color' => '',
-		'text_color' => '',
-		'size' => 'small',
-		'style' => '',
-		'color' => '',
-		'target' => '_self',
-	), $atts));
+/*
+ * Remove br and p tags from shortcodes.
+ */
+// function anva_fix_shortcodes( $content ) {
+// 	$array = array (
+// 		'<p>[' 		=> '[', 
+// 		']</p>' 	=> ']', 
+// 		']<br />' => ']'
+// 	);
+// 	$content = strtr($content, $array);
+// 	return $content;
+// }
 
-	if( !empty( $color ) ) {
-		switch( strtolower( $color ) ) {
-			case 'black':
-				$bg_color 	= '#000000';
-				$text_color = '#ffffff';
-			break;
-			case 'grey':
-				$bg_color 	= '#666666';
-				$text_color = '#ffffff';
-			break;
-			case 'white':
-				$bg_color	= '#f5f5f5';
-				$text_color = '#444444';
-			break;
-			case 'blue':
-				$bg_color 	= '#3498DB';
-				$text_color = '#ffffff';
-			break;
-			case 'yellow':
-				$bg_color 	= '#F1C40F';
-				$text_color = '#ffffff';
-			break;
-			case 'red':
-				$bg_color 	= '#ff0000';
-				$text_color = '#ffffff';
-			break;
-			case 'orange':
-				$bg_color 	= '#ff9900';
-				$text_color = '#ffffff';
-			break;
-			case 'green':
-				$bg_color 	= '#2ECC71';
-				$text_color = '#ffffff';
-			break;
-			case 'pink':
-				$bg_color 	= '#ed6280';
-				$text_color = '#ffffff';
-			break;
-			case 'purple':
-				$bg_color 	= '#9B59B6';
-				$text_color = '#ffffff';
-			break;
-		}
+/*
+ * Buttons
+ */
+function anva_button( $atts, $content = null ) {
+	
+	extract( shortcode_atts( array(
+		'href' 		=> '',
+		'align' 	=> '',
+		'icon'		=> '',
+		'size' 		=> '',
+		'color'		=> '',
+		'style'		=> '',
+		'text'		=> '',
+		'target' 	=> '',
+	), $atts ));
+
+	$classes = array();
+
+	if ( ! empty( $icon ) ) {
+		$icon = '<i class="fa fa-'. $icon .'"></i>';
 	}
-	
-	if( !empty( $bg_color ) ) {
-		$border_color = $bg_color;
+
+	if ( ! empty( $align ) ) {
+		$classes[] = 'align'. $align;
 	}
-	else {
-		$border_color = 'transparent';
+
+	if ( ! empty( $href ) ) {
+		$href	= 'href="'. esc_url( $href ) .'"';
 	}
-	
-	if(!empty($bg_color)) { 
-		$html = '<a class="button '.$size.' '.$align.'" style="background-color:'.$bg_color.';border:1px solid '.$border_color.';color:'.$text_color.';'.$style.'"';
+
+	if ( ! empty( $text ) ) {
+		$classes[] = 'button-desc';
+		$text = '<span>'. esc_html( $text ) .'</span>';
 	}
-	else {
-		$html = '<a class="button '.$size.' '.$align.'"';
+
+	if ( ! empty( $target ) ) {
+		$target = 'target="'. esc_attr( $target ) .'"';
 	}
-	
-	if( ! empty( $href ) ) {
-		$html.= ' onclick="window.open(\''.$href.'\', \''.$target.'\')"';
+
+	// Sizes
+	switch ( $size ) {
+		case 'mini':
+			$classes[] = 'button-mini';
+			break;
+		
+		case 'small':
+			$classes[] = 'button-small';
+			break;
+
+		case 'large':
+			$classes[] = 'button-large';
+			break;
+
+		case 'xlarge':
+			$classes[] = 'button-xlarge';
+			break;
 	}
-	$html.= '>'.do_shortcode($content).'</a>';
-	return $html;
-}
 
-/* Columns 6 */
-function column_six_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
+	switch ( $style ) {
+		case 'round':
+			$classes[] = 'button-rounded';
+			break;
+
+		case '3d':
+			$classes[] = 'button-3d';
+			break;
+	}
+
+	// Colors
+	switch ( $color ) {
+		case 'dark':
+			$classes[] = 'button-dark';
+			break;
+		case 'light':
+			$classes[] = 'button-light';
+			break;
+	}
+
+	$classes = implode( ' ', $classes );
 	
-	$html = '<div class="column-6 '. $class .'">'. do_shortcode($content) .'</div>';
+	$html  = '<a class="button '. esc_attr( $classes ) .'" '. $href .' '. $target .'>';
+	$html .= $icon;
+	$html .= $content;
+	$html .= $text;
+	$html .= '</a>';
+
 	return $html;
 }
 
-function column_six_last_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
-
-	$html = '<div class="column-6 column-last '. $class .'">'. do_shortcode($content) .'</div><div class="clear"></div>';
-	return $html;
-}
-
-/* Columns 4 */
-function column_four_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
+/*
+ * Columns
+ */
+function anva_column( $atts, $content = null ) {
 	
-	$html = '<div class="column-4 '. $class .'">'. do_shortcode($content) .'</div>';
+	extract(shortcode_atts(array(
+		'id'		=> '',
+		'class' => '',
+		'col'		=> '',
+		'last'	=> false,
+	), $atts));
+
+	$classes = array();
+
+	if ( ! empty( $id ) ) {
+		$id = 'id="'. esc_attr( $id ) .'"';
+	}
+
+	if ( ! empty( $col ) ) {
+		$classes[] = 'grid_' . $col;
+	}
+
+	if ( ! empty( $class ) ) {
+		$classes[] = $class;
+	}
+
+	if ( true == $last ) {
+		$classes[] = 'grid_last';
+	}
+
+	$classes = implode( ' ', $classes );
+
+	$html = '<div '. $id .' class="'. esc_attr( $classes ) .'">'. $content .'</div>';
 	return $html;
 }
 
-function column_four_last_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
-
-	$html = '<div class="column-4 column-last '. $class .'">'. do_shortcode($content) .'</div><div class="clear"></div>';
-	return $html;
-}
-
-/* Columns 3 */
-function column_three_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
+/*
+ * Dropcap
+ */
+function anva_dropcap( $atts, $content = null ) {
 	
-	$html = '<div class="column-3 '. $class .'">'. do_shortcode($content) .'</div>';
+	extract( shortcode_atts( array(
+		'style' => ''
+	), $atts ));
+
+	$first_char = substr( $content, 0, 1 );
+	$text_len 	= strlen( $content );
+	$rest_text 	= substr( $content, 1, $text_len );
+	$classes 		= '';
+
+	switch ( $style ) {
+		case 'bg':
+			$classes .= 'dropcap-bg';
+			break;
+		case 'border':
+			$classes .= 'dropcap-border';
+			break;
+	}
+
+	$html  = '<span class="dropcap '. $classes .'">' . $first_char . '</span>';
+	$html .= wpautop( $rest_text );
 	return $html;
 }
 
-function column_three_last_func($atts, $content) {
+/*
+ * Toggle
+ */
+function anva_toggle( $atts, $content ) {
 	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
+	extract( shortcode_atts( array(
+		'title' 	=> __( 'Click para ver el Contenido', ANVA_DOMAIN ),
+		'id' 			=> '',
+		'style'		=> ''
+	), $atts ));
 
-	$html = '<div class="column-3 column-last '. $class .'">'. do_shortcode($content) .'</div><div class="clear"></div>';
+	$classes = '';
+
+	if ( ! empty( $id ) ) {
+		$id = 'id="'. esc_attr( $id ) . '"';
+	}
+
+	switch ( $style ) {
+		case 'bg':
+			$classes .= 'toggle-bg';
+			break;
+		case 'border':
+			$classes .= 'toggle-border';
+			break;
+	}
+
+	$html  = '<div class="toggle '. esc_attr( $classes ) .'" '. $id .'>';
+	$html .= '<div class="toggle-title" "><i class="toggle-closed fa fa-minus-circle"></i><i class="toggle-open fa fa-plus-circle"></i>'. esc_html( $title ) .'</div>';
+	$html .= '<div class="toggle-content">'. $content . '</div>';
+	$html .= '</div>';	
 	return $html;
 }
 
-/* Columns 2 */
-function column_two_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
+/*
+ * Counter
+ */
+function anva_counter( $atts, $content = null ) {
 	
-	$html = '<div class="column-2 '. $class .'">'. do_shortcode($content) .'</div>';
-	return $html;
-}
-
-function column_two_last_func($atts, $content) {
 	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
-
-	$html = '<div class="column-2 column-last '. $class .'">'. do_shortcode($content) .'</div><div class="clear"></div>';
-	return $html;
-}
-
-/* Columns 1 */
-function column_one_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
 	
-	$html = '<div class="column-1 '. $class .'">'. do_shortcode($content) .'</div>';
-	return $html;
-}
+	extract( shortcode_atts( array(
+		'from' 			=> 0,
+		'to' 				=> 100,
+		'interval'	=> 100,  // Refresh interval
+		'speed' 		=> 2000, // Speed animation
+		'size'			=> ''
+	), $atts ));
 
-function column_one_last_func($atts, $content) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-		'class' => '',
-	), $atts));
+	$classes = '';
 
-	$html = '<div class="column-1 column-last '. $class .'">'. do_shortcode($content) .'</div><div class="clear"></div>';
-	return $html;
-}
+	switch ( $size ) {
+		case 'small':
+			$classes = 'counter-small';
+			break;
+		case 'large':
+			$classes = 'counter-large';
+			break;
+	}
 
-function toggle_func( $atts, $content ) {
-	$content = wpautop( trim( $content ) );
-	// Extract short code attr
-	extract(shortcode_atts(array(
-			'title' => __('Click para Abrir', of_THEME_DOMAIN ),
-			'color' => ''
-	), $atts));
-
-	$html  = '<div class="toggle-container">';
-	$html .= '<h3 class="toggle-trigger toggle-'. $color .'">';
-	$html .= '<a href="#">'. $title .'</a>';
-	$html .= '</h3>';
-	$html .= '<div class="toggle-info">'. do_shortcode($content) .'</div>';
+	$html  = '<div class="counter text-center '. $classes .'">';
+	$html .= '<span data-from="'. $from .'" data-to="'. $to .'" data-refresh-interval="'. $interval .'" data-speed="'. $speed .'"></span>';
 	$html .= '</div>';
 
 	return $html;
+}
+
+/*
+ * Create slideshows shortcode
+ */
+function anva_slides( $atts, $content = null ) {
+	
+	extract(shortcode_atts( array(
+		'id' => '', // Default ID
+	), $atts ));
+
+	$html = '<div class="alert alert-warning">Please install the plugin <strong>Anva Sideshows</strong> to use the slides shortcode.</div>';
+	
+	if ( function_exists( 'anva_put_slideshows' ) ) {
+		if ( ! empty( $id ) ) {
+			return anva_put_slideshows( $id );
+		}
+	} else {
+		return $html;
+	}
 }

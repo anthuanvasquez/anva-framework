@@ -1,5 +1,8 @@
-<div class="widget-area left" role="complementary">
-
-	<?php if ( dynamic_sidebar( 'sidebar-left' ) ) : endif; ?>
-
-</div><!-- .widget-area (end) -->
+<?php
+/**
+ * The template file for any sidebars to appear left
+ * of the main content.
+ * 
+ * @version 1.0.0
+ */
+anva_sidebars( 'left' );

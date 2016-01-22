@@ -1,0 +1,58 @@
+// Convert PX to EM units
+// Replace by Neat
+// @function em($target, $context: $base-font-size) {
+// 	@if $target == 0 {
+// 		@return 0;
+// 	}
+// 	@return $target / $context + em;
+// }
+
+// Convert PX to REM units
+@function rem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+// Return minimum browser version
+@function browser($key) {
+	@if map-has-key($browser-minimum-versions, $key) {
+		@return map-get($browser-minimum-versions, $key);
+	}
+	@warn "Unknown `#{$key}` in $browser-minimum-versions.";
+	@return null;
+}
+
+// Return value from $all-breakpoints map
+@function break($key) {
+	@if map-has-key($all-breakpoints, $key) {
+		@return map-get($all-breakpoints, $key);
+	}
+	@warn "Unknown `#{$key}` in $all-breakpoints.";
+	@return null;
+}
+
+// Return value from $all-layout-columns map
+@function layout-column($key) {
+	@if map-has-key($all-layout-columns, $key) {
+		@return map-get($all-layout-columns, $key);
+	}
+	@warn "Unknown `#{$key}` in $all-layout-columns.";
+	@return null;
+}
+
+// Return the color from $palette map
+@function skin($key) {
+	@if map-has-key($theme-skins, $key) {
+		@return map-get($theme-skins, $key);
+	}
+	@warn "Unknown `#{$key}` in $theme-skins.";
+	@return null;
+}
+
+@function config($key) {
+	@if map-has-key($configuration, $key) {
+		@return map-get($configuration, $key);
+	}
+	@warn "Unknown `#{$key}` in $configuration.";
+	@return null;
+}

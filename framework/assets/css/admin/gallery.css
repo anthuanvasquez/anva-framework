@@ -1,0 +1,217 @@
+.anva_gallery_remove {
+  opacity: 0;
+  display: block;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  padding: 0;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  outline: 0;
+  background: #eee;
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0, 0, 0, 0.15);
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+  color: #222;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.anva_gallery_remove:hover {
+  color: red;
+}
+
+.anva_gallery_remove .icon {
+  display: block;
+  background-position: -1px 0;
+  height: 15px;
+  width: 15px;
+  margin: 5px;
+}
+
+#anva-gallery-spinner,
+#anva-gallery-spinner.spinner {
+  float: none;
+  margin: 5px 10px 5px;
+}
+
+.anva-gallery-placeholder {
+  border: 1px dashed #ccc;
+}
+
+.anva-gallery-actions {
+  border-top: 1px solid #ddd;
+  padding: 10px 18px;
+  clear: both;
+  background: #f5f5f5;
+  margin: 0 -12px -12px;
+  text-align: right;
+}
+
+#anva_gallery_thumbs {
+  margin: 10px 0;
+}
+
+#anva_gallery_thumbs:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+#anva_gallery_thumbs.empty:before {
+  content: 'No images have been selected yet.';
+  color: #bbb;
+  display: block;
+  font-size: 13px;
+  padding: 10px;
+  text-align: center;
+}
+
+#anva_gallery_thumbs li {
+  position: relative;
+  float: left;
+  padding: 8px;
+  margin: 0;
+  color: #464646;
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 20%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#anva_gallery_thumbs li:hover .anva_gallery_remove {
+  opacity: 1;
+}
+
+#anva_gallery_thumbs li.attachment .landscape img {
+  max-height: 100%;
+  width: auto;
+}
+
+#anva_gallery_thumbs li.attachment .portrait img {
+  height: auto;
+  max-width: 100%;
+}
+
+#anva_gallery_thumbs li .attachment-preview {
+  position: relative;
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  background: #eee;
+  cursor: pointer;
+}
+
+#anva_gallery_thumbs li .attachment-preview:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+#anva_gallery_thumbs li .thumbnail {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+#anva_gallery_thumbs li .thumbnail:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#anva_gallery_thumbs li .thumbnail .centered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(50%, 50%);
+     -moz-transform: translate(50%, 50%);
+      -ms-transform: translate(50%, 50%);
+       -o-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+}
+
+#anva_gallery_thumbs li .thumbnail .centered img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+       -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#anva_gallery_thumbs span {
+  color: #777;
+}
+
+@media screen and (min-width: 1384px) {
+  #anva_gallery_thumbs li {
+    width: 16.66%;
+  }
+}
+
+@media screen and (min-width: 1595px) {
+  #anva_gallery_thumbs li {
+    width: 14.28%;
+  }
+}
+
+@media screen and (min-width: 1715px) {
+  #anva_gallery_thumbs li {
+    width: 12.5%;
+  }
+}
+
+@media screen and (min-width: 1895px) {
+  #anva_gallery_thumbs li {
+    width: 11.11%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  #anva_gallery_thumbs li {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  #anva_gallery_thumbs li {
+    width: 33.33%;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  #anva_gallery_thumbs li {
+    width: 50%;
+  }
+}

@@ -1,0 +1,54 @@
+/* Portfolio Single - Content
+-----------------------------------------------------------------*/
+
+.portfolio-single-content {
+	font-size: 14px;
+	h2 {
+		margin: 0 0 20px;
+		padding: 0;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+.portfolio-title {
+	position: relative;
+}
+
+/* --------------------------------------------------------------*/
+/* Portfolio Single - Meta
+/* --------------------------------------------------------------*/
+
+.portfolio-meta,
+.portfolio-share {
+	list-style: none;
+	font-size: 14px;
+}
+
+.portfolio-meta {
+	li {
+		margin: 10px 0;
+		color: #666;
+		&:first-child {
+			margin-top: 0;
+		}
+		span {
+			display: inline-block;
+			width: 150px;
+			font-weight: bold;
+			color: #333;
+			i {
+				position: relative;
+				top: 1px;
+				width: 14px;
+				text-align: center;
+				margin-right: 7px;
+			}
+		}
+	}
+}
+
+.portfolio-gallery,
+.portfolio-video {
+	margin-bottom: 30px;
+}
