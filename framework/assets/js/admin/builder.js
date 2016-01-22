@@ -104,9 +104,15 @@ jQuery(document).ready(function($) {
 				s.button.text( $disable );
 				s.fields.slideDown();
 				$('#' + s.ID).addClass('anva-builder-active');
+				$('#minor-publishing-actions').hide();
 				$('#postdivrich').fadeOut( 'fast', function() {
 					$(this).css('paddingTop', '120px');
 				});;
+
+				if ( $('#' + s.ID).hasClass('anva-builder-active') ) {
+					console.log($('#' + s.ID));
+					$('#publish').val( anvaJs.builder_publish_items );
+				}
 
 				s.root.animate({
 					scrollTop: $('#titlediv').offset().top - 32
@@ -116,9 +122,14 @@ jQuery(document).ready(function($) {
 				s.button.text( $enable );
 				s.fields.slideUp();
 				$('#' + s.ID).removeClass('anva-builder-active');
+				$('#minor-publishing-actions').show();
 				$('#postdivrich').fadeIn( 'fast', function() {
 					$(this).css('paddingTop', '0px');
 				});
+
+				if ( ! $('#' + s.ID).hasClass('anva-builder-active') ) {
+					$('#publish').val( anvaJs.builder_publish_update );
+				}
 
 				s.root.animate({
 					scrollTop: $('#postdivrich').offset().top - 32

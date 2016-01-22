@@ -94,8 +94,10 @@
 }
 
 .anva-tooltip-info {
-	float: right;
+	display: none;
 	color: #999;
+	float: right;
+	margin-left: 10px;
 	text-decoration: none;
 	&:focus {
 		color: #999;
@@ -109,6 +111,12 @@
 		width: 24px;
 		height: 24px;
 		line-height: 30px;
+	}
+}
+
+.anva-builder-active {
+	.anva-tooltip-info {
+		display: block;
 	}
 }
 
@@ -660,7 +668,12 @@
 
 .anva-builder-active {
 	.anva-input-checkbox {
-		margin: 12px 0;
+		border-bottom: 1px solid #e5e5e5;
+		margin: 12px 0 0px;
+		background: #f1f1f1;
+		padding: 0 12px 12px;
+		padding-left: 2px;
+		margin: -8px -14px 12px;
 	}
 }
 
@@ -673,6 +686,10 @@
 
 .anva-input-checkbox {
 	margin: 12px 0 0px;
+	background: #f1f1f1;
+	padding: 0 12px;
+	padding-left: 2px;
+	margin: -8px -14px -14px;
 }
 
 .anva-input-builder {

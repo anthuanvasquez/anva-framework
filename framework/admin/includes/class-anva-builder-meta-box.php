@@ -343,13 +343,12 @@ class Anva_Builder_Meta_Box {
 							<?php foreach ( $tabs as $tab_id => $tab ) :	?>
 								<li><a href="#elements-group-<?php echo esc_attr( $tab_id ); ?>"><?php echo $tab['name']; ?></a></li>
 							<?php	endforeach; ?>
-						</ul><!-- .tabs (end) -->
+						</ul><!-- .anva-tabs (end) -->
 					<?php endif; ?>
 
 					<?php foreach ( $tabs as $tab_id => $tab ) : ?>
 						<div id="elements-group-<?php echo $tab_id; ?>">
-						<ul class="builder-elements">
-
+							<ul class="builder-elements">
 							<?php foreach ( $tab['elements'] as $element_id => $element ) : ?>
 								
 								<?php if ( isset( $element['icon'] ) && ! empty( $element['icon'] ) ) : ?>
@@ -897,7 +896,7 @@ class Anva_Builder_Meta_Box {
 					// Validate title
 					var $title = $(this).closest('.item-inline').find('.section-title input');
 					if ( $title.val() == '' ) {
-						alert( ANVA.builder_title );
+						alert( anvaJs.builder_title );
 						return false;
 					}
 					
@@ -924,7 +923,7 @@ class Anva_Builder_Meta_Box {
 								$('#' + $currentItem).find('.title .shortcode-title').html( decodeURI( $(this).val() ) );
 								
 								if ( $('#' + $currentItem).find('.unsave').length == 0 ) {
-									$('<span class="unsave">' + ANVA.builder_unsaved + '</span>').appendTo( $('#' + $currentItem).find('.title .shortcode-type') );
+									$('<span class="unsave">' + anvaJs.builder_unsaved + '</span>').appendTo( $('#' + $currentItem).find('.title .shortcode-type') );
 									$('#' + $currentItem).addClass('item-unsaved');
 								}
 							}

@@ -38,26 +38,10 @@ function theme_options_menu( $menu ) {
  * @since 1.0.0
  */
 function theme_backup_menu( $menu ) {
-	$menu['page_title'] = ANVA_THEME_NAME . ' ' . __( 'Backup', 'anva' );
-	$menu['menu_title'] = ANVA_THEME_NAME . ' ' . __( 'Backup', 'anva' );
+	$menu['page_title'] = sprintf( '%1$s %2$s', ANVA_THEME_NAME, __( 'Backup', 'anva' ) );
+	$menu['menu_title'] = sprintf( '%1$s %2$s', ANVA_THEME_NAME, __( 'Backup', 'anva' ) );
 	return $menu;
 }
-
-/**
- * Change the slider args
- *
- * @since 1.0.0
- */
-// function anva_theme_featured_size( $args ) {
-// 	if ( isset( $args['main'] ) ) {
-// 		$args['main']['size'] = 'slider_fullwidth';
-// 	}
-//  if ( ! isset( $args['main'] ) ) {
-// 		$args['main']['orderby'] = 'date';
-//  }
-// 	return $args;
-// }
-// add_filter( 'anva_slideshows', 'anva_theme_featured_size' );
 
 /**
  * Body Classes
@@ -92,51 +76,17 @@ function theme_stylesheets() {
 	// Get stylesheet API
 	$api = Anva_Stylesheets_API::instance();
 
-	// Register stylesheets
-	$stylesheets = array();
-
-	$stylesheets['theme_screen'] = array(
-		'handle' => 'theme_screen',
-		'src' => get_template_directory_uri() . '/assets/css/styles.css',
-		'deps' => $api->get_framework_deps(),
-		'ver' => ANVA_THEME_VERSION,
-		'media' => 'all'
-	);
-
-	$stylesheets['theme_colors'] = array(
-		'handle' => 'theme_colors',
-		'src' => get_template_directory_uri() . '/assets/css/colors.css',
-		'deps' => array( 'theme_screen' ),
-		'ver' => ANVA_THEME_VERSION,
-		'media' => 'all'
-	);
-
-	$stylesheets['theme_responsive'] = array(
-		'handle' => 'theme_responsive',
-		'src' => get_template_directory_uri() . '/assets/css/responsive.css',
-		'deps' => array( 'theme_screen' ),
-		'ver' => ANVA_THEME_VERSION,
-		'media' => 'all'
-	);
-
-	$stylesheets['theme_ie'] = array(
-		'handle' => 'theme_ie',
-		'src' => get_template_directory_uri() . '/assets/css/ie.css',
-		'deps' => array( 'theme_screen' ),
-		'ver' => ANVA_THEME_VERSION,
-		'media' => 'all'
-	);
-
 	// Register stylesheets for later use
-	foreach ( $stylesheets as $key => $value ) {
-		wp_register_style( $value['handle'], $value['src'], $value['deps'], $value['ver'], $value['media'] );
-	}
+	wp_register_style( 'theme_styles', get_template_directory_uri() . '/assets/css/styles.css', $api->get_framework_deps(), ANVA_THEME_VERSION, 'all' );
+	wp_register_style( 'theme_responsive', get_template_directory_uri() . '/assets/css/responsive.css', array( 'theme_styles' ), ANVA_THEME_VERSION, 'all' );
+	wp_register_style( 'theme_colors', get_template_directory_uri() . '/assets/css/colors.css', array( 'theme_styles' ), ANVA_THEME_VERSION, 'all' );
+	wp_register_style( 'theme_ie', get_template_directory_uri() . '/assets/css/ie.css', array( 'theme_styles', 'theme_responsive' ), ANVA_THEME_VERSION, 'all' );
 
 	// Compress CSS
 	if ( '1' != anva_get_option( 'compress_css' ) ) {
 		
 		// Enqueue theme stylesheets
-		wp_enqueue_style( 'theme_screen' );
+		wp_enqueue_style( 'theme_styles' );
 		wp_enqueue_style( 'theme_responsive' );
 		wp_enqueue_style( 'theme_colors' );
 		
@@ -156,9 +106,8 @@ function theme_stylesheets() {
 		anva_minify_stylesheets( $stylesheets, $ignore );
 		
 		// Add IE conditional
-		wp_register_style( 'theme_xie', get_template_directory_uri() . '/assets/css/ie.css', array( 'all-in-one' ), THEME_VERSION, 'all' );
-		$GLOBALS['wp_styles']->add_data( 'theme_xie', 'conditional', 'lt IE 9' );
-		wp_enqueue_style( 'theme_xie' );
+		$GLOBALS['wp_styles']->add_data( 'theme_ie', 'conditional', 'lt IE 9' );
+		wp_enqueue_style( 'theme_ie' );
 		
 		// Inline theme styles
 		wp_add_inline_style( 'all-in-one', theme_styles() );
@@ -182,11 +131,11 @@ function theme_scripts() {
 
 	wp_register_script( 'html5shiv', '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js', array(), '3.6.2' );
 	wp_register_script( 'css3mediaqueriesjs', 'http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js', array(), '3.6.2' );
-
+	
 	$GLOBALS['wp_scripts']->add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 	$GLOBALS['wp_scripts']->add_data( 'css3mediaqueriesjs', 'conditional', 'lt IE 9' );
 
-	// Enque Scripts
+	// Enqueue Scripts
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'html5shiv' );
 	wp_enqueue_script( 'css3mediaqueriesjs' );
@@ -198,6 +147,7 @@ function theme_scripts() {
 
 	// Level 3
 	$api->print_scripts(3);
+	
 }
 
 /**
@@ -235,7 +185,7 @@ function theme_styles() {
 		font-style: <?php echo anva_get_font_style( $body_font ); ?>;
 		font-weight: <?php echo anva_get_font_weight( $body_font ); ?>;
 	}
-	h1, h2, h3, h4, h5, h6, .entry-title h1, .entry-title h2 {
+	.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, .entry-title h1, .entry-title h2 {
 		font-family: <?php echo anva_get_font_face( $heading_font ); ?>;
 		font-style: <?php echo anva_get_font_style( $heading_font ); ?>;
 		font-weight: <?php echo anva_get_font_weight( $heading_font ); ?>;
@@ -283,13 +233,15 @@ function theme_styles() {
 		background-repeat: repeat;
 	}
 	<?php endif; ?>
+	<?php if ( $link_color ) : ?>
 	/* Links */
 	a {
-		color: <?php anva_the_option( 'link_color' ); ?>
+		color: <?php echo $link_color; ?>
 	}
 	a:hover {
-		color: <?php anva_the_option( 'link_color_hover' ); ?>
+		color: <?php echo $link_color_hover; ?>
 	}
+	<?php endif; ?>
 	<?php
 	$styles = ob_get_clean();
 
@@ -328,19 +280,22 @@ function theme_remove_scripts() {
  * @since 1.0.0
  */
 function theme_remove_grid_columns( $columns ) {
-	global $pagenow;
 	
-	// Admin Pages
-	if ( ( $pagenow == 'post.php' ) && ( isset( $_GET['post_type'] ) ) && ( $_GET['post_type'] == 'page' ) ) {
-		unset( $columns[1] );
-		unset( $columns[5] );
-		unset( $columns[6] );
-	}
+	if ( is_admin() ) {
+		global $pagenow;
 	
-	// Admin Nav Menu
-	if ( ( $pagenow == 'nav-menus.php' ) ) {
-		unset( $columns[1] );
-		unset( $columns[6] );
+		// Admin Pages
+		if ( ( $pagenow == 'post.php' ) && ( isset( $_GET['post_type'] ) ) && ( $_GET['post_type'] == 'page' ) ) {
+			unset( $columns[1] );
+			unset( $columns[5] );
+			unset( $columns[6] );
+		}
+		
+		// Admin Nav Menu
+		if ( ( $pagenow == 'nav-menus.php' ) ) {
+			unset( $columns[1] );
+			unset( $columns[6] );
+		}
 	}
 	
 	return $columns;

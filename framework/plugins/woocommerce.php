@@ -4,7 +4,6 @@
  * This file contain extra settings for WooCommerce plugin.
  */
 
-
 if ( class_exists( 'Woocommerce' ) ) :
 
 add_action( 'after_setup_theme', 'anva_add_woocommerce_support' );

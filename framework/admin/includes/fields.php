@@ -155,16 +155,6 @@ function anva_setup_page_meta() {
 						'hide'	=> __( 'Hide page\'s title', 'anva' )
 					)
 				),
-			)
-		),
-	);
-
-	$layout = array(
-		'layout' => array(
-			'id' 			=> 'main',
-			'name'		=> __( 'Main', 'anva' ),
-			'type' 		=> 'heading',
-			'options' => array(
 				'sidebar_layout' => array(
 					'name' 		=> __( 'Sidebar Layout', 'anva' ),
 					'desc'		=> __( 'Select a sidebar layout.', 'anva' ),
@@ -185,7 +175,7 @@ function anva_setup_page_meta() {
 					'options'	=> $columns
 				),
 			)
-		)
+		),
 	);
 
 	$setup = array(
@@ -202,10 +192,6 @@ function anva_setup_page_meta() {
 				'name' 		=> __( 'General', 'anva' ),
 				'sections'=> $general
 			),
-			'layout' 	=> array(
-				'name' 		=> __( 'Layout', 'anva' ),
-				'sections'=> $layout
-			)
 		)
 	);
 
@@ -228,39 +214,39 @@ function anva_setup_portfolio_meta() {
 				'hide_title' => array(
 					'id'			=> 'hide_title',
 					'name' 		=> __( 'Portfolio Title', 'anva' ),
-					'desc'		=> __( 'Show or hide portfolio\'s titles.', 'anva' ),
+					'desc'		=> __( 'Show or hide portfolio\'s item titles.', 'anva' ),
 					'type' 		=> 'select',
 					'std'			=> 'show',
 					'options'	=> array(
-						'show' 	=> __( 'Show portfolio\'s title', 'anva' ),
-						'hide'	=> __( 'Hide portfolio\'s title', 'anva' )
+						'show' 	=> __( 'Show portfolio\'s item title', 'anva' ),
+						'hide'	=> __( 'Hide portfolio\'s item title', 'anva' )
 					),
 				),
 				'author' => array(
 					'id'			=> 'author',
 					'name' 		=> __( 'Author', 'anva' ),
-					'desc'		=> __( 'Enter the porfolio author.', 'anva' ),
+					'desc'		=> __( 'Enter the porfolio item author.', 'anva' ),
 					'type' 		=> 'text',
 					'std'			=> ''
 				),
 				'client' => array(
 					'id'			=> 'client',
 					'name' 		=> __( 'Client', 'anva' ),
-					'desc'		=> __( 'Select the date on which the project was completed.', 'anva' ),
+					'desc'		=> __( 'Enter the porfolio client.', 'anva' ),
 					'type' 		=> 'text',
 					'std'			=> ''
 				),
 				'client_url' => array(
 					'id'			=> 'client_url',
 					'name' 		=> __( 'Client URL', 'anva' ),
-					'desc'		=> __( 'Select the date on which the project was completed.', 'anva' ),
+					'desc'		=> __( 'Enter the client URL.', 'anva' ),
 					'type' 		=> 'text',
 					'std'			=> 'http://'
 				),
 				'date' => array(
 					'id'			=> 'date',
 					'name' 		=> __( 'Date', 'anva' ),
-					'desc'		=> __( 'Select the date Enter the porfolio client.', 'anva' ),
+					'desc'		=> __( 'Select the date on which the project was completed.', 'anva' ),
 					'type' 		=> 'date',
 					'std'			=> ''
 				),
@@ -420,66 +406,13 @@ function anva_setup_gallery_attachments_meta() {
  */
 function anva_setup_slider_meta() {
 
-	$general = array(
-		'general' => array(
-			'id' 			=> 'general',
-			'name'		=> __( 'General', 'anva' ),
-			'type' 		=> 'heading',
-			'options' => array(
-				'type' => array(
-					'name' 		=> __( 'Slide Type', 'anva' ),
-					'desc'		=> __( 'Select content type.', 'anva' ),
-					'id'			=> 'type',
-					'type' 		=> 'select',
-					'std'			=> '',
-					'options'	=> array(
-						'image' => __( 'Image Slide', 'anva' ),
-						'video' => __( 'Video Slide', 'anva' )
-					)
-				),
-				'link' => array(
-					'name' 		=> __( 'Image Link', 'anva' ),
-					'desc'		=> __( 'Where should the link open?.', 'anva' ),
-					'id'			=> 'link',
-					'type' 		=> 'select',
-					'std'			=> 'same',
-					'options'	=> array(
-						'same' 	=> __( 'Same Windows', 'anva' ),
-						'new' 	=> __( 'New Windows', 'anva' ),
-						'image' => __( 'Lightbox Image', 'anva' ),
-						'video' => __( 'Lightbox Video', 'anva' )
-					)
-				),
-				'url' => array(
-					'name' 		=> __( 'URL', 'anva' ),
-					'desc'		=> __( 'Where should the link go?.', 'anva' ),
-					'id'			=> 'url',
-					'type' 		=> 'text',
-					'std'			=> ''
-				),
-				'description' => array(
-					'name' 		=> __( 'Description', 'anva' ),
-					'desc'		=> __( 'What should the description say?.', 'anva' ),
-					'id'			=> 'description',
-					'type' 		=> 'textarea',
-					'std'			=> ''
-				),
-				'content' => array(
-					'name' 		=> __( 'Content', 'anva' ),
-					'desc'		=> __( 'Select a option to show the content.', 'anva' ),
-					'id'			=> 'content',
-					'type' 		=> 'select',
-					'std'			=> 'hide',
-					'options'	=> array(
-						'title' => anva_get_local( 'slide_title'),
-						'desc' 	=> anva_get_local( 'slide_desc' ),
-						'both' 	=> anva_get_local( 'slide_show' ),
-						'hide' 	=> anva_get_local( 'slide_hide' )
-					)
-				),
-			)
-		)
-	);
+	$slider = anva_get_option( 'slider_id' );
+	$sliders = anva_get_sliders( $slider );
+	$slider_fields = array();
+
+	if ( isset( $sliders['fields']) ) {
+		$slider_fields = $sliders['fields'];
+	}
 	
 	$setup = array(
 		'args' => array(
@@ -492,7 +425,7 @@ function anva_setup_slider_meta() {
 		'tabs' => array(
 			'general' 	=> array(
 				'name' 		=> __( 'General', 'anva' ),
-				'sections'=> $general
+				'sections'=> $slider_fields
 			),
 		)
 	);

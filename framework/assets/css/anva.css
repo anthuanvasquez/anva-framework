@@ -1078,7 +1078,7 @@ body.top-search-open #top-lang {
   margin: 10px -10px -15px 0;
 }
 
-.entry-meta span {
+.entry-meta > span {
   display: inline;
   font-size: 13px;
   line-height: 14px;

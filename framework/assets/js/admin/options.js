@@ -47,12 +47,13 @@ jQuery(document).ready(function($) {
 				$('.dynamic-sidebars ul').removeClass('empty');
 
 				var $sidebarId = $('#dynamic_sidebar_id').val(), $sidebarName = $('#dynamic_sidebar_name').val();
-				$('.dynamic-sidebars ul').append( '<li class="animated bounceIn">' + $new + ' <a href="#" class="delete">Delete</a> <input type="hidden" name="' + $sidebarName + '[' + $sidebarId + '][]' + '" value="' + $new + '" /></li>' );
+				$('.dynamic-sidebars ul').append( '<li>' + $new + ' <a href="#" class="delete">Delete</a> <input type="hidden" name="' + $sidebarName + '[' + $sidebarId + '][]' + '" value="' + $new + '" /></li>' );
 				$('.sidebar').val('');
 			});
 
 			// Show spinner on submit form
 			$('#optionsframework-submit input.button-primary').click( function() {
+				$(this).val( anvaJs.save_button );
 				$('#optionsframework-submit .spinner').addClass('is-active');
 			});
 

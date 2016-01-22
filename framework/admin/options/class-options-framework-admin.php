@@ -138,7 +138,6 @@ class Options_Framework_Admin {
 	 *
 	 * @since 1.7.0
 	 */
-
 	function enqueue_admin_styles( $hook ) {
 
 		if ( $this->options_screen != $hook )
@@ -162,9 +161,13 @@ class Options_Framework_Admin {
 		if ( $this->options_screen != $hook )
 			return;
 
+		wp_enqueue_script( 'optionsframework',  anva_get_core_uri() . '/assets/js/admin/options.js', array( 'jquery','wp-color-picker' ), ANVA_FRAMEWORK_VERSION );
+
 		// Enqueue custom option panel JS
 		wp_enqueue_script( 'jquery-slider-pips',  anva_get_core_uri() . '/assets/js/admin/jquery-ui-slider-pips.min.js', array( 'jquery' ), '1.7.2' );
-		wp_enqueue_script( 'optionsframework',  anva_get_core_uri() . '/assets/js/admin/options.js', array( 'jquery','wp-color-picker' ), ANVA_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'optionsframework' );
+		wp_localize_script( 'optionsframework', 'anvaJs', anva_get_admin_locals( 'js' ) );
+
 		
 		// Inline scripts from options-interface.php
 		add_action( 'admin_head', array( $this, 'anva_admin_head' ) );
