@@ -1,0 +1,81 @@
+.post-reading-indicator-container {
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 2px;
+  display: block;
+}
+
+.post-reading-indicator-bar {
+  background-color: #222;
+  width: 50%;
+  display: block;
+  height: inherit;
+}
+
+.post-reading-bar {
+  width: 100%;
+  position: fixed;
+  bottom: -60px;
+  left: 0;
+  height: 60px;
+  display: block;
+  background-color: #fff;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  z-index: 1099;
+}
+
+#post-reading-wrap.visible .post-reading-bar {
+  bottom: 0;
+}
+
+.post-reading-bar .spost {
+  border: 0;
+  padding-top: 6px;
+}
+
+body.device-lg .post-reading-bar {
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+.password-form {
+  text-align: center;
+}
+
+.password-form i {
+  background: #222;
+  width: 144px;
+  height: 144px;
+  font-size: 108px;
+  line-height: 140px;
+  display: block;
+  font-weight: 500;
+  margin: 20px auto 30px;
+  color: #fff;
+  text-align: center;
+  cursor: default;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 15%;
+}
+
+.password-form i:before {
+  margin-left: 8px;
+}
+
+.password-form label {
+  margin-right: 3px;
+}
+
+.password-form .form-group + p {
+  display: inline;
+}
+
+.password-form .password-error {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}

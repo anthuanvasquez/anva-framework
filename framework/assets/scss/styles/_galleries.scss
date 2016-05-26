@@ -1,0 +1,38 @@
+/* ----------------------------------------------------------------
+    Galleries
+-----------------------------------------------------------------*/
+
+.archive-galleries {
+    .entry {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .entry-image {
+        margin-bottom: 0;
+    }
+}
+
+.gallery-content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+
+    a {
+        color: inherit;
+    }
+}
+
+.gallery-title h2 {
+    font-size: $font-size-h4;
+    font-weight: 400;
+    margin-bottom: 0;
+
+    a {
+        color: #fff;
+    }
+}
+

@@ -1,0 +1,204 @@
+// Login variables
+$width: 		267px;
+$height: 		99px;
+$max-width: 	380px;
+$font-color: 	#444;
+$link-color: 	#777;
+$background: 	#444;
+
+/* ---------------------------------------------------------------- */
+/* Login
+/* ---------------------------------------------------------------- */
+
+html,
+body {
+	background: $background; 
+}
+
+body.login .login-footer {
+	color: #fff;
+	background: $background;
+	margin: 20px auto;
+	max-width: $max-width;
+	text-align: center;
+	width: 100%;
+
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+}
+
+body.login {
+	div#login {
+		max-width: $max-width;
+		width: 100%;
+
+		h1 {
+			background: #fff;
+			padding: 20px 40px;
+
+			a {
+				background-image: url('../images/logo.png');
+				background-size: $width $height;
+				background-position: center top;
+				background-repeat: no-repeat;
+				color: $link-color;
+				height: $height;
+				font-size: 20px;
+				font-weight: normal;
+				line-height: 1.3em;
+				margin: 0 auto;
+				padding: 0;
+				text-decoration: none;
+				width: $width;
+				text-indent: -9999px;
+				outline: none;
+				overflow: hidden;
+				display: block;
+			}
+		}
+
+		form#loginform {
+			background: #fff;
+			border: 0;
+			border-radius: 0;
+			box-shadow: none;
+			margin-top: 0;
+			padding: 20px 40px;
+
+			p:not(.forgetmenot) {
+				label {
+					display: block;
+					font-size: 13px;
+					font-weight: 700;
+					text-transform: uppercase;
+					color: #444;
+					margin-bottom: 10px;
+					cursor: pointer;
+				}
+			}
+
+			input {
+				&#user_login,
+				&#user_pass {
+					margin-right: 0;
+					width: 100%;
+				}
+			}
+			
+			p.forgetmenot {
+				float: right;
+
+				label {
+					color: #444;
+				}
+
+				input#rememberme {
+					position: relative;
+					top: 0;
+				}
+			}
+
+			p.submit {
+				float: left;
+
+				input#wp-submit {
+					background: #111;
+					padding: 0 22px;
+				  font-size: 14px;
+				  font-weight: 600;
+				  text-transform: uppercase;
+				  height: 40px;
+	  			line-height: 40px;
+					color: #fff;
+					border-radius: 2px;
+					border: 0;
+					text-shadow: none;
+					transition: all .3s ease;
+
+					&:hover {
+						background: #444;
+					}
+				}
+			}
+		}
+
+		p#nav {
+			background: #fff;
+			border: 0;
+			border-radius: 0;
+			margin: 0;
+			padding: 20px 40px 20px;
+			text-align: center;
+
+			a {
+				color: $link-color;
+				font-weight: 700;
+				&:hover {
+					color: #444;
+				}
+			}
+		}
+
+		p#backtoblog {
+			background: #fff;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding: 0 40px 20px;
+			text-align: center;
+
+			a {
+				color: $link-color;
+				font-weight: 700;
+				&:hover {
+					color: #444;
+				}
+			}
+		}
+	}
+}
+
+#login_error,
+.login .message {
+  margin-left: 0;
+  padding: 15px 40px;
+  border: 0;
+  background: #00a0d2;
+  color: #fff;
+
+  a {
+  	color: #fff;
+  	font-weight: 700;
+  }
+}
+
+.login #login_error {
+  border-left: 0;
+  background: #dd3d36;
+  box-shadow: none;
+}
+
+#copyright {
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	max-width: $max-width;
+	width: 100%;
+
+	p {
+		color: #fff;
+		font-size: 12px;
+		font-weight: 400;
+		text-align: center;
+
+		a {
+			color: #fff;
+			font-weight: 700;
+			text-decoration: none;
+			&:hover {
+				color: inherit;
+			}
+		}
+	}
+}

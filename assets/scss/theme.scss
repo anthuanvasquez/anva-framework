@@ -1,0 +1,82 @@
+.post-reading-indicator-container, {
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 2px;
+  display: block;
+}
+
+.post-reading-indicator-bar {
+  background-color: #222;
+  width: 50%;
+  display: block;
+  height: inherit;
+}
+
+.post-reading-bar {
+  width: 100%;
+  position: fixed;
+  bottom: -60px;
+  left: 0;
+  height: 60px;
+  display: block;
+  background-color: #fff;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  z-index: 1099;
+
+  #post-reading-wrap.visible & {
+    bottom: 0;
+  }
+
+  .spost {
+    border: 0;
+    padding-top: 6px;
+  }
+}
+
+body.device-lg {
+  .post-reading-bar {
+    transition: all .4s ease;
+  }
+}
+
+.password-form {
+  text-align: center;
+
+  i {
+    background: #222;
+    width: 144px;
+    height: 144px;
+    font-size: 108px;
+    line-height: 140px;
+    display: block;
+    font-weight: 500;
+    margin: 20px auto 30px;
+    color: #fff;
+    text-align: center;
+    cursor: default;
+    border: 1px solid rgba(black, .4);
+    border-radius: 15%;
+
+    &:before {
+      margin-left: 8px;
+    }
+  }
+
+  label {
+    margin-right: 3px;
+  }
+
+  .form-group + p {
+    display: inline;
+  }
+
+  .password-error {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

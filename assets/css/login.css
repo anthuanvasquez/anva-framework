@@ -1,0 +1,193 @@
+/* ---------------------------------------------------------------- */
+/* Login
+/* ---------------------------------------------------------------- */
+html,
+body {
+  background: #444;
+}
+
+body.login .login-footer {
+  color: #fff;
+  background: #444;
+  margin: 20px auto;
+  max-width: 380px;
+  text-align: center;
+  width: 100%;
+}
+
+body.login .login-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+body.login div#login {
+  max-width: 380px;
+  width: 100%;
+}
+
+body.login div#login h1 {
+  background: #fff;
+  padding: 20px 40px;
+}
+
+body.login div#login h1 a {
+  background-image: url("../images/logo.png");
+  background-size: 267px 99px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  color: #777;
+  height: 99px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.3em;
+  margin: 0 auto;
+  padding: 0;
+  text-decoration: none;
+  width: 267px;
+  text-indent: -9999px;
+  outline: none;
+  overflow: hidden;
+  display: block;
+}
+
+body.login div#login form#loginform {
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: 0;
+  padding: 20px 40px;
+}
+
+body.login div#login form#loginform p:not(.forgetmenot) label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+body.login div#login form#loginform input#user_login, body.login div#login form#loginform input#user_pass {
+  margin-right: 0;
+  width: 100%;
+}
+
+body.login div#login form#loginform p.forgetmenot {
+  float: right;
+}
+
+body.login div#login form#loginform p.forgetmenot label {
+  color: #444;
+}
+
+body.login div#login form#loginform p.forgetmenot input#rememberme {
+  position: relative;
+  top: 0;
+}
+
+body.login div#login form#loginform p.submit {
+  float: left;
+}
+
+body.login div#login form#loginform p.submit input#wp-submit {
+  background: #111;
+  padding: 0 22px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  border-radius: 2px;
+  border: 0;
+  text-shadow: none;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+body.login div#login form#loginform p.submit input#wp-submit:hover {
+  background: #444;
+}
+
+body.login div#login p#nav {
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 20px 40px 20px;
+  text-align: center;
+}
+
+body.login div#login p#nav a {
+  color: #777;
+  font-weight: 700;
+}
+
+body.login div#login p#nav a:hover {
+  color: #444;
+}
+
+body.login div#login p#backtoblog {
+  background: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 40px 20px;
+  text-align: center;
+}
+
+body.login div#login p#backtoblog a {
+  color: #777;
+  font-weight: 700;
+}
+
+body.login div#login p#backtoblog a:hover {
+  color: #444;
+}
+
+#login_error,
+.login .message {
+  margin-left: 0;
+  padding: 15px 40px;
+  border: 0;
+  background: #00a0d2;
+  color: #fff;
+}
+
+#login_error a,
+.login .message a {
+  color: #fff;
+  font-weight: 700;
+}
+
+.login #login_error {
+  border-left: 0;
+  background: #dd3d36;
+  box-shadow: none;
+}
+
+#copyright {
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: 380px;
+  width: 100%;
+}
+
+#copyright p {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+}
+
+#copyright p a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#copyright p a:hover {
+  color: inherit;
+}

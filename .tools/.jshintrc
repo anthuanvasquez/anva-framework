@@ -1,0 +1,31 @@
+{
+    "bitwise":           true,
+    "strict":            false,
+    "eqeqeq":            true,
+    "eqnull":            true,
+    "immed":             true,
+    "newcap":            true,
+    "esnext":            true,
+    "camelcase":         false,
+    "latedef":           true,
+    "noarg":             true,
+    "node":              true,
+    "undef":             true,
+    "browser":           true,
+    "devel":             true,
+    "trailing":          true,
+    "jquery":            true,
+    "curly":             true,
+    "supernew":          true,
+    "globals": {
+        "_":             true,
+        "jQuery":        true,
+        "swal":          true,
+        "wp":            true,
+        "CodeMirror":    true,
+        "anvaJs":        true,
+        "anvaBuilderJs": true,
+        "anvaMediaJs":   true,
+        "ajaxurl":       true
+    }
+}

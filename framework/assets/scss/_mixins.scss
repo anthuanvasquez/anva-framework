@@ -1,0 +1,101 @@
+// -----------------------------------------------------------------------------------
+// 	mixins.less
+// -----------------------------------------------------------------------------------
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+@mixin square($size) {
+	@include size($size, $size);
+}
+
+
+//  Portfolio Item Size Builder
+// -----------------------------------------------------------------
+
+@mixin portfolio-width($container, $columns, $margin) {
+	$width: floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+	@return floor( ( $width * 3 ) / 4 );
+}
+
+@mixin portfolio-height($container, $columns, $margin) {
+    @return floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+}
+
+@mixin portfolio-item-width($container, $columns, $margin) {
+	width: portfolio-width($container, $columns, $margin);
+}
+
+@mixin portfolio-item-size($container, $columns, $margin) {
+	$height: portfolio-item-height($container, $columns, $margin);
+    $width: portfolio-item-width($container, $columns, $margin);
+	@include size($width, $height);
+}
+
+
+//  Shop Item Size Builder
+// -----------------------------------------------------------------
+
+@function shop-width($container, $columns, $margin) {
+	@return floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+}
+
+@function shop-height($container, $columns, $margin) {
+    $width: floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+    @return floor( ( $width * 4 ) / 3 );
+}
+
+@mixin shop-item-width($container, $columns, $margin) {
+	width: shop-width($container, $columns, $margin);
+}
+
+@mixin shop-item-height($container, $columns, $margin) {
+	height: shop-height($container, $columns, $margin);
+}
+
+
+//  Blog Grid Item Size Builder
+// -----------------------------------------------------------------
+
+@function blog-grid-width($container, $columns, $margin) {
+	@return floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+}
+
+@function blog-grid-height($container, $columns, $margin) {
+    $width: floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+    @return floor( ( $width * 37 ) / 66 );
+}
+
+@mixin blog-grid-item-width($container, $columns, $margin) {
+	width: blog-grid-width($container, $columns, $margin);
+}
+
+@mixin blog-grid-item-height($container, $columns, $margin) {
+	height: blog-grid-height($container, $columns, $margin);
+}
+
+
+//  Other Mixins
+// -----------------------------------------------------------------
+
+@mixin border-radius($radius: 3px) {
+	border-radius: $radius;
+}
+
+@mixin border-radius-custom($topleft: 3px, $topright: 3px, $bottomright: 3px, $bottomleft: 3px) {
+	border-radius: $topleft $topright $bottomright $bottomleft;
+}
+
+@mixin box-shadow($shadow) {
+	box-shadow: $shadow;
+}
+
+@mixin transition($transition) {
+	transition: $transition;
+}
+
+@mixin transition-transform($transition) {
+	transition: transform $transition;
+}

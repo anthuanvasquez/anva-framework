@@ -1,0 +1,347 @@
+@media only screen and (max-width: 1199px) {
+
+    canvas {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .promo {
+        h3 {
+            font-size: 20px;
+        }
+    }
+
+    .promo > span,
+    .promo > .container > span {
+        font-size: 15px;
+    }
+
+    .promo-uppercase {
+        h3 {
+            font-size: 19px;
+        }
+    }
+
+    .promo-uppercase > span,
+    .promo-uppercase > .container > span {
+        font-size: 14px;
+    }
+
+}
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    #wrapper {
+        width: 1000px;
+    }
+
+    #header {
+        &.transparent-header {
+            &.floating-header {
+                .container {
+                    width: 1030px;
+                    padding: 0 30px;
+                }
+                &.sticky-header {
+                    .container {
+                        width: 970px;
+                        padding: 0 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    #primary-menu {
+        &.sub-title {
+            ul {
+                > li {
+                    > a {
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    #primary-menu ul li.mega-menu .mega-menu-content,
+    .floating-header.sticky-header #primary-menu ul li.mega-menu .mega-menu-content {
+        width: 940px;
+    }
+
+    .floating-header {
+        #primary-menu {
+            ul {
+                li {
+                    &.mega-menu {
+                        .mega-menu-content {
+                            width: 1030px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .ei-slider {
+        height: 450px;
+    }
+
+    .postcontent {
+        width: $postcontent-md;
+        &.bothsidebar {
+            width: $bothsidebar-md;
+        }
+    }
+
+    .sidebar {
+        width: $sidebar-md;
+        .widget {
+            iframe {
+                width: $sidebar-md !important;
+            }
+        }
+    }
+
+    .team {
+        &.team-list {
+            .team-image {
+                width: 200px;
+            }
+        }
+    }
+
+    .testi-image,
+    .testi-image a,
+    .testi-image img,
+    .testi-image i {
+        display: block;
+        width: 36px;
+        height: 36px;
+    }
+
+    .testi-image {
+        i {
+            line-height: 36px;
+            font-size: 20px;
+        }
+    }
+
+    /* ----------------------------------------------------------------
+    Portfolio
+    -----------------------------------------------------------------*/
+
+    /* Portfolio - Sidebar
+    -----------------------------------------------------------------*/
+
+    /* Portfolio - Sidebar
+    -----------------------------------------------------------------*/
+
+    .bothsidebar .portfolio-item { width: 50%; }
+
+    /* Portfolio - Both Sidebars - Items - 2 Columns
+    -----------------------------------------------------------------*/
+
+    .bothsidebar .portfolio.portfolio-3 { margin: 0 -20px -20px 0; }
+
+    .bothsidebar .portfolio-3 .portfolio-item { padding: 0 20px 20px 0; }
+
+    /* Portfolio - Items - 1 Column
+    -----------------------------------------------------------------*/
+
+    .portfolio-1 .portfolio-item .portfolio-image,
+    .portfolio-1 .portfolio-item .portfolio-image a,
+    .portfolio-1 .portfolio-item .portfolio-image img {
+        width: 560px;
+        height: 311px;
+    }
+
+    .portfolio-1 .portfolio-desc { width: 340px; }
+
+    .bothsidebar .portfolio-shuffle,
+    .postcontent .portfolio-1 .iconlist { display: none; }
+
+    .postcontent .portfolio-1 .portfolio-item .portfolio-image,
+    .postcontent .portfolio-1 .portfolio-item .portfolio-image a,
+    .postcontent .portfolio-1 .portfolio-item .portfolio-image img {
+        width: 400px;
+        height: 222px;
+    }
+
+    .postcontent .portfolio-1 .portfolio-desc {
+        width: 250px;
+        padding: 0;
+    }
+
+    .bothsidebar .portfolio-1 .portfolio-item { width: 100% !important; }
+
+    .bothsidebar .portfolio-1 .portfolio-item .portfolio-image,
+    .bothsidebar .portfolio-1 .portfolio-item .portfolio-desc {
+        float: none;
+        margin: 0 !important;
+    }
+
+    .bothsidebar .portfolio-1 .portfolio-item .portfolio-image { margin-bottom: 20px !important; }
+
+    .bothsidebar .portfolio-1 .portfolio-item .portfolio-image,
+    .bothsidebar .portfolio-1 .portfolio-item .portfolio-image a,
+    .bothsidebar .portfolio-1 .portfolio-item .portfolio-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .bothsidebar .portfolio-1 .portfolio-desc {
+        width: 100%;
+        padding: 0;
+    }
+
+    .bothsidebar .entry-title h2 {
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+    .bothsidebar .entry-meta li { margin-right: 10px; }
+
+    /* ----------------------------------------------------------------
+        Blog
+    -----------------------------------------------------------------*/
+
+    .postcontent {
+        .small-thumbs {
+            .entry-image {
+                width: 200px;
+            }
+        }
+        .post-grid {
+            &.grid-3 {
+                .entry {
+                    @include blog-grid-item-width($postcontent-md, 3, $blog-3-margin-sb);
+                }
+            }
+            &.grid-2 {
+                .entry {
+                    @include blog-grid-item-width($postcontent-md, 2, $blog-2-margin-sb);
+                }
+            }
+        }
+    }
+
+    .bothsidebar {
+        .small-thumbs {
+            .entry-image {
+                width: 120px;
+            }
+        }
+        .post-grid {
+            &.grid-2 {
+                .entry {
+                    @include blog-grid-item-width($bothsidebar-md, 2, $blog-2-margin-bs);
+                }
+            }
+        }
+    }
+
+    .post-grid {
+        .entry {
+            @include blog-grid-item-width(940px, 4, $blog-4-margin);
+        }
+        &.grid-3 {
+            .entry {
+                @include blog-grid-item-width(940px, 3, $blog-3-margin);
+            }
+        }
+        &.grid-2 {
+            .entry {
+                @include blog-grid-item-width(940px, 2, $blog-2-margin);
+            }
+        }
+    }
+
+    .post-timeline {
+        .entry {
+            width: 400px !important;
+            &.entry-date-section {
+                width: 100% !important;
+            }
+        }
+    }
+
+    .mpost .entry-image,
+    .mpost .entry-image a,
+    .mpost .entry-image img,
+    .mpost .entry-image i {
+        width: 120px;
+        height: 90px;
+    }
+
+    .mpost {
+        .entry-image {
+            a {
+                i {
+                    line-height: 90px;
+                }
+            }
+        }
+    }
+
+    .col_one_third {
+        .landing-wide-form {
+            padding: 36px 30px;
+            .heading-block {
+                h2 {
+                    font-size: 32px;
+                }
+                span {
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------
+        Shop
+    -----------------------------------------------------------------*/
+
+    .bothsidebar {
+        .product-1 {
+            .product-image {
+                width: 200px;
+                height: 267px;
+            }
+        }
+    }
+
+    .product-title {
+        h3 {
+            font-size: 18px;
+        }
+    }
+
+    .panel {
+        .portfolio-meta {
+            li {
+                padding-left: 22px;
+                span {
+                    display: block;
+                    margin-left: -21px;
+                }
+            }
+        }
+    }
+
+    .portfolio-single-image-full.portfolio-single-thumbs,
+    .portfolio-single-image-full .swiper-container {
+        height: 400px;
+    }
+
+    .bnews-slider {
+        width: 817px;
+    }
+
+    .landing-form-overlay {
+        bottom: -142px;
+    }
+
+}

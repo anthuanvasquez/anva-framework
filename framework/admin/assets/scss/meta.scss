@@ -1,0 +1,71 @@
+.anva-framework {
+	margin: -6px 0 -12px;
+
+	.nav-tab-wrapper {
+		border-bottom: 1px solid #ddd !important;
+		padding-bottom: 0 !important;
+	}
+
+	.nav-tab {
+		background: #e4e4e4;
+		color: #555;
+		font-size: 13px;
+		font-family: "Open Sans", sans-serif;
+		font-weight: normal;
+	  	line-height: 24px;
+	  	min-width: 48px;
+  		text-align: center;
+
+  		&:hover {
+  			background: #fff;
+  		}
+	}
+
+	.nav-tab-active {
+		background: #fff;
+		border-bottom: 1px solid #fff;
+	}
+
+	.postbox {
+		border: 0;
+		box-shadow: none;
+		background: transparent;
+		min-width: 0;
+	}
+
+	h4.heading {
+		margin-top: 0;
+	}
+
+	.section {
+		margin: 0 -12px !important;
+	}
+
+}
+
+// Context
+#side-sortables {
+	.anva-framework .section .controls,
+	.anva-framework .section .explain {
+		float: none;
+		min-width: 100%;
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.anva-framework .section .controls {
+		&:before,
+		&:after {
+			content: "";
+			display: table;
+		}
+		&:after {
+			clear: both;
+		}
+	}
+
+	.anva-framework .section-description,
+	.anva-framework .section {
+		padding: 15px 12px;
+	}
+}

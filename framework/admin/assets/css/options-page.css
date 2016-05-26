@@ -1,0 +1,220 @@
+#anva-framework-wrap {
+  max-width: 1060px;
+}
+
+#anva-framework-wrap > h2:not(.nav-tab-wrapper) {
+  padding: 15px 10px;
+}
+
+#anva-framework-wrap > h2:not(.nav-tab-wrapper) > span {
+  font-size: 13px;
+  float: right;
+}
+
+#anva-framework-wrap > h2:not(.nav-tab-wrapper) > span em {
+  background: #000;
+  color: #fff;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 300;
+  margin-left: 5px;
+  padding: 3px 6px;
+}
+
+#anva-framework-wrap .nav-tab-wrapper a span {
+  position: relative;
+  top: 2px;
+}
+
+/* --------------------------------------------- */
+/* Typography
+/* --------------------------------------------- */
+.anva-framework .section-typography .font-range {
+  margin: 0 0 40px;
+}
+
+.anva-framework .section-typography .anva-select-label {
+  margin-bottom: 0 0 5px;
+}
+
+.anva-framework .section-typography .wp-picker-container {
+  margin-top: 2px;
+}
+
+.anva-framework .google-font {
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 0;
+  margin: 10px 0 15px;
+}
+
+.anva-framework .google-font h5 {
+  margin: 0 0 1.67em;
+}
+
+.anva-framework .google-font p.note {
+  font-style: italic;
+  font-size: 12px;
+  color: #999;
+  padding: 0;
+}
+
+.anva-framework .sample-text-font {
+  margin: 15px 0 0;
+  padding: 18px 10px;
+  border-radius: 0;
+  border: 2px dashed #ccc;
+  font-size: 25px;
+  text-align: center;
+}
+
+/* --------------------------------------------- */
+/* General
+/* --------------------------------------------- */
+#anva-framework-change {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-left: 6px solid #00c8fa;
+  box-sizing: border-box;
+  color: #777;
+  display: none;
+  margin: 15px 0 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+#anva-framework-metabox.metabox-holder {
+  padding-top: 20px;
+}
+
+/* Bottom Section */
+#anva-framework-submit {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  margin-bottom: 0;
+}
+
+#anva-framework .CodeMirror {
+  border: 1px solid #ddd;
+}
+
+#anva-framework .CodeMirror pre {
+  padding: 0 8px;
+}
+
+#anva-framework .cm-s-mdn-like .CodeMirror-gutters {
+  background: #f8f8f8;
+  border-left: 6px solid #f8f8f8;
+}
+
+#anva-framework .inner-group:not(.collapse-close) {
+  padding-bottom: 0;
+}
+
+#anva-framework .reset-button {
+  float: left;
+  cursor: pointer;
+}
+
+#anva-framework .button-primary {
+  float: right;
+}
+
+#anva-framework .options-settings {
+  position: relative;
+  margin-right: 300px;
+}
+
+#anva-framework .options-settings > .columns-1 {
+  width: 100%;
+  min-width: 463px;
+  float: left;
+}
+
+#anva-framework .options-settings > .columns-2 {
+  float: right;
+  margin-right: -300px;
+  width: 280px;
+}
+
+#anva-framework .options-settings > .columns-2 .postbox {
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}
+
+#anva-framework .options-settings > .columns-2 h3 {
+  margin: -10px -10px 10px;
+}
+
+#anva-framework .options-settings > .columns-2 .inside {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#anva-framework .options-settings > .columns-2 .log {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+#anva-framework .options-settings > .columns-2 .actions {
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+  margin: 10px -10px 0;
+  padding: 10px;
+}
+
+#anva-framework .options-settings > .columns-2 .spinner {
+  float: right;
+  margin-right: 8px;
+}
+
+#anva-framework .options-settings > .columns-2 .reset-button {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #a00;
+  padding: 0;
+}
+
+#anva-framework .options-settings > .columns-2 .reset-button:hover {
+  color: red;
+}
+
+/* --------------------------------------------- */
+/* Footer
+/* --------------------------------------------- */
+#anva-options-page-credit,
+#anva-options-page-links {
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  color: #999;
+  font-size: 11px;
+  padding: 6px 10px;
+}
+
+#anva-options-page-credit {
+  background: #ffffff;
+}
+
+#anva-options-page-links {
+  background: #f7f7f7;
+  border-top: 0;
+}
+
+#anva-options-page-links a {
+  color: #999;
+  display: inline-block;
+  margin-right: 5px;
+  text-decoration: none;
+}
+
+#anva-options-page-links a:hover {
+  color: #333;
+}
+
+#anva-options-page-links a span {
+  font-size: 14px;
+  line-height: 1.4;
+}

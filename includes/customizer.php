@@ -1,207 +1,266 @@
 <?php
 
 /**
- * Setup theme options for customizer
+ * Setup theme options for customizer.
+ *
+ * @since  1.0.0.
+ * @return void
  */
-function eren_customizer_options() {
+function theme_customizer_options() {
 
+	// Setup background options
 	$background_options = array(
-		'background_color' => array(
-			'name' 			=> __( 'Background Color', 'anva' ),
-			'id' 				=> 'background_color',
-			'type' 			=> 'color',
-			'transport'	=> 'postMessage',
-			'priority'	=> 1
+		'background_color' 				=> array(
+			'label' 					=> __( 'Background Color', 'anva' ),
+			'id' 						=> 'background_color',
+			'type' 						=> 'color',
+			'transport'					=> 'postMessage',
+			'priority'					=> 1
 		),
-		'background_image' => array(
-			'name' 			=> __( 'Background Image', 'anva' ),
-			'id' 				=> 'background_image',
-			'type' 			=> 'image',
-			'transport'	=> 'postMessage',
-			'priority'	=> 2
+		'background_image' 				=> array(
+			'label' 					=> __( 'Background Image', 'anva' ),
+			'id' 						=> 'background_image',
+			'type' 						=> 'image',
+			'transport'					=> 'postMessage',
+			'priority'					=> 2
 		),
-		'background_pattern' => array(
-			'name' 			=> __( 'Background Patterns', 'anva' ),
-			'id' 				=> 'background_pattern',
-			'type' 			=> 'select',
-			'options' => array(
-				'' 										 => __( 'None', 'anva' ),
-				'binding_light' 			 => 'Binding Light',
-				'dimension_@2X' 			 => 'Dimension',
-				'hoffman_@2X' 				 => 'Hoffman',
-				'knitting250px' 			 => 'Knitting',
-				'noisy_grid' 					 => 'Noisy Grid',
-				'pixel_weave_@2X' 		 => 'Pixel Weave',
-				'struckaxiom' 				 => 'Struckaxiom',
-				'subtle_stripes' 			 => 'Subtle Stripes',
-				'white_brick_wall_@2X' => 'White Brick Wall'
+		'background_pattern' 			=> array(
+			'label' 					=> __( 'Background Patterns', 'anva' ),
+			'description' 				=> __( 'Select the background patterns.', 'anva' ),
+			'id' 						=> 'background_pattern',
+			'type' 						=> 'select',
+			'choices' 					=> array(
+				'' 						=> __( 'None', 'anva' ),
+				'binding_light' 		=> 'Binding Light',
+				'dimension_@2X' 		=> 'Dimension',
+				'hoffman_@2X' 			=> 'Hoffman',
+				'knitting250px' 		=> 'Knitting',
+				'noisy_grid' 			=> 'Noisy Grid',
+				'pixel_weave_@2X' 		=> 'Pixel Weave',
+				'struckaxiom' 			=> 'Struckaxiom',
+				'subtle_stripes' 		=> 'Subtle Stripes',
+				'white_brick_wall_@2X' 	=> 'White Brick Wall',
+				'gplaypattern'			=> 'G Play Pattern',
+				'blackmamba'			=> 'Black Mamba',
+				'carbon_fibre' 			=> 'Carbon Fibre',
+				'congruent_outline' 	=> 'Congruent Outline',
+				'moulin' 				=> 'Moulin',
+				'wild_oliva' 			=> 'Wild Oliva',
 			),
-			'transport'	=> 'postMessage',
-			'priority'	=> 3
+			'transport'							 => 'postMessage',
+			'priority'							 => 3
 		),
 	);
 	anva_add_customizer_section( 'background', __( 'Background', 'anva' ), $background_options, 1 );
 
 	// Setup logo options
 	$header_options = array(
-		'logo' => array(
-			'name' 			=> __( 'Logo', 'anva' ),
-			'id' 				=> 'logo',
-			'type' 			=> 'logo',
-			'transport'	=> 'postMessage',
-			'priority'	=> 1
+		'custom_logo' => array(
+			'label' 					=> __( 'Logo', 'anva' ),
+			'id' 						=> 'custom_logo',
+			'type' 						=> 'logo',
+			'transport'					=> 'postMessage',
+			'priority'					=> 1
 		),
-		'social_media_style' => array(
-			'name' 			=> __( 'Socia Media Buttons Style', 'anva' ),
-			'id'				=> 'social_media_style',
-			'type' 			=> 'select',
-			'options'		=> array(
-				'light' 	=> __( 'Light', 'anva' ),
-				'colored' => __( 'Colored', 'anva' ),
-				'dark' 		=> __( 'Dark', 'anva' )
+		'social_media_style' 			=> array(
+			'label' 					=> __( 'Socia Media Buttons Style', 'anva' ),
+			'id'						=> 'social_media_style',
+			'type' 						=> 'select',
+			'choices'					=> array(
+				'light' 				=> __( 'Light', 'anva' ),
+				'colored' 				=> __( 'Colored', 'anva' ),
+				'dark' 					=> __( 'Dark', 'anva' )
 			),
-			'transport'	=> 'postMessage',
-			'priority'	=> 21
+			'transport'					=> 'postMessage',
+			'priority'					=> 21
 		)
 	);
 	anva_add_customizer_section( 'header', __( 'Header', 'anva' ), $header_options, 2 );
 
 	$main_styles_options = array(
-		'layout_style' 	=> array(
-			'name' 				=> __( 'Layout Style', 'anva' ),
-			'id'					=> 'layout_style',
-			'type' 				=> 'select',
-			'options'			=> array(
-				'boxed' 		=> __( 'Boxed', 'anva' ),
-				'stretched' => __( 'Stretched', 'anva' )
+		'layout_style' 						 => array(
+			'label' 								 => __( 'Layout Style', 'anva' ),
+			'id'										 => 'layout_style',
+			'type' 									 => 'select',
+			'choices'								 => array(
+				'boxed' 							 => __( 'Boxed', 'anva' ),
+				'stretched' 					 => __( 'Stretched', 'anva' )
 			),
-			'transport'		=> 'postMessage',
-			'priority'		=> 1
+			'transport'							 => 'postMessage',
+			'priority'							 => 1
 		),
-		'base_color' 		=> array(
-			'name' 				=> __( 'Base Color Scheme', 'anva' ),
-			'id'					=> 'base_color',
-			'type' 				=> 'select',
-			'options'			=> array(
-				'black' 		=> __( 'Black', 'anva' ),
-				'blue' 			=> __( 'Blue', 'anva' ),
-				'brown' 		=> __( 'Brown', 'anva' ),
-				'green' 		=> __( 'Green', 'anva' ),
-				'navy' 			=> __( 'Navy', 'anva' ),
-				'orange' 		=> __( 'Orange', 'anva' ),
-				'pink' 			=> __( 'Pink', 'anva' ),
-				'purple' 		=> __( 'Purple', 'anva' ),
-				'red' 			=> __( 'Red', 'anva' ),
-				'slate' 		=> __( 'Slate Grey', 'anva' ),
-				'teal' 			=> __( 'Teal', 'anva' )
+		'base_color' 							 => array(
+			'label' 								 => __( 'Base Color Scheme', 'anva' ),
+			'id'										 => 'base_color',
+			'type' 									 => 'select',
+			'choices'								 => array(
+				'black' 							 => __( 'Black', 'anva' ),
+				'blue' 								 => __( 'Blue', 'anva' ),
+				'brown' 							 => __( 'Brown', 'anva' ),
+				'green' 							 => __( 'Green', 'anva' ),
+				'navy' 								 => __( 'Navy', 'anva' ),
+				'orange' 							 => __( 'Orange', 'anva' ),
+				'pink' 								 => __( 'Pink', 'anva' ),
+				'purple' 							 => __( 'Purple', 'anva' ),
+				'red' 								 => __( 'Red', 'anva' ),
+				'slate' 							 => __( 'Slate Grey', 'anva' ),
+				'teal' 								 => __( 'Teal', 'anva' )
 			),
-			'transport'		=> 'postMessage',
-			'priority'		=> 2
+			'transport'							 => 'postMessage',
+			'priority'							 => 2
 		),
-		'footer_color' 	=> array(
-			'name' 				=> __( 'Footer Color Scheme', 'anva' ),
-			'id'					=> 'footer_color',
-			'type' 				=> 'select',
-			'options'			=> array(
-				'light' 		=> __( 'Light', 'anva' ),
-				'dark' 			=> __( 'Dark', 'anva' )
+		'footer_color' 						 => array(
+			'label' 								 => __( 'Footer Color Scheme', 'anva' ),
+			'id'										 => 'footer_color',
+			'type' 									 => 'select',
+			'choices'								 => array(
+				'light' 							 => __( 'Light', 'anva' ),
+				'dark' 								 => __( 'Dark', 'anva' )
 			),
-			'transport'		=> 'postMessage',
-			'priority'		=> 3
+			'transport'							 => 'postMessage',
+			'priority'							 => 3
 		),
 	);
 	anva_add_customizer_section( 'main_styles', __( 'Main Styles', 'anva' ), $main_styles_options, 101 );
 
 	//  Font options
-	$font_options 		= array(
-		'body_font' 		=> array(
-			'name' 				=> __( 'Body Font', 'anva' ),
-			'id' 					=> 'body_font',
-			'atts'				=> array( 'size', 'style', 'face' ),
-			'type' 				=> 'typography',
-			'transport'		=> 'postMessage'
+	$font_options = array(
+		'body_font' 							 => array(
+			'label' 								 => __( 'Body Font', 'anva' ),
+			'id' 										 => 'body_font',
+			'atts'									 => array( 'size', 'style', 'face' ),
+			'type' 									 => 'typography',
+			'transport'							 => 'postMessage'
 		),
-		'heading_font' 	=> array(
-			'name' 				=> __( 'Headings Font', 'anva' ),
-			'id' 					=> 'heading_font',
-			'atts'				=> array('style', 'face'),
-			'type' 				=> 'typography',
-			'transport'		=> 'postMessage'
+		'heading_font' 						 => array(
+			'label' 								 => __( 'Headings Font', 'anva' ),
+			'id' 										 => 'heading_font',
+			'atts'									 => array('style', 'face'),
+			'type' 									 => 'typography',
+			'transport'							 => 'postMessage'
 		),
-		'menu_font' 		=> array(
-			'name' 				=> __( 'Menu Font', 'anva' ),
-			'id' 					=> 'menu_font',
-			'atts'				=> array( 'style', 'face' ),
-			'type' 				=> 'typography',
-			'transport'		=> 'postMessage'
-		)
+		'meta_font' 							 => array(
+			'label' 								 => __( 'Meta Font', 'anva' ),
+			'id' 										 => 'meta_font',
+			'atts'									 => array( 'style', 'face' ),
+			'type' 									 => 'typography',
+			'transport'							 => 'postMessage'
+		),
+		'heading_h1' 							 => array(
+			'label' 								 => __( 'H1', 'anva' ),
+			'id' 										 => 'heading_h1',
+			'type'									 => 'typography',
+			'atts'									 => array( 'select' ),
+			'transport'							 => 'postMessage'
+		),
+		'heading_h2' 							 => array(
+			'label' 								 => __( 'H2', 'anva' ),
+			'id' 										 => 'heading_h2',
+			'type'									 => 'typography',
+			'atts'									 => array( 'select' ),
+			'transport'							 => 'postMessage'
+		),
+		'heading_h3' 							 => array(
+			'label' 								 => __( 'H3', 'anva' ),
+			'id' 										 => 'heading_h3',
+			'type'									 => 'typography',
+			'atts'									 => array( 'select' ),
+			'transport'							 => 'postMessage'
+		),
+		'heading_h4' 							 => array(
+			'label' 								 => __( 'H4', 'anva' ),
+			'id' 										 => 'heading_h4',
+			'type'									 => 'typography',
+			'atts'									 => array( 'select' ),
+			'transport'							 => 'postMessage'
+		),
+		'heading_h5' 							 => array(
+			'label' 								 => __( 'H5', 'anva' ),
+			'id' 										 => 'heading_h5',
+			'transport'							 => 'postMessage'
+		),
+		'heading_h6' 							 => array(
+			'label' 								 => __( 'H6', 'anva' ),
+			'id' 										 => 'heading_h6',
+			'type'									 => 'typography',
+			'atts'									 => array( 'select' ),
+			'transport'							 => 'postMessage'
+		),
 	);
 	anva_add_customizer_section( 'typography', __( 'Typography', 'anva' ), $font_options, 102 );
 
 	// Link options
 	$link_options = array(
-		'link_color' => array(
-			'name' 		=> __( 'Link Color', 'anva' ),
-			'id' 		=> 'link_color',
-			'type' 		=> 'color',
-			'priority'	=> 1
+		'link_color' 							 => array(
+			'label' 								 => __( 'Link Color', 'anva' ),
+			'id' 										 => 'link_color',
+			'type' 									 => 'color',
+			'priority'							 => 1
 		),
-		'link_hover_color' => array(
-			'name' 		=> __( 'Link Hover Color', 'anva' ),
-			'id' 		=> 'link_hover_color',
-			'type' 		=> 'color',
-			'priority'	=> 2
+		'link_hover_color' 				 => array(
+			'label' 								 => __( 'Link Hover Color', 'anva' ),
+			'id' 										 => 'link_hover_color',
+			'type' 									 => 'color',
+			'priority'							 => 2
 		),
-		'footer_link_color' => array(
-			'name' 		=> __( 'Footer Link Color', 'anva' ),
-			'id' 		=> 'footer_link_color',
-			'type' 		=> 'color',
-			'priority'	=> 3
+		'footer_link_color' 			 => array(
+			'label' 								 => __( 'Footer Link Color', 'anva' ),
+			'id' 										 => 'footer_link_color',
+			'type' 									 => 'color',
+			'priority'							 => 3
 		),
-		'footer_link_hover_color' => array(
-			'name' 		=> __( 'Footer Link Hover Color', 'anva' ),
-			'id' 		=> 'footer_link_hover_color',
-			'type' 		=> 'color',
-			'priority'	=> 4
+		'footer_link_hover_color'  => array(
+			'label' 								 => __( 'Footer Link Hover Color', 'anva' ),
+			'id' 										 => 'footer_link_hover_color',
+			'type' 									 => 'color',
+			'priority'							 => 4
 		)
 	);
 	anva_add_customizer_section( 'links', __( 'Links', 'anva' ), $link_options, 103 );
 
 	// Setup custom styles option
 	$custom_css_options = array(
-		'custom_css' 	=> array(
-			'name' 			=> __( 'Enter styles to preview their results.', 'anva' ),
-			'id' 				=> 'custom_css',
-			'type' 			=> 'textarea',
-			'transport'	=> 'postMessage'
+		'custom_css' 							 => array(
+			'label' 								 => __( 'Enter styles to preview their results.', 'anva' ),
+			'id' 										 => 'custom_css',
+			'type' 									 => 'textarea',
+			'transport'							 => 'postMessage'
 		)
 	);
 	anva_add_customizer_section( 'custom_css', __( 'Custom CSS', 'anva' ), $custom_css_options, 121 );
 
 }
-add_action( 'after_setup_theme', 'eren_customizer_options' );
+add_action( 'after_setup_theme', 'theme_customizer_options' );
 
 /**
- * Add specific theme elements to customizer
+ * Add specific theme elements to customizer.
+ *
+ * @since  1.0.0.
+ * @param  object  $wp_customize
+ * @return void
  */
-function eren_customizer_init( $wp_customize ) {
+function theme_customizer_init( $wp_customize ) {
 
 	// Remove custom background options
-	// $wp_customize->remove_section( 'colors' );
-	// $wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'colors' );
+	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'header_image' );
 
 	// Add real-time option edits
 	if ( $wp_customize->is_preview() ) {
-		add_action( 'wp_footer', 'eren_customizer_preview', 21 );
+		add_action( 'wp_footer', 'theme_customizer_preview', 21 );
 	}
 
 }
-add_action( 'customize_register', 'eren_customizer_init' );
+add_action( 'customize_register', 'theme_customizer_init' );
 
 /**
- * Add real-time option edits for this theme in customizer
+ * Add real-time option edits for this theme in customizer.
+ *
+ * @since  1.0.0.
+ * @return void
  */
-function eren_customizer_preview() {
+function theme_customizer_preview() {
 
 	// Global option name
 	$option_name = anva_get_option_name();
@@ -221,7 +280,7 @@ function eren_customizer_preview() {
 			// ---------------------------------------------------------
 
 			/* Body BG Color */
-			wp.customize('<?php echo $option_name; ?>[background_color]',function( value ) {
+			wp.customize('<?php echo $option_name; ?>[bg_color]',function( value ) {
 				value.bind(function( color ) {
 					$('body').css('background-color', color );
 				});
@@ -272,7 +331,7 @@ function eren_customizer_preview() {
 			});
 
 			/* Base Color Scheme */
-			wp.customize('<?php echo $option_name; ?>[base_color]',function( value ) {
+			wp.customize('<?php echo $option_name; ?>[base_color]', function( value ) {
 				value.bind(function( color ) {
 					$('body').removeClass('base-color-black base-color-blue base-color-brown base-color-dark_purple base-color-dark base-color-green base-color-light_blue base-color-light base-color-navy base-color-orange base-color-pink base-color-purple base-color-red base-color-slate base-color-teal');
 					$('body').addClass( 'base-color-' + color );
@@ -280,7 +339,7 @@ function eren_customizer_preview() {
 			});
 
 			/* Footer Color Scheme */
-			wp.customize('<?php echo $option_name; ?>[footer_color]',function( value ) {
+			wp.customize('<?php echo $option_name; ?>[footer_color]', function( value ) {
 				value.bind(function( color ) {
 					$('#footer').removeClass('dark');
 					$('#footer').addClass( color );
@@ -292,82 +351,49 @@ function eren_customizer_preview() {
 			// ---------------------------------------------------------
 
 			<?php anva_customizer_preview_font_prep(); ?>
-			<?php anva_customizer_preview_primary_font(); ?>
-			<?php anva_customizer_preview_header_font(); ?>
+			<?php anva_customizer_preview_body_font(); ?>
+			<?php anva_customizer_preview_heading_font(); ?>
+			<?php anva_customizer_preview_menu_font(); ?>
 
-			// ---------------------------------------------------------
-			// Special Typography
-			// ---------------------------------------------------------
-
-			var special_font_selectors = '#branding .header_logo .tb-text-logo, #content .media-full .slide-title, #featured_below .media-full .slide-title, .element-slogan .slogan .slogan-text, .element-tweet';
-
-			/* Special Typography - Style */
-			wp.customize('<?php echo $option_name; ?>[typography_special][style]',function( value ) {
-				value.bind(function(style) {
-					// Possible choices: normal, bold, italic, bold-italic
-					if ( style == 'normal' ) {
-						$(special_font_selectors).css('font-weight', 'normal');
-						$(special_font_selectors).css('font-style', 'normal');
-
-					} else if ( style == 'bold' ) {
-						$(special_font_selectors).css('font-weight', 'bold');
-						$(special_font_selectors).css('font-style', 'normal');
-
-					} else if ( style == 'italic' ) {
-						$(special_font_selectors).css('font-weight', 'normal');
-						$(special_font_selectors).css('font-style', 'italic');
-
-					} else if ( style == 'bold-italic' ) {
-						$(special_font_selectors).css('font-weight', 'bold');
-						$(special_font_selectors).css('font-style', 'italic');
-					}
+			/* H1 Font */
+			wp.customize('<?php echo $option_name; ?>[heading_h1]', function( value ) {
+				value.bind(function( size ) {
+					$('h1, .h1, .page-title h1, .entry-title h1').css('font-size', size + 'px' );
 				});
 			});
 
-			/* Special Typography - Face */
-			wp.customize('<?php echo $option_name; ?>[typography_special][face]',function( value ) {
-				value.bind(function(face) {
-					if( face == 'google' ){
-						googleFonts.specialToggle = true;
-						var google_font = googleFonts.specialName.split(":"),
-							google_font = google_font[0];
-						$(special_font_selectors).css('font-family', google_font);
-					}
-					else
-					{
-						googleFonts.specialToggle = false;
-						$(special_font_selectors).css('font-family', fontStacks[face]);
-					}
+			/* H2 Font */
+			wp.customize('<?php echo $option_name; ?>[heading_h2]', function( value ) {
+				value.bind(function( size ) {
+					$('h2, .h2, .entry-title h2').css('font-size', size + 'px' );
 				});
 			});
 
-			/* Special Typography - Google */
-			wp.customize('<?php echo $option_name; ?>[typography_special][google]',function( value ) {
-				value.bind(function(google_font) {
-					// Only proceed if user has actually selected for
-					// a google font to show in previous option.
-					if(googleFonts.specialToggle)
-					{
-						// Set global google font for reference in
-						// other options.
-						googleFonts.specialName = google_font;
+			/* H3 Font */
+			wp.customize('<?php echo $option_name; ?>[heading_h3]', function( value ) {
+				value.bind(function( size ) {
+					$('h3, .h3').css('font-size', size + 'px' );
+				});
+			});
 
-						// Remove previous google font to avoid clutter.
-						$('.preview_google_special_font').remove();
+			/* H4 Font */
+			wp.customize('<?php echo $option_name; ?>[heading_h4]', function( value ) {
+				value.bind(function( size ) {
+					$('h4, .h4').css('font-size', size + 'px' );
+				});
+			});
 
-						// Format font name for inclusion
-						var include_google_font = google_font.replace(/ /g,'+');
+			/* H5 Font */
+			wp.customize('<?php echo $option_name; ?>[heading_h5]', function( value ) {
+				value.bind(function( size ) {
+					$('h5, .h5').css('font-size', size + 'px' );
+				});
+			});
 
-						// Include font
-						$('head').append('<link href="http://fonts.googleapis.com/css?family='+include_google_font+'" rel="stylesheet" type="text/css" class="preview_google_special_font" />');
-
-						// Format for CSS
-						google_font = google_font.split(":");
-						google_font = google_font[0];
-
-						// Apply font in CSS
-						$(special_font_selectors).css('font-family', google_font);
-					}
+			/* H6 Font */
+			wp.customize('<?php echo $option_name; ?>[heading_h6]', function( value ) {
+				value.bind(function( size ) {
+					$('h6, .h6').css('font-size', size + 'px' );
 				});
 			});
 

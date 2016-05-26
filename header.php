@@ -1,69 +1,64 @@
 <?php
 /**
- * The template for displaying the header.
+ * The template file for header.
  *
- * @version 1.0.0
+ * WARNING: This template file is a core part of the
+ * Anva WordPress Framework. It is advised
+ * that any edits to the way this file displays its
+ * content be done with via hooks, filters, and
+ * template parts.
+ *
+ * @version     1.0.0
+ * @author      Anthuan Vásquez
+ * @copyright   Copyright (c) Anthuan Vásquez
+ * @link        http://anthuanvasquez.net
+ * @package     Anva WordPress Framework
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<?php do_action( 'anva_wp_head' ); ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-loader="3">
+<body <?php body_class(); anva_page_transition_data(); ?>>
 
-<?php anva_before(); ?>
+<?php do_action( 'anva_before' ); ?>
 
 <!-- WRAPPER (start) -->
 <div id="wrapper" class="clearfix">
 
-<!-- CONTAINER (start) -->
-<div id="container">
-	
-	<?php anva_top_before(); ?>
+	<?php do_action( 'anva_top_before' ); ?>
 
-	<!-- TOP (start) -->
-	<header id="top">
+	<?php do_action( 'anva_header_above' ); ?>
 
-		<?php anva_header_above(); ?>
-
-		<div id="header">
-			<div class="header-content">	
-				<div class="container clearfix">
-					<?php anva_header_logo(); ?>
-					<?php anva_header_extras(); ?>
-				</div><!-- .header-content (end) -->
-			</div><!-- .container (end) -->
-			
-			<?php anva_header_primary_menu(); ?>
-
-		</div><!-- #header (end) -->
-
-		<?php anva_header_below(); ?>
-
-	</header><!-- TOP (end) -->
+	<!-- HEADER (start) -->
+	<header id="header" <?php anva_header_class(); ?>>
+		<?php do_action( 'anva_header' ); ?>
+	</header><!-- HEADER (end) -->
 
 	<?php
+		// Below Header
+		do_action( 'anva_header_below' );
+
 		// After Top
-		anva_top_after();
+		do_action( 'anva_top_after' );
 
 		// Featured
-		anva_featured_before();
-		anva_featured();
-		anva_featured_after();
+		do_action( 'anva_featured_before' );
+		do_action( 'anva_featured' );
+		do_action( 'anva_featured_after' );
+
+		// Content Before
+		do_action( 'anva_content_before' );
 	?>
-	
-	<?php anva_content_before(); ?>
 
 	<!-- CONTENT (start) -->
 	<section id="content">
-		<div class="main-content">
-			<div class="container clearfix">
-				<?php anva_breadcrumbs(); ?>
-				<?php anva_above_layout(); ?>
+		<div class="content-wrap">
+			<?php do_action( 'anva_above_layout' ); ?>
