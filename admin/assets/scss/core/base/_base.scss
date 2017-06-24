@@ -1,0 +1,169 @@
+.anva-framework {
+    .hide {
+        display: none;
+    }
+
+    .ui-spinner {
+        box-sizing: border-box;
+        display: block;
+        padding: 5px;
+    }
+
+    .wp-picker-container {
+        input[type="text"].wp-color-picker {
+            margin-bottom: 0;
+            height: 24px;
+            width: 65px;
+        }
+    }
+
+    .anva-spinner {
+        border: 0;
+        box-shadow: none;
+
+        &:focus {
+            border: 0;
+            box-shadow: none;
+        }
+    }
+
+    .anva-checkbox,
+    .anva-radio {
+        clear: both;
+        margin: 0 10px 5px 0;
+    }
+
+    .anva-option-image {
+        margin: 3px 0 18px 0;
+        max-width: 340px;
+    }
+
+    .anva-input-file {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 0;
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 13px;
+        margin-bottom: 10px;
+        padding: 5px 8px 6px 8px;
+        width: 100%;
+    }
+
+    .mini {
+        .controls,
+        .controls {
+            input,
+            select {
+                min-width: 140px;
+                width: 140px;
+            }
+        }
+
+        .explain {
+            max-width: 74%;
+        }
+    }
+
+    .controls {
+        .select-wrapper {
+            margin-bottom: 3px;
+        }
+
+        .sidebar,
+        .upload {
+            display: table-cell;
+            position: relative;
+            z-index: 2;
+            float: left;
+            width: 100%;
+            margin: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            height: 33px;
+            box-shadow: none;
+            border-right: 0;
+        }
+    }
+
+    .screenshot {
+        box-sizing: border-box;
+        margin: 15px 0;
+        margin-left: 1px;
+        max-width: 100%;
+        position: relative;
+
+        &:hover {
+            .remove-image {
+                opacity: 1;
+            }
+        }
+
+        .no_image {
+            .file_link {
+                margin-left: 20px;
+            }
+
+            .remove-button {
+                bottom: 0;
+            }
+        }
+
+        .remove-image {
+            opacity: 0;
+            cursor: pointer;
+            display: block;
+            height: 24px;
+            width: 24px;
+            line-height: 24px;
+            padding: 0;
+            position: absolute;
+            z-index: 10;
+            top: -5px;
+            right: -5px;
+            outline: 0;
+            background: #eee;
+            box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(black, 0.15);
+            transition: opacity 0.1s ease;
+            color: #222;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+
+            &:hover {
+                color: red;
+            }
+        }
+
+        img {
+            background: #fafafa;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 4px;
+        }
+    }
+
+    .group-button {
+        border-collapse: separate;
+        display: table;
+        position: relative;
+
+        span {
+            display: table-cell;
+            font-size: 0;
+            position: relative;
+            white-space: nowrap;
+            width: 1%;
+            vertical-align: middle;
+
+            .button {
+                border-radius: 0;
+                box-shadow: none;
+                height: 33px;
+            }
+        }
+    }
+}

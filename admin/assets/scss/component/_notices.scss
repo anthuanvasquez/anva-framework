@@ -1,0 +1,52 @@
+.anva-framework {
+    .section-info {
+        border: 1px solid #DDD;
+        border-left: 6px solid #00C8fA;
+        border-radius: 0;
+        margin: 15px 0 10px;
+        padding: 10px 10px 0;
+        text-shadow: none;
+
+        &.success {
+            border-left-color: #5fc778;
+        }
+
+        &.warning {
+            border-left-color: #f9e149;
+        }
+
+        &.danger {
+            border-left-color: #ff5b79;
+        }
+
+        > h4 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        > p {
+            color: $color-description;
+            margin: 5px 0 10px;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.sweet-alert {
+    p {
+        span {
+            color: #bbb;
+            font-size: 14px;
+            display: block;
+        }
+    }
+
+    button {
+        background-color: #008ec2;
+        border: 1px solid #006799;
+    }
+}

@@ -1,0 +1,163 @@
+.dark .nav > li > a:hover,
+.dark .nav > li > a:focus,
+.dark .nav .open > a,
+.dark .nav .open > a:hover,
+.dark .nav .open > a:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .nav .nav-divider {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .nav-tabs {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .nav-tabs > li > a:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+}
+
+.dark .nav-tabs.nav-justified > li > a:hover,
+.dark .nav-tabs-justified > li > a:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .nav-tabs > li.active > a,
+.dark .nav-tabs > li.active > a:hover,
+.dark .nav-tabs > li.active > a:focus {
+    color: #DDD;
+    background-color: #383838;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom-color: #383838;
+}
+
+.dark .nav-tabs.nav-justified > .active > a,
+.dark .nav-tabs.nav-justified > .active > a:hover,
+.dark .nav-tabs.nav-justified > .active > a:focus {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 768px) {
+    .dark .nav-tabs.nav-justified > li > a {
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+    }
+    .dark .nav-tabs.nav-justified > .active > a,
+    .dark .nav-tabs.nav-justified > .active > a:hover,
+    .dark .nav-tabs.nav-justified > .active > a:focus {
+        border-bottom-color: #383838;
+    }
+}
+
+.dark .nav-tabs-justified > .active > a,
+.dark .nav-tabs-justified > .active > a:hover,
+.dark .nav-tabs-justified > .active > a:focus {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 768px) {
+    .dark .nav-tabs-justified > li > a {
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+    }
+    .dark .nav-tabs-justified > .active > a,
+    .dark .nav-tabs-justified > .active > a:hover,
+    .dark .nav-tabs-justified > .active > a:focus {
+        border-bottom-color: #383838;
+    }
+}
+
+.dark .navbar-default {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .navbar-default .navbar-brand {
+    color: #EEE;
+}
+
+.dark .navbar-default .navbar-brand:hover,
+.dark .navbar-default .navbar-brand:focus {
+    color: #BBB;
+}
+
+.dark .navbar-default .navbar-text {
+    color: #999;
+}
+
+.dark .navbar-default .navbar-nav > li > a {
+    color: #BBB;
+}
+
+.dark .navbar-default .navbar-nav > li > a:hover,
+.dark .navbar-default .navbar-nav > li > a:focus {
+    color: #EEE;
+    background-color: transparent;
+}
+
+.dark .navbar-default .navbar-nav > .active > a,
+.dark .navbar-default .navbar-nav > .active > a:hover,
+.dark .navbar-default .navbar-nav > .active > a:focus {
+    color: #EEE;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.dark .navbar-default .navbar-nav > .disabled > a,
+.dark .navbar-default .navbar-nav > .disabled > a:hover,
+.dark .navbar-default .navbar-nav > .disabled > a:focus {
+    color: #999;
+}
+
+.dark .navbar-default .navbar-toggle {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .navbar-default .navbar-toggle:hover,
+.dark .navbar-default .navbar-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .navbar-default .navbar-toggle .icon-bar {
+    background-color: #BBB;
+}
+
+.dark .navbar-default .navbar-collapse,
+.dark .navbar-default .navbar-form {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .navbar-default .navbar-nav > .open > a,
+.dark .navbar-default .navbar-nav > .open > a:hover,
+.dark .navbar-default .navbar-nav > .open > a:focus {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #EEE;
+}
+
+@media (max-width: 767px) {
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #BBB;
+    }
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #EEE;
+    }
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        background-color: rgba(0, 0, 0, 0.25);
+        color: #EEE;
+    }
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .dark .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #999;
+    }
+}
+
+.dark .navbar-default .navbar-link {
+    color: #BBB;
+}
+
+.dark .navbar-default .navbar-link:hover {
+    color: #EEE;
+}

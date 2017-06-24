@@ -1,0 +1,39 @@
+.breadcrumb-wrap {
+    border-bottom: 1px solid #EEE;
+
+    .breadcrumb {
+        position: relative;
+        width: 100%;
+        top: 0;
+        left: auto;
+        right: auto;
+        margin: 0;
+        background-color: transparent;
+        padding: 10px 0;
+        font-size: 12px;
+    }
+
+    .dark & {
+        background-color: #333;
+        text-shadow: 1px 1px 1px rgba(black, 0.15);
+        border-bottom: none;
+
+        .breadcrumb {
+            > .active {
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            a {
+                color: rgba(255, 255, 255, 0.8);
+
+                &:hover {
+                    color: rgba(255, 255, 255, 0.95);
+                }
+            }
+        }
+    }
+}
+
+body.stretched .container-fullwidth .breadcrumb-wrap .breadcrumb {
+    right: 0;
+}

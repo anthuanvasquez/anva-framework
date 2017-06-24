@@ -1,0 +1,19 @@
+.anva-framework {
+    label {
+        &:before,
+        &:after {
+            box-sizing: border-box;
+        }
+    }
+
+    h3 {
+        background-color: #FFF;
+        border-bottom: 1px solid $color-border;
+        cursor: default;
+    }
+
+    p {
+        margin-bottom: 0;
+        padding-bottom: 10px;
+    }
+}

@@ -1,0 +1,34 @@
+.anva-framework {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="url"],
+    input[type="datetime"],
+    input[type="number"],
+    input[type="password"] {
+        border-radius: 0;
+        box-shadow: 0 0 4px $color-border;
+        box-sizing: border-box;
+        color: $color-text;
+        height: 33px;
+        margin-bottom: 10px;
+        outline: 0;
+        width: 100%;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        box-sizing: border-box;
+        line-height: normal;
+        margin: 4px 0 0;
+        margin-top: 1px;
+        padding: 0;
+    }
+
+    select,
+    textarea {
+        color: $color-text;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,229 @@
+/* ----------------------------------------------------------------
+    Footer
+-----------------------------------------------------------------*/
+
+#footer {
+    position: relative;
+    background-color: #EEE;
+    border-top: 5px solid rgba(black, 0.2);
+
+    .footer-widgets-wrap {
+        position: relative;
+        padding: 80px 0;
+    }
+}
+
+.device-lg,
+.device-md {
+    &.sticky-footer {
+        #top-bar {
+            z-index: 299;
+        }
+
+        #header {
+            z-index: 199;
+        }
+
+        #slider,
+        #page-submenu,
+        #page-title,
+        #content,
+        #slider,
+        #page-submenu,
+        #page-title,
+        #content {
+            z-index: 2;
+        }
+
+        #footer {
+            position: fixed;
+            top: auto;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        &:not(.stretched) #footer {
+            left: 50%;
+            margin-left: -610px;
+            width: 1220px;
+        }
+    }
+}
+
+.device-md.sticky-footer:not(.stretched) #footer {
+    margin-left: -500px;
+    width: 1000px;
+}
+
+.footer-widgets-wrap {
+    .col_full,
+    .col_half,
+    .col_one_third,
+    .col_two_third,
+    .col_three_fourth,
+    .col_one_fourth,
+    .col_one_fifth,
+    .col_two_fifth,
+    .col_three_fifth,
+    .col_four_fifth,
+    .col_one_sixth,
+    .col_five_sixth,
+    .col_five_three,
+    .col_five_four,
+    .col_tenth_fourth,
+    .col_tenth_three,
+    .col_tenth_seven {
+        margin-bottom: 0;
+    }
+}
+
+#copyrights {
+    padding: 40px 0;
+    background-color: #DDD;
+    font-size: $font-size-base;
+    line-height: $line-height-content;
+
+    i {
+        &.footer-icon {
+            position: relative;
+            top: 1px;
+            font-size: $font-size-base;
+            width: 14px;
+            text-align: center;
+            margin-right: 3px;
+        }
+    }
+
+    .col_half {
+        margin-bottom: 0 !important;
+    }
+
+    a {
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .tright {
+        a {
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.copyright-links {
+    ul {
+        margin-bottom: 0;
+    }
+
+    li {
+        display: inline-block;
+
+        &:after {
+            content: " / ";
+            margin: 0 3px;
+        }
+
+        &:last-child {
+            &:after {
+                content: none;
+                margin: 0;
+            }
+        }
+    }
+
+    a {
+        border-bottom: 1px dotted #444;
+        color: #333;
+        display: inline-block;
+        margin: 0;
+
+        &:hover {
+            color: #555;
+            border-bottom: 1px solid #666;
+        }
+    }
+}
+
+.dark .copyright-text {
+    a {
+        color: rgba(255, 255, 255, 0.25);
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.35);
+            border-bottom-color: rgba(255, 255, 255, 0.35);
+        }
+    }
+}
+
+.copyrights-menu {
+    margin-bottom: 10px;
+
+    a {
+        font-size: $font-size-base;
+        margin: 0 10px;
+        border-bottom: 0 !important;
+    }
+}
+
+.footer-logo {
+    display: block;
+    margin-bottom: 30px;
+}
+
+body.has-reading-bar {
+    #footer {
+        padding-bottom: 60px;
+    }
+}
+
+#debug-info {
+    position: relative;
+
+    ul {
+        list-style: none;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+
+    span {
+        display: inline-block;
+        font-weight: bold;
+        width: 140px;
+    }
+}
+
+.side-header.open-header.push-wrapper #debug-info {
+    transition: left 0.4s ease;
+}
+
+@include tablet {
+
+    .side-header:not(.open-header) #debug-info {
+        margin: 0 0 0 260px !important;
+        width: auto !important;
+    }
+
+    .side-header:not(.open-header) #debug-info .container {
+        width: auto;
+        margin: 0 40px;
+    }
+
+    .side-header.side-header-right:not(.open-header) #debug-info {
+        margin: 0 260px 0 0 !important;
+    }
+
+    .side-header.open-header.push-wrapper.side-header-open #debug-info {
+        left: 260px;
+    }
+
+    .side-header.side-header-right.open-header.push-wrapper.side-header-open #debug-info {
+        left: -260px;
+    }
+}
+

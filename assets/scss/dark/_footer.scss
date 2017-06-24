@@ -1,0 +1,34 @@
+#footer.dark,
+.dark #footer {
+    background-color: #333;
+    color: #CCC;
+    border-top-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark #copyrights {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.25);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.dark #copyrights i.footer-icon {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.dark .copyright-links a {
+    color: rgba(255, 255, 255, 0.25);
+    border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.dark .copyright-links a:hover {
+    color: rgba(255, 255, 255, 0.35);
+    border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.dark .footer-widgets-wrap a {
+    color: #CCC;
+}
+
+.dark .footer-widgets-wrap a:hover {
+    color: #999;
+}

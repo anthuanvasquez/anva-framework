@@ -1,0 +1,8 @@
+@function portfolio-width($container, $columns, $margin) {
+    $width: floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+    @return floor( ( $width * 3 ) / 4 );
+}
+
+@function portfolio-height($container, $columns, $margin) {
+    @return floor( ( $container - ( $margin * ( $columns - 1 ) ) ) / $columns );
+}

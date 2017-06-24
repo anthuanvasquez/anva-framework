@@ -1,0 +1,68 @@
+.dark .sidebar-widgets-wrap .widget,
+body.dark #side-panel .widget,
+body #side-panel.dark .widget {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark #side-panel #side-panel-trigger-close a,
+body #side-panel.dark #side-panel-trigger-close a {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #FFF;
+}
+
+.dark .widget h4 {
+    color: ≈;
+}
+
+.dark .widget p {
+    opacity: 0.8;
+}
+
+.dark .tagcloud a {
+    color: #999;
+    border-color: transparent;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .tagcloud a:hover {
+    border-color: transparent !important;
+    background-color: #1ABC9C;
+    color: #FFF !important;
+}
+
+.dark .widget_recent_comments li {
+    background-image: url("../images/icons/widget-comment-dark.png");
+}
+
+.dark .widget_nav_menu li a,
+.dark .widget_links li a,
+.dark .widget_meta li a,
+.dark .widget_archive li a,
+.dark .widget_recent_comments li a,
+.dark .widget_recent_entries li a,
+.dark .widget_categories li a,
+.dark .widget_pages li a,
+.dark .widget_rss li a {
+    color: #CCC;
+    background-image: url("../images/icons/widget-link-dark.png");
+}
+
+.dark .widget_recent_entries li span.post-date {
+    color: #eee;
+}
+
+.dark .widget_nav_menu li a:hover,
+.dark .widget_links li a:hover,
+.dark .widget_meta li a:hover,
+.dark .widget_archive li a:hover,
+.dark .widget_recent_comments li a:hover,
+.dark .widget_recent_entries li a:hover,
+.dark .widget_categories li a:hover,
+.dark .widget_pages li a:hover,
+.dark .widget_rss li a:hover {
+    color: #AAA;
+}
+
+.dark .nav-tree li a {
+    color: #BBB;
+}

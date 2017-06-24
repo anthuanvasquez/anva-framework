@@ -1,0 +1,18 @@
+/* ------------------------------------------------*/
+/*  Responsive CSS
+/* ------------------------------------------------*/
+
+/**
+ * Table of Contents
+ *
+ * 1.0 - Desktop - Large Devices (1199px)
+ * 2.0 - Tablets - Medium Devices (991px/768px)
+ * 3.0 - Phones - Small Devices (480px)
+ * 4.0 - Retina Devices
+ */
+
+@import "config";
+@import "responsive/large-devices";
+@import "responsive/medium-devices";
+@import "responsive/small-devices";
+@import "responsive/retina";

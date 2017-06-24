@@ -1,0 +1,349 @@
+.dark #top-bar,
+#top-bar.dark {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    background-color: #282828;
+}
+
+.dark .top-links ul li {
+    border-left-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .top-links li > a {
+    color: #AAA;
+}
+
+.dark .top-links li:hover {
+    background-color: #333;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.dark .top-links ul ul,
+.dark .top-links ul div.top-link-section {
+    background: #333;
+    border-bottom: none;
+}
+
+.dark .top-links ul ul li {
+    border-top: 1px solid #444;
+    border-left: 1px solid #444;
+}
+
+.dark .top-links ul ul li:hover {
+    background-color: #383838;
+}
+
+.dark .top-links ul ul li:first-child {
+    border-left: 1px solid #444;
+}
+
+.dark #top-social li {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark #top-social li a {
+    color: #BBB;
+}
+
+.dark #header:not(.transparent-header),
+#header.dark:not(.transparent-header) {
+    background-color: #333;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark #header.sticky-header:not(.transparent-header) #header-wrap:not(.not-dark),
+.dark #header.sticky-header.transparent-header #header-wrap:not(.not-dark),
+.dark #header.transparent-header.floating-header .container,
+.dark #header.transparent-header.floating-header.sticky-header .container,
+#header.dark.sticky-header:not(.transparent-header) #header-wrap:not(.not-dark),
+#header.dark.sticky-header.transparent-header #header-wrap:not(.not-dark),
+#header.dark.transparent-header.floating-header .container,
+#header.dark.transparent-header.floating-header.sticky-header .container,
+.dark .responsive-sticky-header #header-wrap,
+.responsive-sticky-header.dark #header-wrap {
+    background-color: #333;
+}
+
+.dark #header.full-header #header-wrap:not(.not-dark),
+#header.full-header.dark #header-wrap:not(.not-dark) {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark #slider + #header.full-header #header-wrap:not(.not-dark),
+#slider + #header.full-header.dark #header-wrap:not(.not-dark) {
+    border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark #header.transparent-header.full-header:not(.sticky-header) #header-wrap:not(.not-dark),
+#header.transparent-header.full-header.dark:not(.sticky-header) #header-wrap:not(.not-dark) {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark #slider + #header.transparent-header.full-header:not(.sticky-header) #header-wrap:not(.not-dark),
+#slider + #header.transparent-header.full-header.dark:not(.sticky-header) #header-wrap:not(.not-dark) {
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark #header.semi-transparent,
+.dark #header.semi-transparent.floating-header .container,
+#header.dark.semi-transparent,
+#header.dark.semi-transparent.floating-header .container {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark #header.sticky-header.semi-transparent,
+.dark #header.semi-transparent.floating-header,
+.dark #header.semi-transparent.floating-header.sticky-header .container,
+#header.dark.sticky-header.semi-transparent,
+#header.dark.semi-transparent.floating-header,
+#header.dark.semi-transparent.floating-header.sticky-header .container {
+    background-color: transparent;
+}
+
+.dark #header.semi-transparent.sticky-header #header-wrap,
+#header.dark.semi-transparent.sticky-header #header-wrap {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark #logo a {
+    color: #CCC;
+}
+
+.dark #header.full-header #header-wrap:not(.not-dark) #logo,
+#header.full-header.dark #header-wrap:not(.not-dark) #logo {
+    border-right-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark #header.transparent-header.full-header:not(.sticky-header) #header-wrap:not(.not-dark) #logo,
+#header.transparent-header.full-header.dark:not(.sticky-header) #header-wrap:not(.not-dark) #logo {
+    border-right-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark #header-wrap:not(.not-dark) #primary-menu > ul > li > a,
+.dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li > a,
+.dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > ul > li > a,
+.overlay-menu #primary-menu.dark > ul > li > a,
+.dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > #overlay-menu-close,
+.overlay-menu #primary-menu.dark > #overlay-menu-close,
+.dark #header-wrap:not(.not-dark) #top-search a,
+.dark #header-wrap:not(.not-dark) #top-cart a,
+.dark #header-wrap:not(.not-dark) #side-panel-trigger a,
+.dark #top-cart .top-cart-item-desc a,
+body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
+.dark #header-wrap:not(.not-dark) #top-search a:hover,
+.dark #header-wrap:not(.not-dark) #top-cart a:hover,
+.dark #header-wrap:not(.not-dark) #side-panel-trigger a:hover,
+.dark #header-wrap:not(.not-dark) #top-search form input {
+    color: #EEE;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.dark #header.full-header #header-wrap:not(.not-dark) #primary-menu > ul,
+#header.full-header.dark #header-wrap:not(.not-dark) #primary-menu > ul {
+    border-right-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark #header.transparent-header.full-header:not(.sticky-header) #header-wrap:not(.not-dark) #primary-menu > ul,
+#header.transparent-header.full-header.dark:not(.sticky-header) #header-wrap:not(.not-dark) #primary-menu > ul {
+    border-right-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark #header.transparent-header:not(.sticky-header) #header-wrap:not(.not-dark) form input,
+#header.dark.transparent-header:not(.sticky-header) #header-wrap:not(.not-dark) form input {
+    border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.dark #header-wrap:not(.not-dark) #top-search form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.dark #header-wrap:not(.not-dark) #primary-menu > ul > li:hover > a,
+.dark #header-wrap:not(.not-dark) #primary-menu > ul > li.current > a,
+.dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li:hover > a,
+.dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li.current > a {
+    color: #EEE;
+}
+
+.dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > ul > li:hover > a,
+.dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > ul > li.current > a,
+.overlay-menu #primary-menu.dark > ul > li:hover > a,
+.overlay-menu #primary-menu.dark > ul > li.current > a {
+    color: #1ABC9C !important;
+}
+
+.dark #primary-menu:not(.not-dark) ul ul,
+.dark #primary-menu:not(.not-dark) ul li .mega-menu-content,
+#primary-menu.dark ul ul,
+#primary-menu.dark ul li .mega-menu-content {
+    background-color: #333;
+    border-color: #3F3F3F;
+    border-top-color: #1ABC9C;
+}
+
+.dark.overlay-menu #primary-menu:not(.not-dark) ul,
+.dark.overlay-menu #primary-menu:not(.not-dark) ul,
+.overlay-menu #primary-menu.dark ul,
+.overlay-menu #primary-menu.dark ul {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dark #primary-menu:not(.not-dark) ul li .mega-menu-content.style-2,
+#primary-menu.dark ul li .mega-menu-content.style-2 {
+    border-color: transparent;
+    border-top-color: #1ABC9C;
+}
+
+.dark #primary-menu:not(.not-dark) ul ul li,
+#primary-menu.dark ul ul li {
+    border-top-color: #3F3F3F;
+}
+
+.dark #primary-menu:not(.not-dark) ul ul li:first-child,
+#primary-menu.dark ul ul li:first-child {
+    border-top: 0;
+}
+
+.dark #primary-menu:not(.not-dark) ul ul li > a,
+#primary-menu.dark ul ul li > a {
+    color: #999 !important;
+}
+
+.dark #primary-menu:not(.not-dark) ul ul li:hover > a,
+#primary-menu.dark ul ul li:hover > a {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #CCC !important;
+}
+
+.dark #primary-menu:not(.not-dark) ul ul > li.sub-menu > a,
+.dark #primary-menu:not(.not-dark) ul ul > li.sub-menu:hover > a,
+#primary-menu.dark ul ul > li.sub-menu > a,
+#primary-menu.dark ul ul > li.sub-menu:hover > a,
+#primary-menu.dark ul ul > li.sub-menu > span a,
+#primary-menu.dark ul ul > li.sub-menu:hover > span a {
+    background-image: url("../images/icons/submenu-dark.png");
+}
+
+.dark #primary-menu ul li .mega-menu-content div.mega-menu-column:not(:first-child),
+#primary-menu.dark ul li .mega-menu-content div.mega-menu-column:not(:first-child) {
+    border-left-color: #3F3F3F;
+}
+
+.dark #primary-menu:not(.not-dark) ul li .mega-menu-content.style-2 div.mega-menu-column > li.mega-menu-title > a,
+.dark #primary-menu:not(.not-dark) ul li .mega-menu-content.style-2 div.mega-menu-column > li.mega-menu-title:hover > a,
+#primary-menu.dark ul li .mega-menu-content.style-2 div.mega-menu-column > li.mega-menu-title > a,
+#primary-menu.dark ul li .mega-menu-content.style-2 div.mega-menu-column > li.mega-menu-title:hover > a {
+    color: #BBB !important;
+    background: transparent;
+}
+
+.dark #primary-menu:not(.not-dark) ul li .mega-menu-content.style-2 div.mega-menu-column > li.mega-menu-title > a:hover,
+#primary-menu.dark ul li .mega-menu-content.style-2 div.mega-menu-column > li.mega-menu-title > a:hover {
+    color: #DDD !important;
+}
+
+.dark #primary-menu.style-2:not(.not-dark) {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark #primary-menu.style-3:not(.not-dark) > ul > li:hover > a,
+#primary-menu.dark.style-3 > ul > li:hover > a {
+    color: #EEE;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark #primary-menu.style-3:not(.not-dark) > ul > li.current > a,
+#primary-menu.dark.style-3 > ul > li.current > a {
+    color: #EEE;
+}
+
+.dark #primary-menu.style-5:not(.not-dark) > ul,
+#primary-menu.dark.style-5 > ul {
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark #primary-menu.sub-title:not(.not-dark) > ul > li > a span,
+#primary-menu.dark.sub-title > ul > li > a span {
+    color: #999;
+}
+
+.dark #primary-menu.sub-title:not(.not-dark) > ul > li:hover > a span,
+.dark #primary-menu.sub-title:not(.not-dark) > ul > li.current > a span,
+.dark #primary-menu.sub-title.style-2:not(.not-dark) > div > ul > li:hover > a span,
+.dark #primary-menu.sub-title.style-2:not(.not-dark) > div > ul > li.current > a span,
+#primary-menu.dark.sub-title > ul > li:hover > a span,
+#primary-menu.dark.sub-title > ul > li.current > a span,
+#primary-menu.dark.sub-title.style-2 > div > ul > li:hover > a span,
+#primary-menu.dark.sub-title.style-2 > div > ul > li.current > a span {
+    color: #EEE;
+}
+
+.dark #top-cart .top-cart-content {
+    background-color: #333;
+    border-color: #3F3F3F;
+    border-top-color: #1ABC9C;
+}
+
+.dark .top-cart-title {
+    border-bottom-color: #3F3F3F;
+}
+
+.dark .top-cart-item {
+    border-top-color: #3F3F3F;
+}
+
+.dark .top-cart-item-image {
+    border-color: #444;
+}
+
+.dark .top-cart-item-image:hover {
+    border-color: #1ABC9C;
+}
+
+.dark .top-cart-item-desc a:hover {
+    color: #1ABC9C !important;
+}
+
+.dark .top-cart-item-desc span.top-cart-item-price {
+    color: #AAA;
+}
+
+.dark .top-cart-item-desc span.top-cart-item-quantity {
+    color: #888;
+}
+
+.dark .top-cart-action {
+    border-top-color: #3F3F3F;
+}
+
+.dark .one-page-arrow,
+.one-page-arrow.dark {
+    color: #FFF;
+}
+
+.dark.side-header #header {
+    background-color: #333;
+    border-right-color: #3F3F3F;
+}
+
+.dark.side-header #logo:not(.nobottomborder):after,
+.dark.side-header #primary-menu:not(.nobottomborder):after {
+    border-bottom-color: #3F3F3F;
+}
+
+.dark.side-header #primary-menu:not(.not-dark) > ul > li > a,
+.dark.side-header #primary-menu ul ul li:hover > a {
+    color: #DDD !important;
+}
+
+.dark.side-header.open-header #header-trigger {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #EEE;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.dark.side-header.side-header-right #header {
+    border-left-color: #3F3F3F;
+}
+
+.dark.side-header #primary-menu ul ul a {
+    color: #AAA !important;
+}

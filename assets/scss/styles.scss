@@ -1,0 +1,56 @@
+/*!
+ * Theme Name: Anva
+ * Theme URI: https://themes.anthuanvasquez.net/anva
+ * Description: Anva is a Multi-Purpose focus design tool. It provides responsive clean and minimal WordPress Theme for Creative website and Creative People. Using the latest WordPress Technology and Support various of popular WordPress plugins. Anva support responsive layout so it looks great on all devices.
+ * Author: Anthuan Vásquez
+ * Author URI: https://themeforest.net/user/oidoperfecto
+ * Version: 1.0.0
+ */
+
+/**
+ * Table of Contents
+ *
+ * 1.0 - Core Base
+ *   1.1  - Typography
+ *   1.2  - Helpers
+ *   1.3  - Layouts
+ * 2.0 - Core Modules
+ *   2.1  - Top Bar
+ *   2.2  - Header
+ *   2.3  - Sliders
+ *   2.4  - Page Title
+ *   2.5  - Breadcrumbs
+ *   2.6  - Content
+ *   2.7  - Portfolio
+ *   2.8  - Galleries
+ *   2.8  - Blog
+ *   2.10  - Shop
+ *   2.11 - Events
+ *   2.12 - Footer
+ *   2.13 - Widgets
+ *   2.14 - Extras
+ * 3.0 - Components
+ *   3.1 - Breaking News
+ */
+
+@import 'config';
+@import 'core/base/typography';
+@import 'core/component/helpers';
+@import 'core/component/layouts';
+@import 'core/component/grid';
+@import 'core/module/topbar';
+@import 'core/module/header';
+@import 'core/module/sliders';
+@import 'core/module/page-title';
+@import 'core/module/breadcrumbs';
+@import 'core/module/content';
+@import 'core/module/portfolio';
+@import 'core/module/galleries';
+@import 'core/module/blog';
+@import 'core/module/shop';
+@import 'core/module/events';
+@import 'core/module/footer';
+@import 'core/module/widgets';
+@import 'core/module/extras';
+
+@import 'component/breaking-news';

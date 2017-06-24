@@ -1,0 +1,50 @@
+/* ----------------------------------------------------------------
+    Sections
+-----------------------------------------------------------------*/
+
+.section {
+    position: relative;
+    margin: $section-margin 0;
+    padding: $section-padding 0;
+    background-color: $section-bg;
+    overflow: hidden;
+
+    .container {
+        z-index: 2;
+    }
+
+    .container + .video-wrap {
+        z-index: 1;
+    }
+}
+
+.section-element {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.parallax {
+    background-color: transparent;
+    background-attachment: fixed;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.mobile-parallax,
+.video-placeholder {
+    background-size: cover !important;
+    background-attachment: scroll !important;
+    background-position: center center;
+}
+
+.revealer-image {
+    position: relative;
+    bottom: -($section-padding * 2);
+    transition: bottom 0.3s ease-in-out;
+}
+
+.section:hover .revealer-image {
+    bottom: -($section-padding);
+}

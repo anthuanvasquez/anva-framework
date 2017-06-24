@@ -1,0 +1,42 @@
+.dark .pagination > li > a,
+.dark .pagination > li > span,
+.dark .pager li > a,
+.dark .pager li > span {
+    color: #BBB;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #666;
+}
+
+.dark .pagination > li > a:hover,
+.dark .pagination > li > span:hover,
+.dark .pagination > li > a:focus,
+.dark .pagination > li > span:focus,
+.dark .pager li > a:hover,
+.dark .pager li > a:focus {
+    color: #EEE;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .pagination > .disabled > span,
+.dark .pagination > .disabled > span:hover,
+.dark .pagination > .disabled > span:focus,
+.dark .pagination > .disabled > a,
+.dark .pagination > .disabled > a:hover,
+.dark .pagination > .disabled > a:focus,
+.dark .pager .disabled > a,
+.dark .pager .disabled > a:hover,
+.dark .pager .disabled > a:focus,
+.dark .pager .disabled > span {
+    color: #999;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #777;
+}
+
+.dark .swiper-pagination span {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .swiper-pagination span:hover,
+.dark .swiper-pagination span.swiper-pagination-bullet-active {
+    background-color: #333 !important;
+}

@@ -1,0 +1,92 @@
+.anva-framework {
+    .group {
+        padding-bottom: 0;
+    }
+
+    .inner-group {
+        border-bottom: 4px solid $color-border;
+        padding: 10px 15px;
+        position: relative;
+
+        > h3 {
+            cursor: pointer;
+            margin: -10px -15px 0;
+            padding: 10px 12px;
+            user-select: none;
+
+            &:before {
+                content: '\f142';
+                color: #72777C;
+                font: 400 20px/1 dashicons;
+                float: right;
+                speak: none;
+                display: inline-block;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-decoration: none;
+            }
+
+            + .section-checkbox {
+                margin-top: 15px;
+            }
+        }
+
+        &.collapse-close {
+            padding-bottom: 0;
+
+            > h3 {
+                margin-bottom: 0;
+
+                &:before {
+                    content: '\f140';
+                }
+            }
+
+            > div {
+                display: none;
+            }
+        }
+    }
+
+    .section {
+        border-bottom: 1px solid #eee;
+        margin: 0 -15px;
+        padding: 15px;
+        @include clearfix;
+
+        .heading {
+            font-size: 14px;
+            margin: 0 0 15px;
+        }
+
+        > .option {
+            @include clearfix;
+        }
+
+        .controls {
+            float: left;
+            width: 54%;
+            padding-right: 4%;
+
+            @include phone {
+                float: none;
+                padding-right: 0;
+                width: 100%;
+            }
+        }
+
+        .explain {
+            color: $color-description;
+            float: left;
+            font-size: 13px;
+            line-height: 18px;
+            max-width: 42%;
+
+            @include phone {
+                float: none;
+                margin-top: 20px;
+                max-width: 100%;
+            }
+        }
+    }
+}

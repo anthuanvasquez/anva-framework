@@ -1,0 +1,10 @@
+//  Blog Grid Item Size Builder
+// -----------------------------------------------------------------
+
+@mixin blog-grid-item-width($container, $columns, $margin) {
+    width: blog-grid-width($container, $columns, $margin);
+}
+
+@mixin blog-grid-item-height($container, $columns, $margin) {
+    height: blog-grid-height($container, $columns, $margin);
+}

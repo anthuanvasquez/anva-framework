@@ -1,0 +1,441 @@
+/* --------------------------------------------------------- */
+/* Section Options
+/* --------------------------------------------------------- */
+
+.anva-framework {
+
+    .section-description {
+        background-color: #F7F7F7;
+        border-bottom: 1px solid $color-border;
+        color: $color-description;
+        margin: 0 -15px;
+        padding: 20px 15px;
+    }
+
+    .section-checkbox {
+        &:first-child {
+            margin-top: 15px;
+        }
+
+        .controls {
+            padding-right: 0;
+            width: 100%;
+        }
+
+        .explain {
+            max-width: 100%;
+        }
+    }
+
+    .section-logo {
+        .logo-item {
+            display: none;
+        }
+
+        .section {
+            background-color: #FFF;
+            border: 1px solid #DFDFDF;
+            border-radius: 0;
+            margin: 0 0 10px 0;
+            padding: 12px 15px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        .note {
+            color: #999;
+            font-size: 12px;
+            font-style: italic;
+            line-height: 150%;
+            padding: 5px;
+        }
+
+        .screenshot {
+            background-color: #f9f9f9;
+            border: 1px solid $color-border;
+            margin-top: 15px;
+
+            .remove-image {
+                display: none;
+                visibility: hidden;
+            }
+
+            img {
+                background: transparent;
+                border: 0;
+                float: none;
+            }
+        }
+    }
+
+    .section-social_media {
+        .anva-radio,
+        .checkbox {
+            margin: 0 5px 0 0;
+            float: none;
+        }
+
+        .controls {
+            @include clearfix;
+        }
+
+        .column-1 {
+            float: left;
+            margin-right: 2%;
+            width: 48%;
+        }
+
+        .column-2 {
+            float: right;
+            margin-right: 0;
+            width: 48%;
+        }
+
+        input[type="text"] {
+            margin: 10px 0;
+        }
+
+        span {
+            display: block;
+            line-height: 20px;
+        }
+    }
+
+    .section-slider_group_area {
+        .anva-radio,
+        .checkbox {
+            margin: 0 5px 0 0;
+            float: none;
+        }
+
+        .controls {
+            @include clearfix;
+        }
+
+        select {
+            margin: 10px 0;
+        }
+
+        span {
+            display: block;
+            line-height: 20px;
+        }
+    }
+
+    .section-sidebar {
+        .dynamic-sidebars {
+            ul {
+                background-color: #F9F9F9;
+                border: 1px solid #DDD;
+                border-radius: 0;
+                margin: 10px 0 0;
+                padding: 10px;
+
+                &.empty {
+                    &:before {
+                        content: attr(data-text);
+                        color: #BBB;
+                        display: block;
+                        font-size: 13px;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                }
+
+                li {
+                    background-color: #FFF;
+                    border: 1px solid $color-border;
+                    border-radius: 0;
+                    color: $color-text;
+                    cursor: move;
+                    font-weight: bold;
+                    padding: 15px;
+                    position: relative;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    a {
+                        position: absolute;
+                        right: 15px;
+                        top: 15px;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .section-layout {
+        .sidebar-layout {
+            .item {
+                margin-top: 10px;
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    .section-contact_fields {
+        .dynamic-contact-fields {
+            ul {
+                background: #F9F9F9;
+                border: 1px solid #DDD;
+                border-radius: 0;
+                margin: 10px 0 0;
+                padding: 10px;
+
+                &.empty {
+                    &:before {
+                        content: attr(data-text);
+                        color: #BBB;
+                        display: block;
+                        font-size: 13px;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                }
+
+                li {
+                    background: #FFF;
+                    border: 1px solid $color-border;
+                    border-radius: 0;
+                    color: $color-text;
+                    cursor: move;
+                    font-weight: bold;
+                    padding: 15px;
+                    position: relative;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    a {
+                        position: absolute;
+                        right: 15px;
+                        top: 15px;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .section-columns {
+        .select-wrap {
+            margin-right: 0;
+            width: 100%;
+
+            &.last {
+                margin-right: 0;
+            }
+        }
+
+        .inactive {
+            background-color: #F9F9F9;
+            border: 1px solid #F2F2F2;
+            border-radius: 2px;
+            color: $color-description;
+            line-height: 29px;
+            margin: 0;
+            padding: 3px 10px;
+        }
+    }
+
+    .section-double_text {
+        .double-inputs {
+            .input-col {
+                float: left;
+                margin-right: 4%;
+                width: 48%;
+
+                &.last {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .section-radio,
+    .section-multicheck {
+        label {
+            line-height: 16px;
+            max-width: 90%;
+        }
+    }
+
+    .section-images {
+        .anva-radio-img-label {
+            color: #777;
+            display: none;
+            margin: 5px 0 0;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .anva-radio-img-box {
+            margin: 0 5px 5px 0;
+            float: left;
+            padding: 8px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 0 rgba(black, 0.08);
+
+            .anva-radio-img-img {
+                border: 0;
+                display: none;
+                cursor: pointer;
+                border-radius: 0;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            span {
+                border-radius: 0;
+                cursor: pointer;
+                display: table-cell;
+                line-height: 0;
+                position: relative;
+
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    border: 1px solid rgba(white, 0.1);
+                    border-bottom: 0;
+                    border-radius: 0;
+                    background-origin: border-box;
+                    background-image: linear-gradient(to top, rgba(white, 0.15), rgba(black, 0.25)), linear-gradient(to left top, rgba(white, 0), rgba(white, 0.15) 50%, rgba(white, 0) 50%, rgba(white, 0));
+                }
+            }
+        }
+
+        .anva-radio-img-radio {
+            display: block;
+            margin: 8px auto 0;
+        }
+
+        .anva-radio-img-selected {
+            background-color: rgba(#1e8cbe, 0.2);
+            border-color: #1e8cbe;
+            box-shadow: 0 0 0 1px #1e8cbe;
+            position: relative;
+        }
+    }
+
+    .section-background {
+        .anva-background-properties {
+            clear: both;
+            margin-top: 18px;
+
+            .anva-input-label {
+                margin: 5px 0;
+            }
+        }
+
+        .anva-background-repeat,
+        .anva-background-position,
+        .anva-background-attachment {
+            margin: 3px 0;
+            width: 100%;
+        }
+
+        .section-background {
+            .wp-picker-container {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .section-upload,
+    .section-background {
+        .screenshot.has-image {
+            border: 1px solid #ddd;
+            border-radius: 0;
+            padding: 15px;
+            max-width: 100%;
+        }
+    }
+
+    .section-typography {
+        .font-range {
+            margin: 0 0 40px;
+        }
+
+        .anva-select-label {
+            margin-bottom: 0 0 5px;
+        }
+
+        .wp-picker-container {
+            margin-top: 2px;
+        }
+
+        .google-font {
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 0;
+            margin: 10px 0 15px;
+
+            .note {
+                color: #999;
+                font-style: italic;
+                font-size: 12px;
+                padding: 0;
+            }
+
+            h5 {
+                margin: 0 0 1.67em;
+            }
+        }
+
+        .sample-text-font {
+            margin: 15px 0 0;
+            padding: 18px 10px;
+            border-radius: 0;
+            border: 2px dashed #ccc;
+            font-size: 25px;
+            text-align: center;
+        }
+    }
+
+    .section-editor {
+        .explain {
+            max-width: 98%;
+            float: none;
+            margin-bottom: 5px;
+        }
+    }
+
+    .section-code {
+        .controls,
+        .explain {
+            float: none;
+            max-width: 100%;
+            padding-right: 0;
+            width: 100%;
+        }
+
+        .explain {
+            margin: 0 0 15px;
+        }
+    }
+}

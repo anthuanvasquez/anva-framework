@@ -1,0 +1,21 @@
+.anva-field-link-mega,
+.anva-field-link-mega-hide-headers {
+  display: none;
+}
+
+.menu-item-depth-0 .anva-field-link-mega,
+.menu-item-depth-0 .anva-field-link-mega-hide-headers {
+  display: block;
+}
+
+.menu-item-depth-0 .anva-field-link-deactivate,
+.menu-item-depth-0 .anva-field-link-placeholder {
+  display: none;
+}
+
+.anva-field-link-mega-columns select {
+  display: block;
+  width: 100%;
+}
+
+/*# sourceMappingURL=admin-menu.css.map */

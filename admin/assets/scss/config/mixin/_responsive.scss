@@ -1,0 +1,143 @@
+// -----------------------------------------
+// Responsive variables
+// -----------------------------------------
+
+$screen--xl:               1600px !default;
+
+$screen--lg-max:           #{$screen--xl - 1px} !default;
+$screen--lg:               1366px !default;
+
+$screen--md-max:           #{$screen--lg - 1px} !default;
+$screen--md:               1024px !default;
+
+$screen--sm-max:           #{$screen--md - 1px} !default;
+$screen--sm:               768px !default;
+
+$screen--s-max:            #{$screen--sm - 1px} !default;
+$screen--s:                640px !default;
+
+$screen--xs-max:           #{$screen--s - 1px} !default;
+$screen--xs:               480px !default;
+
+$screen--xxs-max:          #{$screen--xs - 1px} !default;
+$screen--xxs:              320px !default;
+
+// -----------------------------------------
+// Landscape & Potrait Orientations
+// -----------------------------------------
+
+@mixin breakpoint($screen-size) {
+    @media (max-width: $screen-size) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Landscape & Potrait Orientations
+// -----------------------------------------
+
+@mixin landscape {
+    @media (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin potrait {
+    @media (orientation: potrait) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Phone
+// -----------------------------------------
+
+@mixin phone-s {
+    @media (max-width: $screen--xxs-max) {
+        @content;
+    }
+}
+
+@mixin phone-m {
+    @media (min-width: $screen--xs) and (max-width: $screen--xs-max) {
+        @content;
+    }
+}
+
+@mixin phone-sm {
+    @media (max-width: $screen--xs-max) {
+        @content;
+    }
+}
+
+@mixin phone-l {
+    @media (min-width: $screen--s) and (max-width: $screen--s-max) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: $screen--s-max) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Tablet
+// -----------------------------------------
+
+@mixin tablet {
+    @media (min-width: $screen--sm) and (max-width: $screen--sm-max) {
+        @content;
+    }
+}
+
+@mixin tablet-s {
+    @media (max-width: $screen--sm) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Mobile
+// -----------------------------------------
+
+@mixin mobile {
+    @media (max-width: $screen--sm-max) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Desktop
+// -----------------------------------------
+
+@mixin desktop {
+    @media (min-width: $screen--md) {
+        @content;
+    }
+}
+
+@mixin desktop-s {
+    @media (max-width: $screen--md-max) {
+        @content;
+    }
+}
+
+@mixin desktop-m {
+    @media (max-width: $screen--lg-max) {
+        @content;
+    }
+}
+
+@mixin desktop-l {
+    @media (max-width: $screen--l-max) {
+        @content;
+    }
+}
+
+@mixin page-overflow {
+    @media (max-width: $page-container-width + 200) {
+        @content;
+    }
+}

@@ -1,0 +1,10 @@
+//  Shop Item Size Builder
+// -----------------------------------------------------------------
+
+@mixin shop-item-width($container, $columns, $margin) {
+    width: shop-width($container, $columns, $margin);
+}
+
+@mixin shop-item-height($container, $columns, $margin) {
+    height: shop-height($container, $columns, $margin);
+}

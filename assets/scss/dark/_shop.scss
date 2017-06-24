@@ -1,0 +1,89 @@
+.dark .product-title h3 a,
+.dark .single-product .product-title h2 a {
+    color: #EEE;
+}
+
+.dark .product-title h3 a:hover,
+.dark .single-product .product-title h2 a:hover {
+    color: #BBB;
+}
+
+.dark .product-price {
+    color: #BBB;
+}
+
+.dark .product-overlay a {
+    color: #EEE;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-right-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .product-overlay a:last-child {
+    border-right: 0;
+}
+
+.dark .product-overlay a:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dark .bothsidebar .product-1 .product {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .quantity .qty {
+    border-left-color: rgba(255, 255, 255, 0.08);
+    border-right-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .quantity .plus,
+.dark .quantity .minus {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .quantity .plus:hover,
+.dark .quantity .minus:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dark .product-meta {
+    color: #888;
+}
+
+.dark .cart .remove {
+    color: #BBB;
+}
+
+.dark .cart .remove:hover {
+    color: #EEE;
+}
+
+.dark .cart th {
+    color: #DDD;
+}
+
+.dark .cart td {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .cart-product-thumbnail img {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .cart-product-thumbnail img:hover {
+    border-color: #1ABC9C;
+}
+
+.dark .cart-product-name a,
+.dark .product-name a {
+    color: #EEE;
+}
+
+.dark .cart-product-name a:hover,
+.dark .product-name a:hover {
+    color: #BBB;
+}
+
+.dark td.actions {
+    background-color: rgba(0, 0, 0, 0.2);
+}

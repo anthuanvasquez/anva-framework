@@ -1,0 +1,142 @@
+.dark {
+    .entry {
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .entry-title h2 a,
+    .ipost .entry-title h3 a,
+    .ipost .entry-title h4 a {
+        color: #EEE;
+    }
+
+    .entry-title h2 a:hover,
+    .ipost .entry-title h3 a:hover,
+    .ipost .entry-title h4 a:hover {
+        color: #BBB;
+    }
+
+    .entry-meta li {
+        border-left-color: rgba(255, 255, 255, 0.08);
+        color: #888;
+    }
+
+    .entry-meta li a {
+        color: #888;
+    }
+
+    .entry-meta li a:hover {
+        color: #CCC;
+    }
+
+    .entry-link {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .post-masonry-full .entry {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .timeline-border {
+        border-left-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .post-timeline .entry-timeline {
+        border-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #AAA;
+    }
+
+    .post-timeline .entry.entry-date-section span {
+        border-color: rgba(255, 255, 255, 0.1);
+        background-color: #333;
+    }
+
+    .post-timeline .entry-timeline div.timeline-divider {
+        border-top-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .post-timeline .entry:hover .entry-timeline,
+    .post-timeline .entry:hover .timeline-divider {
+        border-color: #1ABC9C;
+        color: #1ABC9C;
+    }
+
+    .spost,
+    .mpost {
+        border-top-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .spost .entry-image a i,
+    .mpost .entry-image a i {
+        color: #CCC;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .spost .entry-title h4 a,
+    .mpost .entry-title h4 a {
+        color: #BBB;
+    }
+
+    .spost .entry-title h4 a:hover,
+    .mpost .entry-title h4 a:hover {
+        color: #999;
+    }
+
+    .spost .entry-meta li,
+    .mpost .entry-meta li {
+        border-left-color: #666;
+    }
+
+    .spost .entry-meta li a,
+    .mpost .entry-meta li a,
+    .testimonial.twitter-scroll .testi-meta span a {
+        color: #AAA;
+    }
+
+    .spost .entry-meta li a:hover,
+    .mpost .entry-meta li a:hover,
+    .testimonial.twitter-scroll .testi-meta span a:hover {
+        color: #888;
+    }
+
+    .dark #comments {
+        border-top-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .commentlist {
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .comment-wrap {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .comment-avatar {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .comment-content .comment-author {
+        color: #CCC;
+    }
+
+    .comment-content .comment-author a {
+        color: #BBB;
+    }
+
+    .comment-content .comment-author a:hover {
+        color: #EEE;
+    }
+
+    .review-comment-ratings {
+        color: #CCC;
+    }
+
+    .comment-reply-link:hover {
+        color: #888;
+    }
+
+    .dark p.wp-caption-text {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}

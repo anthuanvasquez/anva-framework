@@ -1,0 +1,99 @@
+// -----------------------------------------
+// Landscape & Potrait Orientations
+// -----------------------------------------
+
+@mixin landscape {
+    @media (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin potrait {
+    @media (orientation: potrait) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Phone
+// -----------------------------------------
+
+@mixin phone-s {
+    @media (max-width: $screen--xxs-max) {
+        @content;
+    }
+}
+
+@mixin phone-m {
+    @media (min-width: $screen--xs) and (max-width: $screen--s-max) {
+        @content;
+    }
+}
+
+@mixin phone-l {
+    @media (max-width: $screen--xs-max) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: $screen--s-max) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Tablet
+// -----------------------------------------
+
+@mixin tablet-s {
+    @media (min-width: $screen--sm) and (max-width: $screen--md-max) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $screen--md-max) {
+        @content;
+    }
+}
+
+
+// -----------------------------------------
+// Mobile
+// -----------------------------------------
+
+@mixin mobile {
+    @media (max-width: $screen--md-max) {
+        @content;
+    }
+}
+
+// -----------------------------------------
+// Desktop
+// -----------------------------------------
+
+@mixin desktop-s {
+    @media (min-width: $screen--md) and (max-width: $screen--lg-max) {
+        @content;
+    }
+}
+
+@mixin desktop-m {
+    @media (min-width: $screen--xl) {
+        @content;
+    }
+}
+
+@mixin desktop-l {
+    @media (min-width: $screen--xxl) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (max-width: $screen--lg-max) {
+        @content;
+    }
+}
+

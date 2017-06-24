@@ -1,0 +1,32 @@
+// -----------------------------------------------------------------
+//  Utils
+// -----------------------------------------------------------------
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin square($size) {
+    @include size($size, $size);
+}
+
+@mixin border-radius($radius: 3px) {
+    border-radius: $radius;
+}
+
+@mixin border-radius-custom($topleft: 3px, $topright: 3px, $bottomright: 3px, $bottomleft: 3px) {
+    border-radius: $topleft $topright $bottomright $bottomleft;
+}
+
+@mixin box-shadow($shadow) {
+    box-shadow: $shadow;
+}
+
+@mixin transition($transition) {
+    transition: $transition;
+}
+
+@mixin transition-transform($transition) {
+    transition: transform $transition;
+}
