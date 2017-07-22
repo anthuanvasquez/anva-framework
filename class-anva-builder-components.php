@@ -15,136 +15,145 @@ if ( ! class_exists( 'Anva_Builder_Components' ) ) :
  * @package   AnvaFramework
  */
 class Anva_Builder_Components {
-	/**
-	 * A single instance of this class.
-	 *
-	 * @since 1.0.0
-	 */
-	private static $instance = NULL;
+		/**
+		 * A single instance of this class.
+		 *
+		 * @since 1.0.0
+		 */
+		private static $instance = null;
 
-	/**
-	 * Core framework builder elements and settings
-	 * WP-Admin only.
-	 *
-	 * @since 1.0.0
-	 */
-	private $core_elements = array();
+		/**
+		 * Core framework builder elements and settings
+		 * WP-Admin only.
+		 *
+		 * @since 1.0.0
+		 */
+		private $core_elements = array();
 
-	/**
-	 * Elements and settings added
-	 * WP-Admin only.
-	 *
-	 * @since 1.0.0
-	 */
-	private $custom_elements = array();
+		/**
+		 * Elements and settings added
+		 * WP-Admin only.
+		 *
+		 * @since 1.0.0
+		 */
+		private $custom_elements = array();
 
-	/**
-	 * Elements to remove from page builder.
-	 * WP-Admin only.
-	 *
-	 * @since 1.0.0
-	 */
-	private $remove_elements = array();
+		/**
+		 * Elements to remove from page builder.
+		 * WP-Admin only.
+		 *
+		 * @since 1.0.0
+		 */
+		private $remove_elements = array();
 
-	/**
-	 * Final array of elements and settings. This combines
-	 * $core_elements and $custom_elements. WP-Admin only.
-	 *
-	 * @since 1.0.0
-	 */
-	private $elements = array();
+		/**
+		 * Final array of elements and settings. This combines
+		 * $core_elements and $custom_elements. WP-Admin only.
+		 *
+		 * @since 1.0.0
+		 */
+		private $elements = array();
 
-	/**
-	 * Creates or returns an instance of this class
-	 *
-	 * @since 1.0.0
-	 */
-	public static function instance() {
-		if ( self::$instance == null ) {
-			self::$instance = new self;
-		}
-		return self::$instance;
-	}
-
-	/**
-	 * Constructor
-	 * Hook everything in.
-	 *
-	 * @since 1.0.0
-	 */
-	private function __construct() {
-		// Setup framework default elements
-		$this->set_core_elements();
-
-		// Establish elements
-		add_action( 'after_setup_theme', array( $this, 'set_elements' ), 1000 );
-
-	}
-
-	/**
-	 * Set core elements
-	 *
-	 * These will be later merged with custom elements.
-	 * WP-Admin only.
-	 *
-	 * @since 1.0.0
-	 */
-	public function set_core_elements() {
-
-		/*--------------------------------------------*/
-		/* Helpers
-		/*--------------------------------------------*/
-
-		// Get sidebar locations
-		$sidebars = array();
-		foreach ( anva_get_sidebar_layouts() as $sidebar_id => $sidebar ) {
-			$sidebars[$sidebar_id] = $sidebar['name'];
-		}
-
-		// Pull all the posts galleries
-		$galleries      = array();
-		$galleries_args = array( 'numberposts' => -1, 'post_type' => array( 'galleries' ) );
-		$gallery_posts  = get_posts( $galleries_args );
-
-		if ( count( $gallery_posts ) > 0 ) {
-			$galleries[''] = esc_html__( 'Select a Gallery', 'anva' );
-			foreach ( $gallery_posts as $gallery ) {
-				$galleries[ $gallery->ID ] = $gallery->post_title;
+		/**
+		 * Creates or returns an instance of this class
+		 *
+		 * @since 1.0.0
+		 */
+		public static function instance() {
+			if ( self::$instance == null ) {
+				self::$instance = new self;
 			}
-		}
-
-		// Pull all the galleries cat
-		$gallery_cats = array();
-		$terms = get_terms( 'gallery_album', 'hide_empty=0&hierarchical=0&parent=0&orderby=menu_order' );
-
-		// Pull all the blog categories into an array
-		$categories = array();
-		if ( is_admin() ) {
-			foreach ( get_categories() as $category ) {
-				$categories[$category->cat_ID] = $category->cat_name;
+			return self::$instance;
 			}
-		}
 
-		// Image path
-		$image_path = trailingslashit( ANVA_FRAMEWORK_ADMIN_IMG . 'builder' );
+		/**
+		 * Constructor
+		 * Hook everything in.
+		 *
+		 * @since 1.0.0
+		 */
+		private function __construct() {
+			// Setup framework default elements
+			$this->set_core_elements();
 
-		/*--------------------------------------------*/
-		/* Divider
-		/*--------------------------------------------*/
+			// Establish elements
+			add_action( 'after_setup_theme', array( $this, 'set_elements' ), 1000 );
 
-		$this->core_elements['divider'] = array(
+			}
+
+		/**
+		 * Set core elements
+		 *
+		 * These will be later merged with custom elements.
+		 * WP-Admin only.
+		 *
+		 * @since 1.0.0
+		 */
+		public function set_core_elements() {
+
+			/*
+			--------------------------------------------*/
+			/*
+			 Helpers
+			/*--------------------------------------------*/
+
+			// Get sidebar locations
+			$sidebars = array();
+			foreach ( anva_get_sidebar_layouts() as $sidebar_id => $sidebar ) {
+				$sidebars[ $sidebar_id ] = $sidebar['name'];
+			}
+
+			// Pull all the posts galleries
+			$galleries      = array();
+			$galleries_args = array(
+				'numberposts' => -1,
+				'post_type' => array( 'galleries' ),
+			);
+			$gallery_posts  = get_posts( $galleries_args );
+
+			if ( count( $gallery_posts ) > 0 ) {
+				$galleries[''] = esc_html__( 'Select a Gallery', 'anva' );
+				foreach ( $gallery_posts as $gallery ) {
+					$galleries[ $gallery->ID ] = $gallery->post_title;
+				}
+			}
+
+			// Pull all the galleries cat
+			$gallery_cats = array();
+			$terms = get_terms( 'gallery_album', 'hide_empty=0&hierarchical=0&parent=0&orderby=menu_order' );
+
+			// Pull all the blog categories into an array
+			$categories = array();
+			if ( is_admin() ) {
+				foreach ( get_categories() as $category ) {
+					$categories[ $category->cat_ID ] = $category->cat_name;
+				}
+			}
+
+			// Image path
+			$image_path = trailingslashit( ANVA_FRAMEWORK_ADMIN_IMG . 'builder' );
+
+			/*
+			--------------------------------------------*/
+			/*
+			 Divider
+			/*--------------------------------------------*/
+
+			$this->core_elements['divider'] = array(
 			'name'    => esc_html__( 'Divider', 'anva' ),
 			'desc'    => esc_html__( 'Separate sections with page break.', 'anva' ),
 			'icon'    => $image_path . 'divider.png',
 			'content' => false,
 			'attr'    => array(),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Header
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Header
+			/*--------------------------------------------*/
 
-		$this->core_elements['header_text'] = array(
+			$this->core_elements['header_text'] = array(
 			'name'    => esc_html__( 'Header', 'anva' ),
 			'desc'    => esc_html__( 'Create a header with some nice text.', 'anva' ),
 			'icon'    => $image_path . 'header.png',
@@ -214,13 +223,15 @@ class Anva_Builder_Components {
 					'type' => 'code',
 				),
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Header Image
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Header Image
+			/*--------------------------------------------*/
 
-		$this->core_elements['header_image'] = array(
+			$this->core_elements['header_image'] = array(
 			'name' => esc_html__( 'Header With Background Image', 'anva' ),
 			'icon' => $image_path . 'header_image.png',
 			'type' => 'media',
@@ -281,21 +292,23 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => esc_html__( 'Create a header with some nice text using a background image.', 'anva' ),
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		/*--------------------------------------------*/
-		/* Text
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Text
+			/*--------------------------------------------*/
 
-		$this->core_elements['text_fullwidth'] = array(
+			$this->core_elements['text_fullwidth'] = array(
 			'name' => esc_html__( 'Text Fullwidth', 'anva' ),
 			'icon' => $image_path . 'text.png',
 			'attr' => array(
 				'slug' => array(
 					'name' => esc_html__( 'Slug (Optional)', 'anva' ),
 					'desc' => esc_html__( 'The slug is the URL-friendly version of this content. It is usually all lowercase and contains only letters, numbers, and hyphens.', 'anva' ),
-				    'id'   => 'slug',
+					'id'   => 'slug',
 					'type' => 'text',
 				),
 				'width' => array(
@@ -316,7 +329,7 @@ class Anva_Builder_Components {
 				'padding' => array(
 					'name' => esc_html__( 'Content Padding', 'anva' ),
 					'desc' => esc_html__( 'Select padding top and bottom value for this header block', 'anva' ),
-				    'id'   => 'padding',
+					'id'   => 'padding',
 					'std'  => 30,
 					'type' => 'range',
 					'options' => array(
@@ -326,14 +339,14 @@ class Anva_Builder_Components {
 					),
 				),
 				'bgcolor' => array(
-				    'id'  => 'bgcolor',
+					'id'  => 'bgcolor',
 					'name' => esc_html__( 'Background Color', 'anva' ),
 					'type' => 'color',
 					'std'  => '#f9f9f9',
 					'desc' => esc_html__( 'Select background color for this header block', 'anva' ),
 				),
 				'fontcolor' => array(
-				    'id'   => 'fontcolor',
+					'id'   => 'fontcolor',
 					'name' => esc_html__( 'Font Color', 'anva' ),
 					'type' => 'color',
 					'std'  => '#444444',
@@ -347,14 +360,16 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		/*--------------------------------------------*/
-		/* Text Image
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Text Image
+			/*--------------------------------------------*/
 
-		$this->core_elements['text_image'] = array(
+			$this->core_elements['text_image'] = array(
 			'name' => esc_html__( 'Text With Background Image', 'anva' ),
 			'icon' => $image_path . 'text_image.png',
 			'attr' => array(
@@ -409,14 +424,16 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		/*--------------------------------------------*/
-		/* Image Fullwidth
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Image Fullwidth
+			/*--------------------------------------------*/
 
-		$this->core_elements['image_fullwidth'] = array(
+			$this->core_elements['image_fullwidth'] = array(
 			'name' => esc_html__( 'Image Fullwidth', 'anva' ),
 			'icon' => $image_path . 'image_full.png',
 			'attr' => array(
@@ -474,14 +491,16 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		/*--------------------------------------------*/
-		/* Image Parallax
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Image Parallax
+			/*--------------------------------------------*/
 
-		$this->core_elements['image_parallax'] = array(
+			$this->core_elements['image_parallax'] = array(
 			'name' => esc_html__( 'Image Parallax', 'anva' ),
 			'icon' => $image_path . 'image_parallax.png',
 			'attr' => array(
@@ -511,14 +530,16 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		/*--------------------------------------------*/
-		/* Image Fixed Width
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Image Fixed Width
+			/*--------------------------------------------*/
 
-		$this->core_elements['image_fixed_width'] = array(
+			$this->core_elements['image_fixed_width'] = array(
 			'name' => esc_html__( 'Image Fixed Width', 'anva' ),
 			'icon' => $image_path . 'image_fixed.png',
 			'attr' => array(
@@ -537,7 +558,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						1 => 'Yes',
-						0 => 'No'
+						0 => 'No',
 					),
 					'desc' => '',
 				),
@@ -563,14 +584,16 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		/*--------------------------------------------*/
-		/* 1/2 Content with Background
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 1/2 Content with Background
+			/*--------------------------------------------*/
 
-		$this->core_elements['content_half_bg'] = array(
+			$this->core_elements['content_half_bg'] = array(
 			'name' => esc_html__( '1/2 Content with Background', 'anva' ),
 			'icon' => $image_path . 'half_content_bg.png',
 			'attr' => array(
@@ -643,7 +666,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						'left' => 'Left',
-						'right' => 'Right'
+						'right' => 'Right',
 					),
 					'desc' => esc_html__( 'Select the alignment for content box', 'anva' ),
 				),
@@ -654,10 +677,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		$this->core_elements['image_half_fixed_width'] = array(
+			$this->core_elements['image_half_fixed_width'] = array(
 			'name' => esc_html__( 'Image 1/2 Width', 'anva' ),
 			'icon' => $image_path . 'image_half_fixed.png',
 			'attr' => array(
@@ -676,7 +699,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						'left' => 'Left',
-						'right' => 'Right'
+						'right' => 'Right',
 					),
 					'desc' => esc_html__( 'Select the alignment for image', 'anva' ),
 				),
@@ -702,10 +725,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		$this->core_elements['image_half_fullwidth'] = array(
+			$this->core_elements['image_half_fullwidth'] = array(
 			'name' => esc_html__( 'Image 1/2 Fullwidth', 'anva' ),
 			'icon' => $image_path . 'image_half_full.png',
 			'attr' => array(
@@ -738,7 +761,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						'left' => 'Left',
-						'right' => 'Right'
+						'right' => 'Right',
 					),
 					'desc' => esc_html__( 'Select the alignment for image', 'anva' ),
 				),
@@ -770,10 +793,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		$this->core_elements['two_cols_images'] = array(
+			$this->core_elements['two_cols_images'] = array(
 			'name' => esc_html__( 'Images Two Columns', 'anva' ),
 			'icon' => $image_path . 'images_two_cols.png',
 			'attr' => array(
@@ -797,7 +820,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						1 => 'Yes',
-						0 => 'No'
+						0 => 'No',
 					),
 					'desc' => '',
 				),
@@ -823,10 +846,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		$this->core_elements['three_cols_images'] = array(
+			$this->core_elements['three_cols_images'] = array(
 			'name' => esc_html__( 'Images Three Columns', 'anva' ),
 			'icon' => $image_path . 'images_three_cols.png',
 			'attr' => array(
@@ -855,7 +878,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						1 => 'Yes',
-						0 => 'No'
+						0 => 'No',
 					),
 					'desc' => '',
 				),
@@ -881,10 +904,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		$this->core_elements['three_images_block'] = array(
+			$this->core_elements['three_images_block'] = array(
 			'name' => esc_html__( 'Images Three blocks', 'anva' ),
 			'icon' => $image_path . 'images_three_block.png',
 			'attr' => array(
@@ -903,7 +926,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						'left' => 'Left',
-						'right' => 'Right'
+						'right' => 'Right',
 					),
 					'desc' => esc_html__( 'Select the alignment for image portrait size', 'anva' ),
 				),
@@ -922,7 +945,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						1 => 'Yes',
-						0 => 'No'
+						0 => 'No',
 					),
 					'desc' => '',
 				),
@@ -948,10 +971,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		$this->core_elements['four_images_block'] = array(
+			$this->core_elements['four_images_block'] = array(
 			'name' => esc_html__( 'Images Four blocks', 'anva' ),
 			'desc' => '',
 			'icon' => $image_path . 'images_four_block.png',
@@ -986,7 +1009,7 @@ class Anva_Builder_Components {
 					'type' => 'select',
 					'options' => array(
 						1 => 'Yes',
-						0 => 'No'
+						0 => 'No',
 					),
 					'desc' => '',
 				),
@@ -1011,8 +1034,8 @@ class Anva_Builder_Components {
 					'desc' => esc_html__( 'You can add custom CSS style for this block (advanced user only)', 'anva' ),
 				),
 			),
-			'content' => false
-		);
+			'content' => false,
+			);
 
 			$this->core_elements['galleries'] = array(
 				'name' => esc_html__( 'Gallery Archive', 'anva' ),
@@ -1045,7 +1068,7 @@ class Anva_Builder_Components {
 						'desc' => esc_html__( 'You can add custom CSS style for this block (advanced user only)', 'anva' ),
 					),
 				),
-				'content' => false
+				'content' => false,
 			);
 
 			$this->core_elements['gallery_slider'] = array(
@@ -1069,7 +1092,7 @@ class Anva_Builder_Components {
 						'type' => 'select',
 						'options' => array(
 							1 => 'Yes',
-							0 => 'No'
+							0 => 'No',
 						),
 						'desc' => esc_html__( 'Auto play gallery image slider', 'anva' ),
 					),
@@ -1087,7 +1110,7 @@ class Anva_Builder_Components {
 						'type' => 'select',
 						'options' => array(
 							1 => 'Yes',
-							0 => 'No'
+							0 => 'No',
 						),
 						'desc' => esc_html__( 'Display gallery image caption', 'anva' ),
 					),
@@ -1106,7 +1129,7 @@ class Anva_Builder_Components {
 						'desc' => esc_html__( 'You can add custom CSS style for this block (advanced user only)', 'anva' ),
 					),
 				),
-				'content' => false
+				'content' => false,
 			);
 
 			$this->core_elements['gallery_slider_fixed_width'] = array(
@@ -1130,7 +1153,7 @@ class Anva_Builder_Components {
 						'type' => 'select',
 						'options' => array(
 							1 => 'Yes',
-							0 => 'No'
+							0 => 'No',
 						),
 						'desc' => esc_html__( 'Auto play gallery image slider', 'anva' ),
 					),
@@ -1148,7 +1171,7 @@ class Anva_Builder_Components {
 						'type' => 'select',
 						'options' => array(
 							1 => 'Yes',
-							0 => 'No'
+							0 => 'No',
 						),
 						'desc' => esc_html__( 'Display gallery image caption', 'anva' ),
 					),
@@ -1224,11 +1247,11 @@ class Anva_Builder_Components {
 					),
 				),
 				'desc' => '',
-				'content' => false
+				'content' => false,
 			);
 
 			$this->core_elements['gallery_grid'] = array(
-				'name' =>  esc_html__( 'Gallery Grid', 'anva' ),
+				'name' => esc_html__( 'Gallery Grid', 'anva' ),
 				'icon' => $image_path . 'gallery_grid.png',
 				'attr' => array(
 					'slug' => array(
@@ -1250,7 +1273,7 @@ class Anva_Builder_Components {
 					),
 				),
 				'desc' => '',
-				'content' => false
+				'content' => false,
 			);
 
 			$this->core_elements['gallery_masonry'] = array(
@@ -1276,10 +1299,10 @@ class Anva_Builder_Components {
 					),
 				),
 				'desc' => '',
-				'content' => false
+				'content' => false,
 			);
 
-		$this->core_elements['blog_grid'] = array(
+			$this->core_elements['blog_grid'] = array(
 			'name' => esc_html__( 'Blog Grid', 'anva' ),
 			'icon' => $image_path . 'blog.png',
 			'attr' => array(
@@ -1328,10 +1351,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => false
-		);
+			'content' => false,
+			);
 
-		$this->core_elements['contact_map'] = array(
+			$this->core_elements['contact_map'] = array(
 			'name' => esc_html__( 'Contact Form With Map', 'anva' ),
 			'icon' => $image_path . 'contact_map.png',
 			'attr' => array(
@@ -1364,7 +1387,7 @@ class Anva_Builder_Components {
 				'long' => array(
 					'name' => esc_html__( 'Longtitude', 'anva' ),
 					'type' => 'text',
-					'desc' => __('Map longitude.', 'anva' ),
+					'desc' => __( 'Map longitude.', 'anva' ),
 				),
 				'zoom' => array(
 					'name' => esc_html__( 'Zoom Level', 'anva' ),
@@ -1410,10 +1433,10 @@ class Anva_Builder_Components {
 				),
 			),
 			'desc' => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		$this->core_elements['map'] = array(
+			$this->core_elements['map'] = array(
 			'name' => esc_html__( 'Fullwidth Map', 'anva' ),
 			'icon' => $image_path . 'googlemap.png',
 			'desc' => '',
@@ -1474,13 +1497,15 @@ class Anva_Builder_Components {
 					'desc' => esc_html__( 'Enter custom marker image URL', 'anva' ),
 				),
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Text Sidebar
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Text Sidebar
+			/*--------------------------------------------*/
 
-		$this->core_elements['text_sidebart'] = array(
+			$this->core_elements['text_sidebart'] = array(
 			'name' => esc_html__( 'Text Sidebar', 'anva' ),
 			'desc' => esc_html__( 'Create a text block with sidebar.', 'anva' ),
 			'content' => false,
@@ -1510,15 +1535,17 @@ class Anva_Builder_Components {
 					'name' => esc_html__( 'Custom CSS', 'anva' ),
 					'type' => 'text',
 					'desc' => esc_html__( 'You can add custom CSS style for this block (advanced user only)', 'anva' ),
-				)
+				),
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Contact Sidebar
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Contact Sidebar
+			/*--------------------------------------------*/
 
-		$this->core_elements['contact_sidebar'] = array(
+			$this->core_elements['contact_sidebar'] = array(
 			'name' => esc_html__( 'Contact Sidebar', 'anva' ),
 			'desc' => esc_html__( 'Create a contact form with sidebar.', 'anva' ),
 			'content' => false,
@@ -1555,121 +1582,121 @@ class Anva_Builder_Components {
 					'desc' => esc_html__( 'You can add custom CSS style for this block (advanced user only)', 'anva' ),
 				),
 			),
-		);
+			);
 
-		$this->core_elements = apply_filters( 'anva_core_elements', $this->core_elements );
+			$this->core_elements = apply_filters( 'anva_core_elements', $this->core_elements );
 
-	}
+			}
 
-	/**
-	 * Set elements by combining core elements and custom elements.
-	 * Then remove any elements that have been set to be removed.
-	 *
-	 * @since 1.0.0
-	 */
-	public function set_elements() {
-		// Combine core elements with custom elements
-		$this->elements = array_merge( $this->core_elements, $this->custom_elements );
+		/**
+		 * Set elements by combining core elements and custom elements.
+		 * Then remove any elements that have been set to be removed.
+		 *
+		 * @since 1.0.0
+		 */
+		public function set_elements() {
+			// Combine core elements with custom elements
+			$this->elements = array_merge( $this->core_elements, $this->custom_elements );
 
-		// Remove elements
-		if ( $this->remove_elements ) {
-			foreach ( $this->remove_elements as $element_id ) {
-				if ( isset( $this->elements[$element_id] ) ) {
-					unset( $this->elements[$element_id] );
+			// Remove elements
+			if ( $this->remove_elements ) {
+				foreach ( $this->remove_elements as $element_id ) {
+					if ( isset( $this->elements[ $element_id ] ) ) {
+						unset( $this->elements[ $element_id ] );
+					}
 				}
 			}
-		}
 
-		// Extend
-		$this->elements = apply_filters( 'anva_elements', $this->elements );
+			// Extend
+			$this->elements = apply_filters( 'anva_elements', $this->elements );
 
-	}
+			}
 
-	/**
-	 * Add a new element.
-	 *
-	 * @since 1.0.0
-	 */
-	public function add_element( $id, $name = '', $icon = '', $attr = array(), $desc = '', $content = false ) {
-		$args = array(
+		/**
+		 * Add a new element.
+		 *
+		 * @since 1.0.0
+		 */
+		public function add_element( $id, $name = '', $icon = '', $attr = array(), $desc = '', $content = false ) {
+			$args = array(
 			'id'      => $id,
 			'name'    => $name,
 			'icon'    => $icon,
 			'attr'    => $attr,
 			'desc'    => $desc,
-			'content' => $content
-		);
+			'content' => $content,
+			);
 
-		$defaults = array(
+			$defaults = array(
 			'id'      => '',
 			'name'    => '',
 			'icon'    => '',
 			'attr'    => array(),
 			'desc'    => '',
-			'content' => true
-		);
+			'content' => true,
+			);
 
-		$args = wp_parse_args( $args, $defaults );
+			$args = wp_parse_args( $args, $defaults );
 
-		// Add in element
-		$this->custom_elements[$args['id']] = array(
+			// Add in element
+			$this->custom_elements[ $args['id'] ] = array(
 			'id'      => $args['id'],
 			'name'    => $args['name'],
 			'icon'    => $args['icon'],
 			'attr'    => $args['attr'],
 			'desc'    => $args['desc'],
-			'content' => $args['content']
-		);
+			'content' => $args['content'],
+			);
 
-	}
+			}
 
-	/**
-	 * Remove element.
-	 *
-	 * @since 1.0.0
-	 */
-	public function remove_element( $element_id ) {
-		// Add to removal array, and process in set_elements()
-		$this->remove_elements[] = $element_id;
-	}
+		/**
+		 * Remove element.
+		 *
+		 * @since 1.0.0
+		 */
+		public function remove_element( $element_id ) {
+			// Add to removal array, and process in set_elements()
+			$this->remove_elements[] = $element_id;
+			}
 
-	/**
-	 * Check if an element is currently registered.
-	 *
-	 * @since 1.0.0
-	 */
-	public function is_element( $element_id ) {
-		return array_key_exists( $element_id, $this->elements );
-	}
+		/**
+		 * Check if an element is currently registered.
+		 *
+		 * @since 1.0.0
+		 */
+		public function is_element( $element_id ) {
+			return array_key_exists( $element_id, $this->elements );
+			}
 
-	/**
-	 * Get core elements.
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_core_elements() {
-		return $this->core_elements;
-	}
+		/**
+		 * Get core elements.
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_core_elements() {
+			return $this->core_elements;
+			}
 
-	/**
-	 * Get custom elements.
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_custom_elements() {
-		return $this->custom_elements;
-	}
+		/**
+		 * Get custom elements.
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_custom_elements() {
+			return $this->custom_elements;
+			}
 
-	/**
-	 * Get final elements.
-	 *
-	 * This is the merged result of core elements and custom elements.
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_elements() {
-		return $this->elements;
-	}
+		/**
+		 * Get final elements.
+		 *
+		 * This is the merged result of core elements and custom elements.
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_elements() {
+			return $this->elements;
+			}
 
 }
 

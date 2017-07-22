@@ -12,130 +12,134 @@ if ( ! class_exists( 'Anva_Sliders' ) ) :
  */
 class Anva_Sliders {
 
-	/**
-	 * A single instance of this class
-	 *
-	 * @since 1.0.0
-	 */
-	private static $instance = null;
+		/**
+		 * A single instance of this class
+		 *
+		 * @since 1.0.0
+		 */
+		private static $instance = null;
 
-	/**
-	 * Core slider types
-	 *
-	 * @since 1.0.0
-	 */
-	private $core_sliders = array();
+		/**
+		 * Core slider types
+		 *
+		 * @since 1.0.0
+		 */
+		private $core_sliders = array();
 
-	/**
-	 * Custom slider types
-	 *
-	 * @since 1.0.0
-	 */
-	private $custom_sliders = array();
+		/**
+		 * Custom slider types
+		 *
+		 * @since 1.0.0
+		 */
+		private $custom_sliders = array();
 
-	/**
-	 * Slider types to be removed
-	 *
-	 * @since 1.0.0
-	 */
-	private $remove_sliders = array();
+		/**
+		 * Slider types to be removed
+		 *
+		 * @since 1.0.0
+		 */
+		private $remove_sliders = array();
 
-	/**
-	 * Final slider types, core combined
-	 * with custom slider types.
-	 *
-	 * @since 1.0.0
-	 */
-	private $sliders = array();
+		/**
+		 * Final slider types, core combined
+		 * with custom slider types.
+		 *
+		 * @since 1.0.0
+		 */
+		private $sliders = array();
 
-	/**
-	 * Creates or returns an instance of this class
-	 *
-	 * @since 1.0.0
-	 */
-	public static function instance() {
+		/**
+		 * Creates or returns an instance of this class
+		 *
+		 * @since 1.0.0
+		 */
+		public static function instance() {
 
-		if ( self::$instance == null ) {
-			self::$instance = new self;
-		}
+			if ( self::$instance == null ) {
+				self::$instance = new self;
+			}
 
-		return self::$instance;
-	}
+			return self::$instance;
+			}
 
-	/**
-	 * Constructor
-	 *
-	 * Hook everything in.
-	 *
-	 * @since 1.0.0
-	 */
-	private function __construct() {
+		/**
+		 * Constructor
+		 *
+		 * Hook everything in.
+		 *
+		 * @since 1.0.0
+		 */
+		private function __construct() {
 
-		// Setup plugin default slider types
-		$this->set_core_sliders();
-		$this->set_sliders();
+			// Setup plugin default slider types
+			$this->set_core_sliders();
+			$this->set_sliders();
 
-		// Establish slider types based on custom modifications
-		// combined with plugin defaults
-		add_action( 'after_setup_theme', array( $this, 'set_sliders' ), 1000 );
+			// Establish slider types based on custom modifications
+			// combined with plugin defaults
+			add_action( 'after_setup_theme', array( $this, 'set_sliders' ), 1000 );
 
-	}
+			}
 
-	/**
-	 * Set default slider types
-	 *
-	 * @since 1.0.0
-	 */
-	public function set_core_sliders() {
+		/**
+		 * Set default slider types
+		 *
+		 * @since 1.0.0
+		 */
+		public function set_core_sliders() {
 
-		/*--------------------------------------------*/
-		/* Helpers
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Helpers
+			/*--------------------------------------------*/
 
-		$animations = array();
-		foreach ( anva_get_animations() as $animation_id => $animation ) {
-			$animations[ $animation ] = $animation;
-		}
+			$animations = array();
+			foreach ( anva_get_animations() as $animation_id => $animation ) {
+				$animations[ $animation ] = $animation;
+			}
 
-		$this->core_sliders = array(
+			$this->core_sliders = array(
 			'standard' => array(
 				'name' 			=> 'Standard',
 				'id'			=> 'standard',
-				'custom_size' 	=> true
+				'custom_size' 	=> true,
 			),
 			'owl' => array(
 				'name' 			=> 'OWL',
 				'id'			=> 'owl',
-				'custom_size' 	=> false
+				'custom_size' 	=> false,
 			),
 			'nivo' => array(
 				'name' 			=> 'Nivo',
 				'id'			=> 'nivo',
-				'custom_size' 	=> true
+				'custom_size' 	=> true,
 			),
 			'bootstrap' => array(
 				'name' 			=> 'Bootstrap Carousel',
 				'id'			=> 'bootstrap',
-				'custom_size' 	=> false
+				'custom_size' 	=> false,
 			),
 			'swiper' => array(
 				'name' 			=> 'Swiper',
 				'id'			=> 'swiper',
-				'custom_size' 	=> true
+				'custom_size' 	=> true,
 			),
 			'camera' => array(
 				'name' 			=> 'Camera',
 				'id'			=> 'camera',
-				'custom_size' 	=> true
+				'custom_size' 	=> true,
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Standard - Flex Slider
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Standard - Flex Slider
+			/*--------------------------------------------*/
 
-		// Slider fields
-		$this->core_sliders['standard']['fields'] = array(
+			// Slider fields
+			$this->core_sliders['standard']['fields'] = array(
 			'type' => array(
 				'name' 		=> __( 'Slide Type', 'anva' ),
 				'desc'		=> __( 'Select content type.', 'anva' ),
@@ -144,8 +148,8 @@ class Anva_Sliders {
 				'std'		=> '',
 				'options'	=> array(
 					'image' => __( 'Image Slide', 'anva' ),
-					'video' => __( 'Video Slide', 'anva' )
-				)
+					'video' => __( 'Video Slide', 'anva' ),
+				),
 			),
 			'link' => array(
 				'name' 		=> __( 'Image Link', 'anva' ),
@@ -157,22 +161,22 @@ class Anva_Sliders {
 					'same' 	=> __( 'Same Windows', 'anva' ),
 					'new' 	=> __( 'New Windows', 'anva' ),
 					'image' => __( 'Lightbox Image', 'anva' ),
-					'video' => __( 'Lightbox Video', 'anva' )
-				)
+					'video' => __( 'Lightbox Video', 'anva' ),
+				),
 			),
 			'url' => array(
 				'name' 		=> __( 'URL', 'anva' ),
 				'desc'		=> __( 'Where should the link go?.', 'anva' ),
 				'id'		=> 'url',
 				'type' 		=> 'text',
-				'std'		=> ''
+				'std'		=> '',
 			),
 			'description' => array(
 				'name' 		=> __( 'Description', 'anva' ),
 				'desc'		=> __( 'What should the description say?.', 'anva' ),
 				'id'		=> 'description',
 				'type' 		=> 'textarea',
-				'std'		=> ''
+				'std'		=> '',
 			),
 			'content' => array(
 				'name' 		=> __( 'Content', 'anva' ),
@@ -181,16 +185,16 @@ class Anva_Sliders {
 				'type' 		=> 'select',
 				'std'		=> 'hide',
 				'options'	=> array(
-					'title' => anva_get_local( 'slide_title'),
+					'title' => anva_get_local( 'slide_title' ),
 					'desc' 	=> anva_get_local( 'slide_desc' ),
 					'both' 	=> anva_get_local( 'slide_show' ),
-					'hide' 	=> anva_get_local( 'slide_hide' )
-				)
+					'hide' 	=> anva_get_local( 'slide_hide' ),
+				),
 			),
-		);
+			);
 
-		// Slider options
-		$this->core_sliders['standard']['options'] = array(
+			// Slider options
+			$this->core_sliders['standard']['options'] = array(
 			'standard_fx' => array(
 				'id'			=> 'standard_fx',
 				'name'		=> __( 'How to transition between slides?', 'anva' ),
@@ -199,9 +203,9 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'fade' 	=> 'Fade',
-					'slide'	=> 'Slide'
+					'slide'	=> 'Slide',
 				),
-				'class' 	=> 'slider-item standard hide'
+				'class' 	=> 'slider-item standard hide',
 			),
 			'standard_thumbs' => array(
 				'id'			=> 'standard_thumbs',
@@ -245,7 +249,7 @@ class Anva_Sliders {
 				'desc'  => __( 'Enter speed for slides.', 'anva' ),
 				'std'   => 1000,
 				'type'  => 'number',
-				'class' => 'slider-item standard hide'
+				'class' => 'slider-item standard hide',
 			),
 			'standard_arrows' => array(
 				'id'			=> 'standard_arrows',
@@ -255,18 +259,20 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'true' 	=> 'Yes, enable arrows.',
-					'false'	=> 'No, disable arrows.'
+					'false'	=> 'No, disable arrows.',
 				),
-				'class'		=> 'slider-item standard hide'
+				'class'		=> 'slider-item standard hide',
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* OWL Slider
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 OWL Slider
+			/*--------------------------------------------*/
 
-		// Slider fields
-		$this->core_sliders['owl']['fields'] = array(
+			// Slider fields
+			$this->core_sliders['owl']['fields'] = array(
 			'general' => array(
 				'id' 		=> 'general',
 				'name'		=> __( 'General', 'anva' ),
@@ -280,8 +286,8 @@ class Anva_Sliders {
 						'std'			=> '',
 						'options'	=> array(
 							'image' => __( 'Image Slide', 'anva' ),
-							'video' => __( 'Video Slide', 'anva' )
-						)
+							'video' => __( 'Video Slide', 'anva' ),
+						),
 					),
 					'link' => array(
 						'name' 		=> __( 'Image Link', 'anva' ),
@@ -293,22 +299,22 @@ class Anva_Sliders {
 							'same' 	=> __( 'Same Windows', 'anva' ),
 							'new' 	=> __( 'New Windows', 'anva' ),
 							'image' => __( 'Lightbox Image', 'anva' ),
-							'video' => __( 'Lightbox Video', 'anva' )
-						)
+							'video' => __( 'Lightbox Video', 'anva' ),
+						),
 					),
 					'url' => array(
 						'name' 		=> __( 'URL', 'anva' ),
 						'desc'		=> __( 'Where should the link go?.', 'anva' ),
 						'id'			=> 'url',
 						'type' 		=> 'text',
-						'std'			=> ''
+						'std'			=> '',
 					),
 					'description' => array(
 						'name' 		=> __( 'Description', 'anva' ),
 						'desc'		=> __( 'What should the description say?.', 'anva' ),
 						'id'			=> 'description',
 						'type' 		=> 'textarea',
-						'std'			=> ''
+						'std'			=> '',
 					),
 					'content' => array(
 						'name' 		=> __( 'Content', 'anva' ),
@@ -317,25 +323,25 @@ class Anva_Sliders {
 						'type' 		=> 'select',
 						'std'			=> 'hide',
 						'options'	=> array(
-							'title' => anva_get_local( 'slide_title'),
+							'title' => anva_get_local( 'slide_title' ),
 							'desc' 	=> anva_get_local( 'slide_desc' ),
 							'both' 	=> anva_get_local( 'slide_show' ),
-							'hide' 	=> anva_get_local( 'slide_hide' )
-						)
+							'hide' 	=> anva_get_local( 'slide_hide' ),
+						),
 					),
-				)
-			)
-		);
+				),
+			),
+			);
 
-		// Slider options
-		$this->core_sliders['owl']['options'] = array(
+			// Slider options
+			$this->core_sliders['owl']['options'] = array(
 			'owl_items' => array(
 				'id'		=> 'owl_items',
 				'name'		=> __( 'Items', 'anva' ),
 				'desc'		=> __( 'Enter the number of items you want to see on the screen.', 'anva' ),
 				'std'		=> '1',
 				'type'		=> 'number',
-				'class' 	=> 'slider-item owl hide'
+				'class' 	=> 'slider-item owl hide',
 			),
 			'owl_margin' => array(
 				'id'		=> 'owl_margin',
@@ -343,7 +349,7 @@ class Anva_Sliders {
 				'desc'		=> __( 'Enter the margin-right(px) on item.', 'anva' ),
 				'std'		=> '0',
 				'type'		=> 'number',
-				'class' 	=> 'slider-item owl hide'
+				'class' 	=> 'slider-item owl hide',
 			),
 			'owl_animate_in' => array(
 				'id'		=> 'owl_animate_in',
@@ -352,7 +358,7 @@ class Anva_Sliders {
 				'std'		=> 'zoomIn',
 				'type'		=> 'select',
 				'options'	=> $animations,
-				'class' 	=> 'slider-item owl hide'
+				'class' 	=> 'slider-item owl hide',
 			),
 			'owl_animate_out' => array(
 				'id'		=> 'owl_animate_out',
@@ -361,7 +367,7 @@ class Anva_Sliders {
 				'std'		=> 'zoomOut',
 				'type'		=> 'select',
 				'options'	=> $animations,
-				'class' 	=> 'slider-item owl hide'
+				'class' 	=> 'slider-item owl hide',
 			),
 			'owl_loop' => array(
 				'id'		=> 'owl_loop',
@@ -373,7 +379,7 @@ class Anva_Sliders {
 					'true' => __( 'Yes, enable inifnity loop', 'anva' ),
 					'false' => __( 'No, disable infinity loop', 'anva' ),
 				),
-				'class' 	=> 'slider-item owl hide'
+				'class' 	=> 'slider-item owl hide',
 			),
 			'owl_pagi' => array(
 				'id'		=> 'owl_pagi',
@@ -385,7 +391,7 @@ class Anva_Sliders {
 					'true' => __( 'Yes, enable pagination', 'anva' ),
 					'false' => __( 'No, disable pagination', 'anva' ),
 				),
-				'class' 	=> 'slider-item owl hide'
+				'class' 	=> 'slider-item owl hide',
 			),
 			'owl_speed' => array(
 				'id'		=> 'owl_speed',
@@ -393,7 +399,7 @@ class Anva_Sliders {
 				'desc'		=> __( 'Enter the speed. Default is 450.', 'anva' ),
 				'std'		=> 450,
 				'type'		=> 'number',
-				'class'		=> 'slider-item owl hide'
+				'class'		=> 'slider-item owl hide',
 			),
 			'owl_autoplay' => array(
 				'id'		=> 'owl_autoplay',
@@ -401,35 +407,37 @@ class Anva_Sliders {
 				'desc'		=> __( 'Enter the autoplay interval timeout. Default is 5000 in milliseconds.', 'anva' ),
 				'std'		=> 5000,
 				'type'		=> 'number',
-				'class'		=> 'slider-item owl hide'
+				'class'		=> 'slider-item owl hide',
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Nivo Slider
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Nivo Slider
+			/*--------------------------------------------*/
 
-		// Slide Types
-		$this->core_sliders['nivo']['types'] = array(
+			// Slide Types
+			$this->core_sliders['nivo']['types'] = array(
 			'image' => array(
 				'name' 			=> __( 'Image Slide', 'anva' ),
-				'main_title'	=> __( 'Setup Image', 'anva' )
-			)
-		);
+				'main_title'	=> __( 'Setup Image', 'anva' ),
+			),
+			);
 
-		// Slide Media Positions
-		$this->core_sliders['nivo']['positions'] = array(
-			'full' => 'slider_lg' // Default
-		);
+			// Slide Media Positions
+			$this->core_sliders['nivo']['positions'] = array(
+			'full' => 'slider_lg',// Default
+			);
 
-		// Slide Elements
-		$this->core_sliders['nivo']['elements'] = array(
+			// Slide Elements
+			$this->core_sliders['nivo']['elements'] = array(
 			'image_link',
-			'description'
-		);
+			'description',
+			);
 
-		// Slider Options
-		$this->core_sliders['nivo']['options'] = array(
+			// Slider Options
+			$this->core_sliders['nivo']['options'] = array(
 			'nivo_fx' => array(
 				'id'			=> 'nivo_fx',
 				'name'		=> __( 'How to transition between slides?', 'anva' ),
@@ -438,9 +446,9 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'fade' 	=> 'Fade',
-					'slide'	=> 'Slide'
+					'slide'	=> 'Slide',
 				),
-				'class' 	=> 'slider-item nivo hide'
+				'class' 	=> 'slider-item nivo hide',
 			),
 			'nivo_smoothheight' => array(
 				'id'			=> 'nivo_smoothheight',
@@ -450,38 +458,40 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'true' 	=> 'Yes, enable smoothHeight.',
-					'false'	=> 'No, display as height of tallest slide.'
+					'false'	=> 'No, display as height of tallest slide.',
 				),
-				'class'		=> 'slider-item nivo hide'
+				'class'		=> 'slider-item nivo hide',
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Bootstrap Carousel
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Bootstrap Carousel
+			/*--------------------------------------------*/
 
-		// Slide Types
-		$this->core_sliders['bootstrap']['types'] = array(
+			// Slide Types
+			$this->core_sliders['bootstrap']['types'] = array(
 			'image' => array(
 				'name' 			=> __( 'Image Slide', 'anva' ),
-				'main_title'	=> __( 'Setup Image', 'anva' )
-			)
-		);
+				'main_title'	=> __( 'Setup Image', 'anva' ),
+			),
+			);
 
-		// Slide Media Positions
-		$this->core_sliders['bootstrap']['positions'] = array(
-			'full' => 'slider-large' // Default
-		);
+			// Slide Media Positions
+			$this->core_sliders['bootstrap']['positions'] = array(
+			'full' => 'slider-large',// Default
+			);
 
-		// Slide Elements
-		$this->core_sliders['bootstrap']['elements'] = array(
+			// Slide Elements
+			$this->core_sliders['bootstrap']['elements'] = array(
 			'image_link',
 			'headline',
-			'description'
-		);
+			'description',
+			);
 
-		// Slider Options
-		$this->core_sliders['bootstrap']['options'] = array(
+			// Slider Options
+			$this->core_sliders['bootstrap']['options'] = array(
 			'bootstrap_fx' => array(
 				'id'			=> 'bootstrap_fx',
 				'name'		=> __( 'How to transition between slides?', 'anva' ),
@@ -490,9 +500,9 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'fade' 	=> 'Fade',
-					'slide'	=> 'Slide'
+					'slide'	=> 'Slide',
 				),
-				'class' 	=> 'slider-item bootstrap hide'
+				'class' 	=> 'slider-item bootstrap hide',
 			),
 			'smoothheight' => array(
 				'id'			=> 'smoothheight',
@@ -502,18 +512,20 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'true' 	=> 'Yes, enable smoothHeight.',
-					'false'	=> 'No, display as height of tallest slide.'
+					'false'	=> 'No, display as height of tallest slide.',
 				),
-				'class'		=> 'slider-item bootstrap hide'
+				'class'		=> 'slider-item bootstrap hide',
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Swiper
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Swiper
+			/*--------------------------------------------*/
 
-		// Slider Options
-		$this->core_sliders['swiper']['options'] = array(
+			// Slider Options
+			$this->core_sliders['swiper']['options'] = array(
 			'swiper_fx' => array(
 				'id'			=> 'swiper_fx',
 				'name'		=> __( 'How to transition between slides?', 'anva' ),
@@ -522,9 +534,9 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'fade' 	=> 'Fade',
-					'slide'	=> 'Slide'
+					'slide'	=> 'Slide',
 				),
-				'class' 	=> 'slider-item swiper hide'
+				'class' 	=> 'slider-item swiper hide',
 			),
 			'swiper_smoothheight' => array(
 				'id'			=> 'swiper_smoothheight',
@@ -534,18 +546,20 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'true' 	=> 'Yes, enable smoothHeight.',
-					'false'	=> 'No, display as height of tallest slide.'
+					'false'	=> 'No, display as height of tallest slide.',
 				),
-				'class'		=> 'slider-item swiper hide'
+				'class'		=> 'slider-item swiper hide',
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Camera
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Camera
+			/*--------------------------------------------*/
 
-		// Slider Options
-		$this->core_sliders['camera']['options'] = array(
+			// Slider Options
+			$this->core_sliders['camera']['options'] = array(
 			'camera_fx' => array(
 				'id'			=> 'camera_fx',
 				'name'		=> __( 'How to transition between slides?', 'anva' ),
@@ -554,9 +568,9 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'fade' 	=> 'Fade',
-					'slide'	=> 'Slide'
+					'slide'	=> 'Slide',
 				),
-				'class' 	=> 'slider-item camera hide'
+				'class' 	=> 'slider-item camera hide',
 			),
 			'smoothheight' => array(
 				'id'			=> 'smoothheight',
@@ -566,183 +580,185 @@ class Anva_Sliders {
 				'type'		=> 'select',
 				'options'	=> array(
 					'true' 	=> 'Yes, enable smoothHeight.',
-					'false'	=> 'No, display as height of tallest slide.'
+					'false'	=> 'No, display as height of tallest slide.',
 				),
-				'class'		=> 'slider-item camera hide'
+				'class'		=> 'slider-item camera hide',
 			),
-		);
+			);
 
-		/*--------------------------------------------*/
-		/* Extend
-		/*--------------------------------------------*/
+			/*
+			--------------------------------------------*/
+			/*
+			 Extend
+			/*--------------------------------------------*/
 
-		$this->core_sliders = apply_filters( 'anva_core_sliders', $this->core_sliders );
+			$this->core_sliders = apply_filters( 'anva_core_sliders', $this->core_sliders );
 
-	}
+			}
 
-	/**
-	 * Set slider types
-	 *
-	 * Then remove any types that have been set to be removed.
-	 *
-	 * @since 1.0.0
-	 */
-	public function set_sliders() {
+		/**
+		 * Set slider types
+		 *
+		 * Then remove any types that have been set to be removed.
+		 *
+		 * @since 1.0.0
+		 */
+		public function set_sliders() {
 
-		// Combine core sliders with custom sliders
-		$this->sliders = array_merge( $this->core_sliders, $this->custom_sliders );
+			// Combine core sliders with custom sliders
+			$this->sliders = array_merge( $this->core_sliders, $this->custom_sliders );
 
-		// Remove elements
-		if ( $this->remove_sliders ) {
-			foreach ( $this->remove_sliders as $slider_id ) {
-				if ( isset( $this->sliders[$slider_id] ) ) {
-					unset( $this->sliders[$slider_id] );
+			// Remove elements
+			if ( $this->remove_sliders ) {
+				foreach ( $this->remove_sliders as $slider_id ) {
+					if ( isset( $this->sliders[ $slider_id ] ) ) {
+						unset( $this->sliders[ $slider_id ] );
+					}
 				}
 			}
-		}
 
-		// Extend
-		$this->sliders = apply_filters( 'anva_recognized_sliders', $this->sliders );
+			// Extend
+			$this->sliders = apply_filters( 'anva_recognized_sliders', $this->sliders );
 
-	}
+			}
 
-	/**
-	 * Add custom slider
-	 *
-	 * @since 1.0.0
-	 */
-	public function add( $slider_id, $slider_name, $slide_types, $media_positions, $elements, $options ) {
+		/**
+		 * Add custom slider
+		 *
+		 * @since 1.0.0
+		 */
+		public function add( $slider_id, $slider_name, $slide_types, $media_positions, $elements, $options ) {
 
-		// Start new slider
-		$new_slider  = array(
+			// Start new slider
+			$new_slider  = array(
 			'name' 	   => $slider_name,
 			'id' 	   => $slider_id,
 			'options'  => $options,
-			'elements' => $elements
-		);
+			'elements' => $elements,
+			);
 
-		// Slide Types
-		// $slide_types should look something like: array( 'image', 'video', 'custom' )
-		$new_slider['types'] = array();
+			// Slide Types
+			// $slide_types should look something like: array( 'image', 'video', 'custom' )
+			$new_slider['types'] = array();
 
-		if ( $slide_types ) {
-			foreach ( $slide_types as $type ) {
-				switch ( $type ) {
+			if ( $slide_types ) {
+				foreach ( $slide_types as $type ) {
+					switch ( $type ) {
 
-					case 'image' :
-						$new_slider['types']['image'] = array(
+						case 'image' :
+							$new_slider['types']['image'] = array(
 							'name' 			=> __( 'Image Slide', 'anva' ),
-							'main_title' 	=> __( 'Setup Image', 'anva' )
-						);
-						break;
+							'main_title' 	=> __( 'Setup Image', 'anva' ),
+							);
+							break;
 
-					case 'video' :
-						$new_slider['types']['video'] = array(
+						case 'video' :
+							$new_slider['types']['video'] = array(
 							'name' 			=> __( 'Video Slide', 'anva' ),
-							'main_title' 	=> __( 'Video Link', 'anva' )
-						);
-						break;
+							'main_title' 	=> __( 'Video Link', 'anva' ),
+							);
+							break;
 
-					case 'custom' :
-						$new_slider['types']['custom'] = array(
+						case 'custom' :
+							$new_slider['types']['custom'] = array(
 							'name' 			=> __( 'Custom Slide', 'anva' ),
-							'main_title' 	=> __( 'Setup Custom Content', 'anva' )
-						);
-						break;
+							'main_title' 	=> __( 'Setup Custom Content', 'anva' ),
+							);
+							break;
 
+					}
 				}
 			}
-		}
 
-		// Slide Media Positions
-		// $media_positions should look something like: array( 'full' => 'crop_size', 'align-left' => 'crop_size', 'align-right' => 'crop_size' )
-		$new_slider['positions'] = array();
+			// Slide Media Positions
+			// $media_positions should look something like: array( 'full' => 'crop_size', 'align-left' => 'crop_size', 'align-right' => 'crop_size' )
+			$new_slider['positions'] = array();
 
-		$positions = apply_filters( 'anva_slider_image_positions', array( 'full', 'align-left', 'align-right' ) );
+			$positions = apply_filters( 'anva_slider_image_positions', array( 'full', 'align-left', 'align-right' ) );
 
-		if ( $media_positions ) {
-			foreach ( $media_positions as $position => $crop_size ) {
-				if ( in_array( $position, $positions ) ) {
-					$new_slider['positions'][$position] = $crop_size;
+			if ( $media_positions ) {
+				foreach ( $media_positions as $position => $crop_size ) {
+					if ( in_array( $position, $positions ) ) {
+						$new_slider['positions'][ $position ] = $crop_size;
+					}
 				}
 			}
-		}
 
-		// Add new slider
-		$this->custom_sliders[$slider_id] = $new_slider;
+			// Add new slider
+			$this->custom_sliders[ $slider_id ] = $new_slider;
 
-		// Add frontend display
-		//add_action( 'anva_slider_' . $slider_id, );
-	}
+			// Add frontend display
+			// add_action( 'anva_slider_' . $slider_id, );
+			}
 
-	/**
-	 * Remove slider
-	 *
-	 * @since 1.0.0
-	 */
-	public function remove( $slider_id ) {
-		$this->remove_sliders[] = $slider_id;
-	}
+		/**
+		 * Remove slider
+		 *
+		 * @since 1.0.0
+		 */
+		public function remove( $slider_id ) {
+			$this->remove_sliders[] = $slider_id;
+			}
 
-	/**
-	 * Get default sliders
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_core_sliders() {
-		return $this->core_sliders;
-	}
+		/**
+		 * Get default sliders
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_core_sliders() {
+			return $this->core_sliders;
+			}
 
-	/**
-	 * Get custom sliders
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_custom_sliders() {
-		return $this->custom_sliders;
-	}
+		/**
+		 * Get custom sliders
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_custom_sliders() {
+			return $this->custom_sliders;
+			}
 
-	/**
-	 * Get sliders to be removed
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_remove_sliders() {
-		return $this->remove_sliders;
-	}
+		/**
+		 * Get sliders to be removed
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_remove_sliders() {
+			return $this->remove_sliders;
+			}
 
-	/**
-	 * Get finalized sliders
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_sliders( $slider_id = '' ) {
+		/**
+		 * Get finalized sliders
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_sliders( $slider_id = '' ) {
 
-		if ( ! $slider_id ) {
-			return $this->sliders;
-		}
+			if ( ! $slider_id ) {
+				return $this->sliders;
+			}
 
-		if ( isset( $this->sliders[$slider_id] ) ) {
-			return $this->sliders[$slider_id];
-		}
+			if ( isset( $this->sliders[ $slider_id ] ) ) {
+				return $this->sliders[ $slider_id ];
+			}
 
-		return array();
+			return array();
 
-	}
+			}
 
-	/**
-	 * Determine if slider type is valid
-	 *
-	 * @since 1.0.0
-	 */
-	public function is_slider( $slider_id ) {
+		/**
+		 * Determine if slider type is valid
+		 *
+		 * @since 1.0.0
+		 */
+		public function is_slider( $slider_id ) {
 
-		if ( isset( $this->sliders[$slider_id] ) ) {
-			return true;
-		}
+			if ( isset( $this->sliders[ $slider_id ] ) ) {
+				return true;
+			}
 
-		return false;
-	}
+			return false;
+			}
 
 }
 endif;

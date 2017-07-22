@@ -20,7 +20,7 @@ function anva_envato_updates() {
 	}
 
 	if ( ! class_exists( 'Anva_Envato_Updates' ) ) {
-		include_once( ANVA_FRAMEWORK_ADMIN  . 'updates/class-anva-envato-updates.php' );
+		include_once( ANVA_FRAMEWORK_ADMIN . 'updates/class-anva-envato-updates.php' );
 	}
 
 	// Admin page.
@@ -32,7 +32,7 @@ function anva_envato_updates() {
 				'name'			=> __( 'Configuration', 'anva' ),
 				'id' 			=> 'envato_info',
 				'type' 			=> 'info',
-				'desc'			=> __('Although there is a backup option below, we recommend that you still always backup your theme files before running any automatic updates. Additionally, it\'s a good idea to never update any plugin or theme on a live website without first testing its compatibility with your specific WordPress site.', 'anva' ),
+				'desc'			=> __( 'Although there is a backup option below, we recommend that you still always backup your theme files before running any automatic updates. Additionally, it\'s a good idea to never update any plugin or theme on a live website without first testing its compatibility with your specific WordPress site.', 'anva' ),
 				'class'         => 'danger',
 			),
 			'username' 			=> array(
@@ -56,7 +56,7 @@ function anva_envato_updates() {
 				'options'		=> array(
 					'yes' 		=> __( 'Yes, make theme backups when updating', 'anva' ),
 					'no' 		=> __( 'No, don\'t make theme backups', 'anva' ),
-				)
+				),
 			),
 		);
 
@@ -64,7 +64,7 @@ function anva_envato_updates() {
 
 		anva_add_option_section( 'advanced', 'updates', __( 'Envato Updates', 'anva' ), null, $update_options, false );
 
-	}
+	}// End if().
 
 	// Setup arguments for Anva_Envato_Updates class based on user-configured options.
 	$settings = array(

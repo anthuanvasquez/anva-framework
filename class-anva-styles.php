@@ -29,7 +29,6 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 		 *
 		 * @since 1.0.0
 		 * @var   object
-		 *
 		 */
 		private static $instance = null;
 
@@ -251,18 +250,16 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 					'1' => array(),	// Level 1: Before Framework styles
 					'2' => array(),	// Level 2: After Framework styles
 					'3' => array(),	// Level 3: After Theme styles
-					'4' => array()	// Level 4: After Theme Options-generated styles
+					'4' => array(),// Level 4: After Theme Options-generated styles
 				);
 
 				if ( $temp_stylesheets ) {
 					foreach ( $temp_stylesheets as $handle => $file ) {
 						$key = $file['level'];
-						$this->custom_stylesheets[$key][$handle] = $file;
+						$this->custom_stylesheets[ $key ][ $handle ] = $file;
 					}
-
-				}
-
-			}
+}
+}
 
 		}
 
@@ -271,12 +268,12 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 		 */
 		public function add( $handle, $src, $level = 4, $ver = null, $media = 'all' ) {
 			if ( ! is_admin() ) {
-				$this->custom_stylesheets[$handle] = array(
+				$this->custom_stylesheets[ $handle ] = array(
 					'handle' 	=> $handle,
 					'src' 		=> $src,
 					'level' 	=> $level,
 					'ver' 		=> $ver,
-					'media' 	=> $media
+					'media' 	=> $media,
 				);
 			}
 		}
@@ -337,7 +334,7 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 			}
 
 			// Level 2 custom stylesheets
-			$this->print_styles(2);
+			$this->print_styles( 2 );
 
 		}
 
@@ -348,7 +345,7 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 		 */
 		public function closing_stylesheets() {
 			// Level 4 stylesheets
-			$this->print_styles(4);
+			$this->print_styles( 4 );
 		}
 
 		/**
@@ -359,7 +356,7 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 		public function print_styles( $level = 1 ) {
 
 			// Only levels 1-4 currently exist
-			if ( ! in_array( $level, array(1, 2, 3, 4) ) ) {
+			if ( ! in_array( $level, array( 1, 2, 3, 4 ) ) ) {
 				return;
 			}
 
@@ -373,8 +370,8 @@ if ( ! class_exists( 'Anva_Styles' ) ) :
 				}
 			} else {
 				// Use WordPress's enqueue system
-				if ( $this->custom_stylesheets[$level] ) {
-					foreach ( $this->custom_stylesheets[$level] as $file ) {
+				if ( $this->custom_stylesheets[ $level ] ) {
+					foreach ( $this->custom_stylesheets[ $level ] as $file ) {
 						wp_enqueue_style( $file['handle'], $file['src'], array(), $file['ver'], $file['media'] );
 					}
 				}

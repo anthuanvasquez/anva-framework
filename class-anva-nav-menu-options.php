@@ -78,37 +78,37 @@ class Anva_Nav_Menu_Options {
 
 		global $_POST;
 
-		if ( empty( $_POST['_anva_mega_menu'][$item_id] ) ) {
+		if ( empty( $_POST['_anva_mega_menu'][ $item_id ] ) ) {
 			update_post_meta( $item_id, '_anva_mega_menu', '0' );
 		} else {
 			update_post_meta( $item_id, '_anva_mega_menu', '1' );
 		}
 
-		if ( empty( $_POST['_anva_mega_menu_hide_headers'][$item_id] ) ) {
+		if ( empty( $_POST['_anva_mega_menu_hide_headers'][ $item_id ] ) ) {
 			update_post_meta( $item_id, '_anva_mega_menu_hide_headers', '0' );
 		} else {
 			update_post_meta( $item_id, '_anva_mega_menu_hide_headers', '1' );
 		}
 
-		if ( empty( $_POST['_anva_mega_menu_columns'][$item_id] ) ) {
+		if ( empty( $_POST['_anva_mega_menu_columns'][ $item_id ] ) ) {
 			update_post_meta( $item_id, '_anva_mega_menu_columns', '' );
 		} else {
-			update_post_meta( $item_id, '_anva_mega_menu_columns', $_POST['_anva_mega_menu_columns'][$item_id] );
+			update_post_meta( $item_id, '_anva_mega_menu_columns', $_POST['_anva_mega_menu_columns'][ $item_id ] );
 		}
 
-		if ( empty( $_POST['_anva_bold'][$item_id] ) ) {
+		if ( empty( $_POST['_anva_bold'][ $item_id ] ) ) {
 			update_post_meta( $item_id, '_anva_bold', '0' );
 		} else {
 			update_post_meta( $item_id, '_anva_bold', '1' );
 		}
 
-		if ( empty( $_POST['_anva_deactivate_link'][$item_id] ) ) {
+		if ( empty( $_POST['_anva_deactivate_link'][ $item_id ] ) ) {
 			update_post_meta( $item_id, '_anva_deactivate_link', '0' );
 		} else {
 			update_post_meta( $item_id, '_anva_deactivate_link', '1' );
 		}
 
-		if ( empty( $_POST['_anva_placeholder'][$item_id] ) ) {
+		if ( empty( $_POST['_anva_placeholder'][ $item_id ] ) ) {
 			update_post_meta( $item_id, '_anva_placeholder', '0' );
 		} else {
 			update_post_meta( $item_id, '_anva_placeholder', '1' );

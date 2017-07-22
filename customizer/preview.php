@@ -54,8 +54,7 @@ function anva_get_customizer_preview_locals() {
 	// ---------------------------------------
 	// Setup for logo
 	// ---------------------------------------
-
-	$logo_options = anva_get_option('logo');
+	$logo_options = anva_get_option( 'logo' );
 
 	$logo_atts = array(
 		'type'           => '',
@@ -76,21 +75,19 @@ function anva_get_customizer_preview_locals() {
 	// ------------------------------------------
 	// Fonts
 	// ------------------------------------------
-
 	// Setup font stacks
 	$font_stacks = anva_get_font_stacks();
 	unset( $font_stacks['google'] );
 
 	// Determine current google fonts with fake
 	// booleans to be used in printed JS object.
-	$types = array('body', 'heading');
+	$types = array( 'body', 'heading' );
 	$google_fonts = array();
 
 	foreach ( $types as $type ) {
 		$font = anva_get_option( $type . '_font' );
-		$google_fonts[ $type .'Name' ] = ! empty( $font['google'] ) && $font['google'] ? $font['google'] : '';
+		$google_fonts[ $type . 'Name' ] = ! empty( $font['google'] ) && $font['google'] ? $font['google'] : '';
 	}
-
 
 	$localize = array(
 		'optionName'    => $option_name,

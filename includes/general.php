@@ -3,7 +3,7 @@
  * General and misc functions.
  *
  * @package    AnvaFramework
- * @subpackage Admin
+ * @subpackage Includes
  * @author     Anthuan Vasquez <me@anthuanvasquez.net>
  * @copyright  Copyright (c) 2017, Anthuan Vasquez
  */

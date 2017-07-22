@@ -18,7 +18,7 @@
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<div class="input-group">
-		<input type="search" name="s" class="form-control search-field" placeholder="<?php anva_local( 'search' ); ?>" value=""  title="<?php anva_local( 'search_for' ); ?>" />
+		<input type="search" name="s" class="form-control search-field" placeholder="<?php anva_local( 'search' ); ?>" value="<?php echo get_search_query(); ?>" title="<?php anva_local( 'search_for' ); ?>" />
 		<span class="input-group-btn">
 			<button type="submit" class="btn btn-default search-submit">
 				<span class="sr-only">

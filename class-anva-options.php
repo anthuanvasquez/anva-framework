@@ -144,6 +144,7 @@ if ( ! class_exists( 'Anva_Options' ) ) :
 			// Hook options after setup theme happen.
 			add_action( 'after_setup_theme', array( $this, 'set_formatted_options' ), 1000 );
 			add_action( 'after_setup_theme', array( $this, 'set_default_values' ), 1001 );
+
 		}
 
 		/**

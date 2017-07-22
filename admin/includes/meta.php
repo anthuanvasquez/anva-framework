@@ -72,7 +72,7 @@ function anva_setup_layout_meta() {
 				'std'  => array(
 					'layout' => '',
 					'right'  => '',
-					'left'   => ''
+					'left'   => '',
 				),
 			),
 			'header_type' => array(
@@ -227,7 +227,7 @@ function anva_setup_post_format_meta() {
 				'std'		=> 'slider',
 				'options'	=> array(
 					'slider' 	=> esc_html__( 'Gallery Slider', 'anva' ),
-					'masonry'	=> esc_html__( 'Gallery Masonry', 'anva' )
+					'masonry'	=> esc_html__( 'Gallery Masonry', 'anva' ),
 				),
 				'trigger' => 'slider',
 				'receivers' => 'gallery_slider',
@@ -240,7 +240,7 @@ function anva_setup_post_format_meta() {
 				'std'		=> 'standard',
 				'options'	=> array(
 					'standard' => esc_html__( 'Standard Slider', 'anva' ),
-					'nivo'     => esc_html__( 'Nivo Slider', 'anva' )
+					'nivo'     => esc_html__( 'Nivo Slider', 'anva' ),
 				),
 			),
 			'gallery_highlight' => array(
@@ -256,7 +256,7 @@ function anva_setup_post_format_meta() {
 				'id'		=> 'gallery_columns',
 				'type' 		=> 'select',
 				'std'		=> '3',
-				'options' 	=> $columns
+				'options' 	=> $columns,
 			),
 		),
 	);
@@ -291,7 +291,7 @@ function anva_setup_page_meta() {
 				'options'   => array(
 					'show'  => esc_html__( 'Show page\'s title', 'anva' ),
 					'hide'  => esc_html__( 'Hide page\'s title', 'anva' ),
-				)
+				),
 			),
 			'page_title_mini'  => array(
 				'name'      => esc_html__( 'Page Title Mini', 'anva' ),
@@ -300,7 +300,7 @@ function anva_setup_page_meta() {
 				'type'      => 'select',
 				'std'       => 'no',
 				'options'   => array(
-				    'yes'   => esc_html__( 'Yes, use mini version of pages title', 'anva' ),
+					'yes'   => esc_html__( 'Yes, use mini version of pages title', 'anva' ),
 					'no'    => esc_html__( 'Don\'t use the mini version of pages title', 'anva' ),
 				),
 			),
@@ -320,7 +320,7 @@ function anva_setup_page_meta() {
 				'options'   => array(
 					''      => esc_html__( 'Left', 'anva' ),
 					'right' => esc_html__( 'Right', 'anva' ),
-					'center'=> esc_html__( 'Center', 'anva' ),
+					'center' => esc_html__( 'Center', 'anva' ),
 				),
 			),
 			'title_bg'  => array(
@@ -332,12 +332,12 @@ function anva_setup_page_meta() {
 				'options'   => array(
 					'light' => esc_html__( 'Light', 'anva' ),
 					'dark'  => esc_html__( 'Dark', 'anva' ),
-					'custom'=> esc_html__( 'Custom', 'anva' ),
+					'custom' => esc_html__( 'Custom', 'anva' ),
 					'nobg'  => esc_html__( 'No Background', 'anva' ),
 
 				),
 				'trigger'   => 'custom',
-				'receivers' => 'title_bg_color title_bg_image title_bg_cover title_bg_text title_bg_padding'
+				'receivers' => 'title_bg_color title_bg_image title_bg_cover title_bg_text title_bg_padding',
 			),
 			'title_bg_color' => array(
 				'name'      => esc_html__( 'Background Color', 'anva' ),
@@ -356,7 +356,7 @@ function anva_setup_page_meta() {
 				'class'     => 'hidden',
 			),
 			'title_bg_cover' => array(
-				'name'      => NULL,
+				'name'      => null,
 				'desc'      => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Cover', 'anva' ), esc_html__( 'Fill background with the image.', 'anva' ) ),
 				'id'        => 'title_bg_cover',
 				'type'      => 'checkbox',
@@ -364,7 +364,7 @@ function anva_setup_page_meta() {
 				'class'     => 'hidden',
 			),
 			'title_bg_text' => array(
-				'name'      => NULL,
+				'name'      => null,
 				'desc'      => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Text', 'anva' ), esc_html__( 'Apply light color.', 'anva' ) ),
 				'id'        => 'title_bg_text',
 				'type'      => 'checkbox',
@@ -483,7 +483,7 @@ function anva_setup_page_template_meta() {
 				'id'        => 'grid_column',
 				'type'      => 'select',
 				'std'       => '',
-				'options'   => $columns
+				'options'   => $columns,
 			),
 		),
 	);
@@ -525,8 +525,8 @@ function anva_setup_gallery_meta() {
 				'std'           => 'show',
 				'options'       => array(
 					'show'      => esc_html__( 'Show gallery\'s title', 'anva' ),
-					'hide'      => esc_html__( 'Hide gallery\'s title', 'anva' )
-				)
+					'hide'      => esc_html__( 'Hide gallery\'s title', 'anva' ),
+				),
 			),
 			'page_tagline'      => array(
 				'name'          => esc_html__( 'Gallery Tagline', 'anva' ),
@@ -540,7 +540,7 @@ function anva_setup_gallery_meta() {
 				'name'          => esc_html__( 'Highlight Image', 'anva' ),
 				'desc'          => esc_html__( 'Enter the number of image than want to highlight.', 'anva' ),
 				'type'          => 'number',
-				'std'           => ''
+				'std'           => '',
 			),
 			'gallery_template'  => array(
 				'id'            => 'gallery_template',
@@ -548,9 +548,9 @@ function anva_setup_gallery_meta() {
 				'desc'          => esc_html__( 'Select gallery template for this gallery.', 'anva' ),
 				'type'          => 'select',
 				'std'           => '',
-				'options'       => $galleries
+				'options'       => $galleries,
 			),
-		)
+		),
 	);
 
 	return apply_filters( 'anva_gallery_meta', $setup );
@@ -583,7 +583,7 @@ function anva_setup_portfolio_meta() {
 				'std'       => 'show',
 				'options'   => array(
 					'show'  => esc_html__( 'Show portfolio\'s item title', 'anva' ),
-					'hide'  => esc_html__( 'Hide portfolio\'s item title', 'anva' )
+					'hide'  => esc_html__( 'Hide portfolio\'s item title', 'anva' ),
 				),
 			),
 			'author' => array(
@@ -591,30 +591,30 @@ function anva_setup_portfolio_meta() {
 				'name'      => esc_html__( 'Author', 'anva' ),
 				'desc'      => esc_html__( 'Enter the porfolio item author.', 'anva' ),
 				'type'      => 'text',
-				'std'       => ''
+				'std'       => '',
 			),
 			'client' => array(
 				'id'        => 'client',
 				'name'      => esc_html__( 'Client', 'anva' ),
 				'desc'      => esc_html__( 'Enter the porfolio client.', 'anva' ),
 				'type'      => 'text',
-				'std'       => ''
+				'std'       => '',
 			),
 			'client_url' => array(
 				'id'        => 'client_url',
 				'name'      => esc_html__( 'Client URL', 'anva' ),
 				'desc'      => esc_html__( 'Enter the client URL.', 'anva' ),
 				'type'      => 'text',
-				'std'       => 'http://'
+				'std'       => 'http://',
 			),
 			'date' => array(
 				'id'        => 'date',
 				'name'      => esc_html__( 'Date', 'anva' ),
 				'desc'      => esc_html__( 'Select the date on which the project was completed.', 'anva' ),
 				'type'      => 'date',
-				'std'       => ''
+				'std'       => '',
 			),
-		)
+		),
 	);
 
 	return apply_filters( 'anva_portfolio_meta', $setup );
@@ -635,7 +635,7 @@ function anva_setup_portfolio_media_meta() {
 			'page'          => array( 'portfolio' ),
 			'context'       => 'advanced',
 			'priority'      => 'default',
-			'desc'          =>esc_html__( 'Portfolio Media', 'anva' ),
+			'desc'          => esc_html__( 'Portfolio Media', 'anva' ),
 			'prefix'        => '_anva_',
 		),
 		'options' => array(
@@ -653,21 +653,21 @@ function anva_setup_portfolio_media_meta() {
 				'name'      => esc_html__( 'Audio Featured Image', 'anva' ),
 				'desc'      => esc_html__( 'Add a poster image to your audio player (optional).', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'audio_mp3' => array(
 				'id'        => 'audio_mp3',
 				'name'      => esc_html__( 'Audio MP3', 'anva' ),
 				'desc'      => esc_html__( 'Insert an .mp3 file, if desired.', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'audio_ogg' => array(
 				'id'        => 'audio_ogg',
 				'name'      => esc_html__( 'Audio OGG', 'anva' ),
 				'desc'      => esc_html__( 'Insert an .ogg file, if desired.', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'video' => array(
 				'id'        => 'video',
@@ -676,46 +676,46 @@ function anva_setup_portfolio_media_meta() {
 				'type'      => 'checkbox',
 				'std'       => '0',
 				'trigger'   => 1,
-				'receivers' => 'video_image video_m4v video_ogv video_mp4 video_embed'
+				'receivers' => 'video_image video_m4v video_ogv video_mp4 video_embed',
 			),
 			'video_image' => array(
 				'id'        => 'video_image',
 				'name'      => esc_html__( 'Video Featured Image', 'anva' ),
 				'desc'      => esc_html__( 'Add a poster image for your video player (optional).', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'video_m4v' => array(
 				'id'        => 'video_m4v',
 				'name'      => esc_html__( 'Video M4V', 'anva' ),
 				'desc'      => esc_html__( 'Insert an .m4v file, if desired..', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'video_ogv' => array(
 				'id'        => 'video_ogv',
 				'name'      => esc_html__( 'Video OGV', 'anva' ),
 				'desc'      => esc_html__( 'Insert an .ogv file, if desired.', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'video_mp4' => array(
 				'id'        => 'video_mp4',
 				'name'      => esc_html__( 'Video MP4', 'anva' ),
 				'desc'      => esc_html__( 'Insert an .mp4 file, if desired.', 'anva' ),
 				'type'      => 'upload',
-				'std'       => ''
+				'std'       => '',
 			),
 			'video_embed' => array(
 				'id'        => 'video_embed',
 				'name'      => esc_html__( 'Video Embed', 'anva' ),
 				'desc'      => esc_html__( 'Embed iframe code from YouTube, Vimeo or other trusted source. HTML tags are limited to iframe, div, img, a, em, strong and br. Note: This field overrides the previous fields.', 'anva' ),
 				'type'      => 'textarea',
-				'std'       => ''
+				'std'       => '',
 			),
 			'gallery' => array(
 				'id'        => 'gallery',
-				'name'      => NULL,
+				'name'      => null,
 				'desc'      => sprintf( '<strong>%s:</strong> %s', esc_html__( 'Gallery', 'anva' ), esc_html__( 'Show gallery content in portfolio.', 'anva' ) ),
 				'type'      => 'checkbox',
 				'std'       => '0',
@@ -750,7 +750,7 @@ function anva_setup_slideshow_meta() {
 			'context'  => 'normal',
 			'priority' => 'default',
 		),
-		'options'      => $slider_fields
+		'options'      => $slider_fields,
 	);
 
 	return apply_filters( 'anva_slideshow_meta', $setup );
@@ -770,8 +770,8 @@ function anva_setup_gallery_media_meta() {
 			'title'    => esc_html__( 'Gallery', 'anva' ),
 			'page'     => array( 'galleries', 'portfolio' ), // Use gallery in portfolio?
 			'context'  => 'advanced',
-			'priority' => 'default'
-		)
+			'priority' => 'default',
+		),
 	);
 
 	return apply_filters( 'anva_gallery_media_meta', $setup );

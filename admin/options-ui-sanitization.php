@@ -144,12 +144,12 @@ function anva_sanitize_checkbox( $input ) {
 function anva_sanitize_multicheck( $input, $option ) {
 	$output = '';
 	if ( is_array( $input ) ) {
-		foreach( $option['options'] as $key => $value ) {
-			$output[$key] = false;
+		foreach ( $option['options'] as $key => $value ) {
+			$output[ $key ] = false;
 		}
-		foreach( $input as $key => $value ) {
+		foreach ( $input as $key => $value ) {
 			if ( array_key_exists( $key, $option['options'] ) && $value ) {
-				$output[$key] = '1';
+				$output[ $key ] = '1';
 			}
 		}
 	}
@@ -167,7 +167,7 @@ function anva_sanitize_multicheck( $input, $option ) {
 function anva_sanitize_upload( $input ) {
 	$output = '';
 	$filetype = wp_check_filetype( $input );
-	if ( $filetype["ext"] ) {
+	if ( $filetype['ext'] ) {
 		$output = esc_url( $input );
 	}
 	return $output;
@@ -184,8 +184,7 @@ function anva_sanitize_upload( $input ) {
 function anva_sanitize_editor( $input ) {
 	if ( current_user_can( 'unfiltered_html' ) ) {
 		$output = $input;
-	}
-	else {
+	} else {
 		global $allowedposttags;
 		$output = wpautop( wp_kses( $input, $allowedposttags ) );
 	}
@@ -216,7 +215,7 @@ function anva_sanitize_allowedtags( $input ) {
  */
 function anva_sanitize_allowedposttags( $input ) {
 	global $allowedposttags;
-	$output = wpautop( wp_kses( $input, $allowedposttags) );
+	$output = wpautop( wp_kses( $input, $allowedposttags ) );
 	return $output;
 }
 
@@ -261,7 +260,7 @@ function anva_sanitize_background( $input ) {
 		'image'      => '',
 		'repeat'     => 'repeat',
 		'position'   => 'top center',
-		'attachment' => 'scroll'
+		'attachment' => 'scroll',
 	) );
 
 	if ( isset( $input['color'] ) ) {
@@ -326,7 +325,7 @@ function anva_sanitize_typography( $input, $option ) {
 		'style'  => '',
 		'weight' => '',
 		'face'   => '',
-		'color'  => ''
+		'color'  => '',
 	) );
 
 	if ( isset( $option['options']['faces'] ) && isset( $input['face'] ) ) {
@@ -334,8 +333,7 @@ function anva_sanitize_typography( $input, $option ) {
 		if ( ! ( array_key_exists( $input['face'], $option['options']['faces'] ) ) ) {
 			$output['face'] = '';
 		}
-
-	} else {
+} else {
 		$output['face'] = apply_filters( 'anva_font_face', $output['face'] );
 	}
 
@@ -352,7 +350,7 @@ function anva_sanitize_typography( $input, $option ) {
  */
 function anva_sanitize_font_size( $value ) {
 	$recognized  = anva_recognized_font_sizes();
-	$value_check = preg_replace('/px/','', $value);
+	$value_check = preg_replace( '/px/','', $value );
 
 	if ( in_array( (int) $value_check, $recognized ) ) {
 		return $value;
@@ -450,7 +448,7 @@ function anva_recognized_font_faces() {
 		'times'       => 'TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif',
 		'trebuchet'   => '"Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif',
 		'verdana'     => 'Verdana, Geneva, sans-serif',
-		'google'      => 'Google Font'
+		'google'      => 'Google Font',
 	);
 	return apply_filters( 'anva_recognized_font_faces', $default );
 }
@@ -523,7 +521,7 @@ function anva_recognized_background_position() {
 		'center right'  => esc_attr__( 'Middle Right', 'anva' ),
 		'bottom left'   => esc_attr__( 'Bottom Left', 'anva' ),
 		'bottom center' => esc_attr__( 'Bottom Center', 'anva' ),
-		'bottom right'  => esc_attr__( 'Bottom Right', 'anva'),
+		'bottom right'  => esc_attr__( 'Bottom Right', 'anva' ),
 	);
 	return apply_filters( 'anva_recognized_background_position', $default );
 }
@@ -536,7 +534,7 @@ function anva_recognized_background_position() {
 function anva_recognized_background_attachment() {
 	$default = array(
 		'scroll' => esc_attr__( 'Scroll Normally', 'anva' ),
-		'fixed'  => esc_attr__( 'Fixed in Place', 'anva'),
+		'fixed'  => esc_attr__( 'Fixed in Place', 'anva' ),
 	);
 	return apply_filters( 'anva_recognized_background_attachment', $default );
 }
@@ -552,15 +550,13 @@ function anva_validate_hex( $hex ) {
 	/* Strip recognized prefixes. */
 	if ( 0 === strpos( $hex, '#' ) ) {
 		$hex = substr( $hex, 1 );
-	}
-	elseif ( 0 === strpos( $hex, '%23' ) ) {
+	} elseif ( 0 === strpos( $hex, '%23' ) ) {
 		$hex = substr( $hex, 3 );
 	}
 	/* Regex match. */
 	if ( 0 === preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
 		return false;
-	}
-	else {
+	} else {
 		return true;
 	}
 }
@@ -662,7 +658,7 @@ function anva_sanitize_logo( $input ) {
 /**
  * Check file type.
  *
- * @param  array  $input The input field.
+ * @param  array $input The input field.
  * @return string        The sanitize input.
  */
 function anva_sanitize_file_type( $input ) {
@@ -720,16 +716,16 @@ function anva_sanitize_columns( $input ) {
 
 		$valid = false;
 
-		foreach ( $width_options[$key.'-col'] as $width_option ) {
+		foreach ( $width_options[ $key . '-col' ] as $width_option ) {
 			if ( $width == $width_option['value'] ) {
 				$valid = true;
 			}
 		}
 
 		if ( $valid ) {
-			$output['width'][$key] = $width;
+			$output['width'][ $key ] = $width;
 		} else {
-			$output['width'][$key] = null;
+			$output['width'][ $key ] = null;
 		}
 	}
 

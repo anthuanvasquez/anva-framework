@@ -691,27 +691,47 @@ function anva_mini_posts_list( $number = 3, $orderby = 'date', $order = 'date', 
 }
 
 /**
- * Blog post pagination.
+ * Output single single pagination for blog posts.
  *
  * @since 1.0.0
- * @param string $query
+ * @param string $query Query object.
  */
-function anva_single_pagination( $query = '' ) {
+function anva_single_pagination( $query= '' ) {
+	echo anva_get_single_pagination( $query );
+}
 
-	if ( empty( $query ) ) :
-	?>
-	<ul id="nav-posts" class="pager clearfix">
-		<li class="previous"><?php previous_posts_link( anva_get_local( 'prev' ) ); ?></li>
-		<li class="next"><?php next_posts_link( anva_get_local( 'next' ) ); ?></li>
-	</ul>
-	<?php
-	else : ?>
-	<ul id="nav-posts" class="pager clearfix">
-		<li class="previous"><?php previous_posts_link( anva_get_local( 'prev' ), $query->max_num_pages ); ?></li>
-		<li class="next"><?php next_posts_link( anva_get_local( 'next' ), $query->max_num_pages ); ?></li>
-	</ul>
-	<?php
-	endif;
+/**
+ * Get single pagination for blog posts.
+ *
+ * @since  1.0.0
+ * @param  string $query
+ * @return string $output HTML markup.
+ */
+function anva_get_single_pagination( $query = '' ) {
+
+	$output = '';
+	$query  = 0;
+
+	if ( ! empty( $query ) && is_object( $query ) ) {
+		$query = $query->max_num_pages;
+	}
+
+	$prev_label = anva_get_local( 'prev' );
+	$next_label = anva_get_local( 'next' );
+
+	$prev_link = get_previous_posts_link( $prev_label, $query );
+	$next_link = get_next_posts_link( $next_label, $query );
+
+	if ( $prev_link || $next_link ) {
+		$output .= '<ul id="posts-navigation" class="pager clearfix">';
+		$output .= '<li class="previous">' . $prev_link . '</li>';
+		$output .= '<li class="next">' . $next_link . '</li>';
+		$output .= '</ul>';
+
+		return $output;
+	}
+
+	return  '';
 }
 
 /**

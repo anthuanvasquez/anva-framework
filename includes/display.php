@@ -3,7 +3,7 @@
  * Functions for display content.
  *
  * @package    AnvaFramework
- * @subpackage Admin
+ * @subpackage Includes
  * @author     Anthuan Vasquez <me@anthuanvasquez.net>
  * @copyright  Copyright (c) 2017, Anthuan Vasquez
  */
@@ -31,10 +31,10 @@ function anva_head_apple_touch_icon() {
 
 	if ( $touch_icon_display ) {
 
-		$touch_icon     = anva_get_option( 'apple_touch_icon' );
-		$touch_icon76   = anva_get_option( 'apple_touch_icon_76' );
-		$touch_icon120  = anva_get_option( 'apple_touch_icon_120' );
-		$touch_icon152  = anva_get_option( 'apple_touch_icon_152' );
+		$touch_icon    = anva_get_option( 'apple_touch_icon' );
+		$touch_icon76  = anva_get_option( 'apple_touch_icon_76' );
+		$touch_icon120 = anva_get_option( 'apple_touch_icon_120' );
+		$touch_icon152 = anva_get_option( 'apple_touch_icon_152' );
 
 		if ( $touch_icon ) {
 			$links[] = array(
@@ -563,9 +563,8 @@ function anva_below_layout_default() {
 /**
  * Display sidebars location.
  *
- * @since  1.0.0
- * @param  string $position
- * @return void
+ * @since 1.0.0
+ * @param string $position Sidebar position.
  */
 function anva_sidebars_default( $position ) {
 
@@ -603,14 +602,14 @@ function anva_sidebars_default( $position ) {
 	}
 
 	// Sidebar Left, Sidebar Right, Double Sidebars
-	if ( $layout == $position || $layout == 'double' ) {
+	if ( $layout == $position || 'double' === $layout ) {
 
 		/**
 		 * Hooked.
 		 *
 		 * @see anva_sidebar_before_default
 		 */
-		do_action( 'anva_sidebar_before', $position  );
+		do_action( 'anva_sidebar_before', $position );
 
 		if ( 'right' == $position ) {
 			anva_display_sidebar( $sidebar_right );
@@ -628,14 +627,14 @@ function anva_sidebars_default( $position ) {
 	}
 
 	// Double Left Sidebars
-	if ( $layout === 'double_left' && $position === 'left' ) {
+	if ( 'double_left' == $layout && 'left' == $position ) {
 
 		/**
 		 * Hooked.
 		 *
 		 * @see anva_sidebar_before_default
 		 */
-		do_action( 'anva_sidebar_before', 'left'  );
+		do_action( 'anva_sidebar_before', 'left' );
 
 		// Left sidebar.
 		anva_display_sidebar( $sidebar_left );
@@ -652,7 +651,7 @@ function anva_sidebars_default( $position ) {
 		 *
 		 * @see anva_sidebar_after_default
 		 */
-		do_action( 'anva_sidebar_before', 'right'  );
+		do_action( 'anva_sidebar_before', 'right' );
 
 		// Right sidebar.
 		anva_display_sidebar( $sidebar_right );
@@ -664,10 +663,10 @@ function anva_sidebars_default( $position ) {
 		 */
 		do_action( 'anva_sidebar_after', 'right' );
 
-	}
+	}// End if().
 
 	// Double Right Sidebars
-	if ( $layout == 'double_right' && $position == 'right' ) {
+	if ( 'double_right' === $layout && 'right' === $position ) {
 
 		/**
 		 * Hooked.
@@ -703,7 +702,7 @@ function anva_sidebars_default( $position ) {
 		 */
 		do_action( 'anva_sidebar_after', 'right' );
 
-	}
+	}// End if().
 }
 
 /**
@@ -714,7 +713,7 @@ function anva_sidebars_default( $position ) {
  */
 function anva_sidebar_before_default( $side ) {
 	?>
-	<div class="sidebar-<?php echo esc_attr( $side ); ?> <?php anva_column_class( $side ); ?>">
+	<aside class="sidebar-<?php echo esc_attr( $side ); ?> <?php anva_column_class( $side ); ?>">
 		<div class="sidebar-widgets-wrap">
 	<?php
 }
@@ -728,7 +727,7 @@ function anva_sidebar_before_default( $side ) {
 function anva_sidebar_after_default() {
 	?>
 		</div><!-- .sidebar-widgets-wrap (end) -->
-	</div><!-- .sidebar (end) -->
+	</aside><!-- .sidebar (end) -->
 	<?php
 }
 
@@ -1030,7 +1029,7 @@ function anva_debug() {
 				<div class="sb-msg">
 					<ul>
 						<li><span><?php esc_html_e( 'Queries', 'anva' ); ?>:</span> <?php echo get_num_queries(); ?> <?php esc_html_e( 'database queries', 'anva' ); ?>.</li>
-						<li><span><?php esc_html_e( 'Speed', 'anva' ); ?>:</span> <?php printf( __( 'Page generated in %s seconds.', 'anva' ), timer_stop(1) ); ?></li>
+						<li><span><?php esc_html_e( 'Speed', 'anva' ); ?>:</span> <?php printf( __( 'Page generated in %s seconds.', 'anva' ), timer_stop( 1 ) ); ?></li>
 						<li><span><?php esc_html_e( 'Memory Usage', 'anva' ); ?>:</span> <?php echo anva_convert_memory_use( memory_get_usage( true ) ); ?></li>
 						<li><span><?php esc_html_e( 'Theme Name', 'anva' ); ?>:</span> <?php echo anva_get_theme( 'name' ); ?></li>
 						<li><span><?php esc_html_e( 'Theme Version', 'anva' ); ?>:</span> <?php echo anva_get_theme( 'version' ); ?></li>

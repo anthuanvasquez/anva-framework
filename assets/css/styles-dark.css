@@ -1518,13 +1518,17 @@ body #side-panel.dark #side-panel-trigger-close a {
   opacity: 0.8;
 }
 
-.dark .tagcloud a {
+.dark .tagcloud a,
+.dark .entry-terms.post_tag a,
+.dark .entry-terms.category a {
   color: #999;
   border-color: transparent;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.dark .tagcloud a:hover {
+.dark .tagcloud a:hover,
+.dark .entry-terms.post_tag a:hover,
+.dark .entry-terms.category a:hover {
   border-color: transparent !important;
   background-color: #1ABC9C;
   color: #FFF !important;

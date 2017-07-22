@@ -125,10 +125,10 @@ function anva_get_default_options_values() {
  * Add theme option tab.
  *
  * @since 1.0.0
- * @param string $tab_id
- * @param string $tab_name
+ * @param string  $tab_id
+ * @param string  $tab_name
  * @param boolean $top
- * @param string $icon
+ * @param string  $icon
  */
 function anva_add_option_tab( $tab_id, $tab_name, $top = false, $icon = 's' ) {
 	$options = Anva_Options::instance();
@@ -317,24 +317,33 @@ function anva_display_sidebar( $location ) {
 /**
  * Add sidebar arguments when register locations.
  *
- * @since 1.0.0
+ * @since  1.0.0
+ * @param  array $args Arguments list.
+ * @return array $args Argumetns list.
  */
-function anva_add_sidebar_args( $id, $name, $desc = '', $classes = '' ) {
-	if ( ! empty( $classes ) ) {
-		$classes = ' ' . $classes;
+function anva_get_sidebar_args( $args ) {
+
+	$class = '';
+
+	if ( isset( $args['class'] ) && ! empty( $args['class'] ) ) {
+		$class = $args['class'];
 	}
 
-	$args = array(
-		'id'            => $id,
-		'name'          => $name,
-		'description'   => $desc,
-		'before_widget' => '<div id="%1$s" class="widget %2$s'. esc_attr( $classes ) .'">',
-		'after_widget'  => '</div>',
+	// Set up some default sidebar arguments.
+	$defaults = array(
+		'id'            => '',
+		'name'          => '',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s' . esc_attr( $class ) . '">',
+		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	);
 
-	return apply_filters( 'anva_add_sidebar_args', $args );
+	// Parse the arguments.
+	$args = wp_parse_args( $args, apply_filters( 'anva_sidebar_defaults', $defaults ) );
+
+	return apply_filters( 'anva_sidebar_args', $args );
 }
 
 /**

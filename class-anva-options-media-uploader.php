@@ -15,12 +15,12 @@ class Anva_Options_Media_Uploader {
 
 	/**
 	 * A single instance of this class.
- 	 *
+	 *
 	 * @since  1.0.0
 	 * @access private
 	 * @var    object
 	 */
-	private static $instance = NULL;
+	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
@@ -83,7 +83,7 @@ class Anva_Options_Media_Uploader {
 		}
 
 		$output .= '<div class="group-button">';
-		$output .= '<input id="' . esc_attr( $id ) . '" class="upload' . esc_attr( $class ) . '" type="text" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '" placeholder="' . __( 'No file chosen', 'anva' ) .'" />' . "\n";
+		$output .= '<input id="' . esc_attr( $id ) . '" class="upload' . esc_attr( $class ) . '" type="text" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '" placeholder="' . __( 'No file chosen', 'anva' ) . '" />' . "\n";
 
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			if ( ( $value == '' ) ) {
@@ -109,13 +109,14 @@ class Anva_Options_Media_Uploader {
 
 		if ( $value != '' ) {
 			$remove = '<a class="remove-image">X</a>';
-			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
+			$image  = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
+
 			if ( $image ) {
 				$output .= '<img src="' . $value . '" alt="" />' . $remove;
 			} else {
-				$parts = explode( "/", $value );
-				for( $i = 0; $i < sizeof( $parts ); ++$i ) {
-					$title = $parts[$i];
+				$parts = explode( '/', $value );
+				for ( $i = 0; $i < sizeof( $parts ); ++$i ) {
+					$title = $parts[ $i ];
 				}
 
 				// No output preview if it's not an image.
@@ -139,9 +140,6 @@ class Anva_Options_Media_Uploader {
 	public function media_scripts( $hook ) {
 		$menu = anva_get_options_page_menu();
 
-		// if ( substr( $hook, -strlen( $menu['menu_slug'] ) ) !== $menu['menu_slug'] )
-		// 	return;
-
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
@@ -149,8 +147,8 @@ class Anva_Options_Media_Uploader {
 		wp_register_script( 'anva_media_uploader', ANVA_FRAMEWORK_ADMIN_JS . 'media-uploader.js', array( 'jquery' ), Anva::$version );
 		wp_enqueue_script( 'anva_media_uploader' );
 		wp_localize_script( 'anva_media_uploader', 'anvaMediaJs', array(
-			'upload' => __( 'Browse', 'anva' ),
-			'remove' => __( 'Remove', 'anva' )
+		'upload' => __( 'Browse', 'anva' ),
+		'remove' => __( 'Remove', 'anva' ),
 		) );
 	}
 }

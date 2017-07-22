@@ -51,7 +51,7 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 		if ( $this->doing_mega ) {
 			if ( $depth == 0 ) {
 				$output .= "<div class=\"mega-menu-content style-2 clearfix\">\n";
-			} else if ( $depth == 1 ) {
+			} elseif ( $depth == 1 ) {
 				$output .= "<div class=\"mega-menu-column $this->mega_col\">\n";
 			} else {
 				return; // Additional sub levels not allowed past 1 for mega menus
@@ -60,7 +60,7 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 
 		if ( ! $this->doing_mega ) {
 			$output .= '<ul class="sub-menu">';
-		} else if ( $depth != 0 ) {
+		} elseif ( $depth != 0 ) {
 			$output .= '<ul class="sub-menu mega-sub-menu level-1">';
 		}
 
@@ -70,11 +70,11 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 			// prominent item in the 3rd level.
 			if ( $this->current_header ) {
 
-				if ( get_post_meta($this->current_header->ID, '_anva_deactivate_link', true) || get_post_meta($this->current_header->ID, '_anva_placeholder', true) ) {
+				if ( get_post_meta( $this->current_header->ID, '_anva_deactivate_link', true ) || get_post_meta( $this->current_header->ID, '_anva_placeholder', true ) ) {
 
 					$class = 'menu-item-has-children';
 
-					if ( get_post_meta($this->current_header->ID, '_anva_placeholder', true) ) {
+					if ( get_post_meta( $this->current_header->ID, '_anva_placeholder', true ) ) {
 						$class .= ' placeholder';
 					}
 
@@ -107,7 +107,7 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 		if ( $this->doing_mega ) {
 			if ( $depth == 0 ) {
 				$output .= "</div><!-- .mega-menu-content (end) -->\n";
-			} else if ( $depth == 1 ) {
+			} elseif ( $depth == 1 ) {
 
 				if ( $this->show_headers ) {
 					$output .= "</ul><!-- .mega-sub-menu.level-2 (end) -->\n";
@@ -140,7 +140,7 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 			$this->current_header = null;
 			$this->count = 0;
 
-			if ( $args->theme_location == apply_filters('anva_primary_menu_location', 'primary') && get_post_meta($item->ID, '_anva_mega_menu', true) ) {
+			if ( $args->theme_location == apply_filters( 'anva_primary_menu_location', 'primary' ) && get_post_meta( $item->ID, '_anva_mega_menu', true ) ) {
 
 				$mega_col = get_post_meta( $item->ID, '_anva_mega_menu_columns', true );
 
@@ -151,7 +151,7 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 				$this->doing_mega = true;
 				$this->mega_col = $mega_col;
 
-				if ( ! get_post_meta($item->ID, '_anva_mega_menu_hide_headers', true) ) {
+				if ( ! get_post_meta( $item->ID, '_anva_mega_menu_hide_headers', true ) ) {
 					$this->show_headers = true;
 				}
 			}
@@ -167,7 +167,7 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 		}
 
 		// Add sub indicator icons, if necessary
-		if ( in_array('menu-item-has-children', $item->classes) && ( $depth == 0 || ! $this->doing_mega ) ) {
+		if ( in_array( 'menu-item-has-children', $item->classes ) && ( $depth == 0 || ! $this->doing_mega ) ) {
 
 			$direction = 'down';
 
@@ -178,30 +178,27 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 					$direction = 'right';
 				}
 			}
-
-			//$args->link_after = apply_filters('anva_menu_sub_indicator', sprintf( '<i class="sf-sub-indicator fa fa-caret-%s"></i>', $direction ), $direction );
-
-		}
+}
 
 		// Deactivate link, if enabled
-		if ( $depth > 0 && ( get_post_meta($item->ID, '_anva_deactivate_link', true) || get_post_meta($item->ID, '_anva_placeholder', true) ) ) {
+		if ( $depth > 0 && ( get_post_meta( $item->ID, '_anva_deactivate_link', true ) || get_post_meta( $item->ID, '_anva_placeholder', true ) ) ) {
 
-			$class = 'menu-item menu-item-'.$item->ID;
+			$class = 'menu-item menu-item-' . $item->ID;
 
-			if ( get_post_meta($item->ID, '_anva_placeholder', true) ) {
+			if ( get_post_meta( $item->ID, '_anva_placeholder', true ) ) {
 				$class .= ' placeholder';
 			}
 
-			if ( get_post_meta($item->ID, '_anva_bold', true) ) {
+			if ( get_post_meta( $item->ID, '_anva_bold', true ) ) {
 				$class .= ' bold';
 			}
 
-			$output .= sprintf('<li id="' . $args->theme_location .'-menu-item-%s" class="%s"><span class="menu-btn">%s</span></li>', $item->ID, $class, apply_filters( 'the_title', $item->title, $item->ID ) );
+			$output .= sprintf( '<li id="' . $args->theme_location . '-menu-item-%s" class="%s"><span class="menu-btn">%s</span></li>', $item->ID, $class, apply_filters( 'the_title', $item->title, $item->ID ) );
 			return;
 		}
 
 		// Add bold class
-		if ( get_post_meta($item->ID, '_anva_bold', true) ) {
+		if ( get_post_meta( $item->ID, '_anva_bold', true ) ) {
 			$item->classes[] = 'bold';
 		};
 
@@ -218,11 +215,11 @@ class Anva_Nav_Menu_Walker extends Walker_Nav_Menu {
 
 		// Add "has-mega-menu" class to list item holding mega menu
 		if ( $this->doing_mega && $depth == 0 ) {
-			$output = str_replace( sprintf('<li id="' . $args->theme_location .'-menu-item-%s" class="', $item->ID), sprintf('<li id="' . $args->theme_location .'-menu-item-%s" class="mega-menu mega-col-%s ', $item->ID, $this->count), $output);
+			$output = str_replace( sprintf( '<li id="' . $args->theme_location . '-menu-item-%s" class="', $item->ID ), sprintf( '<li id="' . $args->theme_location . '-menu-item-%s" class="mega-menu mega-col-%s ', $item->ID, $this->count ), $output );
 		}
 
 		if ( $this->doing_mega && $depth == 1 ) {
-			$output = str_replace( sprintf('<li id="' . $args->theme_location .'-menu-item-%s" class="', $item->ID), sprintf('<li id="' . $args->theme_location .'-menu-item-%s" class="mega-menu-title ', $item->ID), $output);
+			$output = str_replace( sprintf( '<li id="' . $args->theme_location . '-menu-item-%s" class="', $item->ID ), sprintf( '<li id="' . $args->theme_location . '-menu-item-%s" class="mega-menu-title ', $item->ID ), $output );
 		}
 
 		if ( ! $this->doing_mega || $depth != 1 ) {

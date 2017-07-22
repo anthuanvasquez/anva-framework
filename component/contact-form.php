@@ -41,93 +41,93 @@ $captcha        = anva_get_option( 'contact_captcha' );
 
 		<?php
 			if ( ! empty( $contact_fields ) ) :
-				foreach ( $contact_fields as $field ) :
-					switch ( $field ) :
+			foreach ( $contact_fields as $field ) :
+				switch ( $field ) :
 
-						case 'name':
-							?>
-							<div class="form-name form-group">
-								<label for="cname" class="control-label">
-									<?php anva_local( 'name' ); ?>:
-								</label>
-								<input id="name" type="text" placeholder="<?php anva_local( 'name_place' ); ?>" name="cname" class="form-control requiredField" value="<?php if ( isset( $_POST['cname'] ) ) echo esc_attr( $_POST['cname'] ); ?>">
+					case 'name':
+						?>
+						<div class="form-name form-group">
+							<label for="cname" class="control-label">
+								<?php anva_local( 'name' ); ?>:
+							</label>
+							<input id="name" type="text" placeholder="<?php anva_local( 'name_place' ); ?>" name="cname" class="form-control requiredField" value="<?php if ( isset( $_POST['cname'] ) ) { echo esc_attr( $_POST['cname'] );} ?>">
 							</div>
 							<?php
 							break;
 
-						case 'email':
-							?>
-							<div class="form-email form-group">
-								<label for="cemail" class="control-label">
-									<?php anva_local( 'email' ); ?>:
-								</label>
-								<input id="email" type="email" placeholder="<?php anva_local( 'email_place' ); ?>" name="cemail" class="form-control requiredField" value="<?php if ( isset( $_POST['cemail'] ) ) echo esc_attr( $_POST['cemail'] );?>">
+					case 'email':
+						?>
+						<div class="form-email form-group">
+							<label for="cemail" class="control-label">
+								<?php anva_local( 'email' ); ?>:
+							</label>
+							<input id="email" type="email" placeholder="<?php anva_local( 'email_place' ); ?>" name="cemail" class="form-control requiredField" value="<?php if ( isset( $_POST['cemail'] ) ) { echo esc_attr( $_POST['cemail'] );}?>">
 							</div>
 							<?php
 							break;
 
-						case 'subject':
-							?>
-							<div class="form-subject form-group">
-								<label for="csubject" class="control-label">
-									<?php anva_local( 'subject' ); ?>:
-								</label>
-								<input id="subject" type="text" placeholder="<?php anva_local( 'subject' ); ?>" name="csubject" class="form-control requiredField" value="<?php if ( isset( $_POST['csubject'] ) ) echo esc_attr( $_POST['csubject'] ); ?>">
+					case 'subject':
+						?>
+						<div class="form-subject form-group">
+							<label for="csubject" class="control-label">
+								<?php anva_local( 'subject' ); ?>:
+							</label>
+							<input id="subject" type="text" placeholder="<?php anva_local( 'subject' ); ?>" name="csubject" class="form-control requiredField" value="<?php if ( isset( $_POST['csubject'] ) ) { echo esc_attr( $_POST['csubject'] );} ?>">
 							</div>
 							<?php
 							break;
 
-						case 'message':
-							?>
-							<div class="form-message form-group">
-								<label for="cmessage" class="control-label">
-									<?php anva_local( 'message' ); ?>:
-								</label>
-								<textarea id="message" name="cmessage" class="form-control" placeholder="<?php anva_local( 'message_place' ); ?>"><?php if ( isset( $_POST['cmessage'] ) ) echo esc_textarea( $_POST['cmessage'] ); ?></textarea>
+					case 'message':
+						?>
+						<div class="form-message form-group">
+							<label for="cmessage" class="control-label">
+								<?php anva_local( 'message' ); ?>:
+							</label>
+							<textarea id="message" name="cmessage" class="form-control" placeholder="<?php anva_local( 'message_place' ); ?>"><?php if ( isset( $_POST['cmessage'] ) ) { echo esc_textarea( $_POST['cmessage'] );} ?></textarea>
 							</div>
 							<?php
 							break;
 
-						case 'phone':
-							?>
-							<div class="form-phone form-group">
-								<label for="cphone" class="control-label">
-									<?php anva_local( 'phone' ); ?>:
-								</label>
-								<input id="phone" type="tel" placeholder="<?php anva_local( 'phone' ); ?>" name="cphone" class="form-control requiredField" value="<?php anva_local( 'phone_place' ); ?>"><?php if ( isset( $_POST['cphone'] ) ) echo esc_html( $_POST['cphone'] ); ?>">
+					case 'phone':
+						?>
+						<div class="form-phone form-group">
+							<label for="cphone" class="control-label">
+								<?php anva_local( 'phone' ); ?>:
+							</label>
+							<input id="phone" type="tel" placeholder="<?php anva_local( 'phone' ); ?>" name="cphone" class="form-control requiredField" value="<?php anva_local( 'phone_place' ); ?>"><?php if ( isset( $_POST['cphone'] ) ) { echo esc_html( $_POST['cphone'] );} ?>">
 							</div>
 							<?php
 							break;
 
-						case 'mobile':
-							?>
-							<div class="form-mobile form-group">
-								<label for="cmobile" class="control-label">
-									<?php anva_local( 'mobile' ); ?>:
-								</label>
-								<input id="mobile" type="tel" placeholder="<?php anva_local( 'mobile_place' ); ?>" name="cmobile" class="form-control requiredField" value="<?php if ( isset( $_POST['cmobile'] ) ) echo esc_html( $_POST['cmobile'] ); ?>">
+					case 'mobile':
+						?>
+						<div class="form-mobile form-group">
+							<label for="cmobile" class="control-label">
+								<?php anva_local( 'mobile' ); ?>:
+							</label>
+							<input id="mobile" type="tel" placeholder="<?php anva_local( 'mobile_place' ); ?>" name="cmobile" class="form-control requiredField" value="<?php if ( isset( $_POST['cmobile'] ) ) { echo esc_html( $_POST['cmobile'] );} ?>">
 							</div>
 							<?php
 							break;
 
-						case 'company_name':
-							?>
-							<div class="form-company_name form-group">
-								<label for="ccompany_name" class="control-label">
-									<?php anva_local( 'company_name'  ); ?>:
-								</label>
-								<input id="company_name" type="text" placeholder="<?php anva_local( 'company_name_place' ); ?>" name="ccompany_name" class="form-control requiredField" value="<?php if ( isset( $_POST['ccompany_name'] ) ) echo esc_html( $_POST['ccompany_name'] ); ?>">
+					case 'company_name':
+						?>
+						<div class="form-company_name form-group">
+							<label for="ccompany_name" class="control-label">
+								<?php anva_local( 'company_name' ); ?>:
+							</label>
+							<input id="company_name" type="text" placeholder="<?php anva_local( 'company_name_place' ); ?>" name="ccompany_name" class="form-control requiredField" value="<?php if ( isset( $_POST['ccompany_name'] ) ) { echo esc_html( $_POST['ccompany_name'] );} ?>">
 							</div>
 							<?php
 							break;
 
-						case 'country':
-							?>
-							<div class="form-country form-group">
-								<label for="ccountry" class="control-label">
-									<?php anva_local( 'country'  ); ?>:
-								</label>
-								<input id="ccountry" type="text" placeholder="<?php anva_local( 'country'  ); ?>" name="ccountry" class="form-control requiredField" value="<?php anva_local( 'country_place' ); ?>"><?php if ( isset( $_POST['ccountry'] ) ) echo esc_html( $_POST['ccountry'] ); ?>">
+					case 'country':
+						?>
+						<div class="form-country form-group">
+							<label for="ccountry" class="control-label">
+								<?php anva_local( 'country' ); ?>:
+							</label>
+							<input id="ccountry" type="text" placeholder="<?php anva_local( 'country' ); ?>" name="ccountry" class="form-control requiredField" value="<?php anva_local( 'country_place' ); ?>"><?php if ( isset( $_POST['ccountry'] ) ) { echo esc_html( $_POST['ccountry'] );} ?>">
 							</div>
 							<?php
 							break;
@@ -135,16 +135,16 @@ $captcha        = anva_get_option( 'contact_captcha' );
 					endswitch;
 				endforeach;
 			else :
-				printf( '<div class="alert alert-info">' . __( 'The contact fields are not defined, verified on the %s.', 'anva' ) . '</div>', sprintf( '<a href="' . esc_url( admin_url('/themes.php?page=' . anva_get_option_name() ) ) . '">%s</>', __( 'theme options', 'anva' ) ) );
+				printf( '<div class="alert alert-info">' . __( 'The contact fields are not defined, verified on the %s.', 'anva' ) . '</div>', sprintf( '<a href="' . esc_url( admin_url( '/themes.php?page=' . anva_get_option_name() ) ) . '">%s</>', __( 'theme options', 'anva' ) ) );
 			endif;
 		?>
 
 		<?php if ( 'yes' == $captcha ) : ?>
 			<div class="form-captcha form-group">
 				<label for="captcha" class="control-label">
-					<?php echo $value_1 . ' + '. $value_2 . ' = ?'; ?>:
+					<?php echo $value_1 . ' + ' . $value_2 . ' = ?'; ?>:
 				</label>
-				<input type="text" name="ccaptcha" placeholder="<?php anva_local( 'captcha_place' ); ?>" class="form-control requiredField" value="<?php if ( isset( $_POST['ccaptcha'] ) ) echo $_POST['ccaptcha']; ?>">
+				<input type="text" name="ccaptcha" placeholder="<?php anva_local( 'captcha_place' ); ?>" class="form-control requiredField" value="<?php if ( isset( $_POST['ccaptcha'] ) ) { echo $_POST['ccaptcha'];} ?>">
 				<input type="hidden" id="answer" name="canswer" value="<?php echo esc_attr( $answer ); ?>">
 			</div>
 		<?php endif; ?>
@@ -164,12 +164,12 @@ $captcha        = anva_get_option( 'contact_captcha' );
 	$contact_map_type    = anva_get_option( 'contact_map_type', 'ROADMAP' );
 	$contact_map_address = anva_get_option( 'contact_map_address' );
 
-	if ( isset( $contact_map_address[0] ) && ! empty( $contact_map_address[0] )  ) {
-		$latitude = $contact_map_address[0];
+	if ( isset( $contact_map_address[0] ) && ! empty( $contact_map_address[0] ) ) {
+	$latitude = $contact_map_address[0];
 	}
 
-	if ( isset( $contact_map_address[1] ) && ! empty( $contact_map_address[1] )  ) {
-		$longitude = $contact_map_address[1];
+	if ( isset( $contact_map_address[1] ) && ! empty( $contact_map_address[1] ) ) {
+	$longitude = $contact_map_address[1];
 	}
 ?>
 <script type="text/javascript">

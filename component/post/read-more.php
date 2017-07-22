@@ -19,7 +19,7 @@
 <a class="more-link" href="<?php the_permalink(); ?>">
 	<?php
 		printf(
-		    '%s <span class="screen-reader-text">%s</span>',
+			'%s <span class="screen-reader-text">%s</span>',
 			apply_filters( 'anva_the_content_more_text', anva_get_local( 'read_more' ) ),
 			anva_get_local( 'read_more_about' )
 		);

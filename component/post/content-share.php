@@ -74,7 +74,7 @@
 					esc_attr( $button['target'] )
 				);
 
-			}
+			}// End foreach().
 
 			echo $output;
 			?>

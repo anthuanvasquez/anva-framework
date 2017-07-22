@@ -57,7 +57,9 @@
 
 		// Set by tag.
 		if ( 'tag' === $single_related ) {
-			$tags = wp_get_post_terms( get_the_ID(), 'post_tag', array( 'fields' => 'ids') );
+			$tags = wp_get_post_terms( get_the_ID(), 'post_tag', array(
+				'fields' => 'ids',
+			) );
 			$query_args['tax_query'] = array(
 				array(
 					'taxonomy' => 'post_tag',
@@ -79,7 +81,9 @@
 					<?php if ( has_post_thumbnail() ) : ?>
 						<div class="entry-image">
 							<a href="<?php the_permalink(); ?>">
-								<?php the_post_thumbnail( 'anva_xs', array( 'title' => get_the_title() ) ); ?>
+								<?php the_post_thumbnail( 'anva_xs', array(
+	'title' => get_the_title(),
+) ); ?>
 							</a>
 						</div><!-- .entry-image (end) -->
 					<?php endif; ?>
@@ -102,13 +106,15 @@
 				</div><!-- .mpost (end) -->
 
 				<?php if ( 0 == $count % $column ) : echo $close_row; endif ?>
-				<?php if ( $count % $column == 0 && $limit != $count ) : echo $open_row_last; endif; ?>
+				<?php if ( $count % $column == 0 && $limit != $count ) : echo $open_row_last;
+endif; ?>
 
 				<?php $count++; ?>
 
 			<?php endwhile; ?>
 
-			<?php if ( ( $count - 1 ) != $limit ) : echo $close_row; endif; ?>
+			<?php if ( ( $count - 1 ) != $limit ) : echo $close_row;
+endif; ?>
 
 		<?php else :
 

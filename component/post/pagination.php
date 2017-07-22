@@ -17,5 +17,5 @@
 
 ?>
 <div class="pagination-wrap">
-	<?php anva_num_pagination(); ?>
+	<?php anva_single_pagination(); ?>
 </div><!-- .pagination-wrap (end) -->

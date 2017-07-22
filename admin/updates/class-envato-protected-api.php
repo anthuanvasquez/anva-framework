@@ -49,7 +49,9 @@ class Envato_Protected_API {
 	 * @access    public
 	 * @since     1.0
 	 */
-	public $errors = array( 'errors' => '' );
+	public $errors = array(
+		'errors' => '',
+	);
 
 	/**
 	 * Class contructor method
@@ -171,7 +173,7 @@ class Envato_Protected_API {
 
 		if ( $errors = $this->api_errors() ) {
 			return $errors;
-		} else if ( isset( $download->url ) ) {
+		} elseif ( isset( $download->url ) ) {
 			return $download->url;
 		}
 
@@ -181,7 +183,7 @@ class Envato_Protected_API {
 	/**
 	 * Retrieve the details for a specific marketplace item.
 	 *
-	 * @param     string      $item_id The id of the item you need information for.
+	 * @param     string $item_id The id of the item you need information for.
 	 * @return    object      Details for the given item.
 	 *
 	 * @access    public
@@ -304,7 +306,7 @@ class Envato_Protected_API {
 	 */
 	public function set_error( $id, $error ) {
 
-		$this->errors['errors'][$id] = $error;
+		$this->errors['errors'][ $id ] = $error;
 
 	}
 

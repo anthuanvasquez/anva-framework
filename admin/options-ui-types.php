@@ -26,8 +26,8 @@ class Anva_Options_UI_Type_Social {
 				$checked = true;
 			}
 
-			if ( ! empty( $val ) && ! empty( $val[$key] ) ) {
-				$value = $val[$key];
+			if ( ! empty( $val ) && ! empty( $val[ $key ] ) ) {
+				$value = $val[ $key ];
 			} else {
 
 				// Determine if SSL is being on a secure server.
@@ -37,7 +37,7 @@ class Anva_Options_UI_Type_Social {
 					$value = 'mailto:';
 				}
 
-				if ( 'skype' == $key) {
+				if ( 'skype' == $key ) {
 					$value = 'skype:username?call';
 				}
 
@@ -48,10 +48,10 @@ class Anva_Options_UI_Type_Social {
 
 			$output .= '<div class="item">';
 			$output .= '<span>';
-			$output .= sprintf( '<input id="%s" class="checkbox anva-input anva-checkbox checkbox-style" value="%s" type="checkbox" %s name="%s" />', 'social-' . $key, $key, checked( $checked, true, false ), esc_attr( $name.'['.$id.'][includes][]' ) );
+			$output .= sprintf( '<input id="%s" class="checkbox anva-input anva-checkbox checkbox-style" value="%s" type="checkbox" %s name="%s" />', 'social-' . $key, $key, checked( $checked, true, false ), esc_attr( $name . '[' . $id . '][includes][]' ) );
 			$output .= '<label for="' . 'social-' . $key . '" class="checkbox-style-1-label checkbox-small">' . esc_html( $profile ) . '</label>';
 			$output .= '</span>';
-			$output .= sprintf( '<input class="anva-input social_media-input" value="%s" type="text" name="%s" />', esc_attr( $value ), esc_attr( $name.'['.$id.'][profiles]['.$key.']' ) );
+			$output .= sprintf( '<input class="anva-input social_media-input" value="%s" type="text" name="%s" />', esc_attr( $value ), esc_attr( $name . '[' . $id . '][profiles][' . $key . ']' ) );
 			$output .= '</div>';
 
 			if ( $counter == $divider ) {
@@ -60,7 +60,7 @@ class Anva_Options_UI_Type_Social {
 			}
 
 			$counter++;
-		}
+		}// End foreach().
 
 		$output .= '</div><!-- .column-2 (end) -->';
 
@@ -79,15 +79,17 @@ class Anva_Options_UI_Type_Social {
  */
 function anva_logo_option( $id, $name, $val ) {
 
-	/*------------------------------------------------------*/
-	/* Type of logo
+	/*
+	------------------------------------------------------*/
+	/*
+	 Type of logo
 	/*------------------------------------------------------*/
 
 	$types = array(
 		'title' 		=> __( 'Site Title', 'anva' ),
 		'title_tagline' => __( 'Site Title + Tagline', 'anva' ),
 		'custom' 		=> __( 'Custom Text', 'anva' ),
-		'image' 		=> __( 'Image', 'anva' )
+		'image' 		=> __( 'Image', 'anva' ),
 	);
 
 	$current_value = '';
@@ -96,7 +98,7 @@ function anva_logo_option( $id, $name, $val ) {
 	}
 
 	$select_type  = '<div class="select-wrapper">';
-	$select_type .= '<select class="anva-input anva-select" name="'.esc_attr( $name.'['.$id.'][type]' ).'">';
+	$select_type .= '<select class="anva-input anva-select" name="' . esc_attr( $name . '[' . $id . '][type]' ) . '">';
 
 	foreach ( $types as $key => $type ) {
 		$select_type .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $current_value, $key, false ), $type );
@@ -105,30 +107,36 @@ function anva_logo_option( $id, $name, $val ) {
 	$select_type .= '</select>';
 	$select_type .= '</div><!-- .anva-select (end) -->';
 
-	/*------------------------------------------------------*/
-	/* Site Title
+	/*
+	------------------------------------------------------*/
+	/*
+	 Site Title
 	/*------------------------------------------------------*/
 
 	$site_title  = '<p class="note">';
 	$site_title .= __( 'Current Site Title', 'anva' ) . ': <strong>';
-	$site_title .= get_bloginfo( 'name' ).'</strong><br>';
-	$site_title .= sprintf( __( 'You can change your site title and tagline by going %shere%s.', 'anva' ), '<a href="' . esc_url( 'options-general.php' ) . '" target="_blank">', '</a>' );
+	$site_title .= get_bloginfo( 'name' ) . '</strong><br>';
+	$site_title .= sprintf( __( 'You can change your site title and tagline by going %1$shere%2$s.', 'anva' ), '<a href="' . esc_url( 'options-general.php' ) . '" target="_blank">', '</a>' );
 	$site_title .= '</p>';
 
-	/*------------------------------------------------------*/
-	/* Site Title + Tagline
+	/*
+	------------------------------------------------------*/
+	/*
+	 Site Title + Tagline
 	/*------------------------------------------------------*/
 
 	$site_title_tagline  = '<p class="note">';
-	$site_title_tagline .= __( 'Current Site Title', 'anva' ).': <strong>';
-	$site_title_tagline .= get_bloginfo( 'name' ).'</strong><br>';
-	$site_title_tagline .= __( 'Current Tagline', 'anva' ).': <strong>';
-	$site_title_tagline .= get_bloginfo( 'description' ).'</strong><br>';
-	$site_title_tagline .= sprintf( __( 'You can change your site title by going %shere%s.', 'anva' ), '<a href="' . esc_url( 'options-general.php' ) . '" target="_blank">', '</a>' );
+	$site_title_tagline .= __( 'Current Site Title', 'anva' ) . ': <strong>';
+	$site_title_tagline .= get_bloginfo( 'name' ) . '</strong><br>';
+	$site_title_tagline .= __( 'Current Tagline', 'anva' ) . ': <strong>';
+	$site_title_tagline .= get_bloginfo( 'description' ) . '</strong><br>';
+	$site_title_tagline .= sprintf( __( 'You can change your site title by going %1$shere%2$s.', 'anva' ), '<a href="' . esc_url( 'options-general.php' ) . '" target="_blank">', '</a>' );
 	$site_title_tagline .= '</p>';
 
-	/*------------------------------------------------------*/
-	/* Custom Text
+	/*
+	------------------------------------------------------*/
+	/*
+	 Custom Text
 	/*------------------------------------------------------*/
 
 	$current_value = '';
@@ -142,68 +150,86 @@ function anva_logo_option( $id, $name, $val ) {
 	}
 
 	$custom_text  = sprintf( '<p><label class="inner-label"><strong>%s</strong></label>', __( 'Title', 'anva' ) );
-	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name.'['.$id.'][custom]' ), esc_attr( $current_value ) );
+	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name . '[' . $id . '][custom]' ), esc_attr( $current_value ) );
 	$custom_text .= sprintf( '<p><label class="inner-label"><strong>%s</strong> (%s)</label>', __( 'Tagline', 'anva' ), __( 'optional', 'anva' ) );
-	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name.'['.$id.'][custom_tagline]' ), esc_attr( $current_tagline ) );
+	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name . '[' . $id . '][custom_tagline]' ), esc_attr( $current_tagline ) );
 	$custom_text .= sprintf( '<p class="note">%s</p>', __( 'Insert your custom text.', 'anva' ) );
 
-	/*------------------------------------------------------*/
-	/* Image
+	/*
+	------------------------------------------------------*/
+	/*
+	 Image
 	/*------------------------------------------------------*/
 
-	$current_value = array( 'url' => '' );
+	$current_value = array(
+		'url' => '',
+	);
 	if ( is_array( $val ) && isset( $val['image'] ) ) {
-		$current_value = array( 'url' => $val['image'] );
+		$current_value = array(
+			'url' => $val['image'],
+		);
 	}
 
-	$current_retina = array( 'url' => '' );
+	$current_retina = array(
+		'url' => '',
+	);
 	if ( is_array( $val ) && isset( $val['image_2x'] ) ) {
-		$current_retina = array( 'url' => $val['image_2x'] );
+		$current_retina = array(
+			'url' => $val['image_2x'],
+		);
 	}
 
-	$current_mini = array( 'url' => '' );
+	$current_mini = array(
+		'url' => '',
+	);
 	if ( is_array( $val ) && isset( $val['image_mini'] ) ) {
-		$current_mini = array( 'url' => $val['image_mini'] );
+		$current_mini = array(
+			'url' => $val['image_mini'],
+		);
 	}
 
-	$current_dark = array( 'url' => '' );
+	$current_dark = array(
+		'url' => '',
+	);
 	if ( is_array( $val ) && isset( $val['image_dark'] ) ) {
-		$current_dark = array( 'url' => $val['image_dark'] );
+		$current_dark = array(
+			'url' => $val['image_dark'],
+		);
 	}
 
 	// Standard Image
 	$image_upload  = '<div class="section image-standard">';
-	$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'anva' ).'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>' . __( 'Standard Image', 'anva' ) . '</strong></label>';
 	$image_upload .= anva_media_uploader_option( array(
 		'option_name' => $name,
 		'type'        => 'logo',
 		'id'          => $id,
 		'value'       => $current_value['url'],
-		'name'        => 'image'
+		'name'        => 'image',
 	) );
 	$image_upload .= '</div>';
 
 	// Standard Image Retina (2x)
 	$image_upload .= '<div class="section image-2x">';
-	$image_upload .= '<label class="inner-label"><strong>'.__( '2x Standard Image (optional)', 'anva' ).'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>' . __( '2x Standard Image (optional)', 'anva' ) . '</strong></label>';
 	$image_upload .= anva_media_uploader_option( array(
 		'option_name' => $name,
 		'type'        => 'logo_2x',
 		'id'          => $id,
 		'value'       => $current_retina['url'],
-		'name'        => 'image_2x'
+		'name'        => 'image_2x',
 	) );
 	$image_upload .= '</div>';
 
 	// Standard Image Mini
 	$image_upload .= '<div class="section image-mini">';
-	$image_upload .= '<label class="inner-label"><strong>'.__( 'Mini Standard Image (optional)', 'anva' ).'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>' . __( 'Mini Standard Image (optional)', 'anva' ) . '</strong></label>';
 	$image_upload .= anva_media_uploader_option( array(
 		'option_name' => $name,
 		'type'        => 'logo_mini',
 		'id'          => $id,
 		'value'       => $current_mini['url'],
-		'name'        => 'image_mini'
+		'name'        => 'image_mini',
 	) );
 	$image_upload .= '</div>';
 
@@ -215,8 +241,10 @@ function anva_logo_option( $id, $name, $val ) {
 	 * @todo Dark Image 2x
 	 */
 
-	/*------------------------------------------------------*/
-	/* Primary Output
+	/*
+	------------------------------------------------------*/
+	/*
+	 Primary Output
 	/*------------------------------------------------------*/
 
 	$output  = sprintf( '<div class="select-type">%s</div>', $select_type );
@@ -235,8 +263,10 @@ function anva_logo_option( $id, $name, $val ) {
  */
 function anva_columns_option( $id, $name, $val ) {
 
-	/*------------------------------------------------------*/
-	/* Setup Internal Options
+	/*
+	------------------------------------------------------*/
+	/*
+	 Setup Internal Options
 	/*------------------------------------------------------*/
 
 	// Dropdown for number of columns selection
@@ -246,37 +276,39 @@ function anva_columns_option( $id, $name, $val ) {
 			'value' => 0,
 		),
 		array(
-			'name' 	=> '1 '. __( 'Column', 'anva' ),
+			'name' 	=> '1 ' . __( 'Column', 'anva' ),
 			'value' => 1,
 		),
 		array(
-			'name' 	=> '2 '. __( 'Columns', 'anva' ),
+			'name' 	=> '2 ' . __( 'Columns', 'anva' ),
 			'value' => 2,
 		),
 		array(
-			'name' 	=> '3 '. __( 'Columns', 'anva' ),
+			'name' 	=> '3 ' . __( 'Columns', 'anva' ),
 			'value' => 3,
 		),
 		array(
-			'name' 	=> '4 '. __( 'Columns', 'anva' ),
+			'name' 	=> '4 ' . __( 'Columns', 'anva' ),
 			'value' => 4,
 		),
 		array(
-			'name' 	=> '5 '. __( 'Columns', 'anva' ),
+			'name' 	=> '5 ' . __( 'Columns', 'anva' ),
 			'value' => 5,
-		)
+		),
 	);
 
 	// Dropdowns for column width configuration
 	$data_widths = anva_column_widths();
 
-	/*------------------------------------------------------*/
-	/* Construct <select> Menus
+	/*
+	------------------------------------------------------*/
+	/*
+	 Construct <select> Menus
 	/*------------------------------------------------------*/
 
 	// Select number of columns
 	$select_number  = '<div class="select-wrapper">';
-	$select_number .= '<select class="column-num anva-input anva-select" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
+	$select_number .= '<select class="column-num anva-input anva-select" name="' . esc_attr( $name . '[' . $id . '][num]' ) . '">';
 
 	$current_value = '';
 	if ( ! empty( $val ) && ! empty( $val['num'] ) ) {
@@ -284,7 +316,7 @@ function anva_columns_option( $id, $name, $val ) {
 	}
 
 	foreach ( $data_num as $num ) {
-		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
+		$select_number .= '<option value="' . $num['value'] . '" ' . selected( $current_value, $num['value'], false ) . '>' . $num['name'] . '</option>';
 	}
 
 	$select_number .= '</select>';
@@ -292,19 +324,19 @@ function anva_columns_option( $id, $name, $val ) {
 
 	// Select column widths
 	$i = 1;
-	$select_widths = '<div class="column-width column-width-0"><p class="inactive">'.__( 'Columns will be hidden.', 'anva' ).'</p></div>';
+	$select_widths = '<div class="column-width column-width-0"><p class="inactive">' . __( 'Columns will be hidden.', 'anva' ) . '</p></div>';
 	foreach ( $data_widths as $widths ) {
 
 		$select_widths .= '<div class="select-wrapper column-width column-width-' . $i . '">';
-		$select_widths .= '<select class="anva-input anva-select" name= "'.esc_attr( $name.'['.$id.'][width]['.$i.']' ).'">';
+		$select_widths .= '<select class="anva-input anva-select" name= "' . esc_attr( $name . '[' . $id . '][width][' . $i . ']' ) . '">';
 
 		$current_value = '';
-		if ( ! empty( $val ) && ! empty( $val['width'][$i] ) ) {
-			$current_value = $val['width'][$i];
+		if ( ! empty( $val ) && ! empty( $val['width'][ $i ] ) ) {
+			$current_value = $val['width'][ $i ];
 		}
 
 		foreach ( $widths as $width ) {
-			$select_widths .= '<option value="'.$width['value'].'" '.selected( $current_value, $width['value'], false ).'>'.$width['name'].'</option>';
+			$select_widths .= '<option value="' . $width['value'] . '" ' . selected( $current_value, $width['value'], false ) . '>' . $width['name'] . '</option>';
 		}
 
 		$select_widths .= '</select>';
@@ -312,8 +344,10 @@ function anva_columns_option( $id, $name, $val ) {
 		$i++;
 	}
 
-	/*------------------------------------------------------*/
-	/* Primary Output
+	/*
+	------------------------------------------------------*/
+	/*
+	 Primary Output
 	/*------------------------------------------------------*/
 
 	$output  = sprintf( '<div class="select-wrap alignleft">%s</div>', $select_number );
@@ -332,8 +366,8 @@ function anva_slider_group_area_option( $id, $name, $val ) {
 
 	$areas  = anva_get_default_slider_areas();
 	$groups = get_terms( array(
-	    'taxonomy'   => 'slideshow_group',
-	    'hide_empty' => false,
+		'taxonomy'   => 'slideshow_group',
+		'hide_empty' => false,
 	) );
 
 	$options = '';
@@ -353,8 +387,8 @@ function anva_slider_group_area_option( $id, $name, $val ) {
 
 		$value = '';
 
-		if ( ! empty( $val ) && ! empty( $val[$key] ) ) {
-			$value = $val[$key];
+		if ( ! empty( $val ) && ! empty( $val[ $key ] ) ) {
+			$value = $val[ $key ];
 		}
 
 		$output .= '<div class="anva-slider-cat-item">';
@@ -375,7 +409,7 @@ function anva_slider_group_area_option( $id, $name, $val ) {
  * Media uploader using the WordPress Media Library in 3.5+ tp handle the logo section.
  *
  * @since  1.0.0
- * @param  array  $args
+ * @param  array $args
  * @return string $output
  */
 function anva_media_uploader_option( $args ) {
@@ -387,7 +421,7 @@ function anva_media_uploader_option( $args ) {
 		'value'			=> '',			// The value of the field, if present.
 		'value_id'		=> '',			// Attachment ID used in slider
 		'value_title'	=> '',			// Title of attachment image (used for slider)
-		'name'			=> ''			// Option to extend 'id' token -- option_name[id][name]
+		'name'			=> '',// Option to extend 'id' token -- option_name[id][name]
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -435,7 +469,7 @@ function anva_media_uploader_option( $args ) {
 		'select'	=> __( 'Select', 'anva' ),
 		'upload'	=> __( 'Browse', 'anva' ),
 		'remove'	=> __( 'Remove', 'anva' ),
-		'class'		=> 'modal-hide-settings'
+		'class'		=> 'modal-hide-settings',
 	);
 
 	$output .= '<div class="group-button">';
@@ -444,21 +478,21 @@ function anva_media_uploader_option( $args ) {
 	switch ( $type ) {
 
 		case 'logo' :
-			$data['title'] = __('Logo Image', 'anva');
-			$data['select'] = __('Use for Logo', 'anva');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Standard image URL', 'anva').'" />'."\n";
+			$data['title'] = __( 'Logo Image', 'anva' );
+			$data['select'] = __( 'Use for Logo', 'anva' );
+			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __( 'Standard image URL', 'anva' ) . '" />' . "\n";
 			break;
 
 		case 'logo_2x' :
-			$data['title'] = __('Logo 2x Image', 'anva');
-			$data['select'] = __('Use for Logo', 'anva');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('2x size of standard image', 'anva') .'" />'."\n";
+			$data['title'] = __( 'Logo 2x Image', 'anva' );
+			$data['select'] = __( 'Use for Logo', 'anva' );
+			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __( '2x size of standard image', 'anva' ) . '" />' . "\n";
 			break;
 
 		case 'logo_mini' :
-			$data['title'] = __('Logo Mini Image', 'anva');
-			$data['select'] = __('Use for Logo', 'anva');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Mini standard image', 'anva') .'" />'."\n";
+			$data['title'] = __( 'Logo Mini Image', 'anva' );
+			$data['select'] = __( 'Use for Logo', 'anva' );
+			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __( 'Mini standard image', 'anva' ) . '" />' . "\n";
 			break;
 
 		/**
@@ -470,13 +504,13 @@ function anva_media_uploader_option( $args ) {
 		 */
 
 		default :
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('No file chosen', 'anva') .'" />'."\n";
+			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __( 'No file chosen', 'anva' ) . '" />' . "\n";
 	}
 
 	$data = apply_filters( 'anva_media_uploader_data', $data, $type );
 
 	$output .= '<span>';
-	$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['remove'].'" />'."\n";
+	$output .= '<input id="remove-' . $formfield . '" class="trigger remove-file button" type="button" data-type="' . $type . '" data-title="' . $data['title'] . '" data-select="' . $data['select'] . '" data-class="' . $data['class'] . '" data-upload="' . $data['upload'] . '" data-remove="' . $data['remove'] . '" value="' . $data['remove'] . '" />' . "\n";
 	$output .= '</span>';
 	$output .= '</div>';
 
@@ -489,13 +523,14 @@ function anva_media_uploader_option( $args ) {
 		if ( $image ) {
 			$output .= '<img src="' . $value . '" alt="" />' . $remove;
 		} else {
-			$parts = explode( "/", $value );
-			for ( $i = 0; $i < sizeof( $parts ); ++$i )
-				$title = $parts[$i];
+			$parts = explode( '/', $value );
+			for ( $i = 0; $i < sizeof( $parts ); ++$i ) {
+				$title = $parts[ $i ];
+			}
 
 			// Standard generic output if it's not an image.
 			$title = __( 'View File', 'anva' );
-			$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
+			$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">' . $title . '</a></span></div>';
 		}
 	}
 

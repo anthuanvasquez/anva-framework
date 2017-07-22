@@ -61,7 +61,7 @@ function anva_ajax_search() {
 		}
 
 		echo $html;
-	}
+	}// End if().
 
 	die();
 }

@@ -22,8 +22,8 @@ function anva_customizer_get_options() {
 function anva_customizer_add_panel( $panel, $wp_customize ) {
 
 	$panels_default = array(
-		'title'          	 => NULL,
-		'description'    	 => NULL,
+		'title'          	 => null,
+		'description'    	 => null,
 		'capability'     	 => 'edit_theme_options',
 		'theme_supports' 	 => '',
 		'priority'       	 => 10,
@@ -57,13 +57,13 @@ function anva_customizer_add_panel( $panel, $wp_customize ) {
 function anva_customizer_add_setting( $option, $wp_customize ) {
 
 	$settings_default = array(
-		'default'              => NULL,
+		'default'              => null,
 		'option_type'          => 'option',
 		'capability'           => 'edit_theme_options',
-		'theme_supports'       => NULL,
-		'transport'            => NULL,
+		'theme_supports'       => null,
+		'transport'            => null,
 		'sanitize_callback'    => 'wp_kses_post',
-		'sanitize_js_callback' => NULL
+		'sanitize_js_callback' => null,
 	);
 
 	// Settings defaults
@@ -77,7 +77,7 @@ function anva_customizer_add_setting( $option, $wp_customize ) {
 			'theme_supports'       => $settings['theme_supports'],
 			'transport'            => $settings['transport'],
 			'sanitize_callback'    => $settings['sanitize_callback'],
-			'sanitize_js_callback' => $settings['sanitize_js_callback']
+			'sanitize_js_callback' => $settings['sanitize_js_callback'],
 		)
 	);
 
@@ -85,6 +85,7 @@ function anva_customizer_add_setting( $option, $wp_customize ) {
 
 /**
  * Sanitize a value from a list of allowed values.
+ *
  * @todo   Create sanitize validations
  *
  * @since  1.0.0.
@@ -180,5 +181,5 @@ function anva_customizer_get_sanitization( $type ) {
 	}
 
 	// If a custom option is being used, return false
-	return FALSE;
+	return false;
 }

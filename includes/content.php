@@ -1,11 +1,19 @@
 <?php
+/**
+ * Functions for post content.
+ *
+ * @package    AnvaFramework
+ * @subpackage Includes
+ * @author     Anthuan Vasquez <me@anthuanvasquez.net>
+ * @copyright  Copyright (c) 2017, Anthuan Vasquez
+ */
 
 /**
  * Blog posts filter by categories.
  *
  * @since 1.0.0.
  */
-function anva_blog_posts_filter() {
+function anva_blog_post_filters() {
 
 	$column  = apply_filters( 'anva_template_filter_ajax_columns', 3 );
 	$items   = apply_filters( 'anva_template_filter_ajax_items', 6 );
@@ -58,7 +66,7 @@ function anva_post_terms( $args = array() ) {
  * It uses that to build a better post terms list.
  *
  * @since  1.0.0
- * @param  array   $args
+ * @param  array $args
  * @return string
  */
 function anva_get_post_terms( $args = array() ) {

@@ -2,7 +2,10 @@
 /**
  * Function for content media.
  *
- * @package AnvaFramework
+ * @package    AnvaFramework
+ * @subpackage Includes
+ * @author     Anthuan Vasquez <me@anthuanvasquez.net>
+ * @copyright  Copyright (c) 2017, Anthuan Vasquez
  */
 
 /**
@@ -277,7 +280,9 @@ function anva_the_post_thumbnail( $option ) {
 	?>
 	<div id="entry-image-<?php the_ID(); ?>"<?php echo $classes; ?>>
 		<a href="<?php echo esc_url( $thumbnail_link ); ?>"<?php echo $lightbox; ?>>
-			<?php the_post_thumbnail( $thumbnail, array( 'title' => get_the_title() ) ); ?>
+			<?php the_post_thumbnail( $thumbnail, array(
+	'title' => get_the_title(),
+) ); ?>
 		</a>
 	</div><!-- .entry-image (end) -->
 	<?php
@@ -299,7 +304,9 @@ function anva_the_small_thumbnail() {
 
 	?>
 	<div class="entry-image">
-		<a href="<?php anva_the_featured_image_src( $id, $thumbnail ); ?>" data-lightbox="image" ><?php the_post_thumbnail( $thumbnail, array( 'title' => get_the_title() ) ); ?></a>
+		<a href="<?php anva_the_featured_image_src( $id, $thumbnail ); ?>" data-lightbox="image" ><?php the_post_thumbnail( $thumbnail, array(
+	'title' => get_the_title(),
+) ); ?></a>
 	</div><!-- .entry-image (end) -->
 	<?php
 }
@@ -348,62 +355,62 @@ function anva_get_colors_scheme( $skin_path = '', $ext = 'png' ) {
 	$colors = array(
 		'blue'          => array(
 			'name'      => __( 'Blue', 'anva' ),
-			'color'     => "#3498db",
+			'color'     => '#3498db',
 			'image'     => esc_url( $skin_path . 'blue' . $ext ),
 		),
 		'light_blue'    => array(
 			'name'      => __( 'Light Blue', 'anva' ),
-			'color'     => "#83d6ff",
+			'color'     => '#83d6ff',
 			'image'     => esc_url( $skin_path . 'light_blue' . $ext ),
 		),
 		'navy_blue'     => array(
 			'name'      => __( 'Navy Blue', 'anva' ),
-			'color'     => "#0f68b7",
+			'color'     => '#0f68b7',
 			'image'     => esc_url( $skin_path . 'navy_blue' . $ext ),
 		),
 		'teal'          => array(
 			'name'      => __( 'Teal', 'anva' ),
-			'color'     => "#16807a",
+			'color'     => '#16807a',
 			'image'     => esc_url( $skin_path . 'teal' . $ext ),
 		),
 		'green'         => array(
 			'name'      => __( 'Green', 'anva' ),
-			'color'     => "#019875",
+			'color'     => '#019875',
 			'image'     => esc_url( $skin_path . 'green' . $ext ),
 		),
 		'turquoise'     => array(
 			'name'      => __( 'Turquoise', 'anva' ),
-			'color'     => "#5ae898",
+			'color'     => '#5ae898',
 			'image'     => esc_url( $skin_path . 'turquoise' . $ext ),
 		),
 		'chelseagem'    => array(
 			'name'      => __( 'Chelsea Gem', 'anva' ),
-			'color'     => "#975732",
+			'color'     => '#975732',
 			'image'     => esc_url( $skin_path . 'chelseagem' . $ext ),
 		),
 		'orange'        => array(
 			'name'      => __( 'Orange', 'anva' ),
-			'color'     => "#e67e22",
+			'color'     => '#e67e22',
 			'image'     => esc_url( $skin_path . 'orange' . $ext ),
 		),
 		'sunglow'       => array(
 			'name'      => __( 'Sunglow', 'anva' ),
-			'color'     => "#ffd324",
+			'color'     => '#ffd324',
 			'image'     => esc_url( $skin_path . 'sunglow' . $ext ),
 		),
 		'red'           => array(
 			'name'      => __( 'Red', 'anva' ),
-			'color'     => "#c0392b",
+			'color'     => '#c0392b',
 			'image'     => esc_url( $skin_path . 'red' . $ext ),
 		),
 		'violet'        => array(
 			'name'      => __( 'Violet', 'anva' ),
-			'color'     => "#9b59b6",
+			'color'     => '#9b59b6',
 			'image'     => esc_url( $skin_path . 'violet' . $ext ),
 		),
 		'pink'          => array(
 			'name'      => __( 'Pink', 'anva' ),
-			'color'     => "#ea4c89",
+			'color'     => '#ea4c89',
 			'image'     => esc_url( $skin_path . 'pink' . $ext ),
 		),
 	);
@@ -629,7 +636,7 @@ function anva_get_gallery_slider_content( $gallery = '', $type = 'standard', $si
 			$query = array(
 				'post_type'      => 'attachment',
 				'posts_per_page' => -1,
-				'post__in'       => $ids
+				'post__in'       => $ids,
 			);
 			$attachments = get_posts( $query );
 		}
@@ -643,7 +650,7 @@ function anva_get_gallery_slider_content( $gallery = '', $type = 'standard', $si
 			'post_status'    => 'inherit',
 			'post_type'      => 'attachment',
 			'posts_per_page' => -1,
-			'post_mime_type' => 'image'
+			'post_mime_type' => 'image',
 		);
 		$attachments = get_children( $args );
 	}
@@ -665,20 +672,22 @@ function anva_get_gallery_slider_content( $gallery = '', $type = 'standard', $si
 	// Default Slider Wrap
 	$slider_wrap  = "<div id=\"gallery-slider-{$post_id}\" class=\"{$class} gallery-slider\">\n";
 	$slider_wrap .= "%s\n";
-	$slider_wrap .= "</div><!-- .gallery-slider (end) -->";
+	$slider_wrap .= '</div><!-- .gallery-slider (end) -->';
 
 	// Start Output
 	$output = '';
 
 	if ( $type == 'nivo' ) {
 
-		/*--------------------------------------------*/
-		/* Nivo Slider
+		/*
+		--------------------------------------------*/
+		/*
+		 Nivo Slider
 		/*--------------------------------------------*/
 
-		$slider  = "<div class=\"nivoSlider\">";
+		$slider  = '<div class="nivoSlider">';
 		$slider .= "%s\n";
-		$slider .= "</div><!-- .nivoSlider (end) -->";
+		$slider .= '</div><!-- .nivoSlider (end) -->';
 
 		// Each slides
 		$slide = '';
@@ -692,24 +701,26 @@ function anva_get_gallery_slider_content( $gallery = '', $type = 'standard', $si
 
 	} elseif ( $type == 'standard' ) {
 
-		/*--------------------------------------------*/
-		/* Standard Slider
+		/*
+		--------------------------------------------*/
+		/*
+		 Standard Slider
 		/*--------------------------------------------*/
 
-		$slider  = "<div class=\"fslider\" data-arrows=\"false\" data-lightbox=\"gallery\">";
-		$slider .= "<div class=\"flexslider\">";
-		$slider .= "<div class=\"slider-wrap\">";
+		$slider  = '<div class="fslider" data-arrows="false" data-lightbox="gallery">';
+		$slider .= '<div class="flexslider">';
+		$slider .= '<div class="slider-wrap">';
 		$slider .= "%s\n";
-		$slider .= "</div><!-- .slider-wrap (end) -->";
-		$slider .= "</div><!-- .flexslider (end) -->";
-		$slider .= "</div><!-- .fslider (end) -->";
+		$slider .= '</div><!-- .slider-wrap (end) -->';
+		$slider .= '</div><!-- .flexslider (end) -->';
+		$slider .= '</div><!-- .fslider (end) -->';
 
 		// Each slides
 		$slide = '';
 
 		foreach ( $attachments as $attachment ) {
 			$image = wp_get_attachment_image_src( $attachment->ID, $size );
-			$slide .= "<div class=\"slide\">";
+			$slide .= '<div class="slide">';
 			$slide .= sprintf(
 				"<a href=\"%s\" data-lightbox=\"gallery-item\">%s</a>\n",
 				anva_get_attachment_image_src( $attachment->ID, 'full' ), // Get original image resolution
@@ -719,12 +730,12 @@ function anva_get_gallery_slider_content( $gallery = '', $type = 'standard', $si
 					$attachment->post_title
 				)
 			);
-			$slide .= "</div>";
+			$slide .= '</div>';
 		}
 
 		$output .= sprintf( $slider_wrap, sprintf( $slider, $slide ) );
 
-	}
+	}// End if().
 
 	return apply_filters( 'anva_gallery_slider_content', $output, $post_id, $type, $attachments );
 }
@@ -787,7 +798,7 @@ function anva_get_gallery_masonry_content( $gallery = '', $size = 'anva_sm', $co
 			$query = array(
 				'post_type'      => 'attachment',
 				'posts_per_page' => -1,
-				'post__in'       => $ids
+				'post__in'       => $ids,
 			);
 			$attachments = get_posts( $query );
 		}
@@ -800,7 +811,7 @@ function anva_get_gallery_masonry_content( $gallery = '', $size = 'anva_sm', $co
 			'post_parent'       => $post_id,
 			'post_status'       => 'inherit',
 			'post_type'         => 'attachment',
-			'post_mime_type'    => 'image'
+			'post_mime_type'    => 'image',
 		);
 		$attachments = get_children( $args );
 	}
@@ -824,7 +835,7 @@ function anva_get_gallery_masonry_content( $gallery = '', $size = 'anva_sm', $co
 	// Default Slider Wrap
 	$slider_wrap  = "<div id=\"gallery-slider-{$post_id}\" class=\"masonry-thumbs {$class} gallery-slider\" data-lightbox=\"gallery\" {$gallery_highlight}\>\n";
 	$slider_wrap .= "%s\n";
-	$slider_wrap .= "</div><!-- .gallery-slider (end) -->";
+	$slider_wrap .= '</div><!-- .gallery-slider (end) -->';
 
 	// Start Output
 	$output = '';
@@ -855,7 +866,7 @@ function anva_get_gallery_masonry_content( $gallery = '', $size = 'anva_sm', $co
  * Returns an array of the parts.
  *
  * @since  1.0.0
- * @param  int    $post_id
+ * @param  int $post_id
  * @return object
  */
 function anva_get_attachment_types( $post_id = 0 ) {
@@ -865,7 +876,10 @@ function anva_get_attachment_types( $post_id = 0 ) {
 
 	list( $type, $subtype ) = false !== strpos( $mime_type, '/' ) ? explode( '/', $mime_type ) : array( $mime_type, '' );
 
-	return (object) array( 'type' => $type, 'subtype' => $subtype );
+	return (object) array(
+		'type' => $type,
+		'subtype' => $subtype,
+	);
 }
 
 /**
@@ -873,7 +887,7 @@ function anva_get_attachment_types( $post_id = 0 ) {
  * mime type.
  *
  * @since  1.0.0
- * @param  int    $post_id
+ * @param  int $post_id
  * @return string
  */
 function anva_get_attachment_type( $post_id = 0 ) {
@@ -885,7 +899,7 @@ function anva_get_attachment_type( $post_id = 0 ) {
  * mime type.
  *
  * @since  1.0.0
- * @param  int    $post_id
+ * @param  int $post_id
  * @return string
  */
 function anva_get_attachment_subtype( $post_id = 0 ) {
@@ -896,7 +910,7 @@ function anva_get_attachment_subtype( $post_id = 0 ) {
  * Checks if the current post has a mime type of 'audio'.
  *
  * @since  1.0.0
- * @param  int    $post_id
+ * @param  int $post_id
  * @return bool
  */
 function anva_attachment_is_audio( $post_id = 0 ) {
@@ -907,7 +921,7 @@ function anva_attachment_is_audio( $post_id = 0 ) {
  * Checks if the current post has a mime type of 'video'.
  *
  * @since  1.0.0
- * @param  int    $post_id
+ * @param  int $post_id
  * @return bool
  */
 function anva_attachment_is_video( $post_id = 0 ) {

@@ -18,7 +18,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __( 'Default', 'anva' ) );
+			$this->statuses = array(
+				'' => __( 'Default', 'anva' ),
+			);
 			parent::__construct( $manager, $id, $args );
 		}
 
@@ -50,7 +52,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __( 'Default', 'anva' ) );
+			$this->statuses = array(
+				'' => __( 'Default', 'anva' ),
+			);
 			parent::__construct( $manager, $id, $args );
 		}
 
@@ -96,7 +100,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __('Default', 'anva' ) );
+			$this->statuses = array(
+				'' => __( 'Default', 'anva' ),
+			);
 			parent::__construct( $manager, $id, $args );
 		}
 
@@ -135,7 +141,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __('Default', 'anva' ) );
+			$this->statuses = array(
+				'' => __( 'Default', 'anva' ),
+			);
 			parent::__construct( $manager, $id, $args );
 		}
 
@@ -147,4 +155,4 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 
 	}
 
-}
+}// End if().

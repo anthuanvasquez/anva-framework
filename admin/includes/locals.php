@@ -77,7 +77,7 @@
 				'disclaimer'             => esc_html__( 'Note: The customizer provides a simulated preview, and results may vary slightly when published and viewed on your live website.', 'anva' ),
 			);
 			break;
-	}
+	}// End switch().
 
 	return apply_filters( 'anva_admin_locals_' . $type, $locals );
 }

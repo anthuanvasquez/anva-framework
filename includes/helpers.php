@@ -101,7 +101,7 @@ function anva_get_wp_nav_menu_args( $location = 'primary' ) {
 				'fallback_cb' 		=> false,
 				'depth' 			=> 1,
 			);
-	}
+	}// End switch().
 
 	return apply_filters( "anva_{$location}_menu_args", $args );
 }
@@ -111,7 +111,7 @@ function anva_get_wp_nav_menu_args( $location = 'primary' ) {
  * has not set one.
  *
  * @since  1.0.0
- * @param  array  $args
+ * @param  array $args
  * @return string $output
  */
 function anva_primary_menu_fallback( $args ) {
@@ -164,7 +164,7 @@ function anva_body_class( $classes ) {
 	}
 
 	$footer = anva_get_option( 'footer_setup' );
-	if (  isset( $footer['num'] ) && $footer['num'] > 0  ) {
+	if ( isset( $footer['num'] ) && $footer['num'] > 0 ) {
 		$classes[] = 'has-footer-content';
 	}
 
@@ -216,45 +216,44 @@ function anva_browser_class( $classes ) {
 	$browser = $_SERVER['HTTP_USER_AGENT'];
 
 	// OS classes.
-	if ( preg_match( "/Mac/", $browser ) ) {
+	if ( preg_match( '/Mac/', $browser ) ) {
 		$classes[] = 'mac';
-	} elseif ( preg_match( "/Windows/", $browser ) ) {
+	} elseif ( preg_match( '/Windows/', $browser ) ) {
 		$classes[] = 'windows';
-	} elseif ( preg_match( "/Linux/", $browser ) ) {
+	} elseif ( preg_match( '/Linux/', $browser ) ) {
 		$classes[] = 'linux';
 	} else {
 		$classes[] = 'unknown-os';
 	}
 
 	// Browser classes.
-	if ( preg_match( "/Chrome/", $browser ) ) {
+	if ( preg_match( '/Chrome/', $browser ) ) {
 		$classes[] = 'chrome';
-	} elseif ( preg_match( "/Safari/", $browser ) ) {
+	} elseif ( preg_match( '/Safari/', $browser ) ) {
 		$classes[] = 'safari';
-	} elseif ( preg_match( "/Opera/", $browser ) ) {
+	} elseif ( preg_match( '/Opera/', $browser ) ) {
 		$classes[] = 'opera';
-	} elseif ( preg_match( "/MSIE/", $browser ) ) {
+	} elseif ( preg_match( '/MSIE/', $browser ) ) {
 
 		// Internet Explorer... fuck IE.
 		$classes[] = 'msie';
 
-		if ( preg_match( "/MSIE 6.0/", $browser ) ) {
+		if ( preg_match( '/MSIE 6.0/', $browser ) ) {
 			$classes[] = 'ie6';
-		} elseif ( preg_match( "/MSIE 7.0/", $browser ) ) {
+		} elseif ( preg_match( '/MSIE 7.0/', $browser ) ) {
 			$classes[] = 'ie7';
-		} elseif ( preg_match( "/MSIE 8.0/", $browser ) ) {
+		} elseif ( preg_match( '/MSIE 8.0/', $browser ) ) {
 			$classes[] = 'ie8';
-		} elseif ( preg_match( "/MSIE 9.0/", $browser ) ) {
+		} elseif ( preg_match( '/MSIE 9.0/', $browser ) ) {
 			$classes[] = 'ie9';
-		} elseif ( preg_match( "/MSIE 10.0/", $browser ) ) {
+		} elseif ( preg_match( '/MSIE 10.0/', $browser ) ) {
 			$classes[] = 'ie10';
-		} elseif ( preg_match( "/MSIE 11.0/", $browser ) ) {
+		} elseif ( preg_match( '/MSIE 11.0/', $browser ) ) {
 			$classes[] = 'ie11';
 		}
-
-	} elseif ( preg_match( "/Windows NT 10/i", $browser ) && preg_match( "/Edge/i", $browser ) ) {
+} elseif ( preg_match( '/Windows NT 10/i', $browser ) && preg_match( '/Edge/i', $browser ) ) {
 		$classes[] = 'edge';
-	} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
+	} elseif ( preg_match( '/Firefox/', $browser ) && preg_match( '/Gecko/', $browser ) ) {
 		$classes[] = 'firefox';
 	} else {
 		$classes[] = 'unknown-browser';
@@ -335,6 +334,7 @@ function anva_get_template_class( $class, $paged = true ) {
 		),
 		/**
 		 * Add post timeline classes to the list.
+		 *
 		 * @todo timeline classes.
 		 */
 	);
@@ -359,11 +359,11 @@ function anva_get_template_class( $class, $paged = true ) {
 }
 
 /**
-* Display the classes for the header element.
-*
-* @since 1.0.0
-* @param string|array $class
-*/
+ * Display the classes for the header element.
+ *
+ * @since 1.0.0
+ * @param string|array $class
+ */
 function anva_header_class( $class = '' ) {
 	echo 'class="' . join( ' ', anva_get_header_class( $class ) ) . '"';
 }
@@ -398,11 +398,11 @@ function anva_get_header_class( $class = '' ) {
 }
 
 /**
-* Display the classes for the header element.
-*
-* @since 1.0.0
-* @param string|array $class
-*/
+ * Display the classes for the header element.
+ *
+ * @since 1.0.0
+ * @param string|array $class
+ */
 function anva_primary_menu_class( $class = '' ) {
 	echo 'class="primary-menu ' . join( ' ', anva_get_primary_menu_class( $class ) ) . '"';
 }
@@ -419,8 +419,9 @@ function anva_get_primary_menu_class( $class = '' ) {
 	$classes = array();
 
 	if ( ! empty( $class ) ) {
-		if ( ! is_array( $class ) )
+		if ( ! is_array( $class ) ) {
 			$class = preg_split( '#\s+#', $class );
+		}
 			$classes = array_merge( $classes, $class );
 	} else {
 		// Ensure that we always coerce class to being an array.
@@ -477,7 +478,9 @@ function anva_get_terms_links( $taxonomy, $implode = ' ', $links = true, $type =
 	$id = get_the_ID();
 
 	// Get post terms by taxonomy and post ID.
-	$terms = wp_get_post_terms( $id, $taxonomy, array( 'fields' => 'all' ) );
+	$terms = wp_get_post_terms( $id, $taxonomy, array(
+		'fields' => 'all',
+	) );
 
 	if ( empty( $terms ) ) {
 		return false;
@@ -549,7 +552,7 @@ function anva_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= " $sep " . sprintf( anva_get_local( 'page' ) .' %s', max( $paged, $page ) );
+		$title .= " $sep " . sprintf( anva_get_local( 'page' ) . ' %s', max( $paged, $page ) );
 	}
 
 	return apply_filters( 'anva_wp_title', $title );
@@ -571,7 +574,7 @@ function anva_get_menu_location_name( $location ) {
  * Grabbing a WP nav menu name based on theme location.
  *
  * @since  1.0.0
- * @param  string  $location
+ * @param  string $location
  * @return string
  */
 function anva_get_menu_name( $location ) {
@@ -661,7 +664,7 @@ function anva_link_pages_args( $args ) {
  *
  * @since 1.0.0
  * @param string $link Markup of individual link to be filtered
- * @param int $i Page number of link being filtered
+ * @param int    $i Page number of link being filtered
  * @return string $link Markup for individual link after being filtered
  */
 function anva_link_pages_link( $link, $i ) {
@@ -685,7 +688,7 @@ function anva_link_pages_link( $link, $i ) {
  * Check if a feature is supported by the theme.
  *
  * @since  1.0.0
- * @param  string  $feature
+ * @param  string $feature
  * @return boolean current theme supprot feature
  */
 function anva_support_feature( $feature ) {
@@ -785,7 +788,7 @@ function anva_do_icon( $string ) {
 				$html = "<li>\n" . $html;
 			}
 
-			$str = str_replace( $val, sprintf( $html, $icons[1][$key] ), $string );
+			$str = str_replace( $val, sprintf( $html, $icons[1][ $key ] ), $string );
 		}
 	}
 
@@ -811,7 +814,7 @@ function anva_get_font_stacks() {
 		'times'       => 'TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif',
 		'trebuchet'   => '"Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif',
 		'verdana'     => 'Verdana, Geneva, sans-serif',
-		'google'      => 'Google Font'
+		'google'      => 'Google Font',
 	);
 	return apply_filters( 'anva_font_stacks', $stacks );
 }
@@ -889,7 +892,7 @@ function anva_get_font_face( $option ) {
 	$stacks = anva_get_font_stacks();
 	$face = 'helvetica'; // Default font face
 
-	if ( isset( $option['face'] ) && $option['face'] == 'google'  ) {
+	if ( isset( $option['face'] ) && $option['face'] == 'google' ) {
 
 		// Grab font face, making sure they didn't do the
 		// super, sneaky trick of including font weight or type.
@@ -915,7 +918,7 @@ function anva_get_font_face( $option ) {
  * Print font size.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $size
  */
 function anva_the_font_size( $option ) {
@@ -926,7 +929,7 @@ function anva_the_font_size( $option ) {
  * Get font size and set the default value.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $size
  */
 function anva_get_font_size( $option ) {
@@ -944,7 +947,7 @@ function anva_get_font_size( $option ) {
  * Print font style.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $style
  */
 
@@ -956,7 +959,7 @@ function anva_the_font_style( $option ) {
  * Get font style and set the default value.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $style
  */
 function anva_get_font_style( $option ) {
@@ -974,7 +977,7 @@ function anva_get_font_style( $option ) {
  * Print font weight.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $weight
  */
 function anva_the_font_weight( $option ) {
@@ -985,7 +988,7 @@ function anva_the_font_weight( $option ) {
  * Get font weight and set the default value.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $weight
  */
 function anva_get_font_weight( $option ) {
@@ -1007,7 +1010,7 @@ function anva_get_font_weight( $option ) {
  * Print font text transform.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $transform
  */
 function anva_the_text_transform( $option ) {
@@ -1018,14 +1021,14 @@ function anva_the_text_transform( $option ) {
  * Get font text transform.
  *
  * @since  1.0.0
- * @param  array  $option
+ * @param  array $option
  * @return string $transform
  */
 function anva_get_text_transform( $option ) {
 
 	$tranform = 'none';
 
-	if ( ! empty( $option['style'] ) && in_array( $option['style'], array('uppercase', 'uppercase-italic') ) ) {
+	if ( ! empty( $option['style'] ) && in_array( $option['style'], array( 'uppercase', 'uppercase-italic' ) ) ) {
 		$tranform = 'uppercase';
 	}
 
@@ -1081,12 +1084,12 @@ function anva_enqueue_google_fonts() {
 			if ( $font['face'] == 'google' && ! empty( $font['google'] ) ) {
 
 				$font = explode( ':', $font['google'] );
-				$name = trim ( str_replace( ' ', '+', $font[0] ) );
+				$name = trim( str_replace( ' ', '+', $font[0] ) );
 
 				if ( ! isset( $fonts[ $name ] ) ) {
 					$fonts[ $name ] = array(
 						'style'		=> array(),
-						'subset'	=> array()
+						'subset'	=> array(),
 					);
 				}
 
@@ -1128,7 +1131,22 @@ function anva_enqueue_google_fonts() {
 			wp_enqueue_style( $handle, $protocol . 'fonts.googleapis.com/css?family=' . $font, array(), Anva::get_version(), 'all' );
 
 		}
-	}
+	}// End if().
+}
+
+/**
+ * Yes/No values.
+ *
+ * @param  string $yes String content for yes value.
+ * @param  string $no String content for no value.
+ * @return array  $values Yes/No values.
+ */
+function anva_yes_no( $yes, $no ) {
+	$values = array(
+		'no'  => sprintf( '%s', esc_attr__( $no, 'anva' ) ),
+		'yes' => sprintf( '%s', esc_attr__( $yes, 'anva' ) ),
+	);
+	return apply_filters( 'anva_yes_no_default', $values );
 }
 
 /**
@@ -1151,7 +1169,7 @@ function anva_get_button_class( $color = '', $size = '', $style = '', $effect = 
 		'medium',
 		'large',
 		'xlarge',
-		'desc'
+		'desc',
 	) );
 
 	if ( in_array( $size, $sizes ) ) {
@@ -1215,7 +1233,7 @@ function anva_get_button_class( $color = '', $size = '', $style = '', $effect = 
 		$class .= ' button-block';
 	}
 
-    return apply_filters( 'anva_button_class', $class, $color, $size );
+	return apply_filters( 'anva_button_class', $class, $color, $size );
 }
 
 /**
@@ -1227,9 +1245,9 @@ function anva_get_button_class( $color = '', $size = '', $style = '', $effect = 
 function anva_get_social_icons_profiles() {
 	$profiles = array(
 		'bitbucket'		=> esc_html__( 'Bitbucket', 'anva' ),
-		//'codepen'		=> esc_html__( 'Codepen', 'anva' ),
+		// 'codepen'     => esc_html__( 'Codepen', 'anva' ),
 		'delicious' 	=> esc_html__( 'Delicious', 'anva' ),
-		//'deviantart' 	=> esc_html__( 'DeviantArt', 'anva' ),
+		// 'deviantart'  => esc_html__( 'DeviantArt', 'anva' ),
 		'digg' 			=> esc_html__( 'Digg', 'anva' ),
 		'dribbble' 		=> esc_html__( 'Dribbble', 'anva' ),
 		'facebook' 		=> esc_html__( 'Facebook', 'anva' ),
@@ -1344,7 +1362,7 @@ function anva_compress( $buffer ) {
 	$buffer = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer );
 
 	// Remove tabs, spaces, newlines, etc.
-	$buffer = str_replace( array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer );
+	$buffer = str_replace( array( "\r\n", "\r", "\n", "\t", '  ', '    ', '    ' ), '', $buffer );
 
 	return $buffer;
 }
@@ -1353,12 +1371,13 @@ function anva_compress( $buffer ) {
  * Get template framework part component.
  *
  * @since 1.0.0
- * @param string $name
- * @param string $slug
+ * @param string $type Template component type or compelte path to component.
+ * @param string $name Template name slug.
+ * @param string $data Data passed to template.
  */
-function anva_get_template_part( $slug = 'post', $name = 'content' ) {
+function anva_get_template_part( $type = 'post', $name = 'content', $data = '' ) {
 
-	$components = apply_filters( 'anva_components_list', array(
+	$components = apply_filters( 'anva_components_list_type', array(
 		'page',
 		'post',
 		'header',
@@ -1369,17 +1388,23 @@ function anva_get_template_part( $slug = 'post', $name = 'content' ) {
 
 	$path = apply_filters( 'anva_components_path', trailingslashit( 'framework/component' ) );
 
-	if ( in_array( $slug, $components ) ) {
-		$file = trailingslashit( $path . $slug ) . $name;
+	if ( ! empty( $data ) ) {
+		set_query_var( 'data', $data );
+	}
+
+	if ( in_array( $type, $components ) ) {
+		$file = trailingslashit( $path . $type ) . $name; // ex. path/to/post/content.
 		get_template_part( $file );
 		return;
 	}
 
-	get_template_part( $path . $slug );
+	get_template_part( $path . $type ); // ex. path/to/breadcrumbs.
 }
 
 /**
  * Insert a key into array.
+ *
+ * @since  1.0.0
  *
  * @param  array   $array
  * @param  string  $search_key
@@ -1387,6 +1412,7 @@ function anva_get_template_part( $slug = 'post', $name = 'content' ) {
  * @param  string  $insert_value
  * @param  boolean $insert_after
  * @param  boolean $append
+ *
  * @return array   $new_array
  */
 function anva_insert_array_key( $array, $search_key, $insert_key, $insert_value, $insert_after = true, $append = false ) {
@@ -1420,8 +1446,9 @@ function anva_insert_array_key( $array, $search_key, $insert_key, $insert_value,
 /**
  * Convert memory use.
  *
+ * @since  1.0.0
  * @param  int $size
- * @return int $size
+ * @return mixed
  */
 function anva_convert_memory_use( $size ) {
 	$unit = array( 'b', 'kb', 'mb', 'gb', 'tb', 'pb' );
@@ -1431,8 +1458,8 @@ function anva_convert_memory_use( $size ) {
 /**
  * Show debug information.
  *
- * @param  object $object The object given
- * @return void
+ * @since  1.0.0
+ * @param  object $object The object given.
  */
 function anva_dump( $object ) {
 	if ( ! is_object( $object ) ) {
