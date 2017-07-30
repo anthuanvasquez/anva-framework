@@ -51,6 +51,64 @@ function anva_blog_post_filters() {
 }
 
 /**
+ * Take in some content and display it with formatting.
+ *
+ * @since  1.0.0
+ * @param  string $content Content to display.
+ * @return string Formatted content.
+ */
+function anva_content( $content ) {
+	echo anva_get_content( $content );
+}
+
+/**
+ * Take in some content and return it with formatting.
+ *
+ * @since  1.0.0
+ * @param  string $content Content to display.
+ * @return string $content Formatted content.
+ */
+function anva_get_content( $content ) {
+	return apply_filters( 'anva_the_content', $content );
+}
+
+/**
+ * Use themeblvd_button() function for read more links.
+ *
+ * When a WP user uses the more tag <!--more-->, this filter
+ * will add the class "btn" to that link. This will allow
+ * Bootstrap to style the link as one of its buttons.
+ *
+ * @see filter "the_content_more_link"
+ *
+ * @since 1.0.0
+ */
+function anva_read_more_link( $read_more, $more_link_text ) {
+
+	$args = apply_filters( 'anva_the_content_more_args', array(
+		'text'        => $more_link_text,
+		'url'         => get_permalink() . '#more-' . get_the_ID(),
+		'target'      => null,
+		'color'       => '',
+		'size'        => null,
+		'style'       => null,
+		'effect'      => null,
+		'transition'  => null,
+		'classes'     => 'more-link',
+		'title'       => null,
+		'icon_before' => null,
+		'icon_after'  => null,
+		'addon'       => null,
+		'base'        => false,
+	) );
+
+	// Construct button based on filterable $args above.
+	$button = anva_get_button( $args );
+
+	return apply_filters( 'anva_read_more_link', $button );
+}
+
+/**
  * Outputs a post's taxonomy terms.
  *
  * @since  1.0.0
@@ -101,4 +159,152 @@ function anva_get_post_terms( $args = array() ) {
 	}
 
 	return $html;
+}
+
+/**
+ * Post meta field.
+ *
+ * @param  string $field Custom field stored.
+ * @return string Custom field content.
+ */
+function anva_the_post_meta( $field ) {
+	echo anva_get_post_meta( $field );
+}
+
+/**
+ * Get the post meta field.
+ *
+ * @global $post
+ *
+ * @since  1.0.0
+ * @param  string $field Custom field stored.
+ * @return string Custom field content.
+ */
+function anva_get_post_meta( $field ) {
+
+	global $post;
+
+	if ( ! is_object( $post ) ) {
+		return false;
+	}
+
+	return get_post_meta( $post->ID, $field, true );
+}
+
+/**
+ * Print custom post meta by page ID outside the loop.
+ *
+ * @param  string $field Custom field stored.
+ * @param  string $page_id Current page ID.
+ * @return string Custom field content.
+ */
+function anva_the_post_meta_by_id( $field, $page_id ) {
+	echo anva_get_post_meta_by_id( $field, $page_id );
+}
+
+/**
+ * Get custom post meta by page ID outside the loop.
+ *
+ * @param  string $field Custom field stored.
+ * @param  string $page_id Current page ID.
+ * @return string Custom field content.
+ */
+function anva_get_post_meta_by_id( $field, $page_id ) {
+	if ( ! empty( $page_id ) ) {
+		return get_post_meta( $page_id, $field, true );
+	}
+
+	return false;
+}
+
+/**
+ * Sort galleries
+ *
+ * @since  1.0.0
+ * @param  array $gallery
+ * @return array  $gallery  The sorted galleries
+ */
+function anva_sort_gallery( $gallery ) {
+
+	$sorted = array();
+	$order  = anva_get_option( 'gallery_sort' );
+
+	if ( ! empty( $order ) && ! empty( $gallery ) ) {
+
+		switch ( $order ) {
+
+			case 'drag':
+				foreach ( $gallery as $key => $attachment_id ) {
+					$sorted[ $key ] = $attachment_id;
+				}
+				break;
+
+			case 'desc':
+				foreach ( $gallery as $key => $attachment_id ) {
+					$meta = get_post( $attachment_id );
+					$date = strtotime( $meta->post_date );
+					$sorted[ $date ] = $attachment_id;
+					krsort( $sorted );
+				}
+				break;
+
+			case 'asc':
+				foreach ( $gallery as $key => $attachment_id ) {
+					$meta = get_post( $attachment_id );
+					$date = strtotime( $meta->post_date );
+					$sorted[ $date ] = $attachment_id;
+					ksort( $sorted );
+				}
+				break;
+
+			case 'rand':
+				shuffle( $gallery );
+				$sorted = $gallery;
+				break;
+
+			case 'title':
+				foreach ( $gallery as $key => $attachment_id ) {
+					$meta = get_post( $attachment_id );
+					$title = $meta->post_title;
+					$sorted[ $title ] = $attachment_id;
+					ksort( $sorted );
+				}
+				break;
+		}// End switch().
+
+		return $sorted;
+
+	}// End if().
+
+	return $gallery;
+}
+
+/**
+ * Get query posts args.
+ *
+ * @since  1.0.0
+ * @return array The post list
+ */
+function anva_get_posts( $query_args ) {
+
+	$number = get_option( 'posts_per_page' );
+	$page 	= get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+	$offset = ( $page - 1 ) * $number;
+
+	$defaults = apply_filters( 'anva_posts_query_args_defaults', array(
+		'post_type'      => array( 'post' ),
+		'post_status'    => 'publish',
+		'posts_per_page' => $number,
+		'orderby'        => 'date',
+		'order'          => 'desc',
+		'number'         => $number,
+		'page'           => $page,
+		'offset'         => $offset,
+	) );
+
+	$query_args = wp_parse_args( $query_args, $defaults );
+
+	$query = new WP_Query( $query_args );
+
+	return $query;
 }

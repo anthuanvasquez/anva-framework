@@ -2,19 +2,19 @@
 
 if ( ! class_exists( 'Anva_Scripts' ) ) :
 
-/**
- * Anva Scripts API.
- *
- * This class sets up the framework scripts that get
- * enqueued on the frontend of the website.
- *
- * @since       1.0.0
- * @author      Anthuan Vásquez
- * @copyright   Copyright (c) Anthuan Vásquez
- * @link        http://anthuanvasquez.net
- * @package     Anva WordPress Framework
- */
-class Anva_Scripts {
+	/**
+	 * Anva Scripts API.
+	 *
+	 * This class sets up the framework scripts that get
+	 * enqueued on the frontend of the website.
+	 *
+	 * @since       1.0.0
+	 * @author      Anthuan Vásquez
+	 * @copyright   Copyright (c) Anthuan Vásquez
+	 * @link        http://anthuanvasquez.net
+	 * @package     Anva WordPress Framework
+	 */
+	class Anva_Scripts {
 
 		/**
 		 * The theme version.
@@ -69,7 +69,7 @@ class Anva_Scripts {
 			}
 
 			return self::$instance;
-			}
+		}
 
 		/**
 		 * Constructor Hook everythin in.
@@ -89,7 +89,7 @@ class Anva_Scripts {
 				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_framework_scripts' ), 5 );
 				add_action( 'wp_footer', array( $this, 'closing_scripts' ), 11 );
 			}
-			}
+		}
 
 		/**
 		 * Set core framework script.
@@ -98,47 +98,47 @@ class Anva_Scripts {
 
 			// jQuery Camera
 			$this->framework_scripts['jquery_camera'] = array(
-			'handle'    => 'jquery_camera',
-			'src'       => Anva::$framework_dir_uri . 'assets/js/jquery.camera.js',
-			'deps'      => array( 'jquery' ),
-			'ver'       => '1.4.0',
-			'footer'    => true,
+				'handle'    => 'jquery_camera',
+				'src'       => Anva::$framework_dir_uri . 'assets/js/jquery.camera.js',
+				'deps'      => array( 'jquery' ),
+				'ver'       => '1.4.0',
+				'footer'    => true,
 			);
 
 			// jQuery Nivo
 			$this->framework_scripts['jquery_nivo'] = array(
-			'handle'    => 'jquery_nivo',
-			'src'       => Anva::$framework_dir_uri . 'assets/js/jquery.nivo.js',
-			'deps'      => array( 'jquery' ),
-			'ver'       => '3.2.0',
-			'footer'    => true,
+				'handle'    => 'jquery_nivo',
+				'src'       => Anva::$framework_dir_uri . 'assets/js/jquery.nivo.js',
+				'deps'      => array( 'jquery' ),
+				'ver'       => '3.2.0',
+				'footer'    => true,
 			);
 
 			// Required Plugins
 			$this->framework_scripts['anva_core_plugins'] = array(
-			'handle'    => 'anva_core_plugins',
-			'src'       => Anva::$framework_dir_uri . 'assets/js/core-plugins.js',
-			'deps'      => array( 'jquery' ),
-			'ver'       => self::$version,
-			'footer'    => true,
+				'handle'    => 'anva_core_plugins',
+				'src'       => Anva::$framework_dir_uri . 'assets/js/core-plugins.js',
+				'deps'      => array( 'jquery' ),
+				'ver'       => self::$version,
+				'footer'    => true,
 			);
 
 			// Utilities.
 			$this->framework_scripts['anva_core_utils'] = array(
-			'handle'    => 'anva_core_utils',
-			'src'       => Anva::$framework_dir_uri . 'assets/js/core-utils.js',
-			'deps'      => array( 'jquery', 'anva_core_plugins' ),
-			'ver'       => self::$version,
-			'footer'    => true,
+				'handle'    => 'anva_core_utils',
+				'src'       => Anva::$framework_dir_uri . 'assets/js/core-utils.js',
+				'deps'      => array( 'jquery', 'anva_core_plugins' ),
+				'ver'       => self::$version,
+				'footer'    => true,
 			);
 
 			// Core functions.
 			$this->framework_scripts['anva_core'] = array(
-			'handle'    => 'anva_core',
-			'src'       => Anva::$framework_dir_uri . 'assets/js/core.js',
-			'deps'      => array( 'jquery', 'anva_core_utils', 'anva_core_plugins' ),
-			'ver'       => self::$version,
-			'footer'    => true,
+				'handle'    => 'anva_core',
+				'src'       => Anva::$framework_dir_uri . 'assets/js/core.js',
+				'deps'      => array( 'jquery', 'anva_core_utils', 'anva_core_plugins' ),
+				'ver'       => self::$version,
+				'footer'    => true,
 			);
 
 			// Remove scripts
@@ -167,7 +167,7 @@ class Anva_Scripts {
 			// Backwards compat for $deps
 			$GLOBALS['anva_framework_scripts'] = apply_filters( 'anva_framework_scripts', $this->framework_deps );
 
-			}
+		}
 
 		/**
 		 * Set custom scripts
@@ -195,14 +195,13 @@ class Anva_Scripts {
 				);
 
 				if ( $temp_scripts ) {
-						foreach ( $temp_scripts as $handle => $file ) {
+					foreach ( $temp_scripts as $handle => $file ) {
 						$key = $file['level'];
 						$this->custom_scripts[ $key ][ $handle ] = $file;
-						}
-}
-}
-
+					}
+				}
 			}
+		}
 
 		/**
 		 * Add script
@@ -217,7 +216,7 @@ class Anva_Scripts {
 				'footer'    => $footer,
 				);
 			}
-			}
+		}
 
 		/**
 		 * Remove script
@@ -226,14 +225,14 @@ class Anva_Scripts {
 			if ( ! is_admin() ) {
 				$this->remove_scripts[] = $handle;
 			}
-			}
+		}
 
 		/**
 		 * Get scripts to be removed
 		 */
 		public function get_remove_scripts() {
 			return $this->remove_scripts;
-			}
+		}
 
 		/**
 		 * Get framework scripts.
@@ -243,7 +242,7 @@ class Anva_Scripts {
 		 */
 		public function get_framework_scripts() {
 			return $this->framework_scripts;
-			}
+		}
 
 		/**
 		 * Get an array that could be used as your $deps if
@@ -251,7 +250,7 @@ class Anva_Scripts {
 		 */
 		public function get_framework_deps() {
 			return $this->framework_deps;
-			}
+		}
 
 
 		/**
@@ -259,7 +258,7 @@ class Anva_Scripts {
 		 */
 		public function get_custom_scripts() {
 			return $this->custom_scripts;
-			}
+		}
 
 		/**
 		 * Enqueue framework scripts
@@ -279,7 +278,7 @@ class Anva_Scripts {
 			// Level 2 custom scripts
 			$this->print_scripts( 2 );
 
-			}
+		}
 
 		/**
 		 * Output closing scripts. Hooked to wp_footer, giving
@@ -289,7 +288,7 @@ class Anva_Scripts {
 		public function closing_scripts() {
 			// Level 4 scripts
 			$this->print_scripts( 4 );
-			}
+		}
 
 		/**
 		 * Print scripts. For levels 1-3, this means using
@@ -305,27 +304,24 @@ class Anva_Scripts {
 
 			// Add scripts
 			if ( $level == 4 ) {
-
-				// Manually insert level 4 scripts
+				// Manually insert level 4 scripts.
 				if ( $this->custom_scripts[4] ) {
 					foreach ( $this->custom_scripts[4] as $file ) {
 						printf( "<script type='text/javascript' src='%s'></script>\n", $file['src'] );
 					}
 				}
-} else {
+			} else {
 
-				// Use WordPress's enqueue system
+				// Use WordPress's enqueue system.
 				if ( $this->custom_scripts[ $level ] ) {
 					foreach ( $this->custom_scripts[ $level ] as $file ) {
 						wp_enqueue_script( $file['handle'], $file['src'], array(), $file['ver'], $file['footer'] );
 					}
-							}
+				}
 
-				wp_localize_script( 'anva_main', 'AnvaMainJS', anva_get_js_locals() );
-
+				wp_localize_script( 'anva_core', 'AnvaFrameworkLocal', anva_get_js_locals() );
 			}
-
-			}
-}
+		}
+	}
 
 endif;

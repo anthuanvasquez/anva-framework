@@ -1,5 +1,3 @@
-'use strict';
-
 var requesting = false;
 
 var killRequesting = debounce( function() {
@@ -20,6 +18,8 @@ function onScrollSliderParallax() {
 var AnvaFramework = {};
 
 ( function( $ ) {
+
+    'use strict';
 
     /**
      * Initialize
@@ -983,7 +983,7 @@ var AnvaFramework = {};
                 element.parent( 'li' ).addClass( 'selected' );
 
                 $.ajax({
-                    url: AnvaMainJS.ajaxUrl,
+                    url: AnvaFrameworkLocal.ajaxUrl,
                     type: 'POST',
                     data: 'action=anva_blog_posts_filter&cat=' + filterCat + '&items=' + filterItems + '&grid=' + filterGrid,
                     success: function( results ) {

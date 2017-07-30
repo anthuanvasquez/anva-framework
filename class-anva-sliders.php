@@ -1,16 +1,21 @@
 <?php
+// Do not allow directly accessing to this file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( ! class_exists( 'Anva_Sliders' ) ) :
-/**
- * Anva Sliders API.
- *
- * @since  		1.0.0
- * @author      Anthuan Vásquez
- * @copyright   Copyright (c) Anthuan Vásquez
- * @link        http://anthuanvasquez.net
- * @package     Anva WordPress Framework
- */
-class Anva_Sliders {
+
+	/**
+	 * Anva Sliders API.
+	 *
+	 * @since  		1.0.0
+	 * @author      Anthuan Vásquez
+	 * @copyright   Copyright (c) Anthuan Vásquez
+	 * @link        http://anthuanvasquez.net
+	 * @package     Anva WordPress Framework
+	 */
+	class Anva_Sliders {
 
 		/**
 		 * A single instance of this class
@@ -594,7 +599,7 @@ class Anva_Sliders {
 
 			$this->core_sliders = apply_filters( 'anva_core_sliders', $this->core_sliders );
 
-			}
+		}
 
 		/**
 		 * Set slider types
@@ -620,7 +625,7 @@ class Anva_Sliders {
 			// Extend
 			$this->sliders = apply_filters( 'anva_recognized_sliders', $this->sliders );
 
-			}
+		}
 
 		/**
 		 * Add custom slider
@@ -689,7 +694,7 @@ class Anva_Sliders {
 
 			// Add frontend display
 			// add_action( 'anva_slider_' . $slider_id, );
-			}
+		}
 
 		/**
 		 * Remove slider
@@ -698,7 +703,7 @@ class Anva_Sliders {
 		 */
 		public function remove( $slider_id ) {
 			$this->remove_sliders[] = $slider_id;
-			}
+		}
 
 		/**
 		 * Get default sliders
@@ -716,7 +721,7 @@ class Anva_Sliders {
 		 */
 		public function get_custom_sliders() {
 			return $this->custom_sliders;
-			}
+		}
 
 		/**
 		 * Get sliders to be removed
@@ -725,7 +730,7 @@ class Anva_Sliders {
 		 */
 		public function get_remove_sliders() {
 			return $this->remove_sliders;
-			}
+		}
 
 		/**
 		 * Get finalized sliders
@@ -744,7 +749,7 @@ class Anva_Sliders {
 
 			return array();
 
-			}
+		}
 
 		/**
 		 * Determine if slider type is valid
@@ -758,7 +763,7 @@ class Anva_Sliders {
 			}
 
 			return false;
-			}
+		}
+	}
 
-}
 endif;

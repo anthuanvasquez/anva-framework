@@ -8,6 +8,11 @@
  * @copyright  Copyright (c) 2017, Anthuan Vasquez
  */
 
+// Do not allow directly accessing to this file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Print favicon and apple touch icons in head.
  *
@@ -902,7 +907,7 @@ function anva_post_share_default() {
 function anva_post_nav_default() {
 	$single_navigation = anva_get_option( 'single_navigation', 'show' );
 
-	if ( 'show' != $single_navigation ) {
+	if ( 'show' !== $single_navigation ) {
 		return;
 	}
 
@@ -917,7 +922,7 @@ function anva_post_nav_default() {
 function anva_post_author_default() {
 	$single_author = anva_get_option( 'single_author', 'hide' );
 
-	if ( 'show' != $single_author ) {
+	if ( 'show' !== $single_author ) {
 		return;
 	}
 
@@ -973,7 +978,7 @@ function anva_post_comments_default() {
  * @since  1.0.0
  * @return void
  */
-function anva_post_reading_bar() {
+function anva_post_reading_bar_default() {
 	$single_post_reading_bar = anva_get_option( 'single_post_reading_bar' );
 
 	if ( ! is_singular( 'post' ) || 'show' != $single_post_reading_bar ) {
@@ -1018,7 +1023,7 @@ function anva_contact_form_default() {
  */
 function anva_debug() {
 	$debug = anva_get_option( 'debug', 0 );
-	if ( defined( 'WP_DEBUG' ) && true == WP_DEBUG && current_user_can( 'manage_options' ) && $debug ) :
+	if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && current_user_can( 'manage_options' ) && $debug ) :
 	?>
 	<div id="debug-info">
 		<div class="container clearfix">

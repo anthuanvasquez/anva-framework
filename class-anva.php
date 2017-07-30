@@ -209,6 +209,7 @@ if ( ! class_exists( 'Anva' ) ) {
 			include_once( self::$framework_dir_path . 'admin/options-ui-types.php' );
 			include_once( self::$framework_dir_path . 'admin/options-ui-sanitization.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/general.php' );
+			include_once( self::$framework_dir_path . 'admin/includes/deprecated.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/helpers.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/display.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/meta.php' );
@@ -395,7 +396,7 @@ if ( ! class_exists( 'Anva' ) ) {
 				add_action( 'anva_breadcrumbs', 'anva_breadcrumbs_default' );
 				add_action( 'anva_content_builder', 'anva_display_elements' );
 				add_action( 'anva_contact_form', 'anva_contact_form_default' );
-				add_action( 'anva_content_after', 'anva_post_reading_bar', 20 );
+				add_action( 'anva_content_after', 'anva_post_reading_bar_default', 20 );
 
 				/**
 				 * Sidebars.

@@ -12,6 +12,11 @@
  * @package     Anva WordPress Framework
  */
 
+// Do not allow directly accessing to this file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Anva_Styles' ) ) :
 
 	class Anva_Styles {
