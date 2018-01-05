@@ -251,7 +251,7 @@ function anva_browser_class( $classes ) {
 		} elseif ( preg_match( '/MSIE 11.0/', $browser ) ) {
 			$classes[] = 'ie11';
 		}
-} elseif ( preg_match( '/Windows NT 10/i', $browser ) && preg_match( '/Edge/i', $browser ) ) {
+	} elseif ( preg_match( '/Windows NT 10/i', $browser ) && preg_match( '/Edge/i', $browser ) ) {
 		$classes[] = 'edge';
 	} elseif ( preg_match( '/Firefox/', $browser ) && preg_match( '/Gecko/', $browser ) ) {
 		$classes[] = 'firefox';

@@ -209,7 +209,6 @@ if ( ! class_exists( 'Anva' ) ) {
 			include_once( self::$framework_dir_path . 'admin/options-ui-types.php' );
 			include_once( self::$framework_dir_path . 'admin/options-ui-sanitization.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/general.php' );
-			include_once( self::$framework_dir_path . 'admin/includes/deprecated.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/helpers.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/display.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/meta.php' );
@@ -229,6 +228,7 @@ if ( ! class_exists( 'Anva' ) ) {
 			include_once( self::$framework_dir_path . 'includes/parts.php' );
 			include_once( self::$framework_dir_path . 'includes/attributes.php' );
 			include_once( self::$framework_dir_path . 'includes/elements.php' );
+			include_once( self::$framework_dir_path . 'includes/deprecated.php' );
 			include_once( self::$framework_dir_path . 'includes/helpers.php' );
 			include_once( self::$framework_dir_path . 'includes/locals.php' );
 

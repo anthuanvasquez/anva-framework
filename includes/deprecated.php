@@ -1,5 +1,10 @@
 <?php
 
+// Do not allow directly accessing to this file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Run warning if function is deprecated and WP_DEBUG is on.
  *

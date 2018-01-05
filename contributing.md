@@ -8,7 +8,7 @@ Problem first. Solution second.
 
 Pull requests should have a ticket open for discussion first. I rarely accept pull requests that aren't for a specific issue for various reasons. It's far better to post an issue and let me or the community provide feedback prior to creating a pull request.
 
-Please don't make pull requests against the `master` branch. This is the latest, stable code. You can make a pull request against one of the point branches or the `dev` (future release) branch.
+Please don't make pull requests against the `master` branch. This is the latest, stable code. You can make a pull request against one of the point branches or the `develop` (future release) branch.
 
 ## Theme review guidelines
 

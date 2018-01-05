@@ -413,7 +413,7 @@ function anva_social_icons( $args ) {
  */
 function anva_get_social_icons( $args ) {
 
-	$defaults = apply_filters( 'anva_social_icons_defaults', array(
+	$defaults = apply_filters( 'anva_social_icons_default_args', array(
 		'style'    => null,
 		'shape'    => null,
 		'border'   => null,

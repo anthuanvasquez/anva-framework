@@ -6,7 +6,7 @@ The framework was built to make it easy for developers to include (or not includ
 
 ## FAQ
 
-### How do I install Hybrid Core?
+### How do I install Anva Framework?
 
 The most basic method is to add the framework folder to your theme folder.  Assuming a folder name of `anva-framework` (you can name the folder anything), you'd add this code to your theme's `functions.php` file:
 
