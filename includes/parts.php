@@ -201,7 +201,7 @@ function anva_posted_on() {
 			'<span ' . anva_get_attr( 'entry-author' ) . '><a rel="author" title="%3$s" href="%1$s">%2$s</a></span>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			esc_html( get_the_author() ),
-			esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) )
+			esc_attr( sprintf( __( 'Posts by %s', 'anva' ), get_the_author() ) )
 		),
 		sprintf( '%1$s', get_the_category_list( ', ' ) ),
 		sprintf( '%1$s', $write_comments ),
@@ -648,12 +648,12 @@ function anva_mini_posts_list( $number = 3, $orderby = 'date', $order = 'date', 
 
 	$output = '';
 
-	$args = array(
+	$args = apply_filters( 'anva_mini_posts_list_args', array(
 		'posts_per_page' => $number,
 		'post_type'      => array( 'post' ),
 		'orderby'        => $orderby,
 		'order'          => $order,
-	);
+	) );
 
 	$query = anva_get_posts( $args );
 

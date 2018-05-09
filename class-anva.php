@@ -206,8 +206,9 @@ if ( ! class_exists( 'Anva' ) ) {
 		public function set_includes() {
 
 			// Admin files.
-			include_once( self::$framework_dir_path . 'admin/options-ui-types.php' );
-			include_once( self::$framework_dir_path . 'admin/options-ui-sanitization.php' );
+			// include_once( self::$framework_dir_path . 'admin/options/class-anva-options-ui-type.php' );
+			include_once( self::$framework_dir_path . 'admin/options/options-ui-types.php' );
+			include_once( self::$framework_dir_path . 'admin/options/options-ui-sanitization.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/general.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/helpers.php' );
 			include_once( self::$framework_dir_path . 'admin/includes/display.php' );

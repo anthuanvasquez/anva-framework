@@ -66,7 +66,7 @@ class Anva_Page_Options {
 			}
 
 			return self::$instance;
-			}
+		}
 
 		/**
 		 * Hook in the scripts and styles.
