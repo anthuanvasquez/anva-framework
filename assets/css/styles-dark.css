@@ -204,10 +204,6 @@ body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
   color: rgba(255, 255, 255, 0.6);
 }
 
-.dark #header-wrap:not(.not-dark) #top-search form input::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
 .dark #header-wrap:not(.not-dark) #top-search form input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -1431,10 +1427,6 @@ body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
   color: #888;
 }
 
-.dark.error404-wrap .form-control::-moz-placeholder {
-  color: #888;
-}
-
 .dark.error404-wrap .form-control:-ms-input-placeholder {
   color: #888;
 }
@@ -1730,10 +1722,6 @@ body #side-panel.dark #side-panel-trigger-close a {
   color: #666;
 }
 
-.dark .form-control:not(.not-dark)::-moz-placeholder {
-  color: #666;
-}
-
 .dark .form-control:not(.not-dark):-ms-input-placeholder {
   color: #666;
 }
@@ -1743,10 +1731,6 @@ body #side-panel.dark #side-panel-trigger-close a {
 }
 
 .dark .sm-form-control:not(.not-dark)::-webkit-input-placeholder {
-  color: #666;
-}
-
-.dark .sm-form-control:not(.not-dark)::-moz-placeholder {
   color: #666;
 }
 
@@ -1776,10 +1760,6 @@ body #side-panel.dark #side-panel-trigger-close a {
 }
 
 .dark .form-control.error:not(.not-dark)::-webkit-input-placeholder {
-  color: rgba(228, 44, 62, 0.6);
-}
-
-.dark .form-control.error:not(.not-dark)::-moz-placeholder {
   color: rgba(228, 44, 62, 0.6);
 }
 
@@ -2406,5 +2386,3 @@ body #side-panel.dark #side-panel-trigger-close a {
     border-top-color: rgba(255, 255, 255, 0.15);
   }
 }
-
-/*# sourceMappingURL=styles-dark.css.map */

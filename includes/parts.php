@@ -424,7 +424,7 @@ function anva_get_social_icons( $args ) {
 
 	$args = wp_parse_args( $args, $defaults );
 
-	extract( $args );
+	extract( $args, EXTR_SKIP );
 
 	$classes = array();
 
@@ -506,6 +506,8 @@ function anva_get_social_icons( $args ) {
 				case 'skype':
 					$title = str_replace( 'skype:', '', $icon_url );
 					$title = str_replace( '?call', '', $title );
+				case 'whatsapp':
+					$title = str_replace( 'https://api.whatsapp.com/send?phone=yournumber&text=yourtext', '', $icon_url );
 					break;
 			}
 
@@ -529,7 +531,7 @@ function anva_get_social_icons( $args ) {
 					esc_attr( $classes )
 				);
 			}
-}// End foreach().
+		}// End foreach().
 	}// End if().
 
 	return apply_filters( 'anva_social_icons', $output );
@@ -638,55 +640,133 @@ function anva_site_branding() {
 }
 
 /**
- * Mini posts list
+ * Mini posts list.
  *
  * @since 1.0.0
  */
-function anva_mini_posts_list( $number = 3, $orderby = 'date', $order = 'date', $thumbnail = true ) {
-
-	global $post;
+function anva_small_posts_list( $args, $thumbnail = true ) {
 
 	$output = '';
 
-	$args = apply_filters( 'anva_mini_posts_list_args', array(
-		'posts_per_page' => $number,
+	$defaults = apply_filters( 'anva_mini_posts_list_default_args', array(
+		'posts_per_page' => 3,
 		'post_type'      => array( 'post' ),
-		'orderby'        => $orderby,
-		'order'          => $order,
+		'orderby'        => 'date',
+		'order'          => 'date',
 	) );
+
+	$args = wp_parse_args( $args, $defaults );
 
 	$query = anva_get_posts( $args );
 
-	$output .= '<ul class="widget-posts-list">';
+	$output .= '<div class="widget-posts-list">';
 
 	while ( $query->have_posts() ) {
 		$query->the_post();
 
+		$output .= '<div class="spost clearfix">';
+
 		if ( $thumbnail ) {
-			$output .= '<li class="sm-post small-post clearfix">';
 			$output .= '<div class="entry-image">';
-			$output .= '<a href="' . get_permalink() . '">' . get_the_post_thumbnail( $post->ID, 'thumbnail' ) . '</a>';
+			$output .= '<a href="' . get_permalink() . '" class="nobg">' . get_the_post_thumbnail( get_the_ID(), 'thumbnail' ) . '</a>';
 			$output .= '</div><!-- .entry-image (end) -->';
-		} else {
-			$output .= '<li class="sm-post small-post clearfix">';
 		}
 
 		$output .= '<div class="entry-c">';
 		$output .= '<div class="entry-title">';
 		$output .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
 		$output .= '</div><!-- .entry-title (end) -->';
-		$output .= '<div class="entry-meta">';
-		$output .= '<span class="date">' . get_the_time( 'jS F Y' ) . '</span>';
-		$output .= '</div><!-- .entry-meta (end) -->';
+		$output .= '<ul class="entry-meta">';
+		$output .= '<li>' . get_the_time( 'jS F Y' ) . '</li>';
+		$output .= '</ul><!-- .entry-meta (end) -->';
 		$output .= '</div><!-- .entry-c (end) -->';
-		$output .= '</li><!-- .mini-posts (end) -->';
+		$output .= '</div><!-- .mini-posts (end) -->';
 	}
 
 	wp_reset_postdata();
 
-	$output .= '</ul>';
+	$output .= '</div>';
 
 	echo $output;
+
+}
+
+/**
+ * Portfolio sidebar items.
+ *
+ * @param  array $args Arguments.
+ * @return array $output HTML content.
+ */
+function anva_portfolio_sidebar_items( $args ) {
+	echo anva_get_portfolio_sidebar_items( $args );
+}
+
+/**
+ * Portfolio sidebar items.
+ *
+ * @param  array $args Arguments.
+ * @return array $output HTML content.
+ */
+function anva_get_portfolio_sidebar_items( $args ) {
+
+	$defaults = apply_filters( 'anva_portfolio_sidebar_default_args', array(
+		'items'    => 1,
+		'margin'   => 10,
+		'loop'     => true,
+		'nav'      => false,
+		'autoplay' => 5000,
+		'query'    => array(
+			'posts_per_page' => -1,
+			'post_type'      => array( 'portfolio' ),
+			'orderby'        => 'date',
+			'order'          => 'date',
+		),
+	) );
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$query = anva_get_posts( $args['query'] );
+
+	$output  = '';
+	$output .= '<div id="oc-portfolio-sidebar" class="owl-carousel carousel-widget" data-items="' . esc_attr( $args['items'] ) . '" data-margin="' . esc_attr( $args['margin'] ) . '" data-loop="' . esc_attr( $args['loop'] ) . '" data-nav="' . esc_attr( $args['nav'] ) . '" data-autoplay="' . esc_attr( $args['autoplay'] ) . '">';
+	while ( $query->have_posts() ) {
+		$query->the_post();
+
+		$output .= '<div class="oc-item">';
+		$output .= '<div class="iportfolio">';
+		$output .= '<div class="portfolio-image">';
+		$output .= '<a href="' . get_permalink() . '">';
+		$output .= '<img src="' . anva_get_featured_image_src( get_the_ID(), 'anva_sm' ) . '" alt="' . get_the_title() . '">';
+		$output .= '</a>';
+
+		$output .= '<div class="portfolio-overlay">';
+		/**
+		 * @todo check portfolio item type.
+		 */
+		$output .= '<a href="#" class="center-icon" data-lightbox="iframe">';
+		$output .= '<i class="icon-line-play"></i>';
+		$output .= '</a>';
+		$output .= '</div>';
+		$output .= '</div>';
+
+		$output .= '<div class="portfolio-desc center nobottompadding">';
+		$output .= '<h3>';
+		$output .= '<a href="#">' . get_the_title() . '</a>';
+		$output .= '</h3>';
+		$output .= '<span>';
+		$output .= anva_get_terms_links( 'portfolio_type', ', ' );
+		$output .= '</span>';
+		$output .= '</div>';
+
+		$output .= '</div>';
+		$output .= '</div>';
+	}
+
+	wp_reset_postdata();
+
+	$output .= '</div>';
+
+	return $output;
 
 }
 
@@ -961,155 +1041,6 @@ function anva_comment_list_callback( $comment, $args, $depth ) {
  */
 function anva_comment_list_end_callback() {
 	echo '</li><!-- .comment (end) -->';
-}
-
-/**
- * Display breadcrumbs.
- *
- * @since 1.0.0.
- * @param array $args
- */
-function anva_the_breadcrumbs( $args = array() ) {
-	echo anva_get_breadcrumbs( $args );
-}
-
-/**
- * Get breadcrumbs.
- *
- * @global $post
- *
- * @since  1.0.0.
- * @param  array $args
- * @return string $html
- */
-function anva_get_breadcrumbs( $args = array() ) {
-
-	// Don't show breadcrumns on front page.
-	if ( is_front_page() ) {
-		return;
-	}
-
-	global $post;
-
-	$defaults = array(
-		'separator_icon'      => '/',
-		'breadcrumbs_id'      => 'breadcrumb',
-		'breadcrumbs_classes' => 'breadcrumb',
-		'home_title'          => __( 'Home', 'anva' ),
-	);
-
-	$args      = apply_filters( 'anva_get_breadcrumbs_args', wp_parse_args( $args, $defaults ) );
-	$separator = '<li class="separator hidden"> ' . esc_attr( $args['separator_icon'] ) . ' </li>';
-
-	// Open the breadcrumbs
-	$html = '<ol id="' . esc_attr( $args['breadcrumbs_id'] ) . '" class="' . esc_attr( $args['breadcrumbs_classes'] ) . '">';
-
-	// Add Homepage link & separator (always present)
-	$html .= '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . esc_attr( $args['home_title'] ) . '">' . esc_attr( $args['home_title'] ) . '</a></li>';
-	$html .= $separator;
-
-	// Post
-	if ( is_singular( 'post' ) ) {
-
-		$category = get_the_category();
-
-		if ( ! empty( $category ) ) {
-			$category_values = array_values( $category );
-			$last_category   = end( $category_values );
-			$cat_parents     = rtrim( get_category_parents( $last_category->term_id, true, ',' ), ',' );
-			$cat_parents     = explode( ',', $cat_parents );
-
-			foreach ( $cat_parents as $parent ) {
-				$html .= '<li class="item-cat">' . wp_kses( $parent, wp_kses_allowed_html( 'a' ) ) . '</li>';
-				$html .= $separator;
-			}
-		} else {
-			$html .= '<li class="active item-' . $post->ID . '">' . get_the_title() . '</li>';
-		}
-	} elseif ( is_singular( 'page' ) ) {
-
-		if ( $post->post_parent ) {
-
-			$parents = get_post_ancestors( $post->ID );
-			$parents = array_reverse( $parents );
-
-			foreach ( $parents as $parent ) {
-				$html .= '<li class="item-parent item-parent-' . esc_attr( $parent ) . '"><a class="bread-parent bread-parent-' . esc_attr( $parent ) . '" href="' . esc_url( get_permalink( $parent ) ) . '" title="' . get_the_title( $parent ) . '">' . get_the_title( $parent ) . '</a></li>';
-				$html .= $separator;
-			}
-			}
-
-		$html .= '<li class="active item-' . $post->ID . '">' . get_the_title() . '</li>';
-
-	} elseif ( is_singular( 'attachment' ) ) {
-
-		$parent_id        = $post->post_parent;
-		$parent_title     = get_the_title( $parent_id );
-		$parent_permalink = esc_url( get_permalink( $parent_id ) );
-
-		$html .= '<li class="item-parent"><a class="bread-parent" href="' . esc_url( $parent_permalink ) . '" title="' . esc_attr( $parent_title ) . '">' . esc_attr( $parent_title ) . '</a></li>';
-		$html .= $separator;
-		$html .= '<li class="active item-' . $post->ID . '">' . get_the_title() . '</li>';
-
-	} elseif ( is_singular() ) {
-
-		$post_type         = get_post_type();
-		$post_type_object  = get_post_type_object( $post_type );
-		$post_type_archive = get_post_type_archive_link( $post_type );
-
-		$html .= '<li class="item-cat item-custom-post-type-' . esc_attr( $post_type ) . '"><a class="bread-cat bread-custom-post-type-' . esc_attr( $post_type ) . '" href="' . esc_url( $post_type_archive ) . '" title="' . esc_attr( $post_type_object->labels->name ) . '">' . esc_attr( $post_type_object->labels->name ) . '</a></li>';
-		$html .= $separator;
-		$html .= '<li class="active item-' . $post->ID . '">' . $post->post_title . '</li>';
-
-	} elseif ( is_category() ) {
-
-		$parent = get_queried_object()->category_parent;
-
-		if ( $parent !== 0 ) {
-
-			$parent_category = get_category( $parent );
-			$category_link   = get_category_link( $parent );
-
-			$html .= '<li class="item-parent item-parent-' . esc_attr( $parent_category->slug ) . '"><a class="bread-parent bread-parent-' . esc_attr( $parent_category->slug ) . '" href="' . esc_url( $category_link ) . '" title="' . esc_attr( $parent_category->name ) . '">' . esc_attr( $parent_category->name ) . '</a></li>';
-			$html .= $separator;
-
-		}
-
-		$html .= '<li class="active item-cat">' . single_cat_title( '', false ) . '</li>';
-
-	} elseif ( is_tag() ) {
-		$html .= '<li class="active item-tag">' . single_tag_title( '', false ) . '</li>';
-
-	} elseif ( is_author() ) {
-		$html .= '<li class="active item-author">' . get_queried_object()->display_name . '</li>';
-
-	} elseif ( is_day() ) {
-		$html .= '<li class="active item-day">' . get_the_date() . '</li>';
-
-	} elseif ( is_month() ) {
-		$html .= '<li class="active item-month">' . get_the_date( 'F Y' ) . '</li>';
-
-	} elseif ( is_year() ) {
-		$html .= '<li class="active item-year">' . get_the_date( 'Y' ) . '</li>';
-
-	} elseif ( is_archive() ) {
-		$custom_tax_name = get_queried_object()->name;
-		$html .= '<li class="active item-archive">' . esc_attr( $custom_tax_name ) . '</li>';
-
-	} elseif ( is_search() ) {
-		$html .= '<li class="active item-search">' . __( 'Search results for', 'anva' ) . ': ' . get_search_query() . '</li>';
-
-	} elseif ( is_404() ) {
-		$html .= '<li class="item-404">' . __( 'Error 404', 'anva' ) . '</li>';
-
-	} elseif ( is_home() ) {
-		$html .= '<li class="item-home">' . get_the_title( get_option( 'page_for_posts' ) ) . '</li>';
-	}// End if().
-
-	$html .= '</ol>';
-	$html  = apply_filters( 'anva_breadcrumbs_html', $html );
-
-	return wp_kses_post( $html );
 }
 
 /**

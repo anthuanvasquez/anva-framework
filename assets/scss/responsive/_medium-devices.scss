@@ -388,13 +388,17 @@
     -----------------------------------------------------------------*/
     #top-search {
         margin: 0 !important;
+
         form {
             height: 100px !important;
+
             input {
                 font-size: 24px;
             }
         }
     }
+
+
     #top-search a,
     #top-cart,
     #top-lang,
@@ -421,6 +425,10 @@
             > #top-lang,
             > #side-panel-trigger {
                 margin: 20px 0 !important;
+            }
+
+            > #top-search form {
+                height: 60px !important;
             }
         }
         ul.windows-mobile-menu {

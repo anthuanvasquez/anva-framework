@@ -1121,6 +1121,10 @@ body.stretched #header.full-header .container {
   border-right: 1px solid #EEE;
 }
 
+#header.full-header #logo.divcenter {
+  border: 0;
+}
+
 #header.transparent-header.full-header #logo {
   border-right-color: rgba(0, 0, 0, 0.1);
 }
@@ -9366,41 +9370,3 @@ body:not(.no-transition) #wrapper,
   -webkit-animation-delay: 4s;
           animation-delay: 4s;
 }
-
-.breaking {
-  border-bottom: 1px solid #EEE;
-  height: 45px;
-  overflow: hidden;
-  position: relative;
-}
-
-.breaking .breaking-inner {
-  display: inline-block;
-}
-
-.breaking .breaking-title {
-  background-color: #3498db;
-  color: #fff;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 45px;
-  margin: 0 20px 0 0;
-  padding: 0 12px;
-  position: absolute;
-  text-transform: uppercase;
-}
-
-.breaking .breaking-entry {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  margin: 0 20px 0 0;
-  padding: 12px;
-}
-
-.breaking .breaking-entry a {
-  color: #444;
-}
-
-/*# sourceMappingURL=styles.css.map */

@@ -18,7 +18,7 @@
 $style            = '';
 $page_id          = anva_get_current_page_id();
 $classes          = array();
-$attrs            = array();
+$attr             = array();
 $mini             = anva_get_post_meta_by_id( '_anva_page_title_mini', $page_id );
 $tagline          = anva_get_post_meta_by_id( '_anva_page_tagline', $page_id );
 $title_align      = anva_get_post_meta_by_id( '_anva_title_align', $page_id );
@@ -81,7 +81,7 @@ if ( 'center' === $title_align ) {
 
 $attr['class'] = implode( ' ', $classes );
 ?>
-<section <?php anva_attr( 'archive-header' ); ?>>
+<section <?php anva_attr( 'archive-header', $attr ); ?>>
 	<div class="container clearfix">
 		<h1 <?php anva_attr( 'archive-title' ); ?>>
 			<?php anva_the_page_title(); ?>

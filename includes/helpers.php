@@ -777,7 +777,7 @@ function anva_do_icon( $string ) {
 		$total = count( $icons[0] );
 
 		if ( $list ) {
-			$str = sprintf( "<ul class=\"list-inline nobottommargin\">\n<li>%s</li>\n</ul>", $string );
+			$string = sprintf( "<ul class=\"list-inline nobottommargin\">\n<li>%s</li>\n</ul>", $string );
 		}
 
 		foreach ( $icons[0] as $key => $val ) {
@@ -788,7 +788,7 @@ function anva_do_icon( $string ) {
 				$html = "<li>\n" . $html;
 			}
 
-			$str = str_replace( $val, sprintf( $html, $icons[1][ $key ] ), $string );
+			$string = str_replace( $val, sprintf( $html, $icons[1][ $key ] ), $string );
 		}
 	}
 
@@ -1384,6 +1384,7 @@ function anva_get_template_part( $type = 'post', $name = 'content', $data = '' )
 		'footer',
 		'navigation',
 		'features',
+		'portfolio',
 	) );
 
 	$path = apply_filters( 'anva_components_path', trailingslashit( 'framework/component' ) );
