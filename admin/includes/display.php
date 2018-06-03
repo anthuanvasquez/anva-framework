@@ -143,7 +143,7 @@ function anva_admin_settings_last_save() {
 function anva_admin_footer_credits() {
 	$theme_info 	= anva_get_theme( 'name' ) . ' - ' . anva_get_theme( 'version' );
 	$framework_info = Anva::get_name() . ' - ' . Anva::get_version();
-	$author_info 	= '<a href="' . esc_url( 'https://anthuanvasquez.net/' ) . '">Anthuan Vásquez</a>';
+	$author_info 	= '<a href="' . esc_url( 'https://anthuanvasquez.net/' ) . '">Anthuan Vasquez</a>';
 
 	printf(
 		'<div class="anva-options-page-credit">%1$s %2$s<div class="clear"></div></div>',
