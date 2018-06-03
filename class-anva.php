@@ -96,7 +96,7 @@ if ( ! class_exists( 'Anva' ) ) {
 		 * @access public
 		 * @var    boolean
 		 */
-		public static $debug = false;
+		public static $debug = true;
 
 		/**
 		 * Cloning is forbidden.
@@ -227,6 +227,7 @@ if ( ! class_exists( 'Anva' ) ) {
 			include_once( self::$framework_dir_path . 'includes/media.php' );
 			include_once( self::$framework_dir_path . 'includes/content.php' );
 			include_once( self::$framework_dir_path . 'includes/parts.php' );
+			include_once( self::$framework_dir_path . 'includes/breadcrumbs.php' );
 			include_once( self::$framework_dir_path . 'includes/attributes.php' );
 			include_once( self::$framework_dir_path . 'includes/elements.php' );
 			include_once( self::$framework_dir_path . 'includes/deprecated.php' );
@@ -272,7 +273,7 @@ if ( ! class_exists( 'Anva' ) ) {
 			 */
 			if ( is_admin() ) {
 				add_action( 'after_setup_theme', 'anva_plugins' );
-				add_action( 'after_setup_theme', 'anva_envato_updates' );
+				// add_action( 'after_setup_theme', 'anva_envato_updates' );
 				add_action( 'after_setup_theme', 'anva_admin_menu_init', 1001 );
 				add_action( 'init', 'anva_admin_init', 1 );
 				add_action( 'admin_init', 'anva_add_meta_boxes_default' );
@@ -389,8 +390,9 @@ if ( ! class_exists( 'Anva' ) ) {
 				add_action( 'anva_post_single_below', 'anva_post_author_default' );
 				add_action( 'anva_post_single_below', 'anva_post_related_default' );
 				add_action( 'anva_post_single_below', 'anva_post_more_stories_default' );
-				add_action( 'anva_content_before', 'anva_breadcrumbs_outside_default' );
+				add_action( 'anva_content_before', 'anva_breadcrumbs_outside_top_default' );
 				add_action( 'anva_content_before', 'anva_page_title_default' );
+				add_action( 'anva_content_before', 'anva_breadcrumbs_outside_bottom_default' );
 				add_action( 'anva_above_layout', 'anva_sidebar_above_content' );
 				add_action( 'anva_above_layout', 'anva_above_layout_default' );
 				add_action( 'anva_post_type_navigation', 'anva_post_type_navigation_default' );
