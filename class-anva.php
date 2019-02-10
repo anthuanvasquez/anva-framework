@@ -223,6 +223,7 @@ if ( ! class_exists( 'Anva' ) ) {
 			// General functions.
 			include_once( self::$framework_dir_path . 'includes/general.php' );
 			include_once( self::$framework_dir_path . 'includes/display.php' );
+			include_once( self::$framework_dir_path . 'includes/head.php' );
 			include_once( self::$framework_dir_path . 'includes/post-formats.php' );
 			include_once( self::$framework_dir_path . 'includes/media.php' );
 			include_once( self::$framework_dir_path . 'includes/content.php' );
@@ -337,14 +338,18 @@ if ( ! class_exists( 'Anva' ) ) {
 				add_filter( 'walker_nav_menu_start_el', 'anva_nav_menu_start_el', 10, 4 );
 				add_filter( 'nav_menu_css_class', 'anva_nav_menu_css_class', 10, 4 );
 				add_filter( 'nav_menu_item_id', 'anva_nav_menu_item_id', 10, 4 );
-				add_filter( 'wp_head', 'anva_wp_title_compat', 5 );
 				add_action( 'after_setup_theme', 'anva_content_width', 0 );
 				add_action( 'after_setup_theme', 'anva_add_attributes' );
 				add_action( 'after_setup_theme', 'anva_add_elements' );
 				add_action( 'init', 'anva_contact_send_email' );
 				add_action( 'wp', 'anva_setup_author' );
-				add_action( 'wp_head', 'anva_head_apple_touch_icon' );
-				add_action( 'wp_head', 'anva_head_viewport', 1 );
+				add_filter( 'wp_head', 'anva_wp_title_compat', 5 );
+				add_action( 'wp_head', 'anva_meta_charset', 0 );
+				add_action( 'wp_head', 'anva_meta_viewport', 1 );
+				add_action( 'wp_head', 'anva_meta_generator', 1 );
+				add_action( 'wp_head', 'anva_link_pingback', 3 );
+				add_action( 'wp_head', 'anva_link_profile', 3 );
+				add_action( 'wp_head', 'anva_link_apple_touch_icon', 3 );
 
 				/**
 				 * Post formats.
