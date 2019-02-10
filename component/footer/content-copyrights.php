@@ -32,7 +32,7 @@ $display          = anva_get_option( 'footer_extra_display' );
 		<div class="col_half col_last tright">
 			<div class="fright clearfix">
 				<?php
-					$args = apply_filters( 'anva_footer_social_icons', array(
+					$args = apply_filters( 'anva_footer_social_icons_args', array(
 						'style'    => null,
 						'shape'    => null,
 						'border'   => 'borderless',
@@ -47,11 +47,11 @@ $display          = anva_get_option( 'footer_extra_display' );
 			<div class="clear"></div>
 
 			<?php
-			if ( $display ) :
+			if ( $display ) {
 				$text = anva_get_option( 'footer_extra_info' );
 				$text = anva_do_icon( $text );
-				anva_kses( $text );
-			endif;
+				echo $text;
+			}
 			?>
 		</div>
 	</div>

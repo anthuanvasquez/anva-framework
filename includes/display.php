@@ -353,37 +353,39 @@ function anva_featured_after_default() {
 }
 
 /**
- * Display breadcrumbs outside page titles.
+ * Display breadcrumbs outside page titles on top.
  *
  * @since  1.0.0
  * @return void
  */
-function anva_breadcrumbs_outside_default() {
-	// Don't show breadcrumbs on front page or builder.
-	if ( is_front_page() || is_page_template( 'template_builder.php' ) ) {
-		return;
-	}
-
+function anva_breadcrumbs_outside_top_default() {
 	$breadcrumbs = anva_get_option( 'breadcrumbs', 'inside' );
-
-	if ( 'outside' !== $breadcrumbs ) {
+	if ( 'outside-top' !== $breadcrumbs ) {
 		return;
 	}
-	?>
-	<section id="breadcrumbs" class="breadcrumb-wrap">
-		<div class="container clearfix">
-			<?php
-				/**
-				 * Hooked.
-				 *
-				 * @see anva_breadcrumbs_default
-				 */
-				do_action( 'anva_breadcrumbs' );
-			?>
-		</div>
-	</section><!-- #breadcrumbs (end) -->
-	<?php
 
+	$classes[] = 'breadcrumb-wrap';
+	$classes[] = 'breadcrumb-top';
+
+	anva_breadcrumbs_display_position( $classes );
+}
+
+/**
+ * Display breadcrumbs outside page titles on bottom.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function anva_breadcrumbs_outside_bottom_default() {
+	$breadcrumbs = anva_get_option( 'breadcrumbs', 'inside' );
+	if ( 'outside-bottom' !== $breadcrumbs ) {
+		return;
+	}
+
+	$classes[] = 'breadcrumb-wrap';
+	$classes[] = 'breadcrumb-bottom';
+
+	anva_breadcrumbs_display_position( $classes );
 }
 
 /**
@@ -941,17 +943,52 @@ function anva_debug() {
 		<div class="container clearfix">
 			<div class="style-msg2 infomsg topmargin bottommargin">
 				<div class="msgtitle">
-					<i class="icon-info-sign"></i><?php esc_html_e( 'Debug Info', 'anva' ); ?>
+					<i class="icon-info-sign"></i>
+					<?php esc_html_e( 'Debug Info', 'anva' ); ?>
 				</div>
 				<div class="sb-msg">
 					<ul>
-						<li><span><?php esc_html_e( 'Queries', 'anva' ); ?>:</span> <?php echo get_num_queries(); ?> <?php esc_html_e( 'database queries', 'anva' ); ?>.</li>
-						<li><span><?php esc_html_e( 'Speed', 'anva' ); ?>:</span> <?php printf( __( 'Page generated in %s seconds.', 'anva' ), timer_stop( 1 ) ); ?></li>
-						<li><span><?php esc_html_e( 'Memory Usage', 'anva' ); ?>:</span> <?php echo anva_convert_memory_use( memory_get_usage( true ) ); ?></li>
-						<li><span><?php esc_html_e( 'Theme Name', 'anva' ); ?>:</span> <?php echo anva_get_theme( 'name' ); ?></li>
-						<li><span><?php esc_html_e( 'Theme Version', 'anva' ); ?>:</span> <?php echo anva_get_theme( 'version' ); ?></li>
-						<li><span><?php esc_html_e( 'Framework Name', 'anva' ); ?>:</span> <?php echo Anva::get_name(); ?></li>
-						<li><span><?php esc_html_e( 'Framework Version', 'anva' ); ?>:</span> <?php echo Anva::get_version(); ?></li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Queries', 'anva' ); ?>:
+							</span>
+							<?php echo get_num_queries(); ?> <?php esc_html_e( 'database queries', 'anva' ); ?>.
+						</li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Speed', 'anva' ); ?>:
+							</span>
+							<?php printf( __( 'Page generated in %s seconds.', 'anva' ), timer_stop( 1 ) ); ?>
+						</li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Memory Usage', 'anva' ); ?>:
+							</span> <?php echo anva_convert_memory_use( memory_get_usage( true ) ); ?>
+						</li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Theme Name', 'anva' ); ?>:
+							</span>
+							<?php echo anva_get_theme( 'name' ); ?>
+						</li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Theme Version', 'anva' ); ?>:
+							</span>
+							<?php echo anva_get_theme( 'version' ); ?>
+						</li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Framework Name', 'anva' ); ?>:
+							</span>
+							<?php echo Anva::get_name(); ?>
+						</li>
+						<li>
+							<span>
+								<?php esc_html_e( 'Framework Version', 'anva' ); ?>:
+							</span>
+							<?php echo Anva::get_version(); ?>
+						</li>
 					</ul>
 				</div>
 			</div>

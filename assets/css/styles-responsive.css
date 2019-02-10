@@ -625,6 +625,9 @@
   #primary-menu > div > #side-panel-trigger {
     margin: 20px 0 !important;
   }
+  #primary-menu > div > #top-search form {
+    height: 60px !important;
+  }
   #primary-menu ul.windows-mobile-menu li.sub-menu {
     position: relative;
   }
@@ -1826,5 +1829,3 @@
     display: inline-block;
   }
 }
-
-/*# sourceMappingURL=styles-responsive.css.map */

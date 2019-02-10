@@ -163,6 +163,11 @@ function anva_attr_header( $attr ) {
 	$attr['itemscope'] = 'itemscope';
 	$attr['itemtype']  = 'http://schema.org/WPHeader';
 
+	$sticky_dark = anva_get_option( 'sticky_dark', true );
+	if ( $sticky_dark ) {
+		$attr['data-sticky-class'] = 'not-dark';
+	}
+
 	return $attr;
 }
 
@@ -255,7 +260,7 @@ function anva_attr_menu( $attr, $context ) {
 		$attr['class'] .= " {$context}-menu";
 
 		if ( 'primary' == $context ) {
-			$attr['class'] .= join( ' ', anva_get_primary_menu_class() );
+			$attr['class'] .= ' ' . join( ' ', anva_get_primary_menu_class() );
 		}
 
 		if ( 'footer' == $context ) {
@@ -351,7 +356,6 @@ function anva_attr_site_description( $attr ) {
 function anva_attr_archive_header( $attr ) {
 
 	$attr['id']        = 'page-title';
-	$attr['class']     = 'page-title';
 	$attr['itemscope'] = 'itemscope';
 	$attr['itemtype']  = 'http://schema.org/WebPageElement';
 
@@ -524,7 +528,7 @@ function anva_attr_entry_published( $attr ) {
  */
 function anva_attr_entry_content( $attr ) {
 
-	$attr['class'] = 'entry-content';
+	$attr['class'] = 'entry-content clearfix';
 
 	if ( is_single() ) {
 		$attr['class'] .= ' notopmargin';

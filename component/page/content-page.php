@@ -18,7 +18,7 @@
 ?>
 <div class="entry-wrap">
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry clearfix' ); ?>>
-		<div class="entry-content">
+		<div class="entry-content clearfix">
 			<?php the_content(); ?>
 		</div><!-- .entry-content (end) -->
 

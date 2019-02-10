@@ -212,7 +212,8 @@ if ( ! class_exists( 'Anva_Options' ) ) :
 							'type' => 'select',
 							'options' => array(
 								'inside'  => esc_attr__( 'Show breadcrumbs inside page titles', 'anva' ),
-								'outside' => esc_attr__( 'Show breadcrumbs outside page titles', 'anva' ),
+								'outside-top' => esc_attr__( 'Show breadcrumbs outside page titles on top', 'anva' ),
+								'outside-bottom' => esc_attr__( 'Show breadcrumbs outside page titles on bottom', 'anva' ),
 								'hide'    => esc_attr__( 'Hide breadcrumbs', 'anva' ),
 							),
 						),

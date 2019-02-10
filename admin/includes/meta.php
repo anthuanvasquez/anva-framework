@@ -137,7 +137,6 @@ function anva_setup_post_meta() {
 				'std'		=> '',
 				'options'   => array(
 					'' 		=> esc_html__( 'Default Setting', 'anva' ),
-					'show' 	=> esc_html__( 'Show breadcrumbs', 'anva' ),
 					'hide'	=> esc_html__( 'Hide breadcrumbs', 'anva' ),
 				),
 			),
@@ -393,7 +392,6 @@ function anva_setup_page_meta() {
 				'std'       => '',
 				'options'   => array(
 					''      => esc_html__( 'Default Setting', 'anva' ),
-					'show'  => esc_html__( 'Show breadcrumbs', 'anva' ),
 					'hide'  => esc_html__( 'Hide breadcrumbs', 'anva' ),
 				),
 			),

@@ -36,7 +36,7 @@
 }
 
 .anva-framework h3 {
-  background-color: #FFF;
+  background-color: #ffffff;
   border-bottom: 1px solid #EEE;
   cursor: default;
 }
@@ -917,7 +917,7 @@
 }
 
 .sweet-alert p span {
-  color: #bbb;
+  color: #bbbbbb;
   font-size: 14px;
   display: block;
 }
@@ -1541,9 +1541,9 @@ input.switch-flat-xlarge.switch-toggle-flat:checked + label:after {
 
 .selectric .btn {
   background: #f7f7f7;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #dddddd;
   border-radius: 0;
-  color: #bbb;
+  color: #bbbbbb;
   height: 33px;
 }
 
@@ -1608,5 +1608,3 @@ input.switch-flat-xlarge.switch-toggle-flat:checked + label:after {
 .select2-container--open .select2-dropdown--below {
   border-radius: 0;
 }
-
-/*# sourceMappingURL=admin.css.map */

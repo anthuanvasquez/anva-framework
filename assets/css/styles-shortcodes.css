@@ -5000,8 +5000,8 @@ body:not(.device-touch) .text-overlay {
   height: auto;
   padding: 40px 15px 15px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
-  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
 }
 
 .text-overlay-title h2,
@@ -5577,6 +5577,42 @@ body:not(.device-touch) .text-overlay {
           transform: none !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.breaking {
+  border-bottom: 1px solid #EEE;
+  height: 45px;
+  overflow: hidden;
+  position: relative;
+}
+
+.breaking .breaking-inner {
+  display: inline-block;
+}
+
+.breaking .breaking-title {
+  background-color: #3498db;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 20px 0 0;
+  padding: 0 12px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.breaking .breaking-entry {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 20px 0 0;
+  padding: 12px;
+}
+
+.breaking .breaking-entry a {
+  color: #444;
 }
 
 /*-----------------------------------------------------------------------------------
@@ -6261,5 +6297,3 @@ button.toast-close-button {
   font-size: 200px;
   font-family: "Times New Roman", serif;
 }
-
-/*# sourceMappingURL=styles-shortcodes.css.map */
