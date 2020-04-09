@@ -2,11 +2,11 @@
 /**
  * Add options to Appearance > Menus
  *
- * @author      Jason Bobich
- * @copyright   Copyright (c) Jason Bobich
- * @link        http://jasonbobich.com
- * @link        http://themeblvd.com
- * @package     Theme Blvd WordPress Framework
+ * @since  		1.0.0
+ * @author      Anthuan Vásquez
+ * @copyright   Copyright (c) Anthuan Vásquez
+ * @link        http://anthuanvasquez.net
+ * @package     Anva WordPress Framework
  */
 class Anva_Nav_Menu_Options {
 

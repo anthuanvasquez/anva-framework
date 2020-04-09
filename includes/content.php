@@ -73,7 +73,7 @@ function anva_get_content( $content ) {
 }
 
 /**
- * Use themeblvd_button() function for read more links.
+ * Use anva_button() function for read more links.
  *
  * When a WP user uses the more tag <!--more-->, this filter
  * will add the class "btn" to that link. This will allow
